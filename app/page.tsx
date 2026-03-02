@@ -11,8 +11,13 @@ import {
   Quote,
   Shield,
   ChevronDown,
+  Mail,
+PhoneCall,
+  Instagram,
 } from "lucide-react";
 import { content } from "../data/content";
+import { Story } from "@/components/Story";
+import { CoursesGrid } from "@/components/CoursesGrid";
 
 const PAIN_ICONS = [AlertCircle, Target, TrendingDown, Clock];
 
@@ -23,10 +28,10 @@ const NAV_LINKS = [
   { label: "Oferta", href: "#oferta" },
 ];
 
-const LABEL_COLOR = "text-red-600 font-bold";
+const LABEL_COLOR = "text-sky-600 font-bold";
 
 function Haslo({ children }: { children: string }) {
-  return <span className="text-red-600 font-bold">[{children}]</span>;
+  return <span className="text-sky-600 font-bold">[{children}]</span>;
 }
 
 function LabeledText({
@@ -86,77 +91,77 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* ─── HERO (pełny ekran, bez przewijania + strzałka w dół) ───────────── */}
-      <section
-        id="hero"
-        className="relative flex h-[calc(100dvh-3.5rem)] min-h-0 w-full flex-col overflow-hidden border-b border-slate-200 bg-slate-50 px-4 py-4 sm:px-6 sm:py-6 md:px-8 lg:px-12"
-      >
-        <div className="mx-auto flex min-h-0 max-w-6xl flex-1 flex-col gap-4 lg:flex-row lg:items-center lg:gap-8">
-          
-          <div className="flex min-h-0 flex-1 flex-col justify-center lg:overflow-auto lg:py-2">
-            <p className="mb-1">
-              <Haslo>Hook</Haslo>
-            </p>
-            <p className="mb-4 text-sm leading-relaxed text-slate-600 sm:text-base">
-              {c.hero.hook.replace(/^Hook:\s*/i, "")}
-            </p>
-            <p className="mb-1">
-              <Haslo>Pytanie + korzyść</Haslo>
-            </p>
-            <h1 className="mb-5 text-xl font-semibold leading-snug text-slate-900 sm:text-2xl">
-              {c.hero.question.replace(/^[^:]+:\s*/i, "")} {c.hero.benefit}
+      {/* ─── HERO (responsywny: mobile scroll, desktop pełny ekran) ────────── */}
+      <section className="relative w-full min-h-[70vh] overflow-hidden">
+        {/* Delikatny gradient w tle nawiązujący do stylu Apple */}
+        <div className="absolute inset-0 -z-10 bg-linear-to-b from-stone-100 to-stone-50" />
+
+        <div className="mx-auto grid max-w-6xl items-start gap-10 px-4 py-10 md:grid-cols-2 md:gap-16 md:py-16 lg:py-20">
+          {/* LEWA KOLUMNA: Teksty i Przyciski */}
+          <div className="z-10 space-y-6 text-left">
+            {/* Hook jako mała pastylka */}
+            <div className="inline-block rounded-full bg-sky-100 px-4 py-1 text-xs font-semibold tracking-wide text-sky-700 sm:text-sm">
+              90% osób po kursach nadal boi się odezwać
+            </div>
+
+            {/* Pytanie + korzyść */}
+            <h1 className="max-w-xl text-3xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+              Chcesz swobodnie mówić po angielsku{" "}
+              <span className="block text-sky-600">bez wkuwania regułek?</span>
             </h1>
-            <p className="mb-1">
-              <Haslo>Obietnica</Haslo>
+
+            {/* Obietnica */}
+            <p className="max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
+              Pokażę Ci, jak przełamać barierę językową i zacząć mówić pewnie w kilka miesięcy, korzystając z prostej, sprawdzonej metody.
             </p>
-            <p className="mb-8 text-sm leading-relaxed text-slate-600">
-              {c.hero.promise.replace(/^Obietnica:\s*/i, "")}
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <a
+
+            {/* Przyciski (CTA) */}
+            <div className="flex flex-row flex-wrap items-center gap-3 pt-2">
+              <Link
                 href="#oferta"
-                className="inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-medium text-white transition hover:bg-slate-800"
+                className="rounded-xl bg-blue-600 px-6 py-3 text-center text-sm font-bold text-white shadow-lg transition-transform hover:-translate-y-0.5 hover:bg-blue-700 sm:text-base"
               >
-                Oferta
-              </a>
-              <a
+                Zobacz ofertę
+              </Link>
+              <Link
                 href="#o-mnie"
-                className="inline-flex items-center justify-center rounded-full border border-slate-300 px-6 py-3 text-sm font-medium text-slate-700 transition hover:border-slate-400 hover:bg-slate-50"
+                className="rounded-xl border border-stone-300 bg-white px-6 py-3 text-center text-sm font-bold text-slate-700 transition hover:border-stone-400 sm:text-base"
               >
                 O mnie
-              </a>
+              </Link>
             </div>
           </div>
-          <div className="relative  w-full h-full shrink-0 overflow-hidden rounded-xl bg-slate-200 shadow-lg lg:w-[44%]  lg:aspect-auto ">
-            <div className="relative h-full w-full">
-              <Image
-                src="/unnamed.jpeg"
-                alt=""
-                fill
-                className="object-cover w-full h-full object-top"
-                
-                priority
-              />
-            </div>
+
+          {/* PRAWA KOLUMNA: Zdjęcie */}
+          <div className="relative w-full h-72 overflow-hidden rounded-3xl bg-slate-200 shadow-2xl sm:h-80 md:h-96 lg:h-[420px]">
+            <Image
+              src="/unnamed.jpeg"
+              alt="Wiktor - Nauczyciel Angielskiego"
+              fill
+              className="object-cover object-top"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
+            />
           </div>
         </div>
-        <a
-          href="#fakty"
-          className="absolute bottom-3 left-1/2 flex -translate-x-1/2 flex-col items-center gap-0.5 text-slate-400 transition hover:text-slate-600"
-          aria-label="Przewiń w dół"
-        >
-          <span className="text-[10px] font-medium uppercase tracking-wider">W dół</span>
-          <ChevronDown className="h-7 w-7 animate-bounce" />
-        </a>
       </section>
 
       {/* ─── PROBLEM ────────────────────────────────────────────────────── */}
       <section
         id="problem"
-        className="relative w-full bg-white px-4 py-20 sm:px-6 sm:py-24 md:px-8 lg:px-12"
+        className="relative w-full bg-sky-50 px-4 py-20 sm:px-6 sm:py-24 md:px-8 lg:px-12"
       >
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-16 lg:grid-cols-2 lg:items-start">
+          <div className="relative aspect-4/3 overflow-hidden rounded-3xl lg:aspect-square">
+              <Image
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop"
+                alt=""
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
             <div>
               <h2 className="mb-5 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
                 {c.problemAgitation.headline}
@@ -168,15 +173,7 @@ export default function Home() {
                 <LabeledText text={c.problemAgitation.problemIntro} />
               </p>
             </div>
-            <div className="relative aspect-4/3 overflow-hidden rounded-3xl lg:aspect-square">
-              <Image
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop"
-                alt=""
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
+            
           </div>
 
           <ul className="mt-16 grid gap-4 sm:grid-cols-2 sm:gap-5">
@@ -187,7 +184,7 @@ export default function Home() {
                   key={i}
                   className="flex gap-4 rounded-2xl border border-slate-200 bg-slate-100 p-5 sm:p-6"
                 >
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
                     <Icon className="h-5 w-5" />
                   </span>
                   <span className="text-slate-600 sm:text-base leading-relaxed">{point}</span>
@@ -196,7 +193,7 @@ export default function Home() {
             })}
           </ul>
 
-          <div className="mt-14 rounded-3xl border border-blue-200 bg-blue-50 p-8 sm:p-10">
+          <div className="mt-14 rounded-3xl border border-indigo-200 bg-indigo-50 p-8 sm:p-10">
             <h3 className="mb-3 text-xl font-semibold sm:text-2xl">
               <Haslo>{c.problemAgitation.conspiracyHeadline}</Haslo>
             </h3>
@@ -207,87 +204,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── O MNIE ──────────────────────────────────────────────────────── */}
-      <section
-        id="o-mnie"
-        className="relative w-full bg-slate-50/80 px-4 py-20 sm:px-6 sm:py-24 md:px-8 lg:px-12"
-      >
-        <div className="mx-auto max-w-5xl">
-          <h2 className="mb-12 text-left text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
-            <Haslo>{c.storyAndAuthority.sectionTitle}</Haslo>
-          </h2>
-
-          <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-14">
-            <div className="w-full shrink-0 lg:w-[340px]">
-              <div className="relative aspect-3/4 w-full overflow-hidden rounded-2xl bg-slate-200 shadow-lg">
-                <Image
-                  src="/unnamed.jpeg"
-                  alt={c.storyAndAuthority.authorName}
-                  fill
-                  className="object-cover object-top"
-                  sizes="(max-width: 1024px) 100vw, 340px"
-                />
-              </div>
-              <div className="mt-5 text-center lg:text-left">
-                <p className="text-xl font-semibold tracking-tight text-slate-900">
-                  {c.storyAndAuthority.authorName}
-                </p>
-                <p className="mt-0.5 text-sm font-medium text-slate-500">
-                  {c.storyAndAuthority.authorTitle}
-                </p>
-              </div>
-              <div className="mt-6 rounded-xl border border-slate-200 bg-slate-50/80 px-4 py-4">
-                <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-500">
-                  {c.storyAndAuthority.credentialsHeadline}
-                </p>
-                <ul className="space-y-2.5">
-                  {c.storyAndAuthority.credentials.map((item, i) => (
-                    <li key={i} className="flex flex-col gap-0.5">
-                      <span className="text-sm font-medium text-slate-800">{item.label}</span>
-                      <span className="text-xs text-slate-500">{item.detail}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <div className="flex-1 space-y-8">
-              <p className="text-lg leading-relaxed text-slate-700 sm:text-xl">
-                {c.storyAndAuthority.authorBio}
-              </p>
-
-              <div className="space-y-6 border-l-2 border-slate-200 pl-6">
-                <p className="text-slate-600 leading-relaxed">
-                  <Haslo>Zbudowanie autorytetu</Haslo> {c.storyAndAuthority.authorityHeadline}
-                </p>
-                <p className="text-slate-600 leading-relaxed">
-                  <Haslo>Historia początków</Haslo> {c.storyAndAuthority.originStory}
-                </p>
-                <p className="text-slate-600 leading-relaxed">
-                  <Haslo>{c.storyAndAuthority.turningPointHeadline}</Haslo> {c.storyAndAuthority.turningPointText}
-                </p>
-                <p className="text-slate-600 leading-relaxed">
-                  <Haslo>{c.storyAndAuthority.newPathHeadline}</Haslo> {c.storyAndAuthority.newPathText}
-                </p>
-                <p className="text-slate-600 leading-relaxed">
-                  <Haslo>{c.storyAndAuthority.positiveEffectsHeadline}</Haslo> {c.storyAndAuthority.positiveEffectsText}
-                </p>
-                <p className="text-slate-600 leading-relaxed">
-                  <Haslo>Dodatkowe korzyści</Haslo> {c.storyAndAuthority.additionalBenefits}
-                </p>
-                <p className="text-slate-600 leading-relaxed">
-                  <Haslo>{c.storyAndAuthority.costOfSolutionHeadline}</Haslo> {c.storyAndAuthority.costOfSolutionText}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      
+      <div>
+      <Story content={c.storyAndAuthority} />
+      </div>
 
       {/* ─── OPINIE ──────────────────────────────────────────────────────── */}
       <section
         id="opinie"
-        className="relative w-full bg-white px-4 py-20 sm:px-6 sm:py-24 md:px-8 lg:px-12"
+        className="relative w-full bg-sky-50 px-4 py-20 sm:px-6 sm:py-24 md:px-8 lg:px-12"
       >
         <div className="mx-auto max-w-6xl">
           <h2 className="mb-3 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
@@ -303,13 +228,13 @@ export default function Home() {
                 key={i}
                 className="flex flex-col rounded-3xl border border-slate-200 bg-slate-100 p-6 sm:p-8"
               >
-                <Quote className="mb-4 h-8 w-8 text-blue-400" />
+                <Quote className="mb-4 h-8 w-8 text-indigo-400" />
                 <p className="mb-5 flex-1 text-slate-600 leading-relaxed">
                   „{item.quote}”
                 </p>
                 <StarRating rating={item.rating} />
                 <p className="mt-4 font-semibold text-slate-900">{item.author}</p>
-                <p className="text-sm text-blue-600">{item.result}</p>
+                <p className="text-sm text-indigo-600">{item.result}</p>
               </article>
             ))}
           </div>
@@ -319,7 +244,7 @@ export default function Home() {
       {/* ─── OFERTA (Korepetycje + Kursy w stylu Gumroad) ─────────────────── */}
       <section
         id="oferta"
-        className="relative w-full bg-slate-50 px-4 py-20 sm:px-6 sm:py-24 md:px-8 lg:px-12"
+        className="relative w-full bg-sky-50 px-4 py-20 sm:px-6 sm:py-24 md:px-8 lg:px-12"
       >
         <div className="mx-auto max-w-6xl">
           <h2 className="mb-10 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
@@ -341,49 +266,17 @@ export default function Home() {
               href={c.offerDetails.tutoring.ctaUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-xl bg-teal-600 px-6 py-3.5 text-base font-medium text-white transition hover:bg-teal-500"
+                className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3.5 text-base font-medium text-white transition hover:bg-blue-700"
             >
               {c.offerDetails.tutoring.ctaLabel}
             </a>
           </div>
 
-          {/* Kursy – 3 prostokąty w stylu Gumroad z przyciskiem Kup przez */}
+          {/* Kursy – prostokąty w stylu Gumroad z przyciskiem Kup przez + modal ze szczegółami */}
           <h3 className="mb-6 text-lg font-semibold text-slate-900">
             <Haslo>Kursy</Haslo>
           </h3>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {c.offerDetails.courses.map((course) => (
-              <article
-                key={course.id}
-                className="flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md"
-              >
-                <div className="relative h-40 w-full shrink-0 bg-slate-200">
-                  <div className="absolute inset-0 flex items-center justify-center text-slate-400 text-sm">
-                    Okładka kursu
-                  </div>
-                </div>
-                <div className="flex flex-1 flex-col p-5">
-                  <h4 className="mb-2 font-semibold text-slate-900 line-clamp-2">
-                    {course.title}
-                  </h4>
-                  <p className="mb-4 flex-1 text-sm leading-relaxed text-slate-600 line-clamp-2">
-                    {course.shortDescription}
-                  </p>
-                  <p className="mb-4 text-lg font-bold text-slate-900">{course.price}</p>
-                  <a
-                    href={course.gumroadUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="gumroad-button flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 py-3.5 text-sm font-medium text-white transition hover:bg-slate-800"
-                  >
-                    <span>Kup przez</span>
-                    
-                    
-                  </a>
-                </div>
-              </article>
-            ))}
-          </div>
+          <CoursesGrid courses={[...c.offerDetails.courses]} />
 
           <div className="mt-12 rounded-2xl border border-blue-200 bg-blue-50 p-6 sm:p-8">
             <h3 className="mb-2 text-lg font-semibold">
@@ -395,7 +288,7 @@ export default function Home() {
           </div>
 
           <div className="mt-6 flex flex-col gap-6 rounded-2xl border border-slate-200 bg-white p-6 sm:flex-row sm:items-start sm:gap-8 sm:p-8">
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-emerald-500/20 text-emerald-600">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-sky-100 text-sky-600">
               <Shield className="h-6 w-6" />
             </span>
             <div>
@@ -463,6 +356,88 @@ export default function Home() {
           </a>
         </div>
       </section>
+
+      {/* ─── FOOTER ──────────────────────────────────────────────────────── */}
+      <footer className="border-t border-slate-200 bg-sky-50 px-4 py-10 text-slate-700 sm:px-6 sm:py-12 md:px-8 lg:px-12">
+        <div className="mx-auto flex max-w-6xl flex-col gap-8 md:flex-row md:items-start md:justify-between">
+          <div>
+            <p className="text-base font-semibold text-slate-900">{c.site.name}</p>
+            <p className="mt-1 max-w-xs text-sm text-slate-500">{c.site.tagline}</p>
+          </div>
+          <nav className="text-base">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-slate-500">
+              Nawigacja
+            </p>
+            <div className="flex flex-wrap gap-x-4 gap-y-2">
+              {NAV_LINKS.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-slate-600 transition hover:text-slate-900"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </nav>
+          <div className="space-y-4 text-base">
+            <div className="space-y-2">
+              <p className="text-sm font-semibold uppercase tracking-wider text-slate-500">
+                Kontakt
+              </p>
+              <a
+                href="mailto:kontakt@example.com"
+                className="flex items-center gap-2 text-slate-700 transition hover:text-slate-900"
+              >
+                <Mail className="h-4 w-4 shrink-0" />
+                kontakt@example.com
+              </a>
+              <p className="flex items-center gap-2 text-sm text-slate-500">
+                <PhoneCall className="h-4 w-4 shrink-0" />
+                +48 604 200 200
+              </p>
+            </div>
+            <div className="space-y-2">
+              <p className="text-sm font-semibold uppercase tracking-wider text-slate-500">
+                Social
+              </p>
+              <div className="flex gap-3">
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-indigo-200 bg-white text-indigo-700 transition hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-900"
+                  aria-label="Facebook"
+                >
+                  <span className="text-sm font-semibold">f</span>
+                </a>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-indigo-200 bg-white text-indigo-700 transition hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-900"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="mx-auto mt-6 flex max-w-6xl justify-end">
+          <p className="text-sm text-slate-500">
+            Powered by{" "}
+            <a
+              href="https://aniszewski-code.pl"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-slate-700 underline decoration-slate-400 underline-offset-4 transition hover:text-slate-900 hover:decoration-slate-600"
+            >
+              Wojciech Aniszewski
+            </a>
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }

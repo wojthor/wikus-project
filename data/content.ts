@@ -50,7 +50,7 @@ export const storyAndAuthority = {
   costOfSolutionHeadline: "Dlaczego dzielę się wiedzą",
   costOfSolutionText: "Straciłem mnóstwo czasu na metodę, która nie działa. Gdybym wcześniej wiedział to, co teraz wdrażam z uczniami, zaoszczędziłbym lata – dlatego uczę innych tą drogą.",
   authorName: "Wiktor Szycha",
-  authorImagePlaceholder: "/author-wiktor.jpg",
+  authorImagePlaceholder: "/unnamed.jpeg",
   authorTitle: "Nauczyciel angielskiego",
   credentialsHeadline: "Certyfikaty i doświadczenie",
   credentials: [
@@ -110,6 +110,16 @@ export const offerDetails = {
       shortDescription: "Praktyczna gramatyka połączona z mówieniem – schematy, ćwiczenia i nagrania.",
       price: "297 zł",
       gumroadUrl: "https://9432604211760.gumroad.com/l/demo",
+      format: "Wideo + PDF + nagrania audio",
+      duration: "Dożywotni dostęp",
+      details:
+        "Pełny kurs wideo, w którym gramatyka zawsze idzie w parze z mówieniem. Otrzymasz nagrania, ćwiczenia do wydruku, przykładowe dialogi i schematy zdań, które od razu wykorzystasz w rozmowie.",
+      whatYouGet: [
+        "Nagrania wideo do każdego tematu",
+        "Ćwiczenia do wydruku i klucz odpowiedzi",
+        "Przykładowe dialogi i schematy zdań",
+        "Lista najważniejszych struktur do mówienia",
+      ],
     },
     {
       id: "kurs-2",
@@ -117,6 +127,16 @@ export const offerDetails = {
       shortDescription: "Gotowe tematy, pytania i zwroty – budujesz pewność w mówieniu krok po kroku.",
       price: "197 zł",
       gumroadUrl: "https://gumroad.com/l/KONWERSACJE",
+      format: "Audio + PDF z pytaniami i zwrotami",
+      duration: "Dożywotni dostęp",
+      details:
+        "Biblioteka konwersacji na różne poziomy – od small talku po rozmowy w pracy. Do każdego modułu dostajesz nagrania audio, listę pytań, zwrotów i przykładowe odpowiedzi, abyś wiedział, co powiedzieć w realnych sytuacjach.",
+      whatYouGet: [
+        "Nagrania audio z przykładowymi rozmowami",
+        "Listy pytań i zwrotów do każdego tematu",
+        "Moduły od A2 do B2+",
+        "Tematy: codzienność, praca, podróże",
+      ],
     },
     {
       id: "kurs-3",
@@ -124,6 +144,33 @@ export const offerDetails = {
       shortDescription: "Słownictwo i zwroty na spotkania, maile i prezentacje.",
       price: "67 zł",
       gumroadUrl: "https://gumroad.com/l/ANGLIELSKI-BIZNES",
+      format: "E-book PDF",
+      duration: "Dożywotni dostęp",
+      details:
+        "Ponad 100 stron praktycznych zwrotów biznesowych: maile, spotkania, prezentacje, small talk przed i po rozmowie. Idealny jako podręczna ściąga przed każdym ważnym spotkaniem.",
+      whatYouGet: [
+        "Ponad 100 stron zwrotów i słownictwa",
+        "Sekcje: maile, spotkania, prezentacje",
+        "Small talk i networking",
+        "Gotowe szablony zdań",
+      ],
+    },
+    {
+      id: "kurs-4",
+      title: "Intensywny kurs maturalny z angielskiego",
+      shortDescription: "Powtórka całej gramatyki, słownictwa i typowych zadań maturalnych w 6 tygodni.",
+      price: "249 zł",
+      gumroadUrl: "https://gumroad.com/l/KURS-MATURALNY",
+      format: "Wideo + PDF + arkusze",
+      duration: "6 tygodni programu",
+      details:
+        "Program krok po kroku przygotowujący do matury podstawowej i rozszerzonej. Zawiera arkusze próbne, nagrania do słuchania, przykładowe wypowiedzi pisemne i ustne, a także checklistę rzeczy do powtórki na ostatni tydzień.",
+      whatYouGet: [
+        "Plan tydzień po tygodniu (6 tygodni)",
+        "Arkusze próbne i nagrania do słuchania",
+        "Wypowiedzi pisemne i ustne – przykłady",
+        "Checklista na ostatni tydzień przed maturą",
+      ],
     },
   ],
 } as const;
