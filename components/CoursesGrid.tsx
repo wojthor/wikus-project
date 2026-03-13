@@ -52,7 +52,7 @@ export function CoursesGrid({ courses }: CoursesGridProps) {
                 href={course.gumroadUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="gumroad-button mb-1.5 flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 py-3 text-sm font-medium text-white transition hover:bg-blue-700 sm:mb-2 sm:py-3.5"
+                className="mb-1.5 flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 py-3 text-sm font-medium text-white transition hover:bg-blue-700 sm:mb-2 sm:py-3.5"
               >
                 Kup przez Gumroad
               </a>
@@ -168,7 +168,7 @@ export function CoursesGrid({ courses }: CoursesGridProps) {
                 href={activeCourse.gumroadUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="gumroad-button order-1 flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-700 sm:order-2 sm:w-auto"
+                className="order-1 flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-700 sm:order-2 sm:w-auto"
               >
                 Kup przez Gumroad
               </a>

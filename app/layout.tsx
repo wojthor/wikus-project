@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Geist, Geist_Mono, Outfit } from "next/font/google";
 import "./globals.css";
 
@@ -19,8 +18,8 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Projekt dla Wikusia",
-  description: "Od marzeń do rezultatów – odkryj ścieżkę do swoich celów.",
+  title: "Szycha Angielski",
+  description: "Kursy angielskiego z korepetycjami i kursami intensywnymi. Naucz się angielskiego w 6 tygodni.",
 };
 
 export default function RootLayout({
@@ -34,10 +33,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${outfit.variable} antialiased bg-linear-to-b from-sky-100 via-sky-50 to-white`}
       >
         {children}
-        <Script
-          src="https://gumroad.com/js/gumroad.js"
-          strategy="lazyOnload"
-        />
       </body>
     </html>
   );
