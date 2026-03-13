@@ -4,7 +4,6 @@ export { HeroSection } from "./components/HeroSection";
 export { FactsSection } from "./components/FactsSection";
 export { AboutSection } from "./components/AboutSection";
 export { OfferSection } from "./components/OfferSection";
-export { CourseDetailsModal } from "./components/CourseDetailsModal";
 export { FinalCtaSection } from "./components/FinalCtaSection";
 export { TestimonialsSection } from "./components/TestimonialsSection";
 export { Footer } from "./components/Footer";
