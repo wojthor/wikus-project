@@ -14,13 +14,20 @@ export function HeroSection() {
             <span className="text-[#7347f4]">bez wkuwania regułek?</span>
           </h1>
           <p className="text-base sm:text-lg text-slate-600 max-w-xl leading-relaxed">
-            Pokażę Ci, jak przełamać barierę językową i zacząć mówić pewnie w kilka miesięcy, korzystając z prostej, sprawdzonej metody.
+            Pokażę Ci, jak przełamać barierę językową i zacząć mówić pewnie w kilka miesięcy,
+            korzystając z prostej, sprawdzonej metody.
           </p>
           <div className="flex flex-wrap gap-2 pt-1.5">
-            <Link href="#oferta" className="rounded-lg bg-[#ffbd53] border border-[#ffa515] text-white px-4 py-2 text-xs sm:text-sm font-bold shadow-md hover:-translate-y-0.5 transition-transform">
+            <Link
+              href="#oferta"
+              className="rounded-4xl bg-[#ffbd53] border border-[#ffa515] text-white px-4 py-2 text-xs sm:text-lg font-bold shadow-md hover:-translate-y-0.5 transition-transform"
+            >
               Zobacz ofertę
             </Link>
-            <Link href="#o-mnie" className="rounded-lg bg-white border border-[#ffa515] text-[#ffa515] px-4 py-2 text-xs sm:text-sm font-bold shadow-sm hover:-translate-y-0.5 transition-transform">
+            <Link
+              href="#o-mnie"
+              className="rounded-4xl bg-white border border-[#ffa515] text-[#ffa515] px-4 py-2 text-xs sm:text-lg font-bold shadow-sm hover:-translate-y-0.5 transition-transform"
+            >
               O mnie
             </Link>
           </div>

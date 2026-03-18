@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <div id="top" className="min-h-screen bg-[#f8faff] text-black font-sans selection:bg-[#cfd8ff]">
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-8 space-y-12 sm:space-y-16 overflow-hidden">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-8 space-y-12 sm:space-y-16">
         <HeroSection />
         <FactsSection />
         <AboutSection data={storyAndAuthority} />

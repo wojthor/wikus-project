@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import type { offerDetails, pricingAndGuarantee } from "@/data/content";
 import { Check } from "lucide-react";
 
@@ -47,50 +46,72 @@ export function OfferSection({ offerDetails, pricingAndGuarantee }: OfferSection
   return (
     <section
       id="oferta"
-      className="min-h-[70vh] flex flex-col justify-center space-y-6 sm:space-y-8 py-8 sm:py-12 scroll-mt-20"
+      className="min-h-[70vh] flex flex-col justify-center space-y-6 sm:space-y-8 py-8 sm:py-12 scroll-mt-1"
     >
       <h2 className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
         <span className="font-bold text-[#ffa515]">[Oferta]</span> – co dokładnie dostajesz
       </h2>
 
-      {/* Duża karta dla korepetycji 1:1 */}
+      {/* Karta korepetycji 1:1 – dwa warianty: 45 min i 60 min */}
       <div className="mb-6 sm:mb-8">
-        <article className="relative bg-white rounded-[32px] p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-6 border-[0.5px] hover:border-2 border-[#ffa515] shadow-sm hover:shadow-lg transition-all duration-300">
-          <div className="flex-1">
-            <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-[#ffa515]">
-              {offerDetails.tutoring.label}
-            </div>
-            <h3 className="text-slate-900 font-bold text-2xl md:text-3xl">
-              {offerDetails.tutoring.headline}
-            </h3>
-            <div className="my-4 space-y-1.5">
-              <div className="text-[#7347f4] font-extrabold text-3xl md:text-4xl">
-                {pricingAndGuarantee.tutoringHourlyRate}
+        <article className="relative bg-white rounded-2xl sm:rounded-[28px] p-4 sm:p-6 md:p-8 border-[0.5px] hover:border-2 border-[#ffa515] shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden">
+          <div className="flex flex-col lg:flex-row lg:items-stretch gap-5 sm:gap-6">
+            {/* Lewa kolumna: opis i korzyści */}
+            <div className="flex-1 min-w-0">
+              <div className="mb-0.5 text-xs font-semibold uppercase tracking-wide text-[#ffa515]">
+                {offerDetails.tutoring.label}
               </div>
-              <div className="text-sm md:text-base text-slate-600">
-                lub <span className="font-semibold">70 zł / 45 min</span>
-              </div>
+              <h3 className="text-slate-900 font-bold text-xl sm:text-2xl md:text-3xl mb-2">
+                {offerDetails.tutoring.headline}
+              </h3>
+              <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                {offerDetails.tutoring.description}
+              </p>
+              <ul className="space-y-1.5 text-sm text-slate-600">
+                {PACKAGE_FEATURES.tutoring.map((item, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-[#7347f4] mt-[2px] shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <p className="text-slate-600 text-sm md:text-base leading-relaxed mb-3">
-              {offerDetails.tutoring.description}
-            </p>
-          </div>
 
-          <div className="flex-1 space-y-2">
-            <ul className="space-y-1.5 text-sm text-slate-600">
-              {PACKAGE_FEATURES.tutoring.map((item, i) => (
-                <li key={i} className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-[#7347f4] mt-[3px]" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-            <a
-              href={offerDetails.tutoring.ctaUrl}
-              className="mt-4 inline-flex w-full items-center justify-center rounded-xl bg-[#ffbd53] px-5 py-2.5 text-sm sm:text-base font-bold text-white transition-colors hover:bg-[#f5ad3f]"
-            >
-              {offerDetails.tutoring.ctaLabel}
-            </a>
+            {/* Prawa kolumna: dwa warianty cenowe – ten sam rozmiar (kwadraty) */}
+            <div className="grid grid-cols-2 gap-5 lg:gap-6 lg:flex-1 lg:min-w-0 lg:max-w-[520px] [&>div]:min-w-0 [&>div]:w-full">
+              <div className="flex flex-col rounded-2xl border-2 border-[#ffa515]/40 bg-[#f8faff]/60 p-4 sm:p-5 aspect-square w-full min-w-0">
+                <div className="text-xs font-semibold uppercase tracking-wide text-[#ffa515] mb-1">
+                  45 min
+                </div>
+                <div className="text-[#7347f4] font-extrabold text-2xl sm:text-3xl mb-2">70 zł</div>
+                <p className="md:text-slate-600 md:text-sm md:mb-4 md:flex-1 md:min-h-0 hidden md:block">
+                  Lekcja 45 min – regularna praktyka.
+                </p>
+                <a
+                  href={offerDetails.tutoring.gumroadUrl45}
+                  className="gumroad-button inline-flex! flex-col! sm:flex-row! items-center! justify-center! gap-0! sm:gap-2! sm:whitespace-nowrap! bg-[#e8e8e8]! text-black! px-3! py-2.5! sm:px-4! sm:py-3! w-full! font-sans! font-medium! text-xs! sm:text-sm! border! border-transparent! hover:bg-[#ff90e8]! hover:shadow-[3px_3px_0px_0px_#d4d4d4]! transition-all! duration-200! cursor-pointer!"
+                >
+                  <span>{offerDetails.tutoring.ctaLabel}</span>
+                </a>
+              </div>
+              <div className="flex flex-col rounded-2xl border-2 border-[#7347f4]/40 bg-[#f8faff]/60 p-4 sm:p-5 aspect-square w-full min-w-0">
+                <div className="text-xs font-semibold uppercase tracking-wide text-[#7347f4] mb-1">
+                  60 min
+                </div>
+                <div className="text-[#7347f4] font-extrabold text-2xl sm:text-3xl mb-2">
+                  {pricingAndGuarantee.tutoringHourlyRate}
+                </div>
+                <p className="md:text-slate-600 md:text-sm md:mb-4 md:flex-1 md:min-h-0 hidden md:block">
+                  Pełna godzina – konwersacja i wyjaśnienia.
+                </p>
+                <a
+                  href={offerDetails.tutoring.gumroadUrl60}
+                  className="gumroad-button inline-flex! flex-col! sm:flex-row! items-center! justify-center! gap-0! sm:gap-2! sm:whitespace-nowrap! bg-[#e8e8e8]! text-black! px-3! py-2.5! sm:px-4! sm:py-3! w-full! font-sans! font-medium! text-xs! sm:text-sm! border! border-transparent! hover:bg-[#ff90e8]! hover:shadow-[3px_3px_0px_0px_#d4d4d4]! transition-all! duration-200! cursor-pointer!"
+                >
+                  <span>{offerDetails.tutoring.ctaLabel}</span>
+                </a>
+              </div>
+            </div>
           </div>
         </article>
       </div>
@@ -133,21 +154,10 @@ export function OfferSection({ offerDetails, pricingAndGuarantee }: OfferSection
                   <div className="mt-auto pt-3 flex justify-start">
                     <a
                       href={course.gumroadUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center  bg-[#e8e8e8] text-black px-3 py-3 w-full font-sans border border-transparent hover:bg-[#ff90e8] hover:shadow-[3px_3px_0px_0px_#d4d4d4] transition-all duration-200 cursor-pointer"
+                      className="gumroad-button inline-flex! items-center! justify-center! bg-[#e8e8e8]! text-black! px-3! py-3! w-full! font-sans! border! border-transparent! hover:bg-[#ff90e8]! hover:shadow-[3px_3px_0px_0px_#d4d4d4]! transition-all! duration-200! cursor-pointer!"
                     >
-                      <span className="text-[15px] leading-none font-medium whitespace-nowrap">
+                      <span className="text-[15px]! leading-none! font-medium! whitespace-nowrap!">
                         Kup przez
-                      </span>
-                      <span className="flex ">
-                        <Image
-                          src="/gumaroad.png"
-                          alt="Gumroad"
-                          width={80}
-                          height={20}
-                          className="h-6 w-auto object-contain"
-                        />
                       </span>
                     </a>
                   </div>

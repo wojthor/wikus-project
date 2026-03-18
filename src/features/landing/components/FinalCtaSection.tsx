@@ -44,7 +44,7 @@ export function FinalCtaSection({ data }: FinalCtaSectionProps) {
         <p className="mb-5 text-center text-sm text-slate-600 sm:text-base">{data.finalCtaText}</p>
         <a
           href={data.finalButtonAnchor}
-          className="inline-block rounded-full bg-[#ffbd53] px-5 py-2 text-xs sm:text-sm font-bold text-white shadow-md transition hover:bg-[#f5ad3f] hover:shadow-lg"
+          className="inline-block rounded-4xl bg-[#ffbd53] px-8 py-5 text-lg sm:px-10 sm:py-5 sm:text-xl font-bold text-white shadow-md transition hover:bg-[#f5ad3f] hover:shadow-lg"
         >
           {data.finalButtonLabel}
         </a>

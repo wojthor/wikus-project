@@ -118,8 +118,9 @@ export const offerDetails = {
     headline: "Standardowe korepetycje (1:1)",
     description:
       "Indywidualne spotkania dopasowane w 100% do Twoich potrzeb – płatność z góry co miesiąc, stałe miejsce w grafiku i prezentacje oraz materiały wysyłane po każdych zajęciach.",
-    ctaLabel: "Umów lekcję",
-    ctaUrl: "mailto:kontakt@example.com?subject=Umówienie%20korepetycji%20z%20angielskiego",
+    ctaLabel: "Kup przez",
+    gumroadUrl45: "https://wiktorszyszkowski.gumroad.com/l/eleuh",
+    gumroadUrl60: "https://wiktorszyszkowski.gumroad.com/l/rmrkjf",
   },
   courses: [
     {
@@ -127,7 +128,7 @@ export const offerDetails = {
       title: "Kurs offline (10 lekcji)",
       shortDescription: "Kompletny kurs stacjonarny składający się z 10 praktycznych lekcji.",
       price: "57 zł",
-      gumroadUrl: "https://www.youtube.com/watch?v=E7XQR4dd3u8",
+      gumroadUrl: "https://wiktorszyszkowski.gumroad.com/l/rmrkjf",
       ctaLabel: "Kup przez",
       format: "10 spotkań stacjonarnych skupionych na praktycznym użyciu języka.",
       duration: "Czas trwania: 10 lekcji.",
@@ -137,7 +138,8 @@ export const offerDetails = {
       title: "Indywidualny plan nauczania offline",
       shortDescription: "Spersonalizowany plan nauki dopasowany do Twojego poziomu i celów.",
       price: "150 zł / miesiąc",
-      gumroadUrl: "https://www.youtube.com/watch?v=E7XQR4dd3u8",
+      gumroadUrl:
+        "https://wiktorszyszkowski.gumroad.com/l/wtjdpa?_gl=1*g5azfz*_ga*MjAzMjA1NzEyOS4xNzczNTk2MTE5*_ga_6LJN6D94N6*czE3NzM1OTYxMTkkbzEkZzEkdDE3NzM1OTcxMTIkajYwJGwwJGgw",
       ctaLabel: "Kup przez",
       format: "Plan nauki przygotowany indywidualnie na każdy miesiąc.",
       duration: "Rozliczenie miesięczne.",
@@ -148,7 +150,7 @@ export const offerDetails = {
       shortDescription:
         "Konwersacje w 2-osobowej grupie (45 min). Ja moderuję dyskusję i poprawiam błędy na bieżąco.",
       price: "120 zł (60 zł / osobę)",
-      gumroadUrl: "https://www.youtube.com/watch?v=E7XQR4dd3u8",
+      gumroadUrl: "https://wiktorszyszkowski.gumroad.com/l/wtjdpa",
       ctaLabel: "Kup przez",
       format: "Zajęcia konwersacyjne w parach, 45 minut.",
     },
@@ -158,7 +160,7 @@ export const offerDetails = {
       shortDescription:
         "Konwersacje w 3-osobowej grupie (45 min). Ja moderuję dyskusję i upewniam się, że każdy mówi.",
       price: "135 zł (45 zł / osobę)",
-      gumroadUrl: "https://www.youtube.com/watch?v=E7XQR4dd3u8",
+      gumroadUrl: "https://wiktorszyszkowski.gumroad.com/l/wtjdpa",
       ctaLabel: "Kup przez",
       format: "Zajęcia konwersacyjne w 3-osobowych grupach, 45 minut.",
     },
@@ -171,7 +173,7 @@ export const pricingAndGuarantee = {
   pricePresentationHeadline: "Cena",
   digitalProductPrice: "od 67 zł",
   digitalProductLabel: "Kursy online",
-  tutoringHourlyRate: "80 zł / 60 min",
+  tutoringHourlyRate: "80 zł ",
   tutoringLabel: "Korepetycje – opcjonalnie",
   guaranteeHeadline: "Gwarancja",
   guaranteeText:

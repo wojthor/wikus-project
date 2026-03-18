@@ -1,21 +1,17 @@
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 import { storyAndAuthority } from "@/data/content";
 
 type StoryAndAuthority = typeof storyAndAuthority;
 
 export function AboutSection({ data }: { data: StoryAndAuthority }) {
   return (
-    <section
-      id="o-mnie"
-      className="min-h-dvh scroll-mt-20 flex flex-col justify-center py-8 sm:py-12"
-    >
-      <div className="text-center mb-8 sm:mb-5">
-        <h2 className="text-[#7347f4] font-extrabold text-2xl sm:text-3xl">
-          O mnie
-        </h2>
+    <section id="o-mnie" className="flex flex-col py-6 sm:py-8 scroll-mt-1">
+      <div className="text-center mb-4 sm:mb-6">
+        <h2 className="text-[#7347f4] font-extrabold text-2xl sm:text-3xl">O mnie</h2>
       </div>
 
-      <div className="bg-[#f8faff] rounded-2xl sm:rounded-3xl shadow-[0_12px_28px_rgba(0,0,0,0.03)] border border-white px-4 py-6 sm:px-8 sm:py-10 md:px-10 md:py-12">
+      <div className="bg-[#f8faff] rounded-2xl sm:rounded-3xl shadow-[0_30px_50px_rgba(0,0,0,0.05)] border border-white px-4 pt-6 pb-6 sm:px-8 sm:pt-8 sm:pb-3 md:px-10 md:pt-8 md:pb-3">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,1.4fr)] items-stretch">
           {/* 1. Imię i bio – zawsze jako pierwsze */}
           <div className="flex flex-col gap-4 order-1 lg:order-0 lg:col-start-1 lg:row-start-1">
@@ -57,42 +53,46 @@ export function AboutSection({ data }: { data: StoryAndAuthority }) {
             </ul>
           </div>
 
-          {/* 4. Kapsuły historii – na mobile pod zdjęciem i certyfikatami, na desktopie pod bio (lewa kolumna, drugi wiersz) */}
-          <div className="flex flex-col gap-4 max-h-[320px] overflow-y-auto pr-1 sm:pr-2 lg:mt-4 order-3 lg:order-0 lg:col-start-1 lg:row-start-2">
-            <div className="relative rounded-2xl border border-[#ffa515]/60 bg-white/90 px-5 py-4 shadow-sm">
-              <span className="absolute left-4 top-4 h-6 w-[3px] rounded-full bg-[#ffa515]" />
-              <p className="pl-4 text-xs font-semibold uppercase tracking-wide text-[#ffa515] mb-1.5">
-                Zbudowanie autorytetu
-              </p>
-              <p className="pl-4 text-sm sm:text-base text-slate-700 leading-relaxed">
-                {data.authorityHeadline}
-              </p>
-            </div>
+          {/* 4. Kapsuły historii – tylko ten blok się przewija (mobile i desktop) */}
+          <div className="relative order-3 lg:order-0 lg:col-start-1 lg:row-start-2 lg:mt-4">
+            <div className="flex flex-col gap-4 max-h-[45vh] sm:max-h-[320px] overflow-y-auto pr-1 sm:pr-2 scroll-smooth">
+              <div className="relative rounded-2xl border border-[#ffa515]/60 bg-white/90 px-5 py-4 shadow-sm">
+                <span className="absolute left-4 top-4 h-6 w-[3px] rounded-full bg-[#ffa515]" />
+                <p className="pl-4 text-xs font-semibold uppercase tracking-wide text-[#ffa515] mb-1.5">
+                  Zbudowanie autorytetu
+                </p>
+                <p className="pl-4 text-sm sm:text-base text-slate-700 leading-relaxed">
+                  {data.authorityHeadline}
+                </p>
+              </div>
 
-            <div className="relative rounded-2xl border border-[#ffa515]/60 bg-white/90 px-5 py-4 shadow-sm">
-              <span className="absolute left-4 top-4 h-6 w-[3px] rounded-full bg-[#ffa515]" />
-              <p className="pl-4 text-xs font-semibold uppercase tracking-wide text-[#ffa515] mb-1.5">
-                Historia początków
-              </p>
-              <p className="pl-4 text-sm sm:text-base text-slate-700 leading-relaxed">
-                {data.originStory}
-              </p>
-            </div>
+              <div className="relative rounded-2xl border border-[#ffa515]/60 bg-white/90 px-5 py-4 shadow-sm">
+                <span className="absolute left-4 top-4 h-6 w-[3px] rounded-full bg-[#ffa515]" />
+                <p className="pl-4 text-xs font-semibold uppercase tracking-wide text-[#ffa515] mb-1.5">
+                  Historia początków
+                </p>
+                <p className="pl-4 text-sm sm:text-base text-slate-700 leading-relaxed">
+                  {data.originStory}
+                </p>
+              </div>
 
-            <div className="relative rounded-2xl border border-[#ffa515]/60 bg-white/90 px-5 py-4 shadow-sm">
-              <span className="absolute left-4 top-4 h-6 w-[3px] rounded-full bg-[#ffa515]" />
-              <p className="pl-4 text-xs font-semibold uppercase tracking-wide text-[#ffa515] mb-1.5">
-                {data.turningPointHeadline}
-              </p>
-              <p className="pl-4 text-sm sm:text-base text-slate-700 leading-relaxed">
-                {data.turningPointText}
-              </p>
+              <div className="relative rounded-2xl border border-[#ffa515]/60 bg-white/90 px-5 py-4 shadow-sm">
+                <span className="absolute left-4 top-4 h-6 w-[3px] rounded-full bg-[#ffa515]" />
+                <p className="pl-4 text-xs font-semibold uppercase tracking-wide text-[#ffa515] mb-1.5">
+                  {data.turningPointHeadline}
+                </p>
+                <p className="pl-4 text-sm sm:text-base text-slate-700 leading-relaxed">
+                  {data.turningPointText}
+                </p>
+              </div>
             </div>
+            <p className="mt-2 flex items-center justify-center gap-1.5 text-[11px] text-slate-400">
+              <ChevronDown className="w-3.5 h-3.5 text-slate-400" strokeWidth={2.5} />
+              <span>Przewiń, by zobaczyć więcej</span>
+            </p>
           </div>
-
         </div>
       </div>
     </section>
   );
 }
-

@@ -31,11 +31,14 @@ export function TestimonialsSection() {
   return (
     <section
       id="opinie"
-      className="flex flex-col justify-center bg-[#f8faff] rounded-2xl sm:rounded-3xl shadow-[0_16px_32px_rgba(0,0,0,0.04)] p-6 sm:p-8 md:p-10 scroll-mt-20"
+      className="flex flex-col justify-center bg-[#f8faff] rounded-2xl sm:rounded-3xl shadow-[0_16px_32px_rgba(0,0,0,0.04)] p-6 sm:p-8 md:p-10 scroll-mt-1"
     >
-      <h2 className="text-[#7347f4] font-extrabold text-2xl sm:text-3xl text-center mb-2">Opinie</h2>
+      <h2 className="text-[#7347f4] font-extrabold text-2xl sm:text-3xl text-center mb-2">
+        Opinie
+      </h2>
       <p className="text-center text-sm sm:text-base text-slate-600 max-w-2xl mx-auto mb-5 sm:mb-7">
-        To nie kwestia &bdquo;talentu&rdquo;. Swoją metodę przetestowałem na dziesiątkach uczniów – od poprawy ocen po swobodne rozmowy w pracy i na wyjeździe.
+        To nie kwestia &bdquo;talentu&rdquo;. Swoją metodę przetestowałem na dziesiątkach uczniów –
+        od poprawy ocen po swobodne rozmowy w pracy i na wyjeździe.
       </p>
 
       <div className="flex flex-col gap-3 sm:gap-4">
@@ -46,8 +49,12 @@ export function TestimonialsSection() {
           >
             <div>
               <div className="font-semibold text-sm sm:text-base text-slate-900">{review.name}</div>
-              <div className="text-[#ffa515] text-[11px] sm:text-xs font-semibold mb-1">{review.result}</div>
-              <div className="text-xs sm:text-sm text-slate-700 leading-relaxed">{review.quote}</div>
+              <div className="text-[#ffa515] text-[11px] sm:text-xs font-semibold mb-1">
+                {review.result}
+              </div>
+              <div className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                {review.quote}
+              </div>
             </div>
             <div className="text-[#ffa515] text-sm sm:text-base mt-2">★★★★★</div>
           </div>
