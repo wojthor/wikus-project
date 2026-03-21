@@ -16,7 +16,7 @@ export function Navbar({ menuOpen, setMenuOpen }: NavbarProps) {
           href="#top"
           className="text-[#7347f4] font-extrabold text-base sm:text-lg tracking-wider hover:opacity-90 transition-opacity"
         >
-          SZYCHA
+          SZYSZKOWSKI
         </Link>
         <div className="hidden md:flex gap-1 sm:gap-2 text-[#7347f4] font-bold text-sm">
           <Link

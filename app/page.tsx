@@ -24,16 +24,12 @@ export default function Home() {
         <HeroSection />
         <FactsSection />
         <AboutSection data={storyAndAuthority} />
-        <OfferSection
-          offerDetails={offerDetails}
-          pricingAndGuarantee={pricingAndGuarantee}
-        />
-        <FinalCtaSection data={finalCta} />
+        <OfferSection offerDetails={offerDetails} pricingAndGuarantee={pricingAndGuarantee} />
         <TestimonialsSection />
+        <FinalCtaSection data={finalCta} />
       </main>
       <Footer />
       <NewsletterModal />
     </div>
   );
 }
-

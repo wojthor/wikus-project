@@ -95,13 +95,13 @@ export function NewsletterModal() {
 
   return (
     <div
-      className="fixed inset-0 z-100 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4"
+      className="fixed inset-0 z-100 bg-slate-900/40 backdrop-blur-sm flex items-start sm:items-center justify-center p-4 overflow-y-auto"
       onClick={dismiss}
       aria-modal="true"
       role="dialog"
     >
       <div
-        className="max-w-xl w-full mx-auto p-8 sm:p-12 bg-white rounded-[33px] shadow-sm border border-slate-100 flex flex-col gap-6 text-center relative max-h-[90vh] overflow-y-auto"
+        className="max-w-xl w-full mx-auto mt-2 sm:mt-0 p-5 sm:p-12 bg-white rounded-[33px] shadow-sm border border-slate-100 flex flex-col gap-4 sm:gap-6 text-center relative max-h-[92dvh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -126,12 +126,15 @@ export function NewsletterModal() {
           </div>
         </div>
 
-        <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
-          Odbierz darmowy plan nauki angielskiego!
+        <h2 className="text-xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
+          Odbierz darmowy plan nauki angielskiego (bez chaosu)
         </h2>
 
-        <p className="text-base leading-relaxed text-slate-700">
-          <AccentBrackets text="Zapisz się, aby otrzymać krótkie wskazówki i materiały, które pomogą Ci ruszyć z angielskim bez [chaos]." />
+        <p className="text-sm sm:text-base leading-relaxed text-slate-700">
+          Zapisz się i otrzymaj{" "}
+          <span className="font-semibold text-red-600">prosty plan + krótkie zadania</span>
+          , dzięki którym w końcu ruszysz z angielskim. Nawet jeśli masz mało{" "}
+          <AccentBrackets text="[czasu]." />
         </p>
 
         {status === "success" ? (
@@ -166,7 +169,7 @@ export function NewsletterModal() {
             <button
               type="submit"
               disabled={status === "loading"}
-              className="w-full bg-indigo-600 text-white rounded-xl py-4 text-base font-bold tracking-wide shadow-sm hover:bg-indigo-700 hover:shadow-md transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+              className="w-full bg-indigo-600 text-white rounded-xl py-3 sm:py-4 text-base font-bold tracking-wide shadow-sm hover:bg-indigo-700 hover:shadow-md transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
             >
               {status === "loading" ? "Wysyłanie…" : "ODBIERAM PLAN!"}
             </button>
@@ -180,14 +183,14 @@ export function NewsletterModal() {
         )}
 
         <div className="flex flex-wrap justify-center gap-3">
-          <span className="rounded-full border border-stone-200 text-stone-600 px-5 py-2.5 text-sm font-medium">
+          <span className="rounded-full border border-stone-200 text-stone-600 px-4 sm:px-5 py-2 text-xs sm:text-sm font-medium">
             1 mail tygodniowo
           </span>
-          <span className="rounded-full border border-stone-200 text-stone-600 px-5 py-2.5 text-sm font-medium">
-            Konkretne mini-zadania speaking
+          <span className="rounded-full border border-stone-200 text-stone-600 px-4 sm:px-5 py-2 text-xs sm:text-sm font-medium">
+            krótkie zadania ze speakingu
           </span>
-          <span className="rounded-full border border-stone-200 text-stone-600 px-5 py-2.5 text-sm font-medium">
-            Gwarancja braku spamu
+          <span className="rounded-full border border-stone-200 text-stone-600 px-4 sm:px-5 py-2 text-xs sm:text-sm font-medium">
+            powiększenie słownictwa
           </span>
         </div>
 

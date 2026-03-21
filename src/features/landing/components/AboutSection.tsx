@@ -6,7 +6,7 @@ type StoryAndAuthority = typeof storyAndAuthority;
 
 export function AboutSection({ data }: { data: StoryAndAuthority }) {
   return (
-    <section id="o-mnie" className="flex flex-col py-6 sm:py-8 scroll-mt-1">
+    <section id="o-mnie" className="flex flex-col py-6 sm:py-8 scroll-mt-24">
       <div className="text-center mb-4 sm:mb-6">
         <h2 className="text-[#7347f4] font-extrabold text-2xl sm:text-3xl">O mnie</h2>
       </div>
@@ -19,7 +19,7 @@ export function AboutSection({ data }: { data: StoryAndAuthority }) {
               <h3 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-3">
                 {data.authorName}
               </h3>
-              <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl">
+              <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl whitespace-pre-line">
                 {data.authorBio}
               </p>
             </div>
@@ -59,9 +59,9 @@ export function AboutSection({ data }: { data: StoryAndAuthority }) {
               <div className="relative rounded-2xl border border-[#ffa515]/60 bg-white/90 px-5 py-4 shadow-sm">
                 <span className="absolute left-4 top-4 h-6 w-[3px] rounded-full bg-[#ffa515]" />
                 <p className="pl-4 text-xs font-semibold uppercase tracking-wide text-[#ffa515] mb-1.5">
-                  Zbudowanie autorytetu
+                  HISTORIA
                 </p>
-                <p className="pl-4 text-sm sm:text-base text-slate-700 leading-relaxed">
+                <p className="pl-4 text-sm sm:text-base text-slate-700 leading-relaxed whitespace-pre-line">
                   {data.authorityHeadline}
                 </p>
               </div>
@@ -69,9 +69,9 @@ export function AboutSection({ data }: { data: StoryAndAuthority }) {
               <div className="relative rounded-2xl border border-[#ffa515]/60 bg-white/90 px-5 py-4 shadow-sm">
                 <span className="absolute left-4 top-4 h-6 w-[3px] rounded-full bg-[#ffa515]" />
                 <p className="pl-4 text-xs font-semibold uppercase tracking-wide text-[#ffa515] mb-1.5">
-                  Historia początków
+                  PRZEŁOM
                 </p>
-                <p className="pl-4 text-sm sm:text-base text-slate-700 leading-relaxed">
+                <p className="pl-4 text-sm sm:text-base text-slate-700 leading-relaxed whitespace-pre-line">
                   {data.originStory}
                 </p>
               </div>
@@ -81,8 +81,17 @@ export function AboutSection({ data }: { data: StoryAndAuthority }) {
                 <p className="pl-4 text-xs font-semibold uppercase tracking-wide text-[#ffa515] mb-1.5">
                   {data.turningPointHeadline}
                 </p>
-                <p className="pl-4 text-sm sm:text-base text-slate-700 leading-relaxed">
+                <p className="pl-4 text-sm sm:text-base text-slate-700 leading-relaxed whitespace-pre-line">
                   {data.turningPointText}
+                </p>
+              </div>
+              <div className="relative rounded-2xl border border-[#ffa515]/60 bg-white/90 px-5 py-4 shadow-sm">
+                <span className="absolute left-4 top-4 h-6 w-[3px] rounded-full bg-[#ffa515]" />
+                <p className="pl-4 text-xs font-semibold uppercase tracking-wide text-[#ffa515] mb-1.5">
+                  {data.newPathHeadline}
+                </p>
+                <p className="pl-4 text-sm sm:text-base text-slate-700 leading-relaxed whitespace-pre-line">
+                  {data.newPathText}
                 </p>
               </div>
             </div>

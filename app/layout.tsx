@@ -19,8 +19,9 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Szycha Angielski",
-  description: "Kursy angielskiego z korepetycjami i kursami intensywnymi. Naucz się angielskiego w 6 tygodni.",
+  title: "Wiktor Szyszkowski | Angielski bez chaosu",
+  description:
+    "Indywidualne zajęcia i kursy angielskiego. Od „umiem coś” do „mówię normalnie” — bez chaosu i bez szkolnego podejścia.",
 };
 
 export default function RootLayout({

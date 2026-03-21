@@ -7,15 +7,15 @@ export function HeroSection() {
       <div className="grid lg:grid-cols-2 gap-8 md:gap-10 lg:items-stretch">
         <div className="space-y-4 sm:space-y-6 flex flex-col justify-center">
           <div className="inline-flex items-center bg-[#cfd8ff] border border-[#b9c5fe] text-[#3e57d6] rounded-full px-4 py-1 text-xs sm:text-sm font-semibold tracking-wide">
-            [Hook] 90% osób po kursach nadal boi się odezwać
+            Dla aż 70% osób mówienie po angielsku to czysty stres
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-slate-900">
-            Chcesz swobodnie mówić po angielsku{" "}
-            <span className="text-[#7347f4]">bez wkuwania regułek?</span>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight tracking-tight text-slate-900">
+            Mimo że znają słówka i rozumieją więcej, niż im się wydaje.
           </h1>
-          <p className="text-base sm:text-lg text-slate-600 max-w-xl leading-relaxed">
-            Pokażę Ci, jak przełamać barierę językową i zacząć mówić pewnie w kilka miesięcy,
-            korzystając z prostej, sprawdzonej metody.
+          <p className="text-sm sm:text-base lg:text-lg text-slate-600 max-w-xl leading-relaxed">
+            Pokażę Ci, jak zacząć mówić pewnie:
+            <br />
+            bez chaosu, bez szkolnego podejścia, w ludzki sposób.
           </p>
           <div className="flex flex-wrap gap-2 pt-1.5">
             <Link

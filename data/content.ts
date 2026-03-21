@@ -4,19 +4,16 @@
  */
 
 export const site = {
-  name: "Projekt dla Wikusia",
-  tagline: "Angielski, który w końcu otwiera drzwi",
+  name: "Szycha",
+  tagline: "Od „umiem coś” do „mówię normalnie”.",
 } as const;
 
 // ─── 1. Hook, 2. Pytanie + korzyść, 4. Obietnica ───────────────────────────
 export const hero = {
-  hook: "Hook: Tysiące osób codziennie swobodnie mówi po angielsku w pracy i podróżach. A Ty wciąż blokujesz się przed rozmową lub wkuwasz gramatykę w kółko?",
-  question:
-    "Pytanie + korzyść: Jeśli chcesz w końcu mówić po angielsku pewnie – bez wstydu, bez godzin nad podręcznikiem",
-  benefit:
-    "– to zostań na chwilę. Pokażę Ci, jak kursy i korepetycje dopasowane do Ciebie zmieniają podejście do języka.",
-  promise:
-    "Obietnica: Za chwilę zobaczysz konkretną ofertę: indywidualne korepetycje i kursy online (gramatyka, konwersacje, biznes). Możesz zacząć od jednej lekcji lub od kursu – wszystko bez wychodzenia z domu, w swoim tempie.",
+  hook: "Dla aż 70% osób mówienie po angielsku to czysty stres",
+  question: "…mimo że znają słówka i rozumieją więcej, niż im się wydaje",
+  benefit: "Pokażę Ci, jak zacząć mówić pewnie:",
+  promise: "bez chaosu, bez szkolnego podejścia, w ludzki sposób.",
   ctaLabel: "Zobacz ofertę",
   ctaAnchor: "#oferta",
   videoPlaceholderLabel: "Odtwórz wideo",
@@ -24,78 +21,94 @@ export const hero = {
 
 // ─── 3. Agitacja niepowodzeń, 9. Identyfikacja problemu, 10. Odkrycie spisku ─
 export const problemAgitation = {
-  headline: "Dlaczego większość ludzi nie udaje się z angielskim?",
+  headline: "Dlaczego mimo lat nauki nadal trudno mówić po angielsku?",
   subheadline:
-    "Agitacja niepowodzeń: Słyszysz, że angielski to must-have, a z drugiej strony – że lata w szkole i tak nic nie dają, że „trzeba mieć talent” albo wyjechać za granicę.",
+    "Masz wrażenie, że coś tu nie gra? Uczyłeś się angielskiego przez lata: w szkole, z aplikacji, z kursów… a mimo to: 👉 dalej trudno Ci się odezwać 👉 blokujesz się przy prostych zdaniach 👉 czujesz, że „powinieneś umieć więcej”",
   problemIntro:
-    "Identyfikacja problemu: Gdy sam przeszedłem od zera do swobodnej rozmowy, zrozumiałem, że problem nie leży w braku talentu. Brakowało mi metody: konkretnych kroków, regularnej praktyki mówienia i materiałów dopasowanych do celu, a nie do podręcznika.",
-  conspiracyHeadline: "Odkrycie spisku",
+    "To nie jest kwestia braku zdolności. Problem jest prosty: uczysz się w sposób, który nie przygotowuje Cię do mówienia",
+  conspiracyHeadline: "W czym tkwi Twój problem?",
   conspiracyText:
-    "Większość osób, które „nie umieją angielskiego”, po prostu nigdy nie uczyła się pod kątem mówienia. Wkuwały regułki i listy słówek bez użycia w zdaniach. Wystarczy zmienić podejście: mniej teorii w nieskończoność, więcej rozmowy i powtarzalnych schematów – wtedy angielski w końcu zaczyna „wchodzić”.",
+    "I dlatego możesz: znać słówka, ale nie używać ich w rozmowie, rozumieć dużo, ale nie potrafić odpowiedzieć, uczyć się miesiącami… bez realnego efektu.",
   painPoints: [
-    "Lata nauki w szkole, a w rozmowie pustka w głowie lub strach przed błędem.",
-    "Przekonanie, że angielski to „tylko dla zdolnych” albo że trzeba wyjechać za granicę.",
-    "Godziny nad gramatyką bez przełożenia na to, co mówisz na co dzień.",
-    "Brak jasnego planu: co robić krok po kroku, żeby w końcu mówić.",
+    "❌ Nauka „na zapas” zamiast używania języka. Znasz teorię, ale nie potrafisz jej użyć.",
+    "❌ Czekanie aż „będę gotowy, żeby mówić”. Spoiler: ten moment nigdy nie przychodzi.",
+    "❌ Brak regularnego kontaktu z językiem. Angielski pojawia się tylko „od czasu do czasu”.",
+    "❌ Chaos w nauce. Trochę aplikacji, trochę filmów, trochę notatek… ale bez konkretnego kierunku.",
   ],
 } as const;
 
 // ─── 5. Autorytet, 6. Historia początków, 7. Postanowienie, 8. Nowa droga, 11. Efekty, 13. Dodatkowe korzyści, 15. Koszt rozwiązania ─
 export const storyAndAuthority = {
-  sectionTitle: "O mnie",
+  sectionTitle: "O MNIE",
   authorBio:
-    "Nauczyciel angielskiego i autor kursów online. Pomagam dorosłym i młodzieży przełamać barierę w mówieniu i zbudować pewność – metodę sprawdziłem na dziesiątkach uczniów.",
+    "Pomagam osobom takim jak Ty w końcu zacząć mówić po angielsku: bez stresu, bez chaosu i bez „szkolnego podejścia”. Nie uczę tylko języka. Pokazuję, jak go używać w praktyce.",
   authorityHeadline:
-    "Sam zaczynałem od zera – wstyd przed mówieniem, chaos w głowie. Dziś uczę innych; moi uczniowie zdają maturę, wyjeżdżają do pracy i swobodnie rozmawiają po angielsku.",
+    "Z angielskim zawsze było u mnie dobrze. Rozumiałem dużo, ogarniałem teorię, uczyłem się szybko. Ale kiedy przychodziło do mówienia?\n👉 stres\n👉 blokada\n👉 overthinking\nI to mimo tego, że „powinienem umieć”.",
   originStory:
-    "W szkole angielski był dla mnie koszmarem. Bałem się odezwać, żeby nie wyjść na głupka. W wieku nastu lat czułem, że „to nie dla mnie”.",
-  turningPointHeadline: "Postanowienie zmiany",
+    "Z czasem ogarnąłem jedną rzecz:\n👉 znajomość języka ≠ umiejętność mówienia\nTo są dwie różne rzeczy. I jeśli uczysz się tylko teorii, to możesz rozumieć wszystko i dalej nie potrafić się odezwać.",
+  turningPointHeadline: "CO ZROBIŁEM INACZEJ?",
   turningPointText:
-    "Postanowiłem uczyć się inaczej: mniej suchych reguł, więcej mówienia i słuchania. Znalazłem sposób, który działa bez wyjazdu za granicę.",
-  newPathHeadline: "Nowa droga",
+    "Zacząłem skupiać się na tym, co faktycznie działa: mówienie od początku, realne użycie języka i regularność zamiast „zrywów”. I wtedy wszystko zaczęło się układać.",
+  newPathHeadline: "DZIŚ",
   newPathText:
-    "Przetestowałem dziesiątki metod i kursów. Połączyłem to, co naprawdę buduje umiejętność mówienia: konwersacje, powtarzalne schematy i materiał dopasowany do celu.",
-  positiveEffectsHeadline: "Efekty",
-  positiveEffectsText:
-    "Gdy w końcu postawiłem na mówienie, przestałem się blokować. Dziś prowadzę lekcje i kursy – i widzę ten sam przełom u innych.",
-  additionalBenefits:
-    "Angielski dał mi nie tylko oceny i certyfikaty – otworzył drzwi do pracy, podróży i codziennego kontaktu z językiem.",
-  costOfSolutionHeadline: "Dlaczego dzielę się wiedzą",
-  costOfSolutionText:
-    "Straciłem mnóstwo czasu na metodę, która nie działa. Gdybym wcześniej wiedział to, co teraz wdrażam z uczniami, zaoszczędziłbym lata – dlatego uczę innych tą drogą.",
-  authorName: "Wiktor Szycha",
+    "Dziś uczę tego samego innych. Pomagam osobom, które „coś umieją”, ale nie mówią, czują blokadę i mają chaos w nauce, w końcu zacząć używać angielskiego w praktyce.",
+  positiveEffectsHeadline: "",
+  positiveEffectsText: "",
+  additionalBenefits: "",
+  costOfSolutionHeadline: "",
+  costOfSolutionText: "",
+  authorName: "Wiktor Szyszkowski",
   authorImagePlaceholder: "/wikus3.png",
   authorTitle: "Nauczyciel angielskiego",
-  credentialsHeadline: "Certyfikaty i doświadczenie",
+  credentialsHeadline: "TO PO PRAWEJ",
+  planHeadline: "Prosty plan",
+  planTasks: [
+    "Mów od pierwszych zajęć — bez czekania na „idealny moment”.",
+    "Jasny kierunek zamiast chaosu w materiałach.",
+    "Regularność: krótko, ale często.",
+    "Ćwicz to, co realnie użyjesz w rozmowie.",
+  ],
   credentials: [
-    { label: "Grudziądzka Szkoła Biznesu", detail: "język angielski" },
-    { label: "Kurs metodyczny dla nauczycieli", detail: "nauczanie języka" },
-    { label: "50+ lat w nauczaniu", detail: "korepetycje i kursy" },
+    { label: "ponad 4-letnie doświadczenie", detail: "" },
+    { label: "0 uczniów, którzy zrezygnowali z zajęć ze mną", detail: "" },
+    { label: "ukończone studia z filologii angielskiej", detail: "" },
   ],
 } as const;
 
 // ─── 12. Dowód społeczny ───────────────────────────────────────────────────
 export const testimonials = {
-  sectionTitle: "Dowód społeczny",
+  sectionTitle: "Opinie",
   subheadline:
     "To nie kwestia „talentu”. Swoją metodę przetestowałem na dziesiątkach uczniów – od poprawy ocen po swobodne rozmowy w pracy i na wyjeździe.",
   items: [
     {
-      quote: "W końcu przestałem się bać mówić. Korepetycje i kurs dały mi strukturę i pewność.",
-      author: "Lebron James",
-      result: "Matura rozszerzona, wyjazd na studia",
+      quote:
+        "Gorąco polecam zajęcia z Wiktorem. Zaczynałem tak naprawdę z punktu zera, a dzięki Wiktorowi udało mi się zdać maturę pisemną na poziomie 60%! I to nie koniec – ustna też poszła bez żadnych problemów! Cierpliwość oraz zaangażowanie Wiktora jest niesamowite. Nigdy nie miałem sytuacji, że nie był, w stanie mi czegoś wytłumaczyć lub pomóc. Jestem bardzo zadowolony ze współpracy i polecam każdemu nie zależnie od poziomu zaawansowania.",
+      author: "Marcel",
+      result: "Zdana matura z punktu zera",
       rating: 5,
     },
     {
-      quote: "Konkretnie, bez lania wody. Polecam każdemu, kto chce w końcu ogarnąć angielski.",
-      author: "Maks Konkiel",
-      result: "Angielski w pracy na co dzień",
+      quote:
+        "Od pół roku uczestniczę w zajęciach Wiktora. Oceny w szkole są 2 razy lepsze, mega poprawa w rozumieniu i mówieniu po angielsku. Tok nauczania według potrzeb każdego ucznia. Bardzo bardzo polecam",
+      author: "Maks",
+      result: "2x lepsze oceny",
       rating: 5,
     },
     {
-      quote: "Na dziesiątkach uczniów – poprawa ocen, matury i pewność w mówieniu.",
-      author: "Carcia Loncz ",
-      result: "Efekty w kilka miesięcy",
+      quote: `Serdecznie polecam korepetycje z angielskiego prowadzone przez Wiktora!
+Zajęcia prowadzone są zawsze w bardzo ciekawy sposób a atmosfera na zajęciach jest luźna i motywująca do nauki.
+Wiktor świetnie tłumaczy zagadnienia gramatyczne, a przy tym dba o rozwój słownictwa i umiejętności konwersacyjnych.
+Dzięki jego zaangażowaniu szybko zobaczyłam postępy. Idealny wybór zarówno dla początkujących jak i bardziej zaawansowanych. ☺️`,
+      author: "Martyna",
+      result: "Rozwój konwersacji",
+      rating: 5,
+    },
+    {
+      quote:
+        "Też chciałabym ogólną opinię napisać bo jestem naprawdę bardzo zadowolona chociażby też z samej cierpliwości twojej i przemiłej atmosfery i przede wszystkim komfortu,możliwość elastyczności bo wiadomo jest jak jest nie zawsze mogę się połączyć przez pracę więc też się cieszę że wynalazłeś formę tych „zadań domowych” bo to bardzo ułatwia i w każdej wolnej chwili mogę się uczyć języka angielskiego i też faktycznie widzę progres bo na początku w ogóle bałam się odezwać po angielsku😅 także jeśli ktoś się zastanawia to gorąco polecam standardowe korepetycje jak i w formie takich zadanek",
+      author: "Wiktoria",
+      result: "Przełamanie bariery i elastyczność",
       rating: 5,
     },
   ],
@@ -103,22 +116,21 @@ export const testimonials = {
 
 // ─── 14. Wstęp do oferty, 16. Korzyści, 17. Podsumowanie oferty, 18. Zbudowanie wartości ─
 export const offerDetails = {
-  sectionTitle: "Oferta – co dokładnie dostajesz",
-  introHeadline: "Wstęp do oferty",
-  introText:
-    "Prowadzę korepetycje indywidualne i kursy online z angielskiego. Możesz wybrać lekcje „na żywo” dopasowane do Ciebie albo gotowe kursy (gramatyka, konwersacje, biznes).",
+  sectionTitle: "Oferta – co dokładnie dostajesz?",
+  introHeadline: "",
+  introText: "",
   keyBenefitsHeadline: "Korzyści",
   offerSummaryHeadline: "Podsumowanie oferty",
-  valueBuildUpHeadline: "Zbudowanie wartości",
+  valueBuildUpHeadline: "Zbudowanie wartości->CO DOSTAJESZ?",
   valueBuildUpText:
-    "Tę wiedzę i strukturę zdobywa się latami – ja zebrałem to w kursy i lekcje, które możesz przerobić w swoim tempie. Bez dojazdów, bez sztywnego grafiku grupowego.",
+    "Tego nie uczysz się z jednej książki czy kursu. Przez lata obserwowałem nauczycieli i korepetytorów. Brałem to, co działa… i odrzucałem to, co tylko zabiera czas. Dlatego na zajęciach: 👉 skupiamy się na mówieniu i realnym użyciu języka 👉 nie robimy rzeczy „bo tak się zawsze robiło” 👉 masz jasny system, bez chaosu i zgadywania",
 
   tutoring: {
-    label: "Korepetycje",
-    headline: "Standardowe korepetycje (1:1)",
+    label: "Indywidualne zajęcia 1:1",
+    headline: "Indywidualne zajęcia 1:1",
     description:
-      "Indywidualne spotkania dopasowane w 100% do Twoich potrzeb – płatność z góry co miesiąc, stałe miejsce w grafiku i prezentacje oraz materiały wysyłane po każdych zajęciach.",
-    ctaLabel: "Kup przez",
+      "Uczysz się dokładnie tego, czego potrzebujesz, żeby w końcu zacząć mówić, a nie tylko „rozumieć”. Bez chaosu, bez zgadywania, co robić dalej.",
+    ctaLabel: "🔥 Zarezerwuj miejsce w grafiku",
     gumroadUrl45: "https://wiktorszyszkowski.gumroad.com/l/eleuh",
     gumroadUrl60: "https://wiktorszyszkowski.gumroad.com/l/rmrkjf",
   },
@@ -126,23 +138,27 @@ export const offerDetails = {
     {
       id: "pakiet-1",
       title: "Kurs offline (10 lekcji)",
-      shortDescription: "Kompletny kurs stacjonarny składający się z 10 praktycznych lekcji.",
+      shortDescription:
+        "Kompletny “plan treningowy” angielskiego. Nie masz czasu na regularne lekcje? Nie ma problemu. Dzięki kursowi dostaniesz ode mnie praktyczne zadania, które pomogą Ci mówić pewnie – w swoim własnym zakresie. Uczysz się, kiedy tylko masz na to czas.",
       price: "57 zł",
       gumroadUrl: "https://wiktorszyszkowski.gumroad.com/l/rmrkjf",
-      ctaLabel: "Kup przez",
-      format: "10 spotkań stacjonarnych skupionych na praktycznym użyciu języka.",
-      duration: "Czas trwania: 10 lekcji.",
+      ctaLabel: "🔥 Zarezerwuj miejsce w grafiku",
+      format:
+        "✔️ Co dostajesz:\njasną strukturę nauki\nmini zadania pod speaking\nmateriały i narzędzia, które faktycznie działają\nmentoring i feedback po wykonaniu zadań",
+      duration: "👉 idealne, jeśli:\nnie masz czasu na regularne lekcje\nchcesz mieć system nauki",
     },
     {
       id: "pakiet-2",
-      title: "Indywidualny plan nauczania offline",
-      shortDescription: "Spersonalizowany plan nauki dopasowany do Twojego poziomu i celów.",
-      price: "150 zł / miesiąc",
+      title: "Indywidualny plan nauki (offline)",
+      shortDescription:
+        "Dla osób, które chcą działać samodzielnie, ale bez chaosu i bez zastanawiania się „co dalej”.",
+      price: "150 zł",
       gumroadUrl:
         "https://wiktorszyszkowski.gumroad.com/l/wtjdpa?_gl=1*g5azfz*_ga*MjAzMjA1NzEyOS4xNzczNTk2MTE5*_ga_6LJN6D94N6*czE3NzM1OTYxMTkkbzEkZzEkdDE3NzM1OTcxMTIkajYwJGwwJGgw",
-      ctaLabel: "Kup przez",
-      format: "Plan nauki przygotowany indywidualnie na każdy miesiąc.",
-      duration: "Rozliczenie miesięczne.",
+      ctaLabel: "🔥 Zarezerwuj miejsce w grafiku",
+      format:
+        "✔️ Co dostajesz:\nplan dopasowany do Twojego poziomu i celu\njasną strukturę (co robić dzień po dniu)\nmini zadania pod speaking\nmateriały i narzędzia, które faktycznie działają\nmentoring i feedback po wykonaniu zadań",
+      duration: "👉 idealne, jeśli:\nnie masz czasu na regularne lekcje\nchcesz mieć system nauki.",
     },
     {
       id: "pakiet-3",
@@ -152,7 +168,8 @@ export const offerDetails = {
       price: "120 zł (60 zł / osobę)",
       gumroadUrl: "https://wiktorszyszkowski.gumroad.com/l/wtjdpa",
       ctaLabel: "Kup przez",
-      format: "Zajęcia konwersacyjne w parach, 45 minut.",
+      format:
+        "✔️ Co dostajesz:\nZajęcia w 2-osobowej grupie (45 min)\nJa moderuję dyskusję i poprawiam błędy na bieżąco\nWięcej czasu na mówienie niż na notatki",
     },
     {
       id: "pakiet-4",
@@ -162,7 +179,8 @@ export const offerDetails = {
       price: "135 zł (45 zł / osobę)",
       gumroadUrl: "https://wiktorszyszkowski.gumroad.com/l/wtjdpa",
       ctaLabel: "Kup przez",
-      format: "Zajęcia konwersacyjne w 3-osobowych grupach, 45 minut.",
+      format:
+        "✔️ Co dostajesz:\nZajęcia w 3-osobowej grupie (45 min)\nDbam o to, żeby każdy mówił w równym stopniu\nIdealne dla osób, które lubią uczyć się w grupie",
     },
   ],
 } as const;
@@ -171,16 +189,16 @@ export const offerDetails = {
 export const pricingAndGuarantee = {
   sectionTitle: "Cennik i gwarancja",
   pricePresentationHeadline: "Cena",
-  digitalProductPrice: "od 67 zł",
-  digitalProductLabel: "Kursy online",
-  tutoringHourlyRate: "80 zł ",
-  tutoringLabel: "Korepetycje – opcjonalnie",
-  guaranteeHeadline: "Gwarancja",
+  digitalProductPrice: "45 min – 70 zł",
+  digitalProductLabel: "👉 Szybka, konkretna sesja (idealna przy napiętym grafiku)",
+  tutoringHourlyRate: "80 zł",
+  tutoringLabel: "👉 Pełna lekcja: konwersacja + wyjaśnienia + feedback",
+  guaranteeHeadline: "Pierwsza lekcja (zamiast „gwarancji”)",
   guaranteeText:
-    "Jestem pewny swojej metody – sprawdziłem ją na dziesiątkach uczniów. Jeśli w ciągu pierwszych zajęć uznasz, że to nie dla Ciebie, zwrócę Ci koszt lub zaproponuję inną formę.",
-  urgencyHeadline: "Deadline",
+    "Nie zapisujesz się w ciemno. Pierwsza lekcja jest darmowa. Żebyś mógł sprawdzić, czy ten styl nauki Ci odpowiada. Podczas niej: 👉 poznajemy Twój poziom i cel 👉 robimy pierwszą rozmowę 👉 pokazuję Ci, jak pracujemy. I dopiero wtedy decydujesz, czy chcesz iść dalej. BTW: Do tej pory 100% osób zostało po pierwszej lekcji.",
+  urgencyHeadline: "Deadline->Miejsca są ograniczone!",
   urgencyText:
-    "Miejsca na korepetycje i promocyjne ceny kursów są ograniczone. Warto zarezerwować termin lub kurs wcześniej.",
+    "Pracuję na ograniczonej liczbie miejsc. Zależy mi na jakości, nie ilości. Dlatego nie przyjmuję więcej osób, niż jestem w stanie dobrze poprowadzić. 👉 Jeśli widzisz wolny termin, warto go zarezerwować wcześniej",
   buyDigitalLabel: "Kup kurs",
   buyTutoringLabel: "Umów korepetycje",
   gumroadDigitalUrl: "https://www.youtube.com/watch?v=E7XQR4dd3u8",
@@ -189,19 +207,36 @@ export const pricingAndGuarantee = {
 
 // ─── 22. Emocjonalne zamknięcie, 23. Po zakupie, 24. CTA ───────────────────
 export const finalCta = {
-  emotionalCloseHeadline: "Emocjonalne zamknięcie: Masz 2 opcje",
-  option1: "Możesz dalej odkładać angielski i wciąż się blokować przy każdej rozmowie.",
-  option2: "Albo już dziś umówić lekcję lub wybrać kurs i w końcu ruszyć z miejsca.",
-  afterPurchaseHeadline: "Co się stanie po zakupie / rezerwacji",
+  emotionalCloseHeadline: "Masz 2 opcje",
+  option1: "Opcja 1: Możesz dalej odkładać angielski i blokować się przy każdej rozmowie.",
+  option2: "Opcja 2: Albo zacząć działać już teraz i w końcu ogarnąć mówienie bez stresu.",
+  afterPurchaseHeadline: "Co się stanie dalej?",
   afterPurchaseSteps: [
-    "Po rezerwacji lub zakupie kursu dostaniesz potwierdzenie i link do materiałów lub kalendarza.",
-    "Korepetycje – ustalimy termin. Kursy – od razu masz dostęp i możesz zaczynać.",
+    "👉 dostajesz dostęp / link do spotkania lub materiałów",
+    "👉 ustalamy szczegóły i zaczynamy działać",
+    "👉 nic nie jest „na ślepo” – wszystko masz jasno rozpisane",
   ],
   finalCtaHeadline:
-    "CTA: Jeśli naprawdę chcesz w końcu mówić po angielsku, umów lekcję lub wybierz kurs. Pierwszy krok zależy od Ciebie.",
-  finalCtaText: "Kliknij przycisk poniżej i przejdź do oferty – wybierz korepetycje lub kurs.",
-  finalButtonLabel: "Zobacz ofertę",
+    "Jeśli chcesz w końcu mówić po angielsku, to nie potrzebujesz więcej teorii. Potrzebujesz zacząć, a pierwszy krok jest bardzo prosty.",
+  finalCtaText: "",
+  finalButtonLabel: "Umów pierwszą lekcję!",
   finalButtonAnchor: "#oferta",
+} as const;
+
+// ─── Dodatkowe elementy od Wikusia (niewystępujące w starym pliku) ─────────
+export const popup = {
+  title: "Odbierz darmowy plan nauki angielskiego (bez chaosu)",
+  description:
+    "Zapisz się i otrzymaj prosty plan + krótkie zadania, dzięki którym w końcu ruszysz z angielskim. Nawet jeśli masz mało czasu.",
+  bullets: ["1 mail tygodniowo", "krótkie zadania ze speakingu", "powiększenie słownictwa"],
+} as const;
+
+export const footer = {
+  name: "Wiktor Szyszkowski",
+  tagline: "Od „umiem coś” do „mówię normalnie”.",
+  contact: "796 151 334 | wiktorszyszkowski@outlook.com",
+  facebook: "https://www.facebook.com/profile.php?id=61587249547968",
+  instagram: "https://www.instagram.com/szycha_/",
 } as const;
 
 // Export all as one object for convenience
@@ -214,6 +249,8 @@ export const content = {
   offerDetails,
   pricingAndGuarantee,
   finalCta,
+  popup,
+  footer,
 } as const;
 
 export type Content = typeof content;

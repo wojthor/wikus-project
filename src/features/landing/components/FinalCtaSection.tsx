@@ -8,9 +8,14 @@ export function FinalCtaSection({ data }: FinalCtaSectionProps) {
   const ctaParts = ctaHeadline.split("Ciebie");
 
   return (
-    <section id="final-cta" className="relative w-full px-4 py-8 sm:px-6 sm:py-10 md:px-8 lg:px-12">
+    <section
+      id="final-cta"
+      className="relative w-full px-4 py-8 sm:px-6 sm:py-10 md:px-8 lg:px-12 scroll-mt-24"
+    >
       <div className="mx-auto max-w-3xl text-center">
-        <h2 className="mb-5 text-2xl font-bold tracking-tight text-[#7347f4] sm:text-3xl">{headline}</h2>
+        <h2 className="mb-5 text-2xl font-bold tracking-tight text-[#7347f4] sm:text-3xl">
+          {headline}
+        </h2>
         <div className="mb-6 space-y-3">
           <div className="rounded-2xl border-2 border-dashed border-[#b9c5fe] bg-white p-4 text-left sm:p-5">
             <p className="text-base text-slate-700 sm:text-lg">{data.option1}</p>
@@ -19,14 +24,18 @@ export function FinalCtaSection({ data }: FinalCtaSectionProps) {
             <p className="text-base font-bold text-[#243cb5] sm:text-lg">{data.option2}</p>
           </div>
         </div>
-        <h3 className="mb-3 text-lg font-bold text-slate-900 sm:text-xl">{data.afterPurchaseHeadline}</h3>
+        <h3 className="mb-3 text-lg font-bold text-slate-900 sm:text-xl">
+          {data.afterPurchaseHeadline}
+        </h3>
         <div className="mb-6 rounded-2xl border-2 border-dashed border-[#b9c5fe] bg-white p-4 text-left sm:p-5">
-          <p className="mb-2 text-base text-slate-700 sm:text-lg">Po rezerwacji lub zakupie kursu dostaniesz:</p>
-          <ol className="list-decimal list-inside space-y-1.5 text-base text-slate-700 sm:text-lg">
+          <p className="mb-2 text-base text-slate-700 sm:text-lg">
+            Po rezerwacji lub zakupie kursu dostaniesz:
+          </p>
+          <ul className="space-y-1.5 text-base text-slate-700 sm:text-lg">
             {data.afterPurchaseSteps.map((step, i) => (
-              <li key={i}>{step.replace(/^Po rezerwacji lub zakupie kursu dostaniesz\s+/, "")}</li>
+              <li key={i}>{step.replace(/^Po rezerwacji lub zakupie  dostaniesz\s+/, "")}</li>
             ))}
-          </ol>
+          </ul>
         </div>
         <div className="mb-4 rounded-2xl border-2 border-dashed border-[#b9c5fe] bg-white px-4 py-3 sm:px-5 sm:py-4">
           <p className="text-center text-base font-bold text-slate-800 sm:text-lg">
