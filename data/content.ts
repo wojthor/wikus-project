@@ -1,45 +1,50 @@
-/**
- * Strona kursów i korepetycji z angielskiego – treści VSL.
- * Format: [hasło ze skryptu]: Tekst
- */
+/** Treści landing page – edytuj tutaj copy. */
 
-export const site = {
-  name: "Szycha",
-  tagline: "Od „umiem coś” do „mówię normalnie”.",
-} as const;
-
-// ─── 1. Hook, 2. Pytanie + korzyść, 4. Obietnica ───────────────────────────
 export const hero = {
   hook: "Dla aż 70% osób mówienie po angielsku to czysty stres",
-  question: "…mimo że znają słówka i rozumieją więcej, niż im się wydaje",
+  headline: "Mimo że znają słówka i rozumieją więcej, niż im się wydaje.",
   benefit: "Pokażę Ci, jak zacząć mówić pewnie:",
   promise: "bez chaosu, bez szkolnego podejścia, w ludzki sposób.",
   ctaLabel: "Zobacz ofertę",
   ctaAnchor: "#oferta",
-  videoPlaceholderLabel: "Odtwórz wideo",
+  secondaryCtaLabel: "O mnie",
+  secondaryCtaAnchor: "#o-mnie",
+  portraitSrc: "/wikus4.png",
+  portraitAlt: "Wiktor Szycha",
 } as const;
 
-// ─── 3. Agitacja niepowodzeń, 9. Identyfikacja problemu, 10. Odkrycie spisku ─
-export const problemAgitation = {
-  headline: "Dlaczego mimo lat nauki nadal trudno mówić po angielsku?",
-  subheadline:
-    "Masz wrażenie, że coś tu nie gra? Uczyłeś się angielskiego przez lata: w szkole, z aplikacji, z kursów… a mimo to: 👉 dalej trudno Ci się odezwać 👉 blokujesz się przy prostych zdaniach 👉 czujesz, że „powinieneś umieć więcej”",
-  problemIntro:
-    "To nie jest kwestia braku zdolności. Problem jest prosty: uczysz się w sposób, który nie przygotowuje Cię do mówienia",
-  conspiracyHeadline: "W czym tkwi Twój problem?",
-  conspiracyText:
-    "I dlatego możesz: znać słówka, ale nie używać ich w rozmowie, rozumieć dużo, ale nie potrafić odpowiedzieć, uczyć się miesiącami… bez realnego efektu.",
+export const factsSection = {
+  sectionTitle: "Fakty",
+  pillText: "Dlaczego mimo lat nauki nadal trudno mówić po angielsku?",
+  introLead: "Mimo lat nauki coś nie idzie",
+  introLine1: "Masz wrażenie, że coś tu nie gra?",
+  introLine2: "Uczyłeś się angielskiego przez lata: w szkole, z aplikacji, z kursów... a mimo to:",
+  introBulletPrefix: "👉",
+  introBullets: [
+    "dalej trudno Ci się odezwać",
+    "blokujesz się przy prostych zdaniach",
+    "czujesz, że „powinieneś umieć więcej”",
+  ],
+  conspiracyTitle: "W czym tkwi Twój problem?",
+  conspiracyLead: "To nie jest kwestia braku zdolności.",
+  conspiracyMid:
+    "Problem jest prosty: uczysz się w sposób, który nie przygotowuje Cię do mówienia.",
+  conspiracyClosing:
+    "I dlatego możesz znać słówka, ale nie używać ich w rozmowie, rozumieć dużo, ale nie potrafić odpowiedzieć i uczyć się miesiącami bez realnego efektu.",
+  painCardIcon: "❌",
   painPoints: [
-    "❌ Nauka „na zapas” zamiast używania języka. Znasz teorię, ale nie potrafisz jej użyć.",
-    "❌ Czekanie aż „będę gotowy, żeby mówić”. Spoiler: ten moment nigdy nie przychodzi.",
-    "❌ Brak regularnego kontaktu z językiem. Angielski pojawia się tylko „od czasu do czasu”.",
-    "❌ Chaos w nauce. Trochę aplikacji, trochę filmów, trochę notatek… ale bez konkretnego kierunku.",
+    "Nauka „na zapas” zamiast używania języka. Znasz teorię, ale nie potrafisz jej użyć.",
+    "Czekanie aż „będę gotowy, żeby mówić”. Spoiler: ten moment nigdy nie przychodzi.",
+    "Brak regularnego kontaktu z językiem. Angielski pojawia się tylko od czasu do czasu.",
+    "Chaos w nauce: trochę aplikacji, trochę filmów, trochę notatek, ale bez kierunku.",
   ],
 } as const;
 
-// ─── 5. Autorytet, 6. Historia początków, 7. Postanowienie, 8. Nowa droga, 11. Efekty, 13. Dodatkowe korzyści, 15. Koszt rozwiązania ─
 export const storyAndAuthority = {
-  sectionTitle: "O MNIE",
+  sectionTitle: "O mnie",
+  historyCapsuleLabel: "HISTORIA",
+  breakthroughCapsuleLabel: "PRZEŁOM",
+  scrollMoreHint: "Przewiń, by zobaczyć więcej",
   authorBio:
     "Pomagam osobom takim jak Ty w końcu zacząć mówić po angielsku: bez stresu, bez chaosu i bez „szkolnego podejścia”. Nie uczę tylko języka. Pokazuję, jak go używać w praktyce.",
   authorityHeadline:
@@ -52,22 +57,8 @@ export const storyAndAuthority = {
   newPathHeadline: "DZIŚ",
   newPathText:
     "Dziś uczę tego samego innych. Pomagam osobom, które „coś umieją”, ale nie mówią, czują blokadę i mają chaos w nauce, w końcu zacząć używać angielskiego w praktyce.",
-  positiveEffectsHeadline: "",
-  positiveEffectsText: "",
-  additionalBenefits: "",
-  costOfSolutionHeadline: "",
-  costOfSolutionText: "",
   authorName: "Wiktor Szyszkowski",
   authorImagePlaceholder: "/wikus3.png",
-  authorTitle: "Nauczyciel angielskiego",
-  credentialsHeadline: "TO PO PRAWEJ",
-  planHeadline: "Prosty plan",
-  planTasks: [
-    "Mów od pierwszych zajęć — bez czekania na „idealny moment”.",
-    "Jasny kierunek zamiast chaosu w materiałach.",
-    "Regularność: krótko, ale często.",
-    "Ćwicz to, co realnie użyjesz w rozmowie.",
-  ],
   credentials: [
     { label: "ponad 4-letnie doświadczenie", detail: "" },
     { label: "0 uczniów, którzy zrezygnowali z zajęć ze mną", detail: "" },
@@ -75,7 +66,8 @@ export const storyAndAuthority = {
   ],
 } as const;
 
-// ─── 12. Dowód społeczny ───────────────────────────────────────────────────
+export type StoryAndAuthorityData = typeof storyAndAuthority;
+
 export const testimonials = {
   sectionTitle: "Opinie",
   subheadline:
@@ -114,26 +106,109 @@ Dzięki jego zaangażowaniu szybko zobaczyłam postępy. Idealny wybór zarówno
   ],
 } as const;
 
-// ─── 14. Wstęp do oferty, 16. Korzyści, 17. Podsumowanie oferty, 18. Zbudowanie wartości ─
+export type TestimonialsData = typeof testimonials;
+
 export const offerDetails = {
-  sectionTitle: "Oferta – co dokładnie dostajesz?",
-  introHeadline: "",
-  introText: "",
-  keyBenefitsHeadline: "Korzyści",
-  offerSummaryHeadline: "Podsumowanie oferty",
-  valueBuildUpHeadline: "Zbudowanie wartości->CO DOSTAJESZ?",
-  valueBuildUpText:
-    "Tego nie uczysz się z jednej książki czy kursu. Przez lata obserwowałem nauczycieli i korepetytorów. Brałem to, co działa… i odrzucałem to, co tylko zabiera czas. Dlatego na zajęciach: 👉 skupiamy się na mówieniu i realnym użyciu języka 👉 nie robimy rzeczy „bo tak się zawsze robiło” 👉 masz jasny system, bez chaosu i zgadywania",
+  sectionTitleAccent: "Oferta",
+  sectionTitleRest: " – co dokładnie dostajesz?",
+  coursesSubheading: "Kursy i zajęcia grupowe",
+  tutoringBenefitsHeading: "✔️ Co dostajesz:",
+  gumroadPurchaseLabel: "Kup przez",
+  gumroadLogoAlt: "Gumroad",
 
   tutoring: {
-    label: "Indywidualne zajęcia 1:1",
     headline: "Indywidualne zajęcia 1:1",
     description:
       "Uczysz się dokładnie tego, czego potrzebujesz, żeby w końcu zacząć mówić, a nie tylko „rozumieć”. Bez chaosu, bez zgadywania, co robić dalej.",
     ctaLabel: "🔥 Zarezerwuj miejsce w grafiku",
-    gumroadUrl45: "https://wiktorszyszkowski.gumroad.com/l/eleuh",
-    gumroadUrl60: "https://wiktorszyszkowski.gumroad.com/l/rmrkjf",
+    benefits: [
+      "zajęcia dopasowane do Twojego poziomu i celu",
+      "realne mówienie + poprawki na bieżąco",
+      "konkretne materiały po każdej lekcji",
+      "stałe miejsce w grafiku (zero szukania terminów)",
+    ],
+    durationLabel45: "45 min",
+    durationLabel60: "60 min",
+    bookLessonCta: "Umów lekcję",
+    gumroadUrl45: "mailto:kontakt@wiktorszyszkowski.pl?subject=Rezerwacja%20zajęć%2045-minutowych",
+    gumroadUrl60: "mailto:kontakt@wiktorszyszkowski.pl?subject=Rezerwacja%20zajęć%2060-minutowych",
   },
+
+  offerClosing: [
+    {
+      title: "Co dostajesz?",
+      blocks: [
+        {
+          kind: "p-emphasis" as const,
+          before:
+            "Tego nie uczysz się z jednej książki czy kursu. Przez lata obserwowałem nauczycieli i korepetytorów. Brałem to, co ",
+          emphasis: "działa",
+          after: ", i odrzucałem to, co tylko zabiera czas.",
+          emphasisClass: "text-slate-700",
+        },
+        { kind: "p" as const, text: "Dlatego na zajęciach:" },
+        {
+          kind: "ul" as const,
+          items: [
+            "skupiamy się na mówieniu i realnym użyciu języka",
+            "nie robimy rzeczy „bo tak się zawsze robiło”",
+            "masz jasny system, bez chaosu i zgadywania",
+          ],
+        },
+      ],
+    },
+    {
+      title: "Pierwsza lekcja",
+      blocks: [
+        {
+          kind: "p-emphasis" as const,
+          before: "Nie zapisujesz się w ciemno. Pierwsza lekcja jest ",
+          emphasis: "darmowa",
+          after: ", żebyś mógł sprawdzić, czy ten styl nauki Ci odpowiada.",
+          emphasisClass: "font-extrabold text-[#7347f4]",
+        },
+        { kind: "p" as const, text: "Podczas niej:" },
+        {
+          kind: "ul" as const,
+          items: [
+            "poznajemy Twój poziom i cel",
+            "robimy pierwszą rozmowę",
+            "pokazuję Ci, jak pracujemy",
+          ],
+        },
+        { kind: "p" as const, text: "I dopiero wtedy decydujesz, czy chcesz iść dalej." },
+        {
+          kind: "btw" as const,
+          before: "BTW: Do tej pory ",
+          strong: "100% osób",
+          after: " zostało po pierwszej lekcji.",
+        },
+      ],
+    },
+    {
+      title: "Miejsca są ograniczone!",
+      blocks: [
+        {
+          kind: "p" as const,
+          text: "Pracuję na ograniczonej liczbie miejsc. Zależy mi na jakości, nie ilości.",
+        },
+        {
+          kind: "p-emphasis" as const,
+          before: "Dlatego nie przyjmuję ",
+          emphasis: "więcej osób",
+          after: ", niż jestem w stanie dobrze poprowadzić.",
+          emphasisClass: "font-semibold text-[#7347f4]",
+        },
+        {
+          kind: "ul-emphasis" as const,
+          before: "Jeśli mam ",
+          emphasis: "wolny termin",
+          after: ", warto go zarezerwować wcześniej",
+          emphasisClass: "font-semibold text-[#7347f4]",
+        },
+      ],
+    },
+  ],
   courses: [
     {
       id: "pakiet-1",
@@ -142,7 +217,6 @@ export const offerDetails = {
         "Kompletny “plan treningowy” angielskiego. Nie masz czasu na regularne lekcje? Nie ma problemu. Dzięki kursowi dostaniesz ode mnie praktyczne zadania, które pomogą Ci mówić pewnie – w swoim własnym zakresie. Uczysz się, kiedy tylko masz na to czas.",
       price: "57 zł",
       gumroadUrl: "https://wiktorszyszkowski.gumroad.com/l/rmrkjf",
-      ctaLabel: "🔥 Zarezerwuj miejsce w grafiku",
       format:
         "✔️ Co dostajesz:\njasną strukturę nauki\nmini zadania pod speaking\nmateriały i narzędzia, które faktycznie działają\nmentoring i feedback po wykonaniu zadań",
       duration: "👉 idealne, jeśli:\nnie masz czasu na regularne lekcje\nchcesz mieć system nauki",
@@ -155,7 +229,6 @@ export const offerDetails = {
       price: "150 zł",
       gumroadUrl:
         "https://wiktorszyszkowski.gumroad.com/l/wtjdpa?_gl=1*g5azfz*_ga*MjAzMjA1NzEyOS4xNzczNTk2MTE5*_ga_6LJN6D94N6*czE3NzM1OTYxMTkkbzEkZzEkdDE3NzM1OTcxMTIkajYwJGwwJGgw",
-      ctaLabel: "🔥 Zarezerwuj miejsce w grafiku",
       format:
         "✔️ Co dostajesz:\nplan dopasowany do Twojego poziomu i celu\njasną strukturę (co robić dzień po dniu)\nmini zadania pod speaking\nmateriały i narzędzia, które faktycznie działają\nmentoring i feedback po wykonaniu zadań",
       duration: "👉 idealne, jeśli:\nnie masz czasu na regularne lekcje\nchcesz mieć system nauki.",
@@ -167,7 +240,6 @@ export const offerDetails = {
         "Konwersacje w 2-osobowej grupie (45 min). Ja moderuję dyskusję i poprawiam błędy na bieżąco.",
       price: "120 zł (60 zł / osobę)",
       gumroadUrl: "https://wiktorszyszkowski.gumroad.com/l/wtjdpa",
-      ctaLabel: "Kup przez",
       format:
         "✔️ Co dostajesz:\nZajęcia w 2-osobowej grupie (45 min)\nJa moderuję dyskusję i poprawiam błędy na bieżąco\nWięcej czasu na mówienie niż na notatki",
     },
@@ -178,39 +250,25 @@ export const offerDetails = {
         "Konwersacje w 3-osobowej grupie (45 min). Ja moderuję dyskusję i upewniam się, że każdy mówi.",
       price: "135 zł (45 zł / osobę)",
       gumroadUrl: "https://wiktorszyszkowski.gumroad.com/l/wtjdpa",
-      ctaLabel: "Kup przez",
       format:
         "✔️ Co dostajesz:\nZajęcia w 3-osobowej grupie (45 min)\nDbam o to, żeby każdy mówił w równym stopniu\nIdealne dla osób, które lubią uczyć się w grupie",
     },
   ],
 } as const;
 
-// ─── 19. Cena, 20. Gwarancja, 21. Deadline ─────────────────────────────────
 export const pricingAndGuarantee = {
-  sectionTitle: "Cennik i gwarancja",
-  pricePresentationHeadline: "Cena",
-  digitalProductPrice: "45 min – 70 zł",
-  digitalProductLabel: "👉 Szybka, konkretna sesja (idealna przy napiętym grafiku)",
+  oneOnOne45Price: "70 zł",
+  digitalProductLabel: "Szybka, konkretna sesja (idealna przy napiętym grafiku)",
   tutoringHourlyRate: "80 zł",
-  tutoringLabel: "👉 Pełna lekcja: konwersacja + wyjaśnienia + feedback",
-  guaranteeHeadline: "Pierwsza lekcja (zamiast „gwarancji”)",
-  guaranteeText:
-    "Nie zapisujesz się w ciemno. Pierwsza lekcja jest darmowa. Żebyś mógł sprawdzić, czy ten styl nauki Ci odpowiada. Podczas niej: 👉 poznajemy Twój poziom i cel 👉 robimy pierwszą rozmowę 👉 pokazuję Ci, jak pracujemy. I dopiero wtedy decydujesz, czy chcesz iść dalej. BTW: Do tej pory 100% osób zostało po pierwszej lekcji.",
-  urgencyHeadline: "Deadline->Miejsca są ograniczone!",
-  urgencyText:
-    "Pracuję na ograniczonej liczbie miejsc. Zależy mi na jakości, nie ilości. Dlatego nie przyjmuję więcej osób, niż jestem w stanie dobrze poprowadzić. 👉 Jeśli widzisz wolny termin, warto go zarezerwować wcześniej",
-  buyDigitalLabel: "Kup kurs",
-  buyTutoringLabel: "Umów korepetycje",
-  gumroadDigitalUrl: "https://www.youtube.com/watch?v=E7XQR4dd3u8",
-  gumroadTutoringUrl: "https://www.youtube.com/watch?v=E7XQR4dd3u8",
+  tutoringLabel: "Pełna lekcja: konwersacja + wyjaśnienia + feedback",
 } as const;
 
-// ─── 22. Emocjonalne zamknięcie, 23. Po zakupie, 24. CTA ───────────────────
 export const finalCta = {
   emotionalCloseHeadline: "Masz 2 opcje",
   option1: "Opcja 1: Możesz dalej odkładać angielski i blokować się przy każdej rozmowie.",
   option2: "Opcja 2: Albo zacząć działać już teraz i w końcu ogarnąć mówienie bez stresu.",
   afterPurchaseHeadline: "Co się stanie dalej?",
+  afterPurchaseIntro: "Po rezerwacji lub zakupie kursu dostaniesz:",
   afterPurchaseSteps: [
     "👉 dostajesz dostęp / link do spotkania lub materiałów",
     "👉 ustalamy szczegóły i zaczynamy działać",
@@ -218,39 +276,97 @@ export const finalCta = {
   ],
   finalCtaHeadline:
     "Jeśli chcesz w końcu mówić po angielsku, to nie potrzebujesz więcej teorii. Potrzebujesz zacząć, a pierwszy krok jest bardzo prosty.",
-  finalCtaText: "",
   finalButtonLabel: "Umów pierwszą lekcję!",
   finalButtonAnchor: "#oferta",
 } as const;
 
-// ─── Dodatkowe elementy od Wikusia (niewystępujące w starym pliku) ─────────
-export const popup = {
-  title: "Odbierz darmowy plan nauki angielskiego (bez chaosu)",
-  description:
-    "Zapisz się i otrzymaj prosty plan + krótkie zadania, dzięki którym w końcu ruszysz z angielskim. Nawet jeśli masz mało czasu.",
-  bullets: ["1 mail tygodniowo", "krótkie zadania ze speakingu", "powiększenie słownictwa"],
+export type FinalCtaData = typeof finalCta;
+
+export const navbar = {
+  brand: { label: "SZYSZKOWSKI", href: "#top" },
+  linksDesktop: [
+    { label: "Fakty", href: "#fakty" },
+    { label: "O mnie", href: "#o-mnie" },
+    { label: "Oferta", href: "#oferta" },
+    { label: "Opinie", href: "#opinie" },
+  ],
+  linksMobile: [
+    { label: "Fakty", href: "#fakty" },
+    { label: "Oferta", href: "#oferta" },
+    { label: "O mnie", href: "#o-mnie" },
+    { label: "Opinie", href: "#opinie" },
+  ],
+  ariaOpenMenu: "Otwórz menu",
+  ariaCloseMenu: "Zamknij menu",
 } as const;
+
+export type NavbarData = typeof navbar;
 
 export const footer = {
   name: "Wiktor Szyszkowski",
   tagline: "Od „umiem coś” do „mówię normalnie”.",
-  contact: "796 151 334 | wiktorszyszkowski@outlook.com",
-  facebook: "https://www.facebook.com/profile.php?id=61587249547968",
-  instagram: "https://www.instagram.com/szycha_/",
+  navHeading: "Nawigacja",
+  contactHeading: "Kontakt",
+  navLinks: [
+    { label: "Fakty", href: "#fakty" },
+    { label: "O mnie", href: "#o-mnie" },
+    { label: "Oferta", href: "#oferta" },
+
+    { label: "Opinie", href: "#opinie" },
+  ],
+  email: "wiktorszyszkowski@outlook.com",
+  phoneDisplay: "796 151 334",
+  facebookUrl: "https://www.facebook.com/profile.php?id=61587249547968",
+  instagramUrl: "https://www.instagram.com/szycha_/",
+  facebookAriaLabel: "Facebook",
+  instagramAriaLabel: "Instagram",
+  poweredByLead: "Powered by",
+  poweredByName: "Wojciech Aniszewski",
+  poweredByUrl: "https://aniszewski-code.pl",
+  copyrightYear: "2026",
+  visualConceptLead: "Visual concept by",
+  visualConceptLinkText: "wilczynska.visuals",
+  visualConceptMailHref: "mailto:wilczynska.visuals@gmail.com",
+  bottomSeparator: "·",
 } as const;
 
-// Export all as one object for convenience
+export type FooterData = typeof footer;
+
+export const newsletter = {
+  storageKey: "newsletter_dismissed",
+  portraitSrc: "/wikus.jpg",
+  portraitAlt: "Autor newslettera",
+  title: "Odbierz darmowy plan nauki angielskiego (bez chaosu)",
+  introLead: "Zapisz się i otrzymaj ",
+  introHighlight: "prosty plan + krótkie zadania",
+  introMiddle: ", dzięki którym w końcu ruszysz z angielskim. Nawet jeśli masz mało ",
+  introAccentLine: "czasu.",
+  successTitle: "Dziękujemy za zapis!",
+  successDescription:
+    "W ciągu chwili dostaniesz pierwszy mail z planem nauki. Sprawdź też folder spam/oferty.",
+  emailLabel: "Adres e-mail",
+  emailPlaceholder: "np. imie@twojmail.pl",
+  submitButton: "ODBIERAM PLAN!",
+  submitLoading: "Wysyłanie…",
+  consent:
+    "Wyrażam zgodę na otrzymywanie maili związanych z nauką angielskiego. Mogę wypisać się w każdej chwili.",
+  bullets: ["1 mail tygodniowo", "krótkie zadania ze speakingu", "powiększenie słownictwa"],
+  closeAriaLabel: "Zamknij okno newslettera",
+} as const;
+
+export type NewsletterData = typeof newsletter;
+
 export const content = {
-  site,
   hero,
-  problemAgitation,
+  factsSection,
   storyAndAuthority,
   testimonials,
   offerDetails,
   pricingAndGuarantee,
   finalCta,
-  popup,
+  navbar,
   footer,
+  newsletter,
 } as const;
 
 export type Content = typeof content;

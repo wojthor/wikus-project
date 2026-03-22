@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Geist, Geist_Mono, Outfit } from "next/font/google";
+import { landingAnchorScroll } from "@/src/config/landingScroll";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -19,7 +20,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Wiktor Szyszkowski | Angielski bez chaosu",
+  title: "Wiktor Szyszkowski | Od „umiem coś” do „mówię normalnie”.",
   description:
     "Indywidualne zajęcia i kursy angielskiego. Od „umiem coś” do „mówię normalnie” — bez chaosu i bez szkolnego podejścia.",
 };
@@ -30,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pl" className="scroll-smooth">
+    <html lang="pl" style={{ scrollPaddingTop: landingAnchorScroll.top }}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${outfit.variable} antialiased bg-linear-to-b from-sky-100 via-sky-50 to-white`}
       >

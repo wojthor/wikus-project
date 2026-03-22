@@ -1,9 +1,9 @@
-export { AccentBrackets } from "./ui/AccentBrackets";
 export { Navbar } from "./components/Navbar";
 export { HeroSection } from "./components/HeroSection";
 export { FactsSection } from "./components/FactsSection";
 export { AboutSection } from "./components/AboutSection";
 export { OfferSection } from "./components/OfferSection";
+export { ExtraInformations } from "./components/ExtraInformations";
 export { FinalCtaSection } from "./components/FinalCtaSection";
 export { TestimonialsSection } from "./components/TestimonialsSection";
 export { Footer } from "./components/Footer";
