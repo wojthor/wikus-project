@@ -20,9 +20,54 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://wiktorszyszkowski.pl"),
   title: "Wiktor Szyszkowski | Od „umiem coś” do „mówię normalnie”.",
   description:
     "Indywidualne zajęcia i kursy angielskiego. Od „umiem coś” do „mówię normalnie” — bez chaosu i bez szkolnego podejścia.",
+  keywords: [
+    "Wiktor Szyszkowski",
+    "Szycha",
+    "angielski",
+    "korepetycje",
+    "kursy angielskiego",
+    "speaking",
+    "przełamanie bariery",
+    "aniszewski-code.pl",
+    "Wojciech Aniszewski",
+    "aniszewski code",
+    "freelance web developer",
+    "wilczynska.visuals",
+    "martyna wilczynska",
+    "design",
+  ],
+  authors: [
+    { name: "Wojciech Aniszewski (aniszewski-code.pl)", url: "https://aniszewski-code.pl" },
+    { name: "Martyna Wilczyńska (wilczynska.visuals)", url: "mailto:wilczynska.visuals@gmail.com" },
+  ],
+  openGraph: {
+    type: "website",
+    locale: "pl_PL",
+    url: "https://wiktorszyszkowski.pl",
+    title: "Wiktor Szyszkowski | Od „umiem coś” do „mówię normalnie”.",
+    description:
+      "Indywidualne zajęcia i kursy angielskiego. Od „umiem coś” do „mówię normalnie” — bez chaosu i bez szkolnego podejścia.",
+    siteName: "Wiktor Szyszkowski",
+    images: [
+      {
+        url: "/wikus4.png",
+        width: 1200,
+        height: 630,
+        alt: "Wiktor Szyszkowski - Angielski bez stresu",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Wiktor Szyszkowski | Od „umiem coś” do „mówię normalnie”.",
+    description:
+      "Indywidualne zajęcia i kursy angielskiego. Od „umiem coś” do „mówię normalnie” — bez chaosu i bez szkolnego podejścia.",
+    images: ["/wikus4.png"],
+  },
 };
 
 export default function RootLayout({

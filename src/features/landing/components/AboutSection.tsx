@@ -92,8 +92,8 @@ export function AboutSection({ data }: { data: StoryAndAuthorityData }) {
                 </p>
               </div>
             </div>
-            <p className="mt-2 flex items-center justify-center gap-1.5 text-[11px] text-slate-400">
-              <ChevronDown className="w-3.5 h-3.5 text-slate-400" strokeWidth={2.5} />
+            <p className="mt-2 flex items-center justify-center gap-1.5 text-[11px] text-slate-600">
+              <ChevronDown className="w-3.5 h-3.5 text-slate-600" strokeWidth={2.5} />
               <span>
                 {data.scrollMoreHint}
               </span>

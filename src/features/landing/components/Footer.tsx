@@ -35,7 +35,7 @@ export function Footer({ data }: FooterProps) {
           </a>
           <div className="flex items-center gap-2 text-sm text-slate-700">
             <Phone className="w-4 h-4 shrink-0" aria-hidden />
-            <span suppressHydrationWarning>{data.phoneDisplay}</span>
+            <span>{data.phoneDisplay}</span>
           </div>
           <div className="flex gap-3 pt-1">
             <a

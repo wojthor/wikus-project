@@ -33,7 +33,7 @@ export function NewsletterForm({ data, onDismiss, onSubscribeSuccess }: Newslett
       <button
         type="button"
         onClick={onDismiss}
-        className="absolute top-4 right-4 text-slate-400 hover:text-slate-800 transition-colors"
+        className="absolute top-4 right-4 text-slate-600 hover:text-slate-800 transition-colors"
         aria-label={data.closeAriaLabel}
       >
         ×
@@ -83,7 +83,7 @@ export function NewsletterForm({ data, onDismiss, onSubscribeSuccess }: Newslett
               required
               placeholder={data.emailPlaceholder}
               disabled={isPending}
-              className="mt-2 w-full border-0 border-b border-stone-200 bg-transparent px-0 py-2 text-base text-slate-900 placeholder:text-stone-400 focus:border-indigo-600 focus:outline-none focus:ring-0 disabled:opacity-60"
+              className="mt-2 w-full border-0 border-b border-stone-300 bg-transparent px-0 py-2 text-base text-slate-900 placeholder:text-stone-600 focus:border-indigo-600 focus:outline-none focus:ring-0 disabled:opacity-60"
             />
           </label>
 
@@ -114,7 +114,7 @@ export function NewsletterForm({ data, onDismiss, onSubscribeSuccess }: Newslett
         ))}
       </div>
 
-      <p className="text-xs leading-relaxed text-slate-400">{data.consent}</p>
+      <p className="text-xs leading-relaxed text-slate-600">{data.consent}</p>
     </>
   );
 }

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import type { offerDetails, pricingAndGuarantee } from "@/data/content";
 import { Check } from "lucide-react";
 
