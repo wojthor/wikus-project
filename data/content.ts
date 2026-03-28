@@ -115,10 +115,8 @@ export const offerDetails = {
   tutoringBenefitsHeading: "✔️ Co dostajesz:",
   gumroadPurchaseLabel: "Kup przez",
   gumroadLogoAlt: "Gumroad",
-  courseComingSoonEyebrow: "Chwilowo niedostępny online",
+
   courseComingSoonBadge: "Już wkrótce",
-  courseComingSoonSubline:
-    "Uruchomienie sprzedaży tego pakietu planujemy na najbliższy czas. Wróć tu za jakiś czas albo napisz w sprawie innych form nauki.",
 
   tutoring: {
     headline: "Indywidualne zajęcia 1:1",
@@ -328,7 +326,7 @@ export const footer = {
 
     { label: "Opinie", href: "#opinie" },
   ],
-  email: "wiktorszyszkowski@outlook.com",
+  email: "kontakt@wiktorszyszkowski.pl  ",
   phoneDisplay: "796 151 334",
   facebookUrl: "https://www.facebook.com/profile.php?id=61587249547968",
   instagramUrl: "https://www.instagram.com/szycha_/",
