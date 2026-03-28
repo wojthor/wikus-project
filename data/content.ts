@@ -115,6 +115,10 @@ export const offerDetails = {
   tutoringBenefitsHeading: "✔️ Co dostajesz:",
   gumroadPurchaseLabel: "Kup przez",
   gumroadLogoAlt: "Gumroad",
+  courseComingSoonEyebrow: "Chwilowo niedostępny online",
+  courseComingSoonBadge: "Już wkrótce",
+  courseComingSoonSubline:
+    "Uruchomienie sprzedaży tego pakietu planujemy na najbliższy czas. Wróć tu za jakiś czas albo napisz w sprawie innych form nauki.",
 
   tutoring: {
     headline: "Indywidualne zajęcia 1:1",
@@ -216,7 +220,7 @@ export const offerDetails = {
       shortDescription:
         "Kompletny “plan treningowy” angielskiego. Nie masz czasu na regularne lekcje? Nie ma problemu. Dzięki kursowi dostaniesz ode mnie praktyczne zadania, które pomogą Ci mówić pewnie – w swoim własnym zakresie. Uczysz się, kiedy tylko masz na to czas.",
       price: "57 zł",
-      gumroadUrl: "https://wiktorszyszkowski.gumroad.com/l/rmrkjf",
+      cta: { type: "comingSoon" },
       format:
         "✔️ Co dostajesz:\njasną strukturę nauki\nmini zadania pod speaking\nmateriały i narzędzia, które faktycznie działają\nmentoring i feedback po wykonaniu zadań",
       duration: "👉 idealne, jeśli:\nnie masz czasu na regularne lekcje\nchcesz mieć system nauki",
@@ -227,8 +231,10 @@ export const offerDetails = {
       shortDescription:
         "Dla osób, które chcą działać samodzielnie, ale bez chaosu i bez zastanawiania się „co dalej”.",
       price: "150 zł",
-      gumroadUrl:
-        "https://wiktorszyszkowski.gumroad.com/l/wtjdpa?_gl=1*g5azfz*_ga*MjAzMjA1NzEyOS4xNzczNTk2MTE5*_ga_6LJN6D94N6*czE3NzM1OTYxMTkkbzEkZzEkdDE3NzM1OTcxMTIkajYwJGwwJGgw",
+      cta: {
+        type: "gumroad",
+        url: "https://wiktorszyszkowski.gumroad.com/l/wtjdpa?_gl=1*g5azfz*_ga*MjAzMjA1NzEyOS4xNzczNTk2MTE5*_ga_6LJN6D94N6*czE3NzM1OTYxMTkkbzEkZzEkdDE3NzM1OTcxMTIkajYwJGwwJGgw",
+      },
       format:
         "✔️ Co dostajesz:\nplan dopasowany do Twojego poziomu i celu\njasną strukturę (co robić dzień po dniu)\nmini zadania pod speaking\nmateriały i narzędzia, które faktycznie działają\nmentoring i feedback po wykonaniu zadań",
       duration: "👉 idealne, jeśli:\nnie masz czasu na regularne lekcje\nchcesz mieć system nauki.",
@@ -239,7 +245,11 @@ export const offerDetails = {
       shortDescription:
         "Konwersacje w 2-osobowej grupie (45 min). Ja moderuję dyskusję i poprawiam błędy na bieżąco.",
       price: "120 zł (60 zł / osobę)",
-      gumroadUrl: "https://wiktorszyszkowski.gumroad.com/l/wtjdpa",
+      cta: {
+        type: "email",
+        href: "mailto:kontakt@wiktorszyszkowski.pl?subject=Zaj%C4%99cia%20grupowe%20w%20parach%20%28Speaking%29",
+        label: "Napisz do mnie",
+      },
       format:
         "✔️ Co dostajesz:\nZajęcia w 2-osobowej grupie (45 min)\nJa moderuję dyskusję i poprawiam błędy na bieżąco\nWięcej czasu na mówienie niż na notatki",
     },
@@ -249,7 +259,11 @@ export const offerDetails = {
       shortDescription:
         "Konwersacje w 3-osobowej grupie (45 min). Ja moderuję dyskusję i upewniam się, że każdy mówi.",
       price: "135 zł (45 zł / osobę)",
-      gumroadUrl: "https://wiktorszyszkowski.gumroad.com/l/wtjdpa",
+      cta: {
+        type: "email",
+        href: "mailto:kontakt@wiktorszyszkowski.pl?subject=Zaj%C4%99cia%20grupowe%20w%20tr%C3%B3jkach%20%28Speaking%29",
+        label: "Napisz do mnie",
+      },
       format:
         "✔️ Co dostajesz:\nZajęcia w 3-osobowej grupie (45 min)\nDbam o to, żeby każdy mówił w równym stopniu\nIdealne dla osób, które lubią uczyć się w grupie",
     },

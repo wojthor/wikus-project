@@ -17,6 +17,57 @@ function splitLines(text: string) {
   return { title: lines[0] ?? "", items: lines.slice(1) };
 }
 
+function CourseCtaBlock({
+  course,
+  offerDetails,
+}: {
+  course: Course;
+  offerDetails: OfferDetailsType;
+}) {
+  const cta = course.cta;
+
+  if (cta.type === "comingSoon") {
+    return (
+      <div className="mt-auto flex justify-center pt-3">
+        <div
+          className="flex w-full min-h-13 flex-col items-center justify-center rounded-xl border-2 border-dashed border-[#ffa515]/60 bg-[#fff8eb] px-4 py-3 text-center"
+          role="status"
+        >
+          <p className="text-base font-extrabold tracking-tight text-[#92400e]">
+            {offerDetails.courseComingSoonBadge}
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (cta.type === "email") {
+    return (
+      <div className="mt-auto flex justify-start pt-3">
+        <a
+          href={cta.href}
+          className="inline-flex w-full cursor-pointer items-center justify-center rounded-xl bg-[#7347f4] px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7347f4]"
+        >
+          {cta.label}
+        </a>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-auto flex justify-start pt-3">
+      <a
+        href={cta.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex w-full cursor-pointer items-center justify-center gap-1.5 whitespace-nowrap border border-transparent bg-[#e8e8e8] px-3 py-3 font-sans text-[15px] font-medium leading-none text-black transition-all duration-200 hover:bg-[#ff90e8] hover:shadow-[3px_3px_0px_0px_#d4d4d4] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 sm:gap-2 gumroad-button"
+      >
+        <span>{offerDetails.gumroadPurchaseLabel}</span>
+      </a>
+    </div>
+  );
+}
+
 function CourseDetailLists({ course }: { course: Course }) {
   const { title: formatTitle, items: formatItems } = splitLines(course.format);
   const durationRaw = "duration" in course ? course.duration : "";
@@ -140,16 +191,7 @@ export function OfferSection({ offerDetails, pricingAndGuarantee }: OfferSection
                   {course.shortDescription}
                 </p>
                 <CourseDetailLists course={course} />
-                <div className="mt-auto pt-3 flex justify-start">
-                  <a
-                    href={course.gumroadUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex w-full items-center justify-center gap-1.5 whitespace-nowrap bg-[#e8e8e8] text-black px-3 py-3 font-sans border border-transparent hover:bg-[#ff90e8] hover:shadow-[3px_3px_0px_0px_#d4d4d4] transition-all duration-200 cursor-pointer sm:gap-2 gumroad-button text-[15px] leading-none font-medium"
-                  >
-                    <span>{offerDetails.gumroadPurchaseLabel}</span>
-                  </a>
-                </div>
+                <CourseCtaBlock course={course} offerDetails={offerDetails} />
               </div>
             </article>
           ))}
