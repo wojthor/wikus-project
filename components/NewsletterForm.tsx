@@ -2,10 +2,8 @@
 
 import { useActionState, useEffect } from "react";
 import Image from "next/image";
-import {
-  NEWSLETTER_FORM_INITIAL_STATE,
-  subscribeNewsletterFormAction,
-} from "@/app/actions/newsletter";
+import { subscribeNewsletterFormAction } from "@/app/actions/newsletter";
+import { NEWSLETTER_FORM_INITIAL_STATE } from "@/lib/newsletter-form-state";
 import type { NewsletterData } from "@/data/content";
 
 type NewsletterFormProps = {

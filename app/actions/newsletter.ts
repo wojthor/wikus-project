@@ -1,14 +1,6 @@
 "use server";
 
-export type NewsletterFormState = {
-  status: "idle" | "success" | "error";
-  message: string;
-};
-
-export const NEWSLETTER_FORM_INITIAL_STATE: NewsletterFormState = {
-  status: "idle",
-  message: "",
-};
+import type { NewsletterFormState } from "@/lib/newsletter-form-state";
 
 export async function subscribeNewsletterFormAction(
   _prevState: NewsletterFormState,
