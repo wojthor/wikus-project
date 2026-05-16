@@ -132,8 +132,8 @@ export const offerDetails = {
     durationLabel45: "45 min",
     durationLabel60: "60 min",
     bookLessonCta: "Umów lekcję",
-    gumroadUrl45: "mailto:kontakt@wiktorszyszkowski.pl?subject=Rezerwacja%20zajęć%2045-minutowych",
-    gumroadUrl60: "mailto:kontakt@wiktorszyszkowski.pl?subject=Rezerwacja%20zajęć%2060-minutowych",
+    gumroadUrl45: "tel:+48796151334",
+    gumroadUrl60: "tel:+48796151334",
   },
 
   offerClosing: [
@@ -245,7 +245,7 @@ export const offerDetails = {
       price: "120 zł (60 zł / osobę)",
       cta: {
         type: "email",
-        href: "mailto:kontakt@wiktorszyszkowski.pl?subject=Zaj%C4%99cia%20grupowe%20w%20parach%20%28Speaking%29",
+        href: "tel:+48796151334",
         label: "Napisz do mnie",
       },
       format:
@@ -259,7 +259,7 @@ export const offerDetails = {
       price: "135 zł (45 zł / osobę)",
       cta: {
         type: "email",
-        href: "mailto:kontakt@wiktorszyszkowski.pl?subject=Zaj%C4%99cia%20grupowe%20w%20tr%C3%B3jkach%20%28Speaking%29",
+        href: "tel:+48796151334",
         label: "Napisz do mnie",
       },
       format:
@@ -326,7 +326,7 @@ export const footer = {
 
     { label: "Opinie", href: "#opinie" },
   ],
-  email: "kontakt@wiktorszyszkowski.pl  ",
+  phoneHref: "tel:+48796151334",
   phoneDisplay: "796 151 334",
   facebookUrl: "https://www.facebook.com/profile.php?id=61587249547968",
   instagramUrl: "https://www.instagram.com/szycha_/",

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, Phone, Facebook, Instagram } from "lucide-react";
+import { Phone, Facebook, Instagram } from "lucide-react";
 import type { FooterData } from "@/data/content";
 
 type FooterProps = {
@@ -27,16 +27,12 @@ export function Footer({ data }: FooterProps) {
         <div className="space-y-2">
           <h5 className="font-bold text-slate-500 uppercase tracking-wider text-xs">{data.contactHeading}</h5>
           <a
-            href={`mailto:${data.email}`}
+            href={data.phoneHref}
             className="flex items-center gap-2 text-sm text-slate-700 hover:underline"
           >
-            <Mail className="w-4 h-4 shrink-0" />
-            {data.email}
-          </a>
-          <div className="flex items-center gap-2 text-sm text-slate-700">
             <Phone className="w-4 h-4 shrink-0" aria-hidden />
-            <span>{data.phoneDisplay}</span>
-          </div>
+            {data.phoneDisplay}
+          </a>
           <div className="flex gap-3 pt-1">
             <a
               href={data.facebookUrl}
