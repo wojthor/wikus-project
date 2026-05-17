@@ -328,6 +328,8 @@ export const footer = {
   ],
   phoneHref: "tel:+48796151334",
   phoneDisplay: "796 151 334",
+  email: "kontakt@wiktorszyszkowski.pl",
+  emailHref: "mailto:kontakt@wiktorszyszkowski.pl",
   facebookUrl: "https://www.facebook.com/profile.php?id=61587249547968",
   instagramUrl: "https://www.instagram.com/szycha_/",
   facebookAriaLabel: "Facebook",

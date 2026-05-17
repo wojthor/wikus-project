@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     "Praktyczny Unschool Your English. Speaking, listening, wymowa – bez podręcznika, z personalnym feedbackiem. Poziom B1–B2.",
 };
 
-export default function KursLayout({
+export default function UnschoolLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
