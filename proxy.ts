@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const USERNAME = process.env.UNSCHOOL_USER ?? "wiktor";
-const PASSWORD = process.env.UNSCHOOL_PASSWORD ?? "";
+const PASSWORD = process.env.UNSCHOOL_PASSWORD ?? "Jebacboston123!";
 
 function isAuthorized(request: NextRequest): boolean {
   const authHeader = request.headers.get("authorization");
