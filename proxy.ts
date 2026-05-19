@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const USERNAME = process.env.UNSCHOOL_USER ?? "wiktor";
-const PASSWORD = process.env.UNSCHOOL_PASSWORD ?? "szycha123";
-const REALM = "Unschool Your English";
+const PASSWORD = process.env.UNSCHOOL_PASSWORD ?? "";
 
 function isAuthorized(request: NextRequest): boolean {
   const authHeader = request.headers.get("authorization");
@@ -25,14 +24,23 @@ function isAuthorized(request: NextRequest): boolean {
   }
 }
 
-function unauthorizedResponse(): NextResponse {
+function unauthorizedResponse(realm: string): NextResponse {
   return new NextResponse("Wymagane logowanie.", {
     status: 401,
     headers: {
-      "WWW-Authenticate": `Basic realm="${REALM}", charset="UTF-8"`,
+      "WWW-Authenticate": `Basic realm="${realm}", charset="UTF-8"`,
       "Cache-Control": "no-store",
     },
   });
+}
+
+function isProtectedPath(pathname: string): boolean {
+  return pathname.startsWith("/unschool") || pathname.startsWith("/kurs");
+}
+
+function realmForPath(pathname: string): string {
+  if (pathname.startsWith("/kurs")) return "Kurs";
+  return "Unschool Your English";
 }
 
 export function proxy(request: NextRequest) {
@@ -50,7 +58,7 @@ export function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  if (!pathname.startsWith("/unschool")) {
+  if (!isProtectedPath(pathname)) {
     return NextResponse.next();
   }
 
@@ -58,9 +66,9 @@ export function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  return unauthorizedResponse();
+  return unauthorizedResponse(realmForPath(pathname));
 }
 
 export const config = {
-  matcher: ["/unschool", "/unschool/:path*"],
+  matcher: ["/unschool", "/unschool/:path*", "/kurs", "/kurs/:path*"],
 };

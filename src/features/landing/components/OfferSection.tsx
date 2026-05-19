@@ -2,98 +2,15 @@
 
 import type { offerDetails, pricingAndGuarantee } from "@/data/content";
 import { Check } from "lucide-react";
+import { CoursesCarousel } from "./CoursesCarousel";
 
 type OfferDetailsType = typeof offerDetails;
 type PricingType = typeof pricingAndGuarantee;
-type Course = OfferDetailsType["courses"][number];
 
 type OfferSectionProps = {
   offerDetails: OfferDetailsType;
   pricingAndGuarantee: PricingType;
 };
-
-function splitLines(text: string) {
-  const lines = text.split("\n").filter(Boolean);
-  return { title: lines[0] ?? "", items: lines.slice(1) };
-}
-
-function CourseCtaBlock({
-  course,
-  offerDetails,
-}: {
-  course: Course;
-  offerDetails: OfferDetailsType;
-}) {
-  const cta = course.cta;
-
-  if (cta.type === "comingSoon") {
-    return (
-      <div className="mt-auto flex justify-center pt-3">
-        <div
-          className="flex w-full min-h-13 flex-col items-center justify-center rounded-xl border-2 border-dashed border-[#ffa515]/60 bg-[#fff8eb] px-4 py-3 text-center"
-          role="status"
-        >
-          <p className="text-base font-extrabold tracking-tight text-[#92400e]">
-            {offerDetails.courseComingSoonBadge}
-          </p>
-        </div>
-      </div>
-    );
-  }
-
-  if (cta.type === "email") {
-    return (
-      <div className="mt-auto flex justify-start pt-3">
-        <a
-          href={cta.href}
-          className="inline-flex w-full cursor-pointer items-center justify-center rounded-xl bg-[#7347f4] px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7347f4]"
-        >
-          {cta.label}
-        </a>
-      </div>
-    );
-  }
-
-  return (
-    <div className="mt-auto flex justify-start pt-3">
-      <a
-        href={cta.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex w-full cursor-pointer items-center justify-center gap-1.5 whitespace-nowrap border border-transparent bg-[#e8e8e8] px-3 py-3 font-sans text-[15px] font-medium leading-none text-black transition-all duration-200 hover:bg-[#ff90e8] hover:shadow-[3px_3px_0px_0px_#d4d4d4] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 sm:gap-2 gumroad-button"
-      >
-        <span>{offerDetails.gumroadPurchaseLabel}</span>
-      </a>
-    </div>
-  );
-}
-
-function CourseDetailLists({ course }: { course: Course }) {
-  const { title: formatTitle, items: formatItems } = splitLines(course.format);
-  const durationRaw = "duration" in course ? course.duration : "";
-  const { title: durationTitle, items: durationItems } = splitLines(durationRaw);
-
-  return (
-    <div className="mt-1 space-y-2 text-sm text-slate-600">
-      <p className="font-semibold text-slate-700">{formatTitle}</p>
-      {formatItems.length > 0 && (
-        <ul className="list-disc list-inside space-y-1">
-          {formatItems.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      )}
-      {durationTitle ? <p className="font-semibold text-slate-700">{durationTitle}</p> : null}
-      {durationItems.length > 0 && (
-        <ul className="list-disc list-inside space-y-1">
-          {durationItems.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-}
 
 export function OfferSection({ offerDetails, pricingAndGuarantee }: OfferSectionProps) {
   const { tutoring } = offerDetails;
@@ -176,26 +93,7 @@ export function OfferSection({ offerDetails, pricingAndGuarantee }: OfferSection
         <h3 className="mb-4 sm:mb-6 text-lg font-semibold text-slate-900">
           <span className="font-bold text-[#ffa515]">{offerDetails.coursesSubheading}</span>
         </h3>
-        <div className="flex flex-col gap-4 lg:flex-row lg:flex-nowrap lg:gap-2 overflow-visible lg:overflow-x-auto lg:overflow-visible lg:pr-2">
-          {offerDetails.courses.map((course) => (
-            <article
-              key={course.id}
-              className="bg-white rounded-[32px] p-6 flex flex-col border-[0.5px] border-[#7347f4] shadow-sm hover:shadow-lg transition-all duration-500 w-full min-w-0 lg:min-w-[230px] lg:flex-1"
-            >
-              <h3 className="text-slate-900 font-bold text-xl">{course.title}</h3>
-              <div className="text-[#7347f4] font-extrabold text-2xl sm:text-2xl my-3">
-                {course.price}
-              </div>
-              <div className="flex-1 flex flex-col">
-                <p className="text-slate-600 text-sm leading-relaxed mb-3">
-                  {course.shortDescription}
-                </p>
-                <CourseDetailLists course={course} />
-                <CourseCtaBlock course={course} offerDetails={offerDetails} />
-              </div>
-            </article>
-          ))}
-        </div>
+        <CoursesCarousel courses={offerDetails.courses} offerDetails={offerDetails} />
       </div>
     </section>
   );

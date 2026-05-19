@@ -117,6 +117,8 @@ export const offerDetails = {
   gumroadLogoAlt: "Gumroad",
 
   courseComingSoonBadge: "Już wkrótce",
+  unschoolBadge: "🔥 Promocja · kurs online",
+  unschoolCtaLabel: "Szukajcie, a znajdziecie",
 
   tutoring: {
     headline: "Indywidualne zajęcia 1:1",
@@ -213,15 +215,20 @@ export const offerDetails = {
   ],
   courses: [
     {
-      id: "pakiet-1",
-      title: "Kurs offline (10 lekcji)",
+      id: "pakiet-unschool",
+      title: "Unschool Your English",
+      tagline: "Od rozumienia do swobodnej rozmowy — bez podręcznika na zapas.",
       shortDescription:
-        "Kompletny “plan treningowy” angielskiego. Nie masz czasu na regularne lekcje? Nie ma problemu. Dzięki kursowi dostaniesz ode mnie praktyczne zadania, które pomogą Ci mówić pewnie – w swoim własnym zakresie. Uczysz się, kiedy tylko masz na to czas.",
-      price: "57 zł",
-      cta: { type: "comingSoon" },
+        "Rozumiesz filmy i teksty, ale przy rozmowie coś się zacina? 34 lekcje, mówienie od pierwszego dnia i mój feedback na każde zadanie — bez podręcznika i bez teorii na zapas.",
+      price: "597 zł",
+      priceCompare: "697 zł",
+      priceNote: "jednorazowo · dostęp bezterminowy",
+      featured: true,
+      cta: { type: "comingSoon", label: "Szukajcie, a znajdziecie" },
       format:
-        "✔️ Co dostajesz:\njasną strukturę nauki\nmini zadania pod speaking\nmateriały i narzędzia, które faktycznie działają\nmentoring i feedback po wykonaniu zadań",
-      duration: "👉 idealne, jeśli:\nnie masz czasu na regularne lekcje\nchcesz mieć system nauki",
+        "✔️ Co dostajesz:\n34 lekcje wideo + materiały pisemne\nzadania głosowe i tekstowe w platformie\npersonalny feedback na każde zadanie\ndostęp bezterminowy — uczysz się we własnym tempie",
+      duration:
+        "👉 Idealne, jeśli:\njesteś na poziomie B1–B2\nchcesz w końcu przełamać barierę mówienia\npotrzebujesz systemu, nie kolejnej aplikacji",
     },
     {
       id: "pakiet-2",
