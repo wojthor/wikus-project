@@ -35,12 +35,7 @@ function unauthorizedResponse(realm: string): NextResponse {
 }
 
 function isProtectedPath(pathname: string): boolean {
-  return pathname.startsWith("/unschool") || pathname.startsWith("/kurs");
-}
-
-function realmForPath(pathname: string): string {
-  if (pathname.startsWith("/kurs")) return "Kurs";
-  return "Unschool Your English";
+  return pathname.startsWith("/unschool");
 }
 
 export function proxy(request: NextRequest) {
@@ -66,9 +61,9 @@ export function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  return unauthorizedResponse(realmForPath(pathname));
+  return unauthorizedResponse("Unschool Your English");
 }
 
 export const config = {
-  matcher: ["/unschool", "/unschool/:path*", "/kurs", "/kurs/:path*"],
+  matcher: ["/unschool", "/unschool/:path*"],
 };
