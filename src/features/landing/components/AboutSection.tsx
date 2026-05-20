@@ -44,7 +44,7 @@ export function AboutSection({ data }: { data: StoryAndAuthorityData }) {
                   <span className="w-2 h-2 rounded-full bg-[#7347f4] shrink-0" />
                   <span>
                     {cert.label}
-                    {cert.detail ? ` — ${cert.detail}` : ""}
+                    {cert.detail ? ` – ${cert.detail}` : ""}
                   </span>
                 </li>
               ))}

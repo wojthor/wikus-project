@@ -25,7 +25,7 @@ export function useNewsletterStatus(storageKey: string, openDelayMs = DEFAULT_OP
     setIsOpen(false);
   }, [storageKey]);
 
-  /** Tylko zapis w localStorage — modal zostaje otwarty (np. ekran „Dziękujemy”). */
+  /** Tylko zapis w localStorage – modal zostaje otwarty (np. ekran „Dziękujemy”). */
   const markSubscribed = useCallback(() => {
     if (typeof window !== "undefined") {
       window.localStorage.setItem(storageKey, "true");

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://wiktorszyszkowski.pl"),
   title: "Wiktor Szyszkowski | Od „umiem coś” do „mówię normalnie”.",
   description:
-    "Indywidualne zajęcia i kursy angielskiego. Od „umiem coś” do „mówię normalnie” — bez chaosu i bez szkolnego podejścia.",
+    "Indywidualne zajęcia i kursy angielskiego. Od „umiem coś” do „mówię normalnie” – bez chaosu i bez szkolnego podejścia.",
   keywords: [
     "Wiktor Szyszkowski",
     "Szycha",
@@ -65,14 +65,14 @@ export const metadata: Metadata = {
     locale: "pl_PL",
     title: "Wiktor Szyszkowski | Od „umiem coś” do „mówię normalnie”.",
     description:
-      "Indywidualne zajęcia i kursy angielskiego. Od „umiem coś” do „mówię normalnie” — bez chaosu i bez szkolnego podejścia.",
+      "Indywidualne zajęcia i kursy angielskiego. Od „umiem coś” do „mówię normalnie” – bez chaosu i bez szkolnego podejścia.",
     images: ["/wikus4.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Wiktor Szyszkowski | Od „umiem coś” do „mówię normalnie”.",
     description:
-      "Indywidualne zajęcia i kursy angielskiego. Od „umiem coś” do „mówię normalnie” — bez chaosu i bez szkolnego podejścia.",
+      "Indywidualne zajęcia i kursy angielskiego. Od „umiem coś” do „mówię normalnie” – bez chaosu i bez szkolnego podejścia.",
     images: ["/wikus4.png"],
   },
   icons: {

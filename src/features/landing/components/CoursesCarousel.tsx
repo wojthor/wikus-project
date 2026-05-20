@@ -360,7 +360,7 @@ export function CoursesCarousel({ courses, offerDetails }: CoursesCarouselProps)
         })}
       </ul>
 
-      {/* Wskaźniki (karuzela — tylko desktop) */}
+      {/* Wskaźniki (karuzela – tylko desktop) */}
       <div className="mt-5 hidden flex-wrap items-center justify-center gap-2 sm:flex">
         {orderedCourses.map((course, index) => {
           const isActive = index === activeIndex;

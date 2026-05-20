@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 
 /**
- * Przewijanie do kotwic (`#fakty`, `#o-mnie`, …) — **edytuj tylko `top`**.
+ * Przewijanie do kotwic (`#fakty`, `#o-mnie`, …) – **edytuj tylko `top`**.
  * Ta sama wartość trafia na `scroll-padding-top` w `app/layout.tsx` oraz do opcjonalnego `scroll-margin` sekcji.
  */
 export const landingAnchorScroll = {
@@ -26,7 +26,7 @@ export const LANDING_ANCHOR_IDS = {
   finalCta: "final-cta",
 } as const;
 
-/** Opcjonalnie: `style` na `<section id="…">` — ta sama wartość co `landingAnchorScroll.top`. */
+/** Opcjonalnie: `style` na `<section id="…">` – ta sama wartość co `landingAnchorScroll.top`. */
 export function landingSectionAnchorStyle(): CSSProperties {
   return { scrollMarginTop: landingAnchorScroll.top };
 }

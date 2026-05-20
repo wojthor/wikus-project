@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const USERNAME = process.env.UNSCHOOL_USER ?? "wiktor";
-const PASSWORD = process.env.UNSCHOOL_PASSWORD ?? "Jebacboston123!";
+const PASSWORD = process.env.UNSCHOOL_PASSWORD ?? "";
 
 function isAuthorized(request: NextRequest): boolean {
   const authHeader = request.headers.get("authorization");
@@ -46,7 +46,7 @@ function realmForPath(pathname: string): string {
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Nigdy nie dotykaj assetów Next.js (chunki, HMR, obrazy) — inaczej ChunkLoadError w dev
+  // Nigdy nie dotykaj assetów Next.js (chunki, HMR, obrazy) – inaczej ChunkLoadError w dev
   if (
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api") ||

@@ -217,16 +217,16 @@ export const offerDetails = {
     {
       id: "pakiet-unschool",
       title: "Unschool Your English",
-      tagline: "Od rozumienia do swobodnej rozmowy — bez podręcznika na zapas.",
+      tagline: "Od rozumienia do swobodnej rozmowy – bez podręcznika na zapas.",
       shortDescription:
-        "Rozumiesz filmy i teksty, ale przy rozmowie coś się zacina? 34 lekcje, mówienie od pierwszego dnia i mój feedback na każde zadanie — bez podręcznika i bez teorii na zapas.",
+        "Rozumiesz filmy i teksty, ale przy rozmowie coś się zacina? 34 lekcje, mówienie od pierwszego dnia i mój feedback na każde zadanie – bez podręcznika i bez teorii na zapas.",
       price: "597 zł",
       priceCompare: "697 zł",
       priceNote: "jednorazowo · dostęp bezterminowy",
       featured: true,
       cta: { type: "comingSoon", label: "Szukajcie, a znajdziecie" },
       format:
-        "✔️ Co dostajesz:\n34 lekcje wideo + materiały pisemne\nzadania głosowe i tekstowe w platformie\npersonalny feedback na każde zadanie\ndostęp bezterminowy — uczysz się we własnym tempie",
+        "✔️ Co dostajesz:\n34 lekcje wideo + materiały pisemne\nzadania głosowe i tekstowe w platformie\npersonalny feedback na każde zadanie\ndostęp bezterminowy – uczysz się we własnym tempie",
       duration:
         "👉 Idealne, jeśli:\njesteś na poziomie B1–B2\nchcesz w końcu przełamać barierę mówienia\npotrzebujesz systemu, nie kolejnej aplikacji",
     },

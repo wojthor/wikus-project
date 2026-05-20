@@ -11,10 +11,10 @@ const FORMSPREE_URL = "https://formspree.io/f/TWOJ_KOD";
 
 const PRICING_FEATURES = [
   "34 lekcje wideo + pełne materiały pisemne",
-  "Zadania głosowe — nagrywasz się w platformie",
+  "Zadania głosowe – nagrywasz się w platformie",
   "Zadania tekstowe po każdej lekcji",
   "Personalny feedback ode mnie na każde zadanie",
-  "Dostęp bezterminowy — bez presji czasowej",
+  "Dostęp bezterminowy – bez presji czasowej",
   "Działa na telefonie, tablecie i komputerze",
 ] as const;
 
@@ -126,10 +126,10 @@ export default function Kurs2Page() {
         setIsSuccess(true);
         form.reset();
       } else {
-        setSubmitError("Coś poszło nie tak — spróbuj jeszcze raz");
+        setSubmitError("Coś poszło nie tak – spróbuj jeszcze raz");
       }
     } catch {
-      setSubmitError("Błąd połączenia — spróbuj jeszcze raz");
+      setSubmitError("Błąd połączenia – spróbuj jeszcze raz");
     } finally {
       setIsSubmitting(false);
     }
@@ -226,7 +226,7 @@ export default function Kurs2Page() {
             </h1>
             <p className={sub}>
               Znasz słówka. Rozumiesz filmy. A mimo to przy rozmowie coś się zacina. Ten kurs naprawia
-              dokładnie to — bez podręcznika, bez teorii na zapas, z feedbackiem ode mnie na każde
+              dokładnie to – bez podręcznika, bez teorii na zapas, z feedbackiem ode mnie na każde
               zadanie.
             </p>
             <div className="flex flex-wrap gap-3">
@@ -265,7 +265,7 @@ export default function Kurs2Page() {
               Przestań się uczyć, zacznij mówić.
             </p>
             <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-              Z feedbackiem na każde zadanie — głosowe i tekstowe.
+              Z feedbackiem na każde zadanie – głosowe i tekstowe.
             </p>
             <ul className="mt-5 space-y-2.5 text-left">
               {PRICING_FEATURES.map((feature) => (
@@ -303,30 +303,30 @@ export default function Kurs2Page() {
           A mimo to nie mówisz.
         </h2>
         <p className={`${sub} mb-8 sm:mb-10`}>
-          Coś tu nie gra — i pewnie to czujesz. Znasz słówka, rozumiesz dużo, a mimo to przy rozmowie
+          Coś tu nie gra – i pewnie to czujesz. Znasz słówka, rozumiesz dużo, a mimo to przy rozmowie
           się blokujesz. To nie przypadek.
         </p>
         <div className="grid sm:grid-cols-2 gap-4">
           {[
             {
               icon: "😶",
-              title: "Wiesz co powiedzieć — po polsku",
-              text: "Masz myśl w głowie. Wiesz o czym chcesz mówić. Ale gdy przychodzi moment — cisza. Mózg się zawiesza. I nic.",
+              title: "Wiesz co powiedzieć – po polsku",
+              text: "Masz myśl w głowie. Wiesz o czym chcesz mówić. Ale gdy przychodzi moment – cisza. Mózg się zawiesza. I nic.",
             },
             {
               icon: "📚",
               title: "Uczyłeś się latami i nadal za mało",
-              text: "Szkoła, korepetycje, aplikacje, kursy online. Sporo czasu i pieniędzy — a rozmowa po angielsku nadal wywołuje stres.",
+              text: "Szkoła, korepetycje, aplikacje, kursy online. Sporo czasu i pieniędzy – a rozmowa po angielsku nadal wywołuje stres.",
             },
             {
               icon: "🤔",
               title: "Rozumiesz filmy, ale nie speakerów",
-              text: "Lektor mówił wyraźnie i wolno. Prawdziwy Amerykanin mówi inaczej — i nagle nic nie rozumiesz. Jakby to był inny język.",
+              text: "Lektor mówił wyraźnie i wolno. Prawdziwy Amerykanin mówi inaczej – i nagle nic nie rozumiesz. Jakby to był inny język.",
             },
             {
               icon: "🔄",
               title: "Zaczynasz i rzucasz. Znowu.",
-              text: "Kurs, aplikacja, YouTube po angielsku — przez tydzień. Potem nic przez miesiąc. I tak w kółko. Bez systemu nie ma efektów.",
+              text: "Kurs, aplikacja, YouTube po angielsku – przez tydzień. Potem nic przez miesiąc. I tak w kółko. Bez systemu nie ma efektów.",
             },
           ].map((item) => (
             <div key={item.title} className={card}>
@@ -349,13 +349,13 @@ export default function Kurs2Page() {
             <em className="text-[#7347f4] not-italic">I to był plan.</em>
           </h2>
           <p className="text-sm sm:text-base text-white/65 leading-relaxed mb-4">
-            System edukacji jest zoptymalizowany pod testy i oceny — nie pod komunikację. Nauczyciel
+            System edukacji jest zoptymalizowany pod testy i oceny – nie pod komunikację. Nauczyciel
             może sprawdzić czy wiesz jak zbudować zdanie w Past Perfect. Nie może sprawdzić czy potrafisz
             się dogadać na lotnisku.
           </p>
           <p className="text-sm sm:text-base text-white/65 leading-relaxed mb-10">
             Więc uczą tego co się da ocenić. A Ty po 12 latach nauki stoisz i nie możesz zamówić kawy w
-            Londynie. Korepetytorzy z certyfikatami robią to samo — tyle że drożej.
+            Londynie. Korepetytorzy z certyfikatami robią to samo – tyle że drożej.
           </p>
           <div className="grid sm:grid-cols-2 gap-4 text-left max-w-2xl mx-auto">
             <div className="rounded-2xl bg-white/10 p-5 sm:p-6">
@@ -385,7 +385,7 @@ export default function Kurs2Page() {
           wszystkiego oprócz mówienia.
         </h2>
         <p className={`${sub} mb-8 sm:mb-10`}>
-          Szkoła, podręczniki, Duolingo — uczą Cię zdawać testy. Nie uczą Cię rozmawiać. To nie jest
+          Szkoła, podręczniki, Duolingo – uczą Cię zdawać testy. Nie uczą Cię rozmawiać. To nie jest
           Twoja wina. To jest zepsuty system.
           <br />
           <br />
@@ -397,12 +397,12 @@ export default function Kurs2Page() {
             {
               icon: "🎬",
               title: "Wideo lekcje",
-              text: "Każdy temat tłumaczę na żywo — bez czytania z kartki, bez nudnego lektora. Mówię do Ciebie tak jak na normalnej lekcji.",
+              text: "Każdy temat tłumaczę na żywo – bez czytania z kartki, bez nudnego lektora. Mówię do Ciebie tak jak na normalnej lekcji.",
             },
             {
               icon: "🎙️",
               title: "Zadania głosowe",
-              text: "Nagrywasz się bezpośrednio w platformie. Nie musisz nic instalować — klikasz, mówisz, wysyłasz.",
+              text: "Nagrywasz się bezpośrednio w platformie. Nie musisz nic instalować – klikasz, mówisz, wysyłasz.",
             },
             {
               icon: "✏️",
@@ -417,7 +417,7 @@ export default function Kurs2Page() {
             {
               icon: "♾️",
               title: "Dostęp bezterminowy",
-              text: "Kupujesz raz, masz na zawsze. Możesz wracać do lekcji kiedy chcesz. Spokojne tempo — 2-3 lekcje tygodniowo — bez presji.",
+              text: "Kupujesz raz, masz na zawsze. Możesz wracać do lekcji kiedy chcesz. Spokojne tempo – 2-3 lekcje tygodniowo – bez presji.",
             },
             {
               icon: "📱",
@@ -444,7 +444,7 @@ export default function Kurs2Page() {
           34 lekcje.
         </h2>
         <p className={`${sub} mb-8 sm:mb-10`}>
-          Zaczynamy od głowy — bo to tam jest problem. Potem speaking, listening, wymowa i gramatyka
+          Zaczynamy od głowy – bo to tam jest problem. Potem speaking, listening, wymowa i gramatyka
           której naprawdę potrzebujesz. Bez zbędnego wypełniacza.
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -455,22 +455,22 @@ export default function Kurs2Page() {
               sub: "Zacznij z właściwym nastawieniem",
               lessons: [
                 "Czemu ten kurs jest inny niż inne",
-                "Szkoła Cię nie przygotowała — i to nie Twoja wina",
+                "Szkoła Cię nie przygotowała – i to nie Twoja wina",
                 "Dlaczego Duolingo nie wystarczy",
-                "Jak ułożyć naukę — system który działa",
-                "Think in English — przestań tłumaczyć w głowie",
+                "Jak ułożyć naukę – system który działa",
+                "Think in English – przestań tłumaczyć w głowie",
               ],
             },
             {
               num: "Moduł 2",
               title: "🏫 Szkoła vs Prawdziwy Angielski",
-              sub: "Czego Cię uczono — a jak to brzmi naprawdę",
+              sub: "Czego Cię uczono – a jak to brzmi naprawdę",
               lessons: [
-                'Must vs Have to — Amerykanie nie mówią "must"',
-                "Shall — słowo, którego nikt nie używa",
+                'Must vs Have to – Amerykanie nie mówią "must"',
+                "Shall – słowo, którego nikt nie używa",
                 "Podręcznikowe zwroty, których NIKT nie używa",
-                'Contractions — dlaczego "I am" brzmi dziwnie',
-                "Gonna, wanna, kinda — naturalny angielski",
+                'Contractions – dlaczego "I am" brzmi dziwnie',
+                "Gonna, wanna, kinda – naturalny angielski",
               ],
             },
             {
@@ -478,12 +478,12 @@ export default function Kurs2Page() {
               title: "🗣️ Speaking & Bariera",
               sub: "Mów mimo że się boisz",
               lessons: [
-                "Dlaczego się blokujesz — neurologia strachu",
-                "Gap-fillers — jak zyskać czas i brzmieć naturalnie",
-                "Opisuj zamiast szukać słowa — circumlocution",
+                "Dlaczego się blokujesz – neurologia strachu",
+                "Gap-fillers – jak zyskać czas i brzmieć naturalnie",
+                "Opisuj zamiast szukać słowa – circumlocution",
                 "Wyrażanie opinii bez bycia kategorycznym",
-                "Small talk — sztuka mówienia o niczym",
-                "Question tags — isn't it? right?",
+                "Small talk – sztuka mówienia o niczym",
+                "Question tags – isn't it? right?",
               ],
             },
             {
@@ -503,9 +503,9 @@ export default function Kurs2Page() {
               sub: "Tylko to, co naprawdę potrzebne",
               lessons: [
                 "80% gramatyki, której nie potrzebujesz",
-                "Past Simple vs Present Perfect — raz na zawsze",
-                "Conditionals — tylko 2, które musisz znać",
-                "Modal verbs — nie tylko can i should",
+                "Past Simple vs Present Perfect – raz na zawsze",
+                "Conditionals – tylko 2, które musisz znać",
+                "Modal verbs – nie tylko can i should",
               ],
             },
             {
@@ -514,8 +514,8 @@ export default function Kurs2Page() {
               sub: "Kluczowe głoski, nie perfekcyjny akcent",
               lessons: [
                 "TH, długie/krótkie samogłoski, głoska NI",
-                "Californian English — głoska O i 6 wersji T",
-                "Intonacja — jak nie brzmieć jak robot",
+                "Californian English – głoska O i 6 wersji T",
+                "Intonacja – jak nie brzmieć jak robot",
                 "Wymowa liczb, dat i cen",
               ],
             },
@@ -523,7 +523,7 @@ export default function Kurs2Page() {
               num: "Moduł 7",
               title: "🚀 Fluency Sprint",
               sub: "Wszystko razem w praktyce",
-              lessons: ["7-Day Speaking Challenge — finał kursu", "Twoje nagranie — przed i po"],
+              lessons: ["7-Day Speaking Challenge – finał kursu", "Twoje nagranie – przed i po"],
             },
           ].map((mod, index) => {
             const isFeatured = index === 6;
@@ -578,7 +578,7 @@ export default function Kurs2Page() {
           Mówisz. Dostajesz feedback.
         </h2>
         <p className={`${sub} mb-8 sm:mb-10`}>
-          Zero skomplikowanych systemów. Każda lekcja to wideo, materiał i zadanie do wykonania — głosowe
+          Zero skomplikowanych systemów. Każda lekcja to wideo, materiał i zadanie do wykonania – głosowe
           albo tekstowe. Wysyłasz, ja sprawdzam, daję feedback. I tak 34 razy.
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -586,7 +586,7 @@ export default function Kurs2Page() {
             {
               num: "01",
               title: "Oglądasz wideo",
-              text: "Krótkie, konkretne nagranie gdzie tłumaczę temat — tak jak na normalnej lekcji.",
+              text: "Krótkie, konkretne nagranie gdzie tłumaczę temat – tak jak na normalnej lekcji.",
             },
             {
               num: "02",
@@ -596,7 +596,7 @@ export default function Kurs2Page() {
             {
               num: "03",
               title: "Robisz zadanie",
-              text: "Nagrywasz się albo piszesz odpowiedź — bezpośrednio w platformie. Wysyłasz jednym kliknięciem.",
+              text: "Nagrywasz się albo piszesz odpowiedź – bezpośrednio w platformie. Wysyłasz jednym kliknięciem.",
             },
             {
               num: "04",
@@ -629,24 +629,24 @@ export default function Kurs2Page() {
             </h2>
             <p className={`${sub} mb-5`}>
               Skończyłem filologię angielską. Mam papiery. I właśnie dlatego wiem, że same papiery nie
-              robią z nikogo dobrego nauczyciela — bo widziałem z bliska jak uczą ci z certyfikatami.
+              robią z nikogo dobrego nauczyciela – bo widziałem z bliska jak uczą ci z certyfikatami.
             </p>
             <div className="space-y-3 flex-1">
               {[
                 {
                   icon: "✈️",
                   title: "Sam nauczyłem się przez życie, nie przez szkołę",
-                  text: "Wyjazdy za granicę, Erasmus, oglądanie rzeczy po angielsku — nie lekcje. Blokada przy mówieniu? Miałem ją. Wiem jak to naprawić.",
+                  text: "Wyjazdy za granicę, Erasmus, oglądanie rzeczy po angielsku – nie lekcje. Blokada przy mówieniu? Miałem ją. Wiem jak to naprawić.",
                 },
                 {
                   icon: "👁️",
                   title: "Od liceum obserwowałem co działa, a co nie",
-                  text: "Chodziłem do korepetytorów i wyłapywałem co ma sens, a co jest tylko marnowaniem czasu. Filologia dała mi narzędzia — i potwierdziła moje podejrzenia.",
+                  text: "Chodziłem do korepetytorów i wyłapywałem co ma sens, a co jest tylko marnowaniem czasu. Filologia dała mi narzędzia – i potwierdziła moje podejrzenia.",
                 },
                 {
                   icon: "🎯",
                   title: "Uczę od 2022 roku i nikt nie odszedł",
-                  text: "Pracowałem z dziesiątkami uczniów na różnych poziomach. Maturę pisałem w 2022 — pamiętam jak to jest być po drugiej stronie.",
+                  text: "Pracowałem z dziesiątkami uczniów na różnych poziomach. Maturę pisałem w 2022 – pamiętam jak to jest być po drugiej stronie.",
                 },
               ].map((fact) => (
                 <div key={fact.title} className={`${card} flex gap-3 py-3`}>
@@ -704,10 +704,10 @@ export default function Kurs2Page() {
 
             <div className="mt-auto px-4 sm:px-5 py-4 bg-[#cfd8ff]/40 border-t border-[#7347f4]/20">
               <p className="text-sm sm:text-base text-slate-700 italic leading-relaxed mb-1.5">
-                &quot;Większość korepetytorów uczy tak samo jak szkoła — tylko drożej. Dlatego efekty są
+                &quot;Większość korepetytorów uczy tak samo jak szkoła – tylko drożej. Dlatego efekty są
                 takie same.&quot;
               </p>
-              <p className="text-sm font-bold text-[#7347f4]">— Wiktor Szyszkowski</p>
+              <p className="text-sm font-bold text-[#7347f4]">– Wiktor Szyszkowski</p>
             </div>
           </div>
         </motion.div>
@@ -721,7 +721,7 @@ export default function Kurs2Page() {
           sami za siebie.
         </h2>
         <p className={`${sub} mb-8 sm:mb-10`}>
-          Nie sprzedaję Ci snu. Sprzedaję Ci metodę, która działa — i mam na to dowody.
+          Nie sprzedaję Ci snu. Sprzedaję Ci metodę, która działa – i mam na to dowody.
         </p>
         <div className="grid sm:grid-cols-2 gap-4">
           {[
@@ -741,7 +741,7 @@ export default function Kurs2Page() {
               meta: "Rozwój konwersacji",
             },
             {
-              text: "Bardzo zadowolona chociażby z cierpliwości i przemiłej atmosfery. Na początku w ogóle bałam się odezwać po angielsku — teraz faktycznie widzę progres. Jeśli ktoś się zastanawia — gorąco polecam.",
+              text: "Bardzo zadowolona chociażby z cierpliwości i przemiłej atmosfery. Na początku w ogóle bałam się odezwać po angielsku – teraz faktycznie widzę progres. Jeśli ktoś się zastanawia – gorąco polecam.",
               author: "Wiktoria",
               meta: "Przełamanie bariery językowej",
             },
@@ -785,7 +785,7 @@ export default function Kurs2Page() {
             <h3 className="text-2xl sm:text-3xl font-extrabold text-[#7347f4] text-center mb-1">Unschool Your English</h3>
             <p className="text-sm text-[#3e57d6] font-semibold text-center mb-1">Przestań się uczyć, zacznij mówić.</p>
             <p className="text-sm text-slate-600 text-center mb-6">
-              Z feedbackiem na każde zadanie — głosowe i tekstowe.
+              Z feedbackiem na każde zadanie – głosowe i tekstowe.
             </p>
             <ul className="text-left space-y-2.5 mb-6 text-sm text-slate-700">
               {PRICING_FEATURES.map((li) => (
@@ -831,11 +831,11 @@ export default function Kurs2Page() {
           {[
             {
               q: "Dla kogo jest ten kurs?",
-              a: "Dla dorosłych na poziomie B1–B2, którzy rozumieją angielski ale mają problem z mówieniem. Znasz słówka, rozumiesz filmy — ale przy rozmowie coś się zacina. To jest dokładnie ta sytuacja, na którą ten kurs odpowiada.",
+              a: "Dla dorosłych na poziomie B1–B2, którzy rozumieją angielski ale mają problem z mówieniem. Znasz słówka, rozumiesz filmy – ale przy rozmowie coś się zacina. To jest dokładnie ta sytuacja, na którą ten kurs odpowiada.",
             },
             {
               q: "Jak wygląda dostęp do kursu?",
-              a: "Po zakupie dostajesz link do platformy online. Wszystko działa w przeglądarce — na telefonie, tablecie i komputerze. Nie musisz nic instalować.",
+              a: "Po zakupie dostajesz link do platformy online. Wszystko działa w przeglądarce – na telefonie, tablecie i komputerze. Nie musisz nic instalować.",
             },
             {
               q: "Jak długo mam dostęp?",
@@ -843,19 +843,19 @@ export default function Kurs2Page() {
             },
             {
               q: "Jak działa personalny feedback?",
-              a: "Po każdej lekcji wysyłasz zadanie — nagranie głosowe lub odpowiedź tekstową. Odsłuchuję każde nagranie i czytam każdą odpowiedź osobiście. Komentuję co poszło dobrze i co konkretnie poprawić. To nie są automatyczne odpowiedzi.",
+              a: "Po każdej lekcji wysyłasz zadanie – nagranie głosowe lub odpowiedź tekstową. Odsłuchuję każde nagranie i czytam każdą odpowiedź osobiście. Komentuję co poszło dobrze i co konkretnie poprawić. To nie są automatyczne odpowiedzi.",
             },
             {
               q: "Ile czasu dziennie muszę poświęcać?",
-              a: "Kurs jest zaprojektowany na 2–3 lekcje tygodniowo, co daje około 20–30 minut dziennie w dni nauki. Łącznie to około 3 miesiące w spokojnym tempie. Możesz iść wolniej — dostęp nie wygasa.",
+              a: "Kurs jest zaprojektowany na 2–3 lekcje tygodniowo, co daje około 20–30 minut dziennie w dni nauki. Łącznie to około 3 miesiące w spokojnym tempie. Możesz iść wolniej – dostęp nie wygasa.",
             },
             {
               q: "Czy kurs zastępuje indywidualne lekcje?",
-              a: "To są dwa różne produkty. Kurs daje Ci strukturę, materiał i feedback na zadania. Indywidualne lekcje 1:1 to bezpośrednia rozmowa i praca nad konkretnymi problemami. Jeśli chcesz oboje — napisz do mnie, możemy to połączyć.",
+              a: "To są dwa różne produkty. Kurs daje Ci strukturę, materiał i feedback na zadania. Indywidualne lekcje 1:1 to bezpośrednia rozmowa i praca nad konkretnymi problemami. Jeśli chcesz oboje – napisz do mnie, możemy to połączyć.",
             },
             {
               q: "Jak kupić kurs?",
-              a: 'Kliknij dowolny przycisk "Chcę w końcu mówić" — pojawi się formularz. Wypełniasz dane do faktury, wysyłasz. Odezwę się w ciągu 24h z linkiem do płatności przez Useme. Dopiero po opłaceniu dostajesz dostęp.',
+              a: 'Kliknij dowolny przycisk "Chcę w końcu mówić" – pojawi się formularz. Wypełniasz dane do faktury, wysyłasz. Odezwę się w ciągu 24h z linkiem do płatności przez Useme. Dopiero po opłaceniu dostajesz dostęp.',
             },
           ].map((item) => (
             <motion.details
@@ -888,7 +888,7 @@ export default function Kurs2Page() {
             nigdy nie przychodzi.
           </h2>
           <p className="text-sm sm:text-base text-white/60 mb-8 max-w-xl mx-auto leading-relaxed">
-            Jedyny sposób żeby zacząć mówić — to zacząć mówić. Mam dla Ciebie system który sprawia, że to
+            Jedyny sposób żeby zacząć mówić – to zacząć mówić. Mam dla Ciebie system który sprawia, że to
             działa.
           </p>
           <button type="button" className={`${btnPrimary} text-base sm:text-lg px-8`} onClick={openModal}>
@@ -943,7 +943,7 @@ export default function Kurs2Page() {
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-4">
-                <input type="hidden" name="produkt" value="Unschool Your English — 597 zł" />
+                <input type="hidden" name="produkt" value="Unschool Your English – 597 zł" />
 
                 <div>
                   <label className="block text-xs font-bold text-[#7347f4] mb-1.5" htmlFor="imie_nazwisko">
@@ -1030,7 +1030,7 @@ export default function Kurs2Page() {
                   <label className="block text-xs font-bold text-[#7347f4] mb-1.5" htmlFor="nip">
                     NIP{" "}
                     <span className="font-normal text-slate-400">
-                      (opcjonalnie — tylko jeśli chcesz fakturę na firmę)
+                      (opcjonalnie – tylko jeśli chcesz fakturę na firmę)
                     </span>
                   </label>
                   <input
@@ -1066,7 +1066,7 @@ export default function Kurs2Page() {
                 <p className="text-xs text-slate-500 text-center leading-relaxed">
                   Po wysłaniu odezwę się w ciągu 24h z linkiem do płatności.
                   <br />
-                  Dane służą wyłącznie do faktury — nic więcej.
+                  Dane służą wyłącznie do faktury – nic więcej.
                 </p>
               </form>
             </>
@@ -1075,7 +1075,7 @@ export default function Kurs2Page() {
               <div className="text-4xl mb-4">✅</div>
               <h3 className={`${h2} mb-3`}>Gotowe!</h3>
               <p className="text-sm text-slate-600 leading-relaxed">
-                Dostałem Twoje dane — odezwę się w ciągu 24h z linkiem do płatności.
+                Dostałem Twoje dane – odezwę się w ciągu 24h z linkiem do płatności.
               </p>
             </div>
           )}

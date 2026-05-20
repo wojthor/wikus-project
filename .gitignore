@@ -42,5 +42,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# lokalna dokumentacja projektu (raporty / opis repo — nie wersjonujemy)
+# lokalna dokumentacja projektu (raporty / opis repo – nie wersjonujemy)
 /docs/
