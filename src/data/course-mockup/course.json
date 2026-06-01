@@ -1,0 +1,1874 @@
+[
+  {
+    "id": 1,
+    "emoji": "🧠",
+    "tag": "Moduł 1",
+    "title": "Mindset",
+    "subtitle": "Zacznij z właściwym nastawieniem",
+    "intro": "Zanim zaczniesz mówić, musisz przestać myśleć o angielskim tak jak nauczyła Cię szkoła. Ten moduł to reset głowy - żebyś zaczął z właściwymi oczekiwaniami, dobrym systemem i bez zbędnych blokad.",
+    "lessons": [
+      {
+        "id": "1-0",
+        "title": "Czemu ten kurs jest inny niż inne?",
+        "duration": "6 min",
+        "hasVideo": true,
+        "videoTitle": "Wiktor: kim jestem i dlaczego uczę inaczej niż wszyscy",
+        "intro": "Zanim zaczniesz, powiem Ci kim jestem, czemu uczę tak jak uczę i dlaczego ten kurs działa inaczej niż cokolwiek co robiłeś wcześniej.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "👋",
+            "title": "Kim jestem",
+            "content": "Mam 23 lata, skończyłem filologię angielską i uczę od września 2022. Przez ten czas pracowałem z dziesiątkami uczniów na różnych poziomach, i wiem już całkiem dobrze co działa, a co jest stratą czasu.\n\nMam papiery. I właśnie dlatego wiem, że same papiery nie wystarczą."
+          },
+          {
+            "type": "reallife",
+            "icon": "✈️",
+            "title": "Jak sam nauczyłem się angielskiego",
+            "content": "Byłem nieśmiałym dzieckiem. Szkoła niewiele mi dała, jeśli chodzi o mówienie. Przełom przyszedł przez wyjazdy za granicę, Erasmusa w gimnazjum i przede wszystkim przez faktyczny kontakt z językiem i ludźmi.\n\nNie nauczyłem się mówić na lekcjach. Nauczyłem się mówić, bo musiałem. Bo oglądałem rzeczy po angielsku. Bo język stał się częścią życia, nie obowiązkiem.\n\nI właśnie to chcę Ci dać w tym kursie."
+          },
+          {
+            "type": "warning",
+            "icon": "😤",
+            "title": "Co mnie wkurza w branży",
+            "content": "Większość korepetytorów chwali się certyfikatami, jakby sam kawałek papieru był dowodem, że umieją uczyć. A potem uczą dokładnie tak samo jak szkoła: sucha teoria, nudne podręczniki, metody wzięte żywcem ze szkoły.\n\nSkoro nauczyciele ze szkoły słabo uczą, to co nam dają ich metody?\n\nJuż w liceum obserwowałem nauczycieli i korepetytorów do których chodziłem. Wyłapywałem co działa, a co tylko wygląda profesjonalnie. Filologia pogłębiła to przekonanie, dała mi warsztat, ale też pokazała jak bardzo teoria odrywa się od praktyki.\n\nDo tego maturę pisałem w 2022, pamiętam jeszcze jak to jest być uczniem. I sam nadal się uczę, bo angielski to język, który się nie kończy."
+          },
+          {
+            "type": "tip",
+            "icon": "🎯",
+            "title": "Moja filozofia",
+            "content": "Najważniejsze jest jedno: żebyś chciał się uczyć. Bo jak ktoś się zmusza - efekty będą średnie, zawsze.\n\nMożesz uczyć się angielskiego przez to co i tak robisz - filmy, muzyka, podcasty, rozmowy o tym co Cię interesuje. Moja robota to pokazać Ci jak to zrobić.\n\nNie ma tu podręcznika. Nie ma nudnych ćwiczeń. Jest praktyka, feedback i angielski, który ma sens w Twoim życiu."
+          },
+          {
+            "type": "comparison",
+            "title": "Typowy korepetytor vs ten kurs",
+            "left": {
+              "label": "😴 Typowy korepetytor",
+              "items": [
+                "- certyfikat = dowód, że umie uczyć",
+                "Nauka z podręcznika",
+                "Ćwiczenia z lukami i testy",
+                "Teoria metodyczna",
+                "Uczysz się, bo musisz"
+              ]
+            },
+            "right": {
+              "label": "✅ Ten kurs",
+              "items": [
+                "- filologia i praktyka zamiast samej teorii",
+                "- nauka przez prawdziwy content",
+                "- mówienie i feedback od pierwszego dnia",
+                "- praktyka, która działa w życiu",
+                "- uczysz się, bo chcesz i widzisz sens"
+              ]
+            }
+          },
+          {
+            "type": "quote",
+            "text": "Angielski to tylko narzędzie. Uczę Cię z niego korzystać, tak, żebyś w końcu mógł powiedzieć to, co masz do powiedzenia.",
+            "author": "- Wiktor Szyszkowski"
+          }
+        ],
+        "task": {
+          "type": "text",
+          "prompt": "Zanim zaczniesz kurs, napisz mi po angielsku (lub po polsku, jeśli wolisz na razie):\n\n1. Dlaczego chcesz nauczyć się mówić po angielsku?\n2. Co Cię do tej pory blokowało?\n3. Co chcesz osiągnąć po tym kursie, konkretnie?\n\nTo nie jest test. To jest punkt startowy, wrócimy do tego na końcu kursu."
+        },
+        "videoUrl": "https://www.youtube.com/watch?v=PFoEo8DImVY&list=PLaMzO3bdVRF4J6qOAeEOpOYiHkzajwwai&index=21"
+      },
+      {
+        "id": "1-1",
+        "title": "Szkoła Cię nie przygotowała - i to nie Twoja wina",
+        "duration": "8 min",
+        "hasVideo": true,
+        "videoTitle": "Wiktor tłumaczy: dlaczego szkolny angielski nie działa",
+        "intro": "Przez lata szkoła uczyła Cię angielskiego w jeden sposób. Efekt znasz, czas to zmienić.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "💡",
+            "title": "Kluczowy insight",
+            "content": "Znajomość języka ≠ umiejętność mówienia. To dwie zupełnie różne umiejętności. Możesz znać 3000 słówek i rozumieć gramatykę, i nadal nie być w stanie sklecić zdania w rozmowie."
+          },
+          {
+            "type": "text",
+            "content": "System szkolny jest zbudowany wokół testów i ocen. Uczysz się po to, żeby dobrze napisać sprawdzian, nie po to, żeby komunikować się z ludźmi. Efekt? Miliony Polaków, którzy uczyli się angielskiego przez 12 lat i nie potrafią zamówić kawy w Londynie."
+          },
+          {
+            "type": "reallife",
+            "icon": "🌍",
+            "title": "Analogia, która wszystko wyjaśnia",
+            "content": "Wyobraź sobie, że uczysz się pływać przez 3 lata, ale tylko z książki i filmów. Znasz teorię, wiesz o czym mówi instruktor. A potem wchodzisz do basenu i toniesz. Dokładnie tak działa nauka angielskiego w polskich szkołach."
+          },
+          {
+            "type": "comparison",
+            "title": "Szkoła vs Prawdziwa nauka",
+            "left": {
+              "label": "❌ Szkoła uczy",
+              "items": [
+                "Gramatyki dla gramatyki",
+                "Słówek z listy",
+                "Czytania i pisania",
+                "Odpowiedzi idealnych",
+                "Unikania błędów"
+              ]
+            },
+            "right": {
+              "label": "✅ Ten kurs uczy",
+              "items": [
+                "Mówienia od pierwszego dnia",
+                "Słów w kontekście",
+                "Słuchania i rozmawiania",
+                "Komunikacji mimo błędów",
+                "Uczenia się na błędach"
+              ]
+            }
+          },
+          {
+            "type": "quote",
+            "text": "The goal is not to speak perfectly. The goal is to be understood.",
+            "author": "- fundamentalna zasada tego kursu"
+          }
+        ],
+        "task": {
+          "type": "text",
+          "prompt": "Napisz po angielsku (nie po polsku! 😄):\n\nWyobraź sobie, że tłumaczysz znajomemu dlaczego Twój angielski ze szkoły jest słaby mimo lat nauki. Co mu powiesz?\n\nZacznij od: 'So the thing is, I've been learning English for years, but...'\n\nNie martw się o błędy, pisz jak mówisz."
+        },
+        "videoUrl": "https://www.youtube.com/shorts/Hcd5NA8eJ9Y"
+      },
+      {
+        "id": "1-2",
+        "title": "Dlaczego aplikacje do nauki języków nie wystarczą?",
+        "duration": "6 min",
+        "hasVideo": true,
+        "videoTitle": "Wiktor tłumaczy: passive vs active learning, czym się różnią",
+        "intro": "Duolingo, Babbel, Drops i spółka, są świetne jako dodatek. Problem zaczyna się wtedy, gdy traktujesz je jako cały system nauki.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "📱",
+            "title": "Problem z aplikacjami",
+            "content": "Duolingo, Babbel, Drops - dają poczucie nauki bez prawdziwego efektu. Są zaprojektowane, żeby być uzależniającymi (streaki, points, nagrody), nie żeby Cię nauczyć mówić. To passive learning - odbierasz informacje, ale ich nie używasz."
+          },
+          {
+            "type": "comparison",
+            "title": "Passive vs Active learning",
+            "left": {
+              "label": "😴 Passive (mało skuteczne)",
+              "items": [
+                "Słuchanie podcastów bez skupienia",
+                "Scrollowanie angielskich treści",
+                "Robienie testów wielokrotnego wyboru",
+                "Oglądanie filmów z polskimi napisami",
+                "Duolingo jako jedyna nauka"
+              ]
+            },
+            "right": {
+              "label": "⚡ Active (skuteczne)",
+              "items": [
+                "Mówienie na głos, nagrywanie się",
+                "Pisanie własnych zdań",
+                "Słuchanie i streszczanie",
+                "Oglądanie z angielskimi napisami",
+                "Rozmawianie z prawdziwą osobą"
+              ]
+            }
+          },
+          {
+            "type": "tip",
+            "icon": "🎯",
+            "title": "Jak używać aplikacji mądrze",
+            "content": "Duolingo i podobne mogą być przydatne, ale jako DODATEK, nie jako rdzeń nauki. 10 minut Duolingo + 20 minut prawdziwego mówienia = sensowny dzień nauki. Samo Duolingo przez rok = marnowanie czasu."
+          },
+          {
+            "type": "reallife",
+            "icon": "📊",
+            "title": "Pasywne vs aktywne - ta różnica robi wszystko",
+            "content": "Problem jest prosty: aplikacje uczą rozpoznawania, nie produkowania języka. Widzisz słowo, klikasz odpowiedź. To passive learning. Nie uczysz się budować zdań pod presją czasu, mówić płynnie ani reagować w rozmowie. A właśnie tego potrzebujesz."
+          }
+        ],
+        "task": {
+          "type": "text",
+          "prompt": "How do you currently learn English? List everything you do (apps, Netflix, music, etc.).\n\nThen: which of these is active learning and which is passive?\n\nWrite in English."
+        },
+        "videoUrl": "https://youtube.com/shorts/e_0c0weKR0A?is=WRmmMV4yhGhNtkUC"
+      },
+      {
+        "id": "1-3",
+        "title": "Błędy są Twoim przyjacielem",
+        "duration": "5 min",
+        "hasVideo": true,
+        "intro": "Największa blokada w nauce angielskiego? Strach przed błędami. Czas to przeprogramować.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "🔑",
+            "title": "Fundamentalna zmiana perspektywy",
+            "content": "Każdy błąd, który popełniasz to sygnał dla mózgu: 'zapamiętaj jak jest poprawnie'. Bez błędów, bez nauki. Mózg uczy się przez korygowanie, nie przez unikanie pomyłek."
+          },
+          {
+            "type": "fun",
+            "icon": "😂",
+            "title": "Błędy, które robią wszyscy",
+            "content": "Nawet zaawansowani Polacy mówią:\n• 'I am agree' zamiast 'I agree'\n• 'She has 30 years' zamiast 'She is 30'\n• 'I am boring' zamiast 'I am bored'\n\nI wiesz co? Rozmówca NADAL rozumie o co chodzi. Komunikacja działa mimo błędów."
+          },
+          {
+            "type": "list",
+            "title": "Przeprogramuj swój wewnętrzny dialog:",
+            "items": [
+              "'Powiedziałem źle' → 'Mój mózg właśnie zarejestrował błąd, super'",
+              "'Nie umiem mówić' → 'Jeszcze nie mówię płynnie, to kwestia czasu i praktyki'",
+              "'Wstyd mi mówić' → 'Każdy kto mówi po angielsku kiedyś zaczynał od zera'",
+              "'Powinienem znać to słowo' → 'Nie znam, opiszę to inaczej'"
+            ]
+          },
+          {
+            "type": "quote",
+            "text": "You don't learn to walk by following rules. You learn by doing and by falling over.",
+            "author": "- Richard Branson"
+          }
+        ],
+        "task": {
+          "type": "audio",
+          "prompt": "Twoje pierwsze nagranie 🎙️\n\nNagraj 60 sekund - opisz swój dzień. Zacznij od: 'So, today I...'\n\nZasady:\n• Nie zatrzymuj się\n• Nie zaczynaj od nowa\n• Nie oceniaj siebie w trakcie\n\nPo nagraniu napisz w polu poniżej:\n- Co Ci poszło lepiej niż się spodziewałeś?\n- Co było najtrudniejsze?\n\nTo nagranie zostaje jako punkt odniesienia. Za 12 tygodni usłyszysz różnicę."
+        },
+        "videoUrl": "https://www.youtube.com/shorts/kH_49zHaJdk"
+      },
+      {
+        "id": "1-4",
+        "title": "Jak ułożyć naukę - system, który działa",
+        "duration": "7 min",
+        "hasVideo": true,
+        "videoTitle": "Wiktor tłumaczy: jak zbudować nawyk nauki, który nie odpada po tygodniu",
+        "intro": "90% ludzi nie kończy kursów online. Oto jak nie być w tej grupie.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "⚡",
+            "title": "Regularność bije intensywność zawsze",
+            "content": "20 minut dziennie przez 3 miesiące > 3 godziny w weekend raz na dwa tygodnie. Mózg uczy się języka przez powtarzanie w czasie - nie przez jednorazowe maratony."
+          },
+          {
+            "type": "tip",
+            "icon": "📅",
+            "title": "Ile czasu zajmie ten kurs?",
+            "content": "Kurs ma 34 lekcje. Przy spokojnym tempie - dwie, trzy lekcje tygodniowo - przejdziesz go w około 3 miesiące.\n\nJęzyk uczy się przez powtarzanie i praktykę między lekcjami, nie przez pochłanianie wszystkiego naraz. Dostęp do kursu nie wygasa, więc możesz iść wolniej, gdy masz gorszy tydzień. Możesz też przyspieszyć - ale maraton rzadko działa w nauce języków."
+          },
+          {
+            "type": "tip",
+            "icon": "📅",
+            "title": "Jak zbudować nawyk",
+            "content": "Metoda 'habit stacking': przyczepiasz nową czynność do istniejącej.\n\n• Angielski podcast → podczas śniadania\n• Lekcja z kursu → zaraz po przebudzeniu lub przed snem\n• Angielski YouTube → podczas ćwiczeń\n• Angielskie myślenie → podczas prysznica\n\nNie 'znajdujesz czas', wplatasz naukę w to co już robisz."
+          },
+          {
+            "type": "comparison",
+            "title": "Plan, który działa vs plan, który nie działa",
+            "left": {
+              "label": "❌ Nie działa",
+              "items": [
+                "'Będę uczyć się jak będę miał czas'",
+                "3h w sobotę, zero w tygodniu",
+                "Zaczynasz od nowa po każdej przerwie",
+                "Uczysz się 'wszystkiego naraz'"
+              ]
+            },
+            "right": {
+              "label": "✅ Działa",
+              "items": [
+                "Stała pora każdego dnia (nawet 15 min)",
+                "Małe kawałki, codziennie",
+                "Przerwa = wracasz do miejsca gdzie skończyłeś",
+                "Jeden skill na raz (tydzień speaking, tydzień listening)"
+              ]
+            }
+          },
+          {
+            "type": "reallife",
+            "icon": "🏋️",
+            "title": "Traktuj to jak trening",
+            "content": "Nie idziesz na siłownię 'jak masz czas'. Nie ćwiczysz 'jak masz energię'. Masz stały termin i go trzymasz, nawet jeśli zrobisz tylko 10 minut zamiast planowanych 30.\n\n10 minut, które zrobiłeś > 30 minut, które miałeś zrobić."
+          }
+        ],
+        "task": {
+          "type": "text",
+          "prompt": "Write your personal study plan in English:\n\n• What time every day will you study?\n• How many minutes?\n• Where? (desk, kitchen, commute?)\n• What will you do if you miss a day?\n\nBe specific. 'I will study in the morning' is vague. 'I will do one lesson at 7:15am during breakfast' is a plan."
+        },
+        "videoUrl": "https://www.youtube.com/shorts/p_CimBVNF04"
+      },
+      {
+        "id": "1-5",
+        "title": "Think in English - przestań tłumaczyć w głowie",
+        "duration": "9 min",
+        "hasVideo": true,
+        "videoTitle": "Wiktor tłumaczy: jak przestać myśleć po polsku podczas mówienia",
+        "intro": "Tłumaczenie z polskiego na angielski w głowie to największy hamulec płynności. Oto jak z tego wyjść.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "🧠",
+            "title": "Co się dzieje, gdy tłumaczysz",
+            "content": "Twój mózg robi wtedy 4 rzeczy naraz: myśli po polsku → tłumaczy → sprawdza gramatykę → wypowiada. To za dużo - system się zawiesza i wychodzi albo cisza, albo bardzo wolne mówienie."
+          },
+          {
+            "type": "tip",
+            "icon": "🔄",
+            "title": "Ćwiczenie: myśl prosto po angielsku",
+            "content": "Zamiast tłumaczyć myśli, twórz je od razu po angielsku. Zacznij od prostych sytuacji:\n\n• Widzisz kubek → myślisz 'that's a cup, it's blue, it's hot'\n• Wychodzisz z domu → 'the weather is nice today, I should walk'\n• Stoisz w kolejce → 'I'm waiting, this is slow, I'm a bit bored'\n\nMały monolog w głowie. Codziennie. To buduje angielskie myślenie."
+          },
+          {
+            "type": "list",
+            "title": "5 technik Think in English:",
+            "items": [
+              "Nazywaj obiekty wokół siebie po angielsku (mental labeling)",
+              "Opisuj co robisz podczas robienia tego: 'I'm making coffee, I'm adding milk'",
+              "Zamiast liczyć po polsku, licz po angielsku (telefon, kasa, schody)",
+              "Czytaj po angielsku bez tłumaczenia, zgaduj z kontekstu",
+              "Prowadź krótki dziennik po angielsku (3 zdania dziennie wystarczą)"
+            ]
+          },
+          {
+            "type": "fun",
+            "icon": "⏱️",
+            "title": "Challenge: 10 minut dziennie",
+            "content": "Przez 10 minut każdego dnia, myśl tylko po angielsku. Cokolwiek robisz, opisuj to w głowie po angielsku. Pierwsze dni będą trudne. Po 2 tygodniach poczujesz różnicę w mówieniu."
+          }
+        ],
+        "task": {
+          "type": "audio",
+          "prompt": "Think out loud 🎙️\n\nNagraj 90 sekund. Opisz po angielsku gdzie teraz jesteś i co planujesz dziś zrobić. Mów jak do siebie w głowie - nie tłumacz z polskiego, buduj myśl od razu po angielsku.\n\nZacznij od: 'So right now I'm...' i jedź dalej bez zatrzymywania.\n\nJeśli utkniesz na słowie - opisz je zamiast szukać."
+        },
+        "videoUrl": "https://www.youtube.com/shorts/mf4QO6IPN_0"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "emoji": "🏫",
+    "tag": "Moduł 2",
+    "title": "Szkoła vs Prawdziwy Angielski",
+    "subtitle": "Czego Cię uczono, a jak to brzmi naprawdę",
+    "intro": "Ten moduł to trochę terapia, trochę nauka. Pokażemy co szkoła zrobiła źle i jak to naprawić - konkretne zwroty, słowa i nawyki, które sprawiają, że zaczniesz brzmieć jak ktoś kto naprawdę mówi po angielsku, a nie jak ktoś kto przetłumaczył z polskiego.",
+    "lessons": [
+      {
+        "id": "2-1",
+        "title": "Must vs Have to - Amerykanie nie mówią 'must'",
+        "duration": "7 min",
+        "hasVideo": true,
+        "videoTitle": "Wiktor tłumaczy: must vs have to na przykładach z serialów",
+        "intro": "Szkoła uczyła Cię 'must'. W prawdziwym życiu, szczególnie w American English, prawie tego nie usłyszysz.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "🇺🇸",
+            "title": "Jak to naprawdę wygląda",
+            "content": "'Must' brzmi formalnie, często pisemnie lub kiedy jesteś bardzo poważny. Amerykanie w codziennych rozmowach mówią prawie wyłącznie 'have to' i 'need to'.\n\n'You must submit the form' → dokumenty, przepisy\n'You have to try this pizza' → normalna rozmowa\n'I have to go' → naturalnie\n'I must go' → brzmi jak teatr"
+          },
+          {
+            "type": "comparison",
+            "title": "Jak mówi szkoła vs jak mówią ludzie",
+            "left": {
+              "label": "📚 Szkoła (brzmi dziwnie)",
+              "items": [
+                "'You must do your homework'",
+                "'I must not forget'",
+                "'One must be careful'",
+                "'Must you leave so soon?'"
+              ]
+            },
+            "right": {
+              "label": "🗣️ Prawdziwe życie",
+              "items": [
+                "'You have to / need to do your homework'",
+                "'I can't forget / I need to remember'",
+                "'You have to be careful'",
+                "'Do you have to leave already?'"
+              ]
+            }
+          },
+          {
+            "type": "fun",
+            "icon": "🎬",
+            "title": "Sprawdź sam",
+            "content": "Włącz dowolny amerykański serial (Friends, The Office, Seinfeld, Succession) i licz ile razy usłyszysz 'must' vs 'have to'. Wynik Cię zaskoczy.\n\nSpoiler: 'must' pojawia się głównie w kontekście negatywnym - 'must not' / 'mustn't', i to rzadziej niż 'can't'."
+          },
+          {
+            "type": "tip",
+            "icon": "💡",
+            "title": "Kiedy MOŻESZ użyć 'must'",
+            "content": "• Pisemnie: instrukcje, przepisy, regulaminy\n• Mocna dedukcja: 'He must be tired' (na pewno jest zmęczony)\n• Kiedy chcesz brzmieć bardzo poważnie lub formalnie\n\nW każdej innej sytuacji - 'have to' lub 'need to' są naturalniejsze."
+          },
+          {
+            "type": "quote",
+            "text": "'I have to tell you something.' Nie: 'I must tell you something.', chyba że jesteś Sherlockiem Holmesem.",
+            "author": "- zasada codziennego angielskiego"
+          }
+        ],
+        "task": {
+          "type": "text",
+          "prompt": "Przepisz te zdania na naturalny, codzienny angielski:\n\n1. 'You must arrive on time.'\n2. 'I must study harder.'\n3. 'You must not use your phone during the meeting.'\n4. 'Must you always be so loud?'\n5. 'We must inform you that your account has been suspended.'\n\nUwaga na zdanie 5 - to fragment formalnej wiadomości pisanej. Czy tu też warto zmieniać?"
+        },
+        "videoUrl": "https://www.youtube.com/shorts/RxMc5FzHf44"
+      },
+      {
+        "id": "2-2",
+        "title": "Shall - słowo, którego nikt nie używa",
+        "duration": "6 min",
+        "hasVideo": true,
+        "videoTitle": "Wiktor tłumaczy: shall, whom i inne słowa, które brzmią jak Shakespeare",
+        "intro": "'Shall we dance?', powiedział nikt od 1952 roku. Oto, które 'eleganckie' słowa możesz spokojnie wyrzucić.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "🎩",
+            "title": "Shall - relikwia z przeszłości",
+            "content": "'Shall' w szkole był uczony jako alternatywa dla 'will' w pierwszej osobie (I shall, we shall). W prawdziwym angielskim, szczególnie amerykańskim, praktycznie nie istnieje w rozmowach.\n\nGdy Amerykanin słyszy 'shall', myśli o dokumentach prawnych, biblii lub filmach historycznych."
+          },
+          {
+            "type": "list",
+            "title": "Słowa, które szkoła uczyła - a których nikt nie mówi:",
+            "items": [
+              "'Shall' → 'will' / 'should' / 'want to'\n'Shall we go?' → 'Should we go?' / 'Do you want to go?'",
+              "'Whom' → 'who' w rozmowie\n'To whom did you speak?' → 'Who did you talk to?'",
+              "'How do you do?' → nikt tak nie mówi\nUżyj: 'How are you?' / 'Hey!' / 'Nice to meet you'",
+              "'I would like to enquire' → 'I want to ask' / 'I was wondering'\n('enquire' to British English - Amerykanie piszą 'inquire', ale oba brzmią formalnie)\nDotyczy też: 'I wish to inform you' → 'I wanted to let you know'",
+              "'Commence' → 'start'\n'Utilize' → 'use'\n'Endeavour' → 'try'\nProstsze słowo zawsze brzmi naturalniej"
+            ]
+          },
+          {
+            "type": "tip",
+            "icon": "🇬🇧",
+            "title": "Wyjątek: British English",
+            "content": "'Shall' jest nadal żywe w brytyjskim angielskim, szczególnie w pytaniach:\n'Shall I open the window?'\n'Shall we meet at 6?'\n\nJeśli uczysz się American English (ten kurs) - używaj 'should' lub 'do you want to'. Jeśli chcesz brzmieć jak Brytyjczyk - 'shall' jest OK w pytaniach."
+          },
+          {
+            "type": "fun",
+            "icon": "😄",
+            "title": "Test: które zdanie brzmi naturalnie?",
+            "content": "A: 'Whom are you calling?'\nB: 'Who are you calling?'\n\nA: 'Shall we commence the meeting?'\nB: 'Should we start the meeting?'\n\nA: 'I would like to enquire about your services.'\nB: 'I wanted to ask about your services.'\n\nOdpowiedź: B, B, B, zawsze prostsze brzmi naturalniej."
+          }
+        ],
+        "task": {
+          "type": "text",
+          "prompt": "Przetłumacz te 'szkolne' zdania na naturalny, codzienny angielski:\n\n1. 'Shall we commence our discussion?'\n2. 'To whom should I address this letter?'\n3. 'How do you do, Mr. Johnson?'\n4. 'I wish to inform you of a change in our plans.'\n5. 'We shall endeavour to resolve this matter promptly.'"
+        },
+        "videoUrl": "https://www.youtube.com/shorts/yCmjiFFM5zM"
+      },
+      {
+        "id": "2-3",
+        "title": "Podręcznikowe zwroty, których NIKT nie używa",
+        "duration": "8 min",
+        "hasVideo": true,
+        "videoTitle": "Wiktor tłumaczy: top 10 zwrotów ze szkoły, które brzmią dziwnie w prawdziwym życiu",
+        "intro": "Twój podręcznik był pisany przez ludzi, którzy nie rozmawiali z native speakerami od lat. Oto dowód.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "📖",
+            "title": "Dlaczego podręczniki są złe",
+            "content": "Podręcznikowy angielski to angielski, który 'powinien' istnieć, nie angielski, który istnieje. Dialogi w podręcznikach brzmią jak rozmowy kosmitów próbujących symulować ludzi."
+          },
+          {
+            "type": "list",
+            "title": "Podręcznik vs Prawdziwe życie:",
+            "items": [
+              "'What is your name?' → zbyt formalne\nNaturalnie: 'What's your name?' / 'I'm [imię], and you?'",
+              "'I am fine, thank you. And you?' → robot odpowiada\nNaturalnie: 'Pretty good!' / 'Not bad!' / 'Doing well, thanks!'",
+              "'Could you please repeat that?' → OK, ale brzmi sztywno\nNaturalnie: 'Sorry?' / 'What was that?' / 'Come again?'",
+              "'I do not understand.' → bardzo formalne\nNaturalnie: 'I don't get it' / 'What do you mean?' / 'Huh?'",
+              "'I would like a coffee, please.' → poprawne, ale bardzo formalne\nNaturalnie: 'Can I get a coffee?' / 'I'll have a coffee' / 'A coffee, please'",
+              "'Do you have any questions?' → OK w prezentacjach\nW rozmowie: 'Any questions?' / 'Does that make sense?' / 'You good?'"
+            ]
+          },
+          {
+            "type": "reallife",
+            "icon": "☕",
+            "title": "Zamawianie kawy po ludzku",
+            "content": "Szkoła: 'I would like to order a large cappuccino with skimmed milk, please.'\n\nPrawdziwe życie w kawiarni:\n'Can I get a large cap with skim milk?'\n'A large cappuccino with skim milk, please'\n'Large cap, skim milk' (w bardzo nieformalnych miejscach)\n\nNikt nie mówi pełnych, formalnych zdań przy kasie. Skracaj."
+          },
+          {
+            "type": "fun",
+            "icon": "🎭",
+            "title": "Najgorszy dialog z polskiego podręcznika",
+            "content": "- 'Hello. My name is Tom. What is your name?'\n- 'Hello, Tom. My name is Maria. Nice to meet you.'\n- 'Nice to meet you too, Maria. Where are you from?'\n\nJak naprawdę wygląda pierwsze spotkanie:\n- 'Hey! I'm Tom.'\n- 'Maria. Hey!'\n- 'Cool party, right? How do you know [imię gospodarza]?'"
+          }
+        ],
+        "task": {
+          "type": "audio",
+          "prompt": "Role-play 🎙️\n\nNagraj symulację poznawania kogoś na imprezie, po angielsku, naturalnie.\nCzas: 60–90 sekund.\n\nGraj obie role: siebie i nieznajomą osobę. Zacznij od: 'Hey! I don't think we've met, I'm...'\n\nUżyj naturalnych zwrotów, nie podręcznikowych."
+        },
+        "videoUrl": "https://www.youtube.com/shorts/i_hDi1o9mnA"
+      },
+      {
+        "id": "2-4",
+        "title": "Contractions - dlaczego 'I am' brzmi dziwnie?",
+        "duration": "6 min",
+        "hasVideo": true,
+        "intro": "Szkoła uczyła Cię pisać 'I am', 'do not', 'it is'. W rozmowie to brzmi jak czytanie z kartki.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "✂️",
+            "title": "Skróć wszystko",
+            "content": "W naturalnym mówieniu praktycznie zawsze używasz contractions. Mówienie pełnych form sprawia, że brzmisz jak robot czytający tekst na głos, albo jak ktoś bardzo zły lub bardzo formalny."
+          },
+          {
+            "type": "list",
+            "title": "Podstawowe contractions - ZAWSZE skracaj je w mowie:",
+            "items": [
+              "I am → I'm | You are → You're | He/She/It is → He's/She's/It's",
+              "We are → We're | They are → They're",
+              "I have → I've | He has → He's | We have → We've",
+              "I will → I'll | You will → You'll | They will → They'll",
+              "Do not → Don't | Does not → Doesn't | Did not → Didn't",
+              "Can not → Can't | Will not → Won't | Should not → Shouldn't",
+              "I would → I'd | He would → He'd | We would → We'd",
+              "I had → I'd | She had → She'd (tak, I'd ma dwa znaczenia - kontekst decyduje)"
+            ]
+          },
+          {
+            "type": "warning",
+            "icon": "⚠️",
+            "title": "Kiedy NIE skracać",
+            "content": "Pełna forma ma znaczenie, gdy chcesz podkreślić lub zaprzeczyć:\n\n'I AM going!' (nie, serio, idę, nacisk)\n'He IS coming.' (naprawdę, nie kłamię)\n'I do NOT agree.' (mocna odmowa)\n\nW normalnej mowie: skracaj zawsze."
+          },
+          {
+            "type": "fun",
+            "icon": "🤖",
+            "title": "Test na robota",
+            "content": "Przeczytaj na głos:\n'I am going to go to the store. I do not know what I will buy. It is not clear to me what we need.'\n\nTeraz z contractions:\n'I'm gonna go to the store. I don't know what I'll buy. It's not clear what we need.'\n\nSłyszysz różnicę? Drugie zdanie brzmi jak człowiek."
+          }
+        ],
+        "task": {
+          "type": "text",
+          "prompt": "Przepisz ten tekst używając contractions wszędzie gdzie to naturalne:\n\n'I am not sure what I am doing this weekend. It is possible that I will visit my friend, but she has not confirmed yet. We do not see each other often because she is living in another city. I would love to see her, but I do not know if it is going to work out.'"
+        },
+        "videoUrl": "https://www.youtube.com/shorts/WulVyTgSKqM"
+      },
+      {
+        "id": "2-5",
+        "title": "Skróty i redukcje - gonna, wanna, kinda i spółka",
+        "duration": "8 min",
+        "hasVideo": true,
+        "videoTitle": "Wiktor tłumaczy: kiedy używać redukcji a kiedy unikać, z przykładami audio",
+        "intro": "Gonna, wanna, gotta, kinda, szkoła ich nie uczyła. Ale bez nich brzmisz jak obcokrajowiec.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "🎵",
+            "title": "To nie jest slang - to naturalny angielski",
+            "content": "Redukcje nie są 'biednym' angielskim ani slangiemi. To naturalny sposób w jaki angielski ewoluował w mówieniu. Barack Obama mówi 'gonna'. Morgan Freeman mówi 'wanna'. To standard."
+          },
+          {
+            "type": "list",
+            "title": "Kluczowe redukcje i jak ich używać:",
+            "items": [
+              "going to → gonna\n'I'm gonna call you later' (NIE: 'I gonna' bez 'I'm')",
+              "want to → wanna\n'Do you wanna come?' | 'I wanna try that'",
+              "have to / have got to → gotta\n'I gotta go' | 'You gotta try this' (hafta też funkcjonuje, ale gotta jest częstsze)",
+              "kind of → kinda | sort of → sorta\n'It's kinda weird' | 'I'm sorta tired'\n(piszemy pełne formy żeby pokazać skąd pochodzi redukcja - w rozmowie używasz kinda/sorta)",
+              "a lot of → lots of / loads of (naturalne alternatywy)\n'There's loads of people here' / 'There's a lot going on'",
+              "('lotta' i 'hella' są naturalniejsze: 'lotta people', 'hella good' - ale to bardzo nieformalne i regionalne, nie musisz ich używać - musisz rozumieć)",
+              "out of → outta\n'Get outta here!' | 'I'm outta time'",
+              "because → 'cause / cuz (bardzo nieformalne)\n'I left 'cause I was tired'"
+            ]
+          },
+          {
+            "type": "warning",
+            "icon": "⚠️",
+            "title": "Kiedy NIE używać redukcji",
+            "content": "• W piśmie (e-mail, raport, praca), zawsze pełne formy\n• Na rozmowie kwalifikacyjnej, bądź ostrożny, skup się na klarowności\n• Z osobami, które Cię nie znają i mówią formalnie\n• W prezentacjach formalnych\n\nZasada: jeśli sytuacja jest formalna - pełne formy. Jeśli nieformalna - redukcje są OK."
+          },
+          {
+            "type": "reallife",
+            "icon": "📱",
+            "title": "W tekstach i social media",
+            "content": "W wiadomościach i social media Amerykanie idą jeszcze dalej:\n• you → u\n• are → r\n• see you → c u\n• tonight → 2nite\n• great → gr8\n\nTego NIE musisz używać - ale musisz rozumieć, gdy to widzisz."
+          }
+        ],
+        "task": {
+          "type": "audio",
+          "prompt": "Nagraj 2 wersje tego samego tekstu 🎙️\n\nTekst: 'I am going to meet my friend tonight. We want to try a new restaurant. I have to finish some work first, so I am kind of busy right now. It is going to be great though.'\n\nWersja 1: przeczytaj formalnie, bez redukcji\nWersja 2: przeczytaj naturalnie, z gonna/wanna/gotta/kinda\n\nSłyszysz różnicę?"
+        },
+        "videoUrl": "https://www.youtube.com/shorts/DIC_RIkCeJQ"
+      },
+      {
+        "id": "2-6",
+        "title": "Fałszywi przyjaciele - słowa które brzmią znajomo ale nie znaczą tego co myślisz",
+        "duration": "9 min",
+        "hasVideo": true,
+        "videoTitle": "Wiktor tłumaczy: fałszywi przyjaciele - słowa, które robią największy wstyd",
+        "intro": "Niektóre angielskie słowa wyglądają jak polskie i właśnie dlatego są niebezpieczne. Twój mózg myśli, że je zna - ale się myli.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "⚠️",
+            "title": "Czym są fałszywi przyjaciele?",
+            "content": "False friends - słowa, które brzmią lub wyglądają podobnie w dwóch językach, ale znaczą coś zupełnie innego. W przypadku angielskiego i polskiego jest ich zaskakująco dużo, i robią z nich błędy nawet bardzo zaawansowani użytkownicy."
+          },
+          {
+            "type": "list",
+            "title": "Największe pułapki dla Polaków:",
+            "items": [
+              "'Actually' ≠ aktualnie\nActually = w rzeczywistości, tak naprawdę\n'I actually enjoyed it' = tak naprawdę mi się podobało\nAktualnie = currently / at the moment",
+              "'Eventually' ≠ ewentualnie\nEventually = w końcu, ostatecznie\n'He eventually agreed' = w końcu zgodził się\nEwentualnie = possibly / perhaps / or maybe",
+              "'Sympathetic' ≠ sympatyczny\nSympathetic = współczujący, rozumiejący\n'She was very sympathetic' = była bardzo wyrozumiała\nSympatyczny = nice / likeable / pleasant",
+              "'Pathetic' ≠ patetyczny\nPathetic = żałosny, godny pożałowania\n'That excuse is pathetic' = to żałosna wymówka\nPatetyczny = pompous / melodramatic",
+              "'Ordinary' ≠ ordynarny\nOrdinary = zwykły, przeciętny\n'It was an ordinary day' = to był zwykły dzień\nOrdynarny = vulgar / rude / crude",
+              "'Lecture' ≠ lektura\nLecture = wykład na uczelni\n'I have a lecture at 9' = mam wykład o 9\nLektura = reading / book",
+              "'Fabric' ≠ fabryka\nFabric = tkanina, materiał\n'This fabric is soft' = ten materiał jest miękki\nFabryka = factory / plant"
+            ]
+          },
+          {
+            "type": "tip",
+            "icon": "💡",
+            "title": "Jak nie wpaść w pułapkę",
+            "content": "Gdy widzisz angielskie słowo które wygląda jak polskie - zatrzymaj się. Nie zakładaj, że znaczy to samo. Sprawdź raz, zapamiętaj na zawsze.\n\nSzczególnie uważaj na: actually, eventually, sympathetic, pathetic, ordinary, fabric."
+          },
+          {
+            "type": "fun",
+            "icon": "😅",
+            "title": "Klasyczne wpadki",
+            "content": "Polak o nudnym dniu: 'Today was very ordinary.' - co jest poprawne, ale może brzmieć jak narzekanie. Lepiej: 'Today was pretty normal / uneventful.'\n\nPolak o miłym człowieku: 'He's very sympathetic.' - native speaker myśli, że ta osoba właśnie przeżywa trudny czas i wzbudza współczucie.\n\nPolak na spotkaniu: 'We will eventually discuss this.' - brzmi jak 'w końcu to omówimy' czyli z opóźnieniem, a chodziło o 'ewentualnie / być może'."
+          }
+        ],
+        "task": {
+          "type": "text",
+          "prompt": "Przetłumacz te zdania na angielski - uważaj na fałszywych przyjaciół:\n\n1. Tak naprawdę podoba mi się ta piosenka.\n2. W końcu zrozumiał o co chodzi.\n3. To był zupełnie zwykły dzień.\n4. Ona jest bardzo wyrozumiała.\n5. Ten materiał jest bardzo miękki.\n6. Ewentualnie możemy spotkać się w środę.\n\nPo napisaniu sprawdź każde słowo - czy na pewno nie użyłeś fałszywego przyjaciela?"
+        },
+        "videoUrl": "https://www.youtube.com/shorts/-fVhjLwfaNk"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "emoji": "🗣️",
+    "tag": "Moduł 3",
+    "title": "Speaking & Bariera",
+    "subtitle": "Mów mimo że się boisz",
+    "intro": "To jest serce kursu. Tutaj pracujemy nad tym, żebyś w końcu otworzył usta i mówił - mimo strachu, mimo błędów, mimo braku słów. Poznasz konkretne techniki na blokadę, narzędzia do płynnego mówienia i sposób na to, żeby rozmowa po angielsku przestała być stresem.",
+    "lessons": [
+      {
+        "id": "3-1",
+        "title": "Dlaczego się blokujesz - neurologia strachu",
+        "duration": "10 min",
+        "hasVideo": true,
+        "videoTitle": "Wiktor tłumaczy: co się dzieje w głowie, gdy się blokujesz",
+        "intro": "Blokada przy mówieniu to nie problem z językiem. To problem z głową. I da się to naprawić.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "🧠",
+            "title": "Co się dzieje w Twoim mózgu",
+            "content": "Kiedy próbujesz mówić po angielsku, Twój mózg próbuje robić trzy rzeczy naraz: tłumaczyć z polskiego, szukać idealnego słowa, i oceniać zdanie zanim je wypowiesz. To za dużo - system się zawiesza."
+          },
+          {
+            "type": "tip",
+            "icon": "🚀",
+            "title": "Technika: First Word Out",
+            "content": "Gdy czujesz blokadę - powiedz pierwsze słowo, które przyjdzie Ci do głowy. 'So...' 'Well...' 'The thing is...' Kiedy już zaczniesz mówić, reszta przychodzi sama. Cisza przed pierwszym słowem jest najtrudniejsza."
+          },
+          {
+            "type": "comparison",
+            "title": "Wewnętrzny monolog: przed i po",
+            "left": {
+              "label": "❌ Blokada",
+              "items": [
+                "'Jak to się mówi po angielsku?'",
+                "'Czy to zdanie jest gramatyczne?'",
+                "'Co jeśli się pomylę?'",
+                "'Poczekam aż będę gotowy'"
+              ]
+            },
+            "right": {
+              "label": "✅ Flow",
+              "items": [
+                "'So...' i mówię dalej",
+                "Opisuję, jeśli nie znam słowa",
+                "Błąd? Jadę dalej",
+                "Zaczynam teraz"
+              ]
+            }
+          },
+          {
+            "type": "reallife",
+            "icon": "💬",
+            "title": "Starter phrases, które uruchamiają mówienie",
+            "content": "Zapamiętaj kilka i używaj jako 'engine start':\n• 'So basically what I'm trying to say is...'\n• 'The way I see it...'\n• 'It's kind of like...'\n• 'To be honest with you...'\n• 'Here's the thing...'"
+          }
+        ],
+        "task": {
+          "type": "audio",
+          "prompt": "First Word Out 🎙️\n\nNagraj 90 sekund - opisz komuś swój idealny weekend. Mów jakbyś tłumaczył to znajomemu, naturalnie.\n\nZacznij od: 'So, my perfect weekend would be...'\n\nGdy utkniesz:\n• Użyj gap-fillera: 'Well...', 'I mean...'\n• Opisz słowo zamiast je szukać\n• Jedź dalej - nie zatrzymuj nagrania"
+        },
+        "videoUrl": "https://www.youtube.com/shorts/ckIE_6QUct0"
+      },
+      {
+        "id": "3-2",
+        "title": "Gap-fillers - jak zyskać czas i brzmieć naturalnie",
+        "duration": "12 min",
+        "hasVideo": true,
+        "videoTitle": "Wiktor tłumaczy: gap-fillers w akcji, z przykładami z filmów i wywiadów",
+        "intro": "Gap-fillery to Twoja tajna broń. Używają ich wszyscy native speakerzy, to nie słabość, to technika.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "🎯",
+            "title": "Czym są gap-fillers",
+            "content": "Gap-fillery to słowa i zwroty, które wypełniają pauzy w mówieniu. Dają Ci czas na myślenie, sygnalizują rozmówcy, że jeszcze mówisz, i sprawiają, że brzmisz naturalnie - nie jak robot."
+          },
+          {
+            "type": "list",
+            "title": "Podstawowe gap-fillers:",
+            "items": [
+              "'Well...' - zaczynam odpowiedź, zbieram myśli",
+              "'You know...' - zakładam wspólną wiedzę z rozmówcą",
+              "'I mean...' - doprecyzowuję lub poprawiam co powiedziałem",
+              "'Kind of / sort of' - mówię przybliżenie",
+              "'Actually...' - wprowadzam kontrast lub niespodziankę (uwaga: 'actually' NIE znaczy 'aktualnie' - to częsty błąd Polaków!)",
+              "'So basically...' - podsumowuję lub upraszczam",
+              "'Let me think...' / 'How do I put this...' - proszę o sekundę",
+              "'Right, so...' - przechodzę do następnej myśli",
+              "'The thing is...' - zaraz powiem coś ważnego",
+              "'Honestly...' / 'To be fair...' - wyrażam szczerą opinię"
+            ]
+          },
+          {
+            "type": "warning",
+            "icon": "⚠️",
+            "title": "Jak ich NIE używać",
+            "content": "Filler ma Ci dać czas, nie zastępować treść.\n\n'Well, you know, I mean, basically, kind of...' pod rząd brzmi jak brak pewności siebie. Używaj jednego fillera na przerwę, nie pięciu."
+          },
+          {
+            "type": "quote",
+            "text": "'Well, you know, the thing is... language is messy. And that's kind of the point.'",
+            "author": "- jak brzmi naturalny angielski"
+          }
+        ],
+        "task": {
+          "type": "audio",
+          "prompt": "Gap-filler challenge 🎙️\n\nOpowiedz o ostatnim filmie lub serialu, który oglądałeś. Mów przez minimum 2 minuty.\n\nCel: użyj naturalnie minimum 5 różnych gap-fillerów z listy.\n\nPo nagraniu napisz:\n- Które fillery użyłeś?\n- Który przychodził naturalnie, a który brzmiał sztucznie?\n- Co było trudne?"
+        },
+        "videoUrl": "https://www.youtube.com/watch?v=ebzvI8pMbnA&list=PLaMzO3bdVRF4J6qOAeEOpOYiHkzajwwai&index=13"
+      },
+      {
+        "id": "3-2b",
+        "title": "Jak zadawać pytania naturalnie - błędy których nie znasz",
+        "duration": "8 min",
+        "hasVideo": true,
+        "videoTitle": "Wiktor tłumaczy: pytania po angielsku - gdzie Polacy mylą się najbardziej",
+        "intro": "Zadawanie pytań po angielsku wygląda prosto. I właśnie dlatego tak wiele osób robi tu błędy, których nawet nie słyszy.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "❓",
+            "title": "Największy błąd: pytania bez inwersji",
+            "content": "Polacy bardzo często zadają pytania bez zamiany kolejności słów:\n\n❌ 'You are coming tomorrow?'\n✅ 'Are you coming tomorrow?'\n\n❌ 'He likes pizza?'\n✅ 'Does he like pizza?'\n\nPytanie bez inwersji to nie błąd który uniemożliwia komunikację - ale natychmiast zdradza, że uczysz się angielskiego. Native speakerzy robią inwersję zawsze."
+          },
+          {
+            "type": "list",
+            "title": "Jak budować pytania poprawnie:",
+            "items": [
+              "Z 'be': zamień podmiot z czasownikiem\n'She is tired' → 'Is she tired?'\n'They were late' → 'Were they late?'",
+              "Z innymi czasownikami: dodaj do/does/did\n'He works here' → 'Does he work here?'\n'You went there' → 'Did you go there?'\nUwaga: po do/does/did zawsze bezokolicznik bez 's'!",
+              "Z question words: question word + inversja\n'Where are you going?' ✅\n'Where you are going?' ❌\n'What does she want?' ✅\n'What she wants?' ❌",
+              "Pytania pośrednie - tu NIE ma inwersji:\n'Can you tell me where the station is?' ✅ (NIE: 'where is the station')\n'Do you know what time it is?' ✅ (NIE: 'what time is it')"
+            ]
+          },
+          {
+            "type": "reallife",
+            "icon": "💬",
+            "title": "Pytania w rozmowie - naturalne skróty",
+            "content": "W szybkiej rozmowie pytania często są skrócone:\n\n'You coming tonight?' (zamiast 'Are you coming tonight?') - bardzo nieformalne, OK między przyjaciółmi\n'Coffee?' (zamiast 'Would you like some coffee?') - przy kasie, w domu\n'How come?' (zamiast 'Why?') - bardziej miękkie i naturalne\n'Since when?' (zamiast 'Since when has that been the case?')"
+          },
+          {
+            "type": "tip",
+            "icon": "🎯",
+            "title": "Pytania miękkie - jak pytać bez presji",
+            "content": "Bezpośrednie 'Why?' może brzmieć ostro. Alternatywy:\n• 'How come?' - bardziej miękkie\n• 'What made you decide to...?' - interesuje Cię historia\n• 'Can I ask why...?' - bardzo uprzejme\n• 'Out of curiosity...' - sygnalizujesz, że pytanie jest niewinne"
+          },
+          {
+            "type": "fun",
+            "icon": "🤔",
+            "title": "Pytania pośrednie - klasyczna pułapka",
+            "content": "To jest jedna z najtrudniejszych rzeczy dla Polaków.\n\nBezpośrednie: 'Where is the toilet?' - OK, ale trochę bezpośrednie\nPośrednie: 'Could you tell me where the toilet is?' ✅\n\nUwaga: w pytaniu pośrednim NIE odwracasz kolejności!\n'Do you know where is the toilet?' ❌\n'Do you know where the toilet is?' ✅\n\nSzyk jak w zdaniu twierdzącym - to główna pułapka.\n\nOsobna sprawa: 'You are coming, right?' - to nie błąd, to celowe. Kiedy mówisz z tą intonacją i dodajesz 'right?' szukasz potwierdzenia, nie zadajesz pytania od zera. To naturalne i poprawne."
+          }
+        ],
+        "task": {
+          "type": "text",
+          "prompt": "Zamień te zdania w poprawne pytania po angielsku:\n\n1. She works here. → (zapytaj czy ona tu pracuje)\n2. They went to London. → (zapytaj gdzie pojechali)\n3. He likes this restaurant. → (zapytaj czy mu się podoba)\n4. The meeting starts at 9. → (zapytaj o której zaczyna się spotkanie - pytanie pośrednie: 'Could you tell me...')\n5. You are coming. → (zapytaj nieformalne, skrócone)\n\nBonus: napisz 3 naturalne pytania, które mógłbyś zadać komuś kogo właśnie poznałeś na imprezie."
+        },
+        "videoUrl": "https://www.youtube.com/shorts/-rvg7K77R18"
+      },
+      {
+        "id": "3-3",
+        "title": "Opisuj zamiast szukać słowa - circumlocution",
+        "duration": "10 min",
+        "hasVideo": true,
+        "videoTitle": "Wiktor tłumaczy: circumlocution na żywo, jak opisywać słowa, których nie znasz",
+        "intro": "Nie znasz słowa? Nie panikuj. Opisz to czego szukasz. To profesjonalna technika, nie ściema. Połącz to z gap-fillerami z poprzedniej lekcji i możesz mówić bez zatrzymywania się.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "🔄",
+            "title": "Czym jest circumlocution",
+            "content": "Circumlocution to opisywanie czegoś bez używania jego nazwy. Native speakerzy robią to cały czas, nie dlatego, że nie znają słowa, ale bo to naturalna część mówienia."
+          },
+          {
+            "type": "list",
+            "title": "Wzory, które zawsze działają:",
+            "items": [
+              "'It's a thing you use to...', opis przez funkcję",
+              "'It's when someone...', opis przez sytuację",
+              "'It's kind of like X but...', porównanie",
+              "'The opposite of X', przez kontrast",
+              "'You know that feeling when...', przez emocję",
+              "'It's that stuff/thing that...', nieformalnie"
+            ]
+          },
+          {
+            "type": "reallife",
+            "icon": "💬",
+            "title": "Przykłady w akcji",
+            "content": "Nie znasz 'corkscrew'? → 'It's a tool you use to open wine bottles, you twist it into the cork'\n\nNie wiesz jak powiedzieć 'paragon'? → 'It's that small paper receipt you get after buying something'\n\nNie znasz 'prokrastynacja'? → 'It's when you keep putting things off even though you know you should do them now'"
+          },
+          {
+            "type": "tip",
+            "icon": "💡",
+            "title": "Złota zasada",
+            "content": "Jeśli możesz to opisać po polsku, możesz to opisać po angielsku. Masz wszystkie potrzebne słowa. Musisz je tylko połączyć inaczej."
+          }
+        ],
+        "task": {
+          "type": "text",
+          "prompt": "Opisz po angielsku bez używania nazwy:\n\n1. Lodówka\n2. Korek drogowy\n3. Prokrastynacja\n4. Kac\n5. Ziewnięcie\n6. Przelew bankowy\n7. Budzik\n8. Pilot do telewizora\n\nPamiętaj o wzorach: 'It's a thing you use to...' / 'It's when you...' / 'It's kind of like...'"
+        },
+        "videoUrl": "https://www.youtube.com/shorts/bg6jBpZAuGM"
+      },
+      {
+        "id": "3-4",
+        "title": "Wyrażanie opinii, bez bycia kategorycznym",
+        "duration": "8 min",
+        "hasVideo": false,
+        "intro": "Jak mówić co myślisz po angielsku, naturalnie, bez brzmienia jak robot, który recytuje fakty.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "💬",
+            "title": "Problem z 'I think'",
+            "content": "Polska szkoła nauczyła Cię jednego zwrotu: 'I think'. To działa, ale jest bardzo ogólne. Native speakerzy mają bogaty arsenał zwrotów do wyrażania różnych poziomów pewności i różnych typów opinii."
+          },
+          {
+            "type": "list",
+            "title": "Zwroty do wyrażania opinii, od pewnych do niepewnych:",
+            "items": [
+              "Pewna opinia:\n'I strongly believe that...' / 'I'm convinced that...' / 'There's no doubt that...'",
+              "Zwykła opinia:\n'I think...' / 'I feel like...' / 'In my opinion...' / 'The way I see it...'",
+              "Ostrożna opinia:\n'I'd say...' / 'It seems to me that...' / 'I might be wrong, but...'",
+              "Niepewna opinia:\n'I'm not sure, but...' / 'I could be mistaken, but...' / 'I have a feeling that...'",
+              "Opinia innych:\n'Some people argue that...' / 'A lot of people think...' / 'There's a view that...'"
+            ]
+          },
+          {
+            "type": "tip",
+            "icon": "🎯",
+            "title": "Jak nie brzmieć agresywnie przy niezgodzie",
+            "content": "Zamiast 'You're wrong' (brzmi ostro) użyj:\n• 'I see your point, but...'\n• 'That's an interesting take, though I think...'\n• 'I'm not sure I agree, here's why...'\n• 'Fair point, but have you considered...'\n\nAnglosasi cenią pośrednie wyrażanie sprzeciwu."
+          },
+          {
+            "type": "fun",
+            "icon": "🗣️",
+            "title": "Opinia z klasą",
+            "content": "Zamiast: 'This movie is bad.'\nSpróbuj: 'I have to say, I wasn't really feeling this one. The plot felt a bit all over the place to me.'\n\nTa sama treść, ale brzmi jak ktoś kto myśli, a nie wydaje wyroki."
+          }
+        ],
+        "task": {
+          "type": "audio",
+          "prompt": "Hot take challenge 🎙️\n\nWybierz jeden temat i mów przez 2 minuty wyrażając swoje zdanie:\n• Social media: dobro czy zło dla relacji między ludźmi?\n• Czy warto uczyć się języków obcych skoro jest AI?\n• Praca w domu czy w biurze - co wolisz i dlaczego?\n• Czy filmy są lepsze niż książki?\n\nZacznij od: 'So, I personally think that...' i używaj minimum 4 różnych zwrotów z listy."
+        }
+      },
+      {
+        "id": "3-5",
+        "title": "Small talk, sztuka mówienia o niczym",
+        "duration": "9 min",
+        "hasVideo": true,
+        "videoTitle": "Wiktor tłumaczy: small talk, jak go robić i dlaczego jest ważniejszy niż myślisz",
+        "intro": "Small talk to nie marnowanie czasu. To budowanie relacji. I da się go opanować jak każdą inną umiejętność.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "🤝",
+            "title": "Dlaczego small talk jest ważny",
+            "content": "W kulturze anglosaskiej small talk to nie opcja, to część normalnego funkcjonowania. Kiedy wchodzisz do windy z kolegą z pracy, czekasz przy ekspresie do kawy albo mijasz kogoś na korytarzu, oczekuje się że powiesz coś. Cisza bywa odczytywana jako dystans lub brak zainteresowania. Rozmowa o pogodzie czy weekendzie to nie marnowanie czasu - to budowanie relacji."
+          },
+          {
+            "type": "list",
+            "title": "Klasyczne tematy small talk:",
+            "items": [
+              "Pogoda: 'Can you believe this weather?' / 'Finally warming up!'",
+              "Weekend: 'How was your weekend?' / 'Any fun plans for the weekend?'",
+              "Praca: 'Busy week?' / 'How's work been going?'",
+              "Pop kultura: 'Have you seen [serial]?' / 'I've been watching...'",
+              "Jedzenie: 'Have you been to [restauracja]?' / 'I've been obsessed with this place'",
+              "Podróże: 'Going anywhere fun this summer?' / 'I just got back from...'"
+            ]
+          },
+          {
+            "type": "tip",
+            "icon": "💡",
+            "title": "Technika FORD",
+            "content": "Gdy nie wiesz o czym rozmawiać, użyj FORD:\n• F - Family (rodzina): 'Do you have kids?' / 'How's your family?'\n• O - Occupation (praca): 'What do you do?' / 'How long have you been doing that?'\n• R - Recreation (hobby): 'What do you do for fun?' / 'Into any sports?'\n• D - Dreams (marzenia): 'Have you traveled much?' / 'Anywhere on your bucket list?'"
+          },
+          {
+            "type": "warning",
+            "icon": "🚫",
+            "title": "Tematy, których unikasz w small talk",
+            "content": "W small talk z nieznajomymi unikaj:\n• Polityki (chyba że znasz poglądy rozmówcy)\n• Religii\n• Pieniędzy (pytanie o zarobki w USA to spora gafa towarzyska)\n• Problemów zdrowotnych\n• Narzekania (małe narzekanie na pogodę OK, ale nie za dużo)\n\nZłota zasada: tematy, które wywołują silne emocje, na później, gdy kogoś znasz."
+          }
+        ],
+        "task": {
+          "type": "audio",
+          "prompt": "Small talk practice 🎙️\n\nNagraj 2-minutową symulację small talk. Wcielasz się w dwie osoby: Ciebie i współpracownika którego spotykasz przy ekspresie do kawy.\n\nRozmowa powinna naturalnie przejść przez minimum 3 tematy.\nZacznij od: 'Hey! Mondays, right? How was your weekend?'"
+        },
+        "videoUrl": "https://www.youtube.com/shorts/_jrI4lDBZEo"
+      },
+      {
+        "id": "3-6",
+        "title": "Question tags, czy nie? innit? right?",
+        "duration": "7 min",
+        "hasVideo": false,
+        "intro": "Question tags to jeden z elementów, które natychmiastowo sprawiają, że brzmisz jak native speakier. I nie są tak trudne jak myślisz.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "❓",
+            "title": "Czym są question tags",
+            "content": "Question tags to krótkie pytania dodawane na końcu zdania twierdzącego: 'It's cold today, isn't it?' / 'You like pizza, don't you?' / 'She's not coming, is she?'\n\nSłużą do szukania potwierdzenia, nawiązywania kontaktu lub wyrażania zaskoczenia."
+          },
+          {
+            "type": "list",
+            "title": "Zasady tworzenia question tags:",
+            "items": [
+              "Zdanie twierdzące → tag przeczący:\n'It's nice outside, isn't it?'\n'You work here, don't you?'",
+              "Zdanie przeczące → tag twierdzący:\n'It's not great, is it?'\n'She doesn't know, does she?'",
+              "Z 'can/will/have':\n'You can swim, can't you?'\n'They'll come, won't they?'\n'You've met her, haven't you?'",
+              "Specjalny przypadek 'am':\n'I'm late, aren't I?' (NIE: 'amn't I?')"
+            ]
+          },
+          {
+            "type": "fun",
+            "icon": "🇬🇧",
+            "title": "British shortcut: 'Innit'",
+            "content": "'Innit' (= isn't it) to uniwersalny British question tag, który zastępuje wszystkie inne w nieformalnej mowie:\n\n'That's mad, innit?'\n'You were there, innit?'\n'Proper good, innit?'\n\nUżywany głównie przez młodych Brytyjczyków, nie musisz tego używać, ale musisz rozumieć."
+          },
+          {
+            "type": "tip",
+            "icon": "🎯",
+            "title": "Prosty sposób na zawsze",
+            "content": "Jeśli zasady Cię mylą, w nieformalnej rozmowie możesz użyć 'right?' jako universal question tag:\n\n'It's been a long week, right?'\n'That was really good, right?'\n'We're meeting at 6, right?'\n\n'Right?' działa prawie wszędzie i brzmi naturalnie."
+          }
+        ],
+        "task": {
+          "type": "text",
+          "prompt": "Dodaj odpowiedni question tag do każdego zdania:\n\n1. 'The weather is terrible today, ___?'\n2. 'You haven't been to London, ___?'\n3. 'She can speak three languages, ___?'\n4. 'They won't be late, ___?'\n5. 'I'm the last one here, ___?'\n6. 'You didn't enjoy the film, ___?'\n7. 'We've met before, ___?'\n8. 'It wasn't that bad, ___?'\n\nBonus: napisz 3 własne zdania z question tags."
+        }
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "emoji": "👂",
+    "tag": "Moduł 4",
+    "title": "Listening",
+    "subtitle": "Słuchaj jak native",
+    "intro": "Mówienie to połowa rozmowy. Druga połowa to rozumienie. W tym module dowiesz się, dlaczego native speakerzy brzmią tak inaczej niż lektor z podręcznika - i jak trenować słuch na prawdziwym angielskim, zamiast na sztucznych nagraniach.",
+    "lessons": [
+      {
+        "id": "4-1",
+        "title": "Dlaczego nie rozumiesz native speakerów",
+        "duration": "8 min",
+        "hasVideo": true,
+        "videoTitle": "Wiktor tłumaczy: connected speech, dlaczego native speakerzy brzmią jak jeden dźwięk",
+        "intro": "Uczysz się z nagrań gdzie lektor mówi wolno i wyraźnie. Potem słyszysz native speakera i nic nie rozumiesz. Oto dlaczego.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "🎵",
+            "title": "Connected speech",
+            "content": "W naturalnym, szybkim angielskim słowa zlewają się ze sobą. 'Have you eaten yet?' brzmi jak 'Havyuh eaten yet?' / 'Did you eat?' jak 'Dijeet?'. 'I'm going to' staje się 'I'm gonna'. 'Want to' to 'wanna'. To nie slang, to normalny, szybki angielski."
+          },
+          {
+            "type": "list",
+            "title": "Najczęstsze redukcje w connected speech:",
+            "items": [
+              "going to → gonna",
+              "want to → wanna",
+              "have to → gotta",
+              "don't know → dunno",
+              "let me → lemme",
+              "kind of → kinda",
+              "out of → outta",
+              "did you → didja",
+              "what do you → whaddya",
+              "give me → gimme"
+            ]
+          },
+          {
+            "type": "tip",
+            "icon": "🎯",
+            "title": "Słuchaj przez kontekst",
+            "content": "Nie musisz rozumieć każdego słowa. 70% to wystarczy do zrozumienia sensu. Trenuj rozumienie przez kontekst: co się dzieje w scenie? Jaki jest temat? Jakie emocje?"
+          },
+          {
+            "type": "list",
+            "title": "Najlepszy content do treningu słuchu:",
+            "items": [
+              "YouTube vlogi, ludzie mówią naturalnie, nie jak aktorzy",
+              "Podcasty: Stuff You Should Know, Freakonomics, SmartLess",
+              "Netflix z angielskimi napisami (nie polskimi!)",
+              "TED Talks, wyraźna wymowa, ciekawe tematy",
+              "Friends/The Office/Seinfeld, naturalne tempo, codzienne sytuacje"
+            ]
+          }
+        ],
+        "task": {
+          "type": "text",
+          "prompt": "Active listening challenge:\n\nObejrzyj 5 minut anglojęzycznego vlogera na YouTube (bez napisów).\n\nNapisz:\n1. O czym był film? (nawet ogólnie)\n2. Jakie słowa udało Ci się wychwycić?\n3. Co rozumiałeś procentowo?\n4. Czy usłyszałeś jakieś redukcje z listy?"
+        },
+        "videoUrl": "https://www.youtube.com/shorts/4Sa5nAzj05I"
+      },
+      {
+        "id": "4-2",
+        "title": "Jak oglądać seriale, żeby się uczyć",
+        "duration": "9 min",
+        "hasVideo": true,
+        "videoTitle": "Wiktor tłumaczy: metoda aktywnego oglądania, jak wycisnąć maksimum z Netflixa",
+        "intro": "Oglądanie seriali po angielsku może być jedną z najskuteczniejszych metod nauki. Ale tylko, jeśli robisz to aktywnie.",
+        "sections": [
+          {
+            "type": "comparison",
+            "title": "Pasywne vs aktywne oglądanie",
+            "left": {
+              "label": "😴 Pasywne (mało skuteczne)",
+              "items": [
+                "Polskie napisy",
+                "Oglądasz dla fabuły, nie języka",
+                "Nie zatrzymujesz, gdy nie rozumiesz",
+                "Zero powtarzania scen"
+              ]
+            },
+            "right": {
+              "label": "⚡ Aktywne (skuteczne)",
+              "items": [
+                "Angielskie napisy lub brak napisów",
+                "Zatrzymujesz się na ciekawych zwrotach",
+                "Powtarzasz sceny, których nie rozumiesz",
+                "Notujesz nowe wyrażenia"
+              ]
+            }
+          },
+          {
+            "type": "tip",
+            "icon": "📺",
+            "title": "Metoda 3-poziomowa",
+            "content": "Poziom 1 (początek): angielskie napisy zawsze włączone\nPoziom 2 (kilka tygodni): angielskie napisy, wyłącz, gdy czujesz, że rozumiesz\nPoziom 3 (cel): bez napisów, napisy tylko, gdy zupełnie nie rozumiesz\n\nNie skacz od razu do poziomu 3, to frustrujące i nieefektywne."
+          },
+          {
+            "type": "list",
+            "title": "Najlepsze seriale do nauki angielskiego:",
+            "items": [
+              "Friends, wolniejsze tempo, jasna wymowa, codzienne sytuacje (idealny start)",
+              "The Office (US), naturalne tempo biurowych rozmów, dużo irony",
+              "Suits, biznesowy angielski, szybkie tempo, dobry dla zaawansowanych",
+              "Seinfeld, klasyczny American English, comedy timing",
+              "Succession, zaawansowany słownik, brytyjski vs amerykański mix",
+              "Ted Lasso, mieszanka brytyjskiego i amerykańskiego, idealne zwroty"
+            ]
+          },
+          {
+            "type": "reallife",
+            "icon": "📝",
+            "title": "Technika 'scene replay'",
+            "content": "Gdy usłyszysz ciekawy zwrot:\n1. Cofnij 10 sekund\n2. Posłuchaj jeszcze raz\n3. Powiedz to zdanie na głos (shadowing)\n4. Zapisz w notatniku\n5. Użyj tego zwrotu w ciągu 24h, w myślach lub w zadaniu"
+          }
+        ],
+        "task": {
+          "type": "text",
+          "prompt": "Obejrzyj jeden odcinek dowolnego anglojęzycznego serialu z angielskimi napisami.\n\nNapisz:\n1. Tytuł serialu i odcinka\n2. 5 nowych zwrotów/słów, które zauważyłeś\n3. 1 scena, którą obejrzałeś kilka razy, co w niej było trudne?\n4. Ogólne rozumienie: ile % rozumiałeś bez czytania napisów?"
+        },
+        "videoUrl": "https://www.youtube.com/shorts/s-Hs1i_cuLo"
+      },
+      {
+        "id": "4-3",
+        "title": "Akcent brytyjski vs amerykański, co musisz wiedzieć",
+        "duration": "8 min",
+        "hasVideo": true,
+        "videoTitle": "Wiktor tłumaczy: RP vs General American, kluczowe różnice i co wybrać",
+        "intro": "Dwa główne akcenty angielskiego różnią się bardziej niż myślisz. Musisz rozumieć oba.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "🌍",
+            "title": "Dlaczego to ważne",
+            "content": "Jeśli uczysz się tylko jednego akcentu, możesz mieć problem ze zrozumieniem drugiego. British English i American English różnią się nie tylko wymową, ale też słownictwem i niektórymi strukturami gramatycznymi."
+          },
+          {
+            "type": "list",
+            "title": "Kluczowe różnice wymowy:",
+            "items": [
+              "Litera R:\nAmerykańskie 'R', wyraźne, rotyczne (car, far)\nBrytyjskie 'R', często 'połknięte' (cah, fah)",
+              "Samogłoska 'a' w środkowych słowach:\nAmerykańskie: 'bath, path, can't', krótkie 'æ'\nBrytyjskie: 'baath, paath, caahn't', długie 'ɑː'",
+              "Litera T w środku słowa:\nAmerykańskie: 'water, butter' - T staje się D (flap T)\nBrytyjskie: wyraźne T",
+              "Samogłoska 'o':\nAmerykańskie: 'hot, lot, stop' - otwarte 'ɑ', usta szeroko\nBrytyjskie: 'hot, lot, stop' - zaokrąglone 'ɒ', usta w lekki ryjek\nTo jeden z najwyraźniejszych akcentowych markerów"
+            ]
+          },
+          {
+            "type": "list",
+            "title": "Różnice słownikowe, które musisz znać:",
+            "items": [
+              "Samochód: car (oba) | bagażnik: trunk (US) vs boot (UK)",
+              "Mieszkanie: apartment (US) vs flat (UK)",
+              "Winda: elevator (US) vs lift (UK)",
+              "Toaleta: bathroom/restroom (US) vs toilet/loo (UK)",
+              "Frytki: french fries (US) vs chips (UK)",
+              "Chipsy: chips (US) vs crisps (UK)",
+              "Cellphone (US) vs mobile (UK)",
+              "Soccer (US) vs football (UK)"
+            ]
+          },
+          {
+            "type": "tip",
+            "icon": "🎯",
+            "title": "Którym mówić?",
+            "content": "Wybierz jeden i trzymaj go konsekwentnie.\n\nAmerykański: łatwiejszy do znalezienia contentu, bardziej globalny w biznesie, łatwiejsza wymowa R\n\nBrytyjski: prestiżowy, jeśli planujesz do UK/Australii/Indii\n\nTen kurs skupia się na American English, ale rozumiesz oba."
+          }
+        ],
+        "task": {
+          "type": "text",
+          "prompt": "Posłuchaj tego samego zdania wymawianego przez Amerykanina i Brytyjczyka (znajdź na YouTube: 'British vs American accent comparison').\n\nNapisz:\n1. Które różnice usłyszałeś?\n2. Które słowa brzmiały inaczej?\n3. Który akcent łatwiej Ci zrozumieć i dlaczego?"
+        },
+        "videoUrl": "https://www.youtube.com/watch?v=sHoA1_0rsRA&list=PLaMzO3bdVRF4J6qOAeEOpOYiHkzajwwai&index=23"
+      },
+      {
+        "id": "4-4",
+        "title": "Podcasty jako narzędzie nauki, przewodnik",
+        "duration": "7 min",
+        "hasVideo": false,
+        "intro": "Podcasty to jedno z najlepszych narzędzi do treningu słuchu. Ale tylko, jeśli wiesz, które słuchać i jak.",
+        "sections": [
+          {
+            "type": "list",
+            "title": "Podcasty według poziomu, zaawansowanie B1-B2:",
+            "items": [
+              "Łatwiejsze (wyraźna wymowa, wolniejsze tempo):\n• VOA Learning English, specjalnie dla uczących się\n• 6 Minute English (BBC), krótkie, z transkryptem\n• English Learning for Curious Minds",
+              "Średnie (naturalne tempo, ciekawe tematy):\n• How I Built This, biznesy i ich założyciele\n• Stuff You Should Know, ciekawostki ze świata\n• The Daily (NYT), bieżące sprawy, wolne tempo",
+              "Trudniejsze (szybkie, naturalne):\n• SmartLess, rozmowy celebrytów, dużo humoru\n• Freakonomics, ekonomia w codziennym życiu\n• Lex Fridman Podcast, tech i nauka"
+            ]
+          },
+          {
+            "type": "tip",
+            "icon": "🎯",
+            "title": "Metoda aktywnego słuchania podcastu",
+            "content": "1. Słuchaj 5 minut bez zatrzymywania\n2. Zatrzymaj, co zrozumiałeś? Streść w głowie\n3. Słuchaj jeszcze raz ten sam fragment\n4. Znajdź transkrypt (jeśli jest) i sprawdź co pominąłeś\n5. Powtórz słowa/zwroty, których nie znałeś\n\nNie musisz robić tego z każdym podcastem, wybierz jeden tygodniowo do głębokiego słuchania."
+          },
+          {
+            "type": "reallife",
+            "icon": "🚗",
+            "title": "Kiedy słuchać",
+            "content": "Najlepsze momenty na podcasty:\n• Droga do pracy / szkoły\n• Gotowanie\n• Ćwiczenia (jogging, siłownia)\n• Sprzątanie\n• Przed snem (łatwiejsze, spokojniejsze)\n\nPodcast jako 'background noise' gdy pracujesz = marnowanie czasu. Musi być aktywne słuchanie."
+          }
+        ],
+        "task": {
+          "type": "text",
+          "prompt": "Posłuchaj 10 minut dowolnego podcastu z listy (wybierz swój poziom).\n\nNapisz:\n1. Który podcast wybrałeś?\n2. O czym był ten fragment?\n3. 3 nowe słowa lub zwroty, które wyłapałeś\n4. Co było najtrudniejsze do zrozumienia?"
+        }
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "emoji": "📖",
+    "tag": "Moduł 5",
+    "title": "Gramatyka",
+    "subtitle": "Tylko to co naprawdę potrzebne",
+    "lessons": [
+      {
+        "id": "5-1",
+        "title": "80% gramatyki której nie potrzebujesz",
+        "duration": "7 min",
+        "hasVideo": false,
+        "intro": "Zasada Pareto działa w gramatyce: 20% reguł pokrywa 80% codziennych rozmów.",
+        "sections": [
+          {
+            "type": "comparison",
+            "title": "Gramatyka: ważna vs nieważna do rozmowy",
+            "left": {
+              "label": "⏭️ Możesz pominąć",
+              "items": [
+                "Past Perfect Continuous",
+                "Future Perfect",
+                "Subjunctive mood",
+                "Passive voice (zaawansowane)",
+                "Reported speech (zaawansowane)",
+                "Inverted conditionals"
+              ]
+            },
+            "right": {
+              "label": "✅ MUSISZ znać",
+              "items": [
+                "Present Simple & Continuous",
+                "Past Simple",
+                "Present Perfect",
+                "Will & Going to",
+                "Modal verbs",
+                "Basic conditionals"
+              ]
+            }
+          },
+          {
+            "type": "tip",
+            "icon": "🎯",
+            "title": "Jak myśleć o czasach",
+            "content": "Nie myśl o nazwie czasu, myśl o znaczeniu:\n\n• Co robisz teraz? → Present Continuous\n• Co robisz zazwyczaj? → Present Simple\n• Co zrobiłeś? → Past Simple (z datą/czasem)\n• Jakie masz doświadczenia? → Present Perfect\n• Co planujesz? → Going to\n• Co zdecydujesz teraz? → Will"
+          },
+          {
+            "type": "insight",
+            "icon": "💡",
+            "title": "Największy ból Polaków: Past Simple vs Present Perfect",
+            "content": "'I saw this movie' vs 'I have seen this movie'\n\nPast Simple = konkretny moment w przeszłości (kiedy?)\n'I saw it last week' / 'I saw it on Friday'\n\nPresent Perfect = doświadczenie, bez konkretnego czasu\n'I have seen it before' / 'Have you ever seen it?'"
+          }
+        ],
+        "task": {
+          "type": "text",
+          "prompt": "Write 8 sentences about YOUR life, at least 1 for each tense:\n• Present Simple (habit)\n• Present Continuous (right now)\n• Past Simple (last week)\n• Present Perfect (experience, no time)\n• Going to (plan)\n• Will (decision right now)\n• A modal verb (can/should/might)\n• A basic conditional (If I... I will...)"
+        }
+      },
+      {
+        "id": "5-2",
+        "title": "Past Simple vs Present Perfect, raz na zawsze",
+        "duration": "10 min",
+        "hasVideo": true,
+        "videoTitle": "Wiktor tłumaczy: past simple vs present perfect, najczęstszy błąd Polaków",
+        "intro": "To jest jeden z najtrudniejszych konceptów dla Polaków, bo w polskim nie ma tego rozróżnienia. Rozłożymy to na czynniki pierwsze.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "🔑",
+            "title": "Zasada nr 1: czas vs doświadczenie",
+            "content": "Past Simple = wydarzyło się w konkretnym, zamkniętym momencie w przeszłości\nPresent Perfect = łączy przeszłość z teraźniejszością, doświadczenie, wynik, niedawna przeszłość"
+          },
+          {
+            "type": "list",
+            "title": "Kiedy Past Simple:",
+            "items": [
+              "Jest konkretny czas: 'I saw him yesterday / in 2020 / last week'",
+              "Pytasz kiedy: 'When did you go?' → odpowiedź wymaga Past Simple",
+              "Akcja jest zakończona i należy do zamkniętego okresu:\n'Shakespeare wrote Hamlet' - jego życie to zamknięty rozdział\n'I lived in Warsaw for 3 years' - już tam nie mieszkam",
+              "Seria wydarzeń w historii: 'I woke up, made coffee, and left'"
+            ]
+          },
+          {
+            "type": "list",
+            "title": "Kiedy Present Perfect:",
+            "items": [
+              "Doświadczenie życiowe (ever/never): 'Have you ever been to Japan?'",
+              "Z just/recently/already/yet - sygnały Present Perfect:\n'I've just eaten' | 'I've recently started' | 'Have you eaten yet?'\n(w American English 'Did you eat yet?' też funkcjonuje, ale PP jest tu bardziej precyzyjne)",
+              "Wynik trwający do teraz - rzadziej używane w mówieniu, ale warto rozumieć:\n'I've lost my keys' - zgubiłem i nadal nie mam\n(w praktyce rozmowy częściej usłyszysz: 'I lost my keys' i to też jest OK)",
+              "Okres trwający do teraz (for/since): 'I've lived here for 5 years / since 2019'"
+            ]
+          },
+          {
+            "type": "comparison",
+            "title": "Przykłady, które wszystko wyjaśniają",
+            "left": {
+              "label": "Past Simple",
+              "items": [
+                "'I lived in Warsaw for 3 years' (już nie mieszkam)",
+                "'Did you eat?' (pytam o konkretny moment)",
+                "'She worked there in 2018'",
+                "'I saw that movie on Friday'"
+              ]
+            },
+            "right": {
+              "label": "Present Perfect",
+              "items": [
+                "'I've lived here for 3 years' (nadal mieszkam)",
+                "'Have you eaten?' (pytam o doświadczenie do teraz)",
+                "'She has worked there for 2 years' (nadal pracuje)",
+                "'I've seen that movie before'"
+              ]
+            }
+          },
+          {
+            "type": "fun",
+            "icon": "🤔",
+            "title": "Test: które jest poprawne?",
+            "content": "A: 'Did you ever try sushi?' vs 'Have you ever tried sushi?'\nB: 'I already finished' vs 'I've already finished'\nC: 'She just called' vs 'She's just called'\n\nOdpowiedzi: A: have you ever tried (doświadczenie - zawsze Present Perfect z ever) | B: I've already finished (wynik widoczny teraz) | C: She just called (naturalnie po amerykańsku) / She's just called (brytyjski - w American English brzmi sztywno)"
+          }
+        ],
+        "task": {
+          "type": "text",
+          "prompt": "Wybierz Past Simple lub Present Perfect i wyjaśnij dlaczego:\n\n1. 'I ___ (see/have seen) this film three times.'\n2. 'When ___ you ___ (go/have gone) to London?'\n3. 'She ___ (work/has worked) here for ten years.'\n4. 'I ___ (lose/have lost) my wallet. I can't find it anywhere.'\n5. 'We ___ (meet/have met) in 2015.'\n6. '___ you ever ___ (eat/have eaten) frog legs?'\n7. 'I ___ (not finish/haven't finished) yet.'\n8. 'He ___ (be/has been) to Japan twice.'"
+        },
+        "videoUrl": "https://www.youtube.com/watch?v=5Kd8U86D4Q8&list=PLaMzO3bdVRF4J6qOAeEOpOYiHkzajwwai&index=8"
+      },
+      {
+        "id": "5-3",
+        "title": "Conditionals - tylko 2, które musisz znać",
+        "duration": "9 min",
+        "hasVideo": true,
+        "intro": "Szkoła uczyła Cię czterech typów conditionals. W prawdziwej rozmowie używasz dwóch. Skupiamy się na tych dwóch.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "💡",
+            "title": "Dwa conditionals, które wystarczą",
+            "content": "Zero conditional (fakty i prawa natury) - prosty i warto znać:\n'If you heat water to 100°C, it boils.' / 'If I'm tired, I go to bed early.'\nStruktura: IF + Present Simple, Present Simple\n\nFirst conditional (realne możliwości) - MUSISZ\nSecond conditional (nierealne/marzenia) - MUSISZ\nThird conditional (przeszłość, której nie możesz zmienić) - przydatny, ale nie krytyczny"
+          },
+          {
+            "type": "list",
+            "title": "First Conditional - realne możliwości:",
+            "items": [
+              "Struktura: IF + Present Simple, WILL + infinitive",
+              "'If it rains tomorrow, I will stay home.'",
+              "'If you study hard, you will pass the exam.'",
+              "'I will call you if I have time.'",
+              "Mówi o realnych możliwościach w przyszłości, to może się wydarzyć"
+            ]
+          },
+          {
+            "type": "list",
+            "title": "Second Conditional - nierealne/marzenia:",
+            "items": [
+              "Struktura: IF + Past Simple, WOULD + infinitive",
+              "'If I had more money, I would travel the world.'",
+              "'If I were you, I would talk to her.' (were, nie was, dla wszystkich osób)",
+              "'What would you do if you won the lottery?'",
+              "Mówi o nierealnych/hipotetycznych sytuacjach, to NIE dzieje się teraz"
+            ]
+          },
+          {
+            "type": "tip",
+            "icon": "🎯",
+            "title": "Jak je odróżnić",
+            "content": "First: 'If it rains...', może padać. Realna możliwość.\nSecond: 'If it rained...', nie pada, ale gdyby... Hipoteza.\n\nProsty test: czy to mogłoby się naprawdę wydarzyć?\nTak → First conditional\nNie (marzenie/hipoteza) → Second conditional"
+          },
+          {
+            "type": "insight",
+            "icon": "💡",
+            "title": "When zamiast if - częsty przypadek który umyka",
+            "content": "Polacy uczą się 'if' jako jedynego wstępu do conditional. Tymczasem 'when' pojawia się równie często i ma inne znaczenie.\n\n'If I have time, I'll call you.' - może mieć czas, nie wiem\n'When I have time, I'll call you.' - na pewno będę mieć czas, pytanie kiedy\n\n'If you visit London, go to the Tate Modern.' - może odwiedzisz\n'When you visit London, go to the Tate Modern.' - zakładam, że odwiedzisz\n\nWhen = zakładam że to się wydarzy, tylko nie wiem kiedy.\nIf = nie wiem czy się wydarzy."
+          },
+          {
+            "type": "fun",
+            "icon": "🎮",
+            "title": "Gra: First or Second?",
+            "content": "'If I ___ (be) a dog, I ___ (sleep) all day.' → Second (I'm not a dog)\n'If the weather ___ (be) good, we ___ (go) to the beach.' → First (could happen)\n'If I ___ (speak) perfect English, my life ___ (change).' → Second (not yet true)"
+          }
+        ],
+        "task": {
+          "type": "audio",
+          "prompt": "Conditional storytelling 🎙️\n\nOdpowiedz po angielsku na każde pytanie, poświęć na każde 45-60 sekund:\n\n1. First conditional:\n'What will you do this weekend if the weather is good?'\nZacznij od: 'If the weather is nice, I'll probably...'\n\n2. Second conditional:\n'If you could live anywhere in the world, where would you live and why?'\nZacznij od: 'If I could choose, I would...'\n\n3. Second conditional:\n'If you won a lot of money tomorrow, what's the first thing you'd do?'\nZacznij od: 'If I won, the first thing I'd do is...'"
+        },
+        "videoUrl": "https://www.youtube.com/shorts/2_yZSS5jd_Q"
+      },
+      {
+        "id": "5-4",
+        "title": "Modal verbs - nie tylko can i should",
+        "duration": "8 min",
+        "hasVideo": false,
+        "intro": "Modal verbs to klucz do naturalnego wyrażania się. Każdy ma inne 'zabarwienie' - i to zabarwienie ma znaczenie.",
+        "sections": [
+          {
+            "type": "list",
+            "title": "Modal verbs i ich prawdziwe znaczenie:",
+            "items": [
+              "CAN - zdolność lub możliwość:\n'I can swim' (umiem) | 'Can I help?' (czy mogę?)",
+              "COULD - grzeczniejsze can lub przeszłość:\n'Could you help me?' (grzeczna prośba) | 'I could swim when I was 5'",
+              "SHOULD - rada lub oczekiwanie:\n'You should try this' (radzę ci) | 'He should be here by now' (powinien być)",
+              "WOULD - prośba, hipoteza, przeszłe nawyki:\n'Would you mind?' | 'I would love to' | 'We would go there every summer'",
+              "MIGHT/MAY - możliwość (może, być może):\n'It might rain' (mniejsza pewność) | 'I may be late' (większa pewność w UK)",
+              "MUST - konieczność lub mocna dedukcja:\n'I must go' | 'He must be tired' (na pewno jest)"
+            ]
+          },
+          {
+            "type": "tip",
+            "icon": "🎯",
+            "title": "Jak wybrać właściwy modal",
+            "content": "Wyrażasz zdolność → can\nRobisz grzeczną prośbę → could / would\nDajesz radę → should\nMówisz o możliwości → might / may / could\nWyrażasz konieczność → have to / gotta\nRobisz dedukcję → must / can't\n'He must be home, lights are on'\n'She can't be serious, it's a joke'\n\nUwaga: w dedukcji 'must' trzyma się mocno - 'He's gotta be tired' też funkcjonuje, ale 'must' przy dedukcji brzmi bardziej naturalnie niż przy obowiązku."
+          },
+          {
+            "type": "comparison",
+            "title": "Stopniowanie pewności przez modals",
+            "left": {
+              "label": "Wysoka pewność",
+              "items": [
+                "'He must be at home' (100% pewny)",
+                "'He should be at home' (oczekuję, że jest)",
+                "'He might be at home' (50/50)"
+              ]
+            },
+            "right": {
+              "label": "Niska pewność",
+              "items": [
+                "'He could be at home' (możliwe)",
+                "'He may be at home' (lekka możliwość)",
+                "'He can't be at home' (na pewno nie ma)"
+              ]
+            }
+          }
+        ],
+        "task": {
+          "type": "text",
+          "prompt": "Odpowiedz na te pytania używając modal verbs. Każda odpowiedź min. 2 zdania:\n\n1. Co myślisz o kimś kto spóźnił się na meeting (używając must/might/can't)?\n2. Jak grzecznie poprosisz kogoś o pomoc? (could/would)\n3. Co radzisz komuś kto chce się nauczyć angielskiego? (should/could)\n4. Co może się zdarzyć, jeśli nie będziesz ćwiczyć angielskiego? (might/could)"
+        }
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "emoji": "🎙️",
+    "tag": "Moduł 6",
+    "title": "Wymowa",
+    "subtitle": "Kluczowe głoski, nie perfekcyjny akcent",
+    "intro": "Nie uczymy się tu mówić bez akcentu. Uczymy się mówić zrozumiale. Skupiamy się na kilku konkretnych rzeczach - głoskach i mechanizmach, które robią największą różnicę. Resztę Twój mózg przejmie sam przez regularne słuchanie.",
+    "lessons": [
+      {
+        "id": "6-1",
+        "title": "Głoski, które robią największą różnicę",
+        "duration": "10 min",
+        "hasVideo": true,
+        "videoTitle": "Wiktor tłumaczy: 4 dźwięki, których Polacy nie umieją wymawiać (demo na żywo)",
+        "intro": "Nie chodzi o perfekcyjny akcent, chodzi o bycie zrozumiałym. Skupiamy się na tym co naprawdę wpływa na komunikację.",
+        "sections": [
+          {
+            "type": "list",
+            "title": "Głoska #1 - TH (θ i ð)",
+            "items": [
+              "Język MIĘDZY zębami, nie 'd' ani 't'",
+              "Bezdźwięczne: think, three, thank, through, thin, thunder",
+              "Dźwięczne: the, this, that, there, them, those, though",
+              "Ćwicz przed lustrem, musisz widzieć czubek języka"
+            ]
+          },
+          {
+            "type": "list",
+            "title": "Głoska #2 - Długie vs krótkie samogłoski",
+            "items": [
+              "ship (statek) = KRÓTKA | sheep (owca) = DŁUGA - to różne słowa!",
+              "bit (KRÓTKA) vs beat (DŁUGA) | full (KRÓTKA) vs fool (DŁUGA) | pull (KRÓTKA) vs pool (DŁUGA)",
+              "Krótka: usta bardziej otwarte, szybki dźwięk - 'i' jak w polskim 'ryba'",
+              "Długa: usta bardziej zamknięte, przeciągnięty dźwięk - 'ii' jak przeciągasz polskie 'i'"
+            ]
+          },
+          {
+            "type": "list",
+            "title": "Głoska #3 - 'NI' to nie jest miękkie 'Ń'",
+            "items": [
+              "Polacy naturalnie palatalizują 'n' przed 'i', tak jak w polskim 'niebieski' czy 'nikt'",
+              "W angielskim 'n' i 'i' to zawsze dwie osobne głoski, nigdy nie zlewają się w jedno 'ń'",
+              "Przykłady gdzie problem faktycznie występuje: need, neat, near, nit, nil, Nick",
+              "need → 'n-iid' (NIE: 'ńiid') | near → 'n-ier' (NIE: 'ńier') | neat → 'n-iit' (NIE: 'ńiit')",
+              "Słowa jak 'night' czy 'nice' to inna samogłoska (dyftongi 'ai'), tam ten problem nie występuje",
+              "Ćwicz: połóż język na podniebieniu jak przy polskim 'n', potem świadomie go opuść przed wymówieniem 'i'"
+            ]
+          },
+          {
+            "type": "tip",
+            "icon": "🔊",
+            "title": "Metoda shadowingu",
+            "content": "1. Znajdź klip (30–60s) na YouTube\n2. Odsłuchaj kilka razy\n3. Mów RAZEM z mówcą, dosłownie naśladuj każdy dźwięk\n4. Nagrywaj siebie\n5. Porównaj i poprawiaj"
+          }
+        ],
+        "task": {
+          "type": "audio",
+          "prompt": "Pronunciation drill 🎙️\n\nNagraj te zdania skupiając się na zaznaczonych dźwiękach:\n\n1. 'I THINK THIS is THE THING THAT matters most' (TH, język między zębami)\n2. 'THE SHIP sailed past THE SHEEP on THE BEACH' (krótkie vs długie samogłoski)\n3. 'I NEED a NEAT and NEAR-perfect solution' (N przed I osobno - nie miękkie Ń)\n\nNagrywaj tyle razy ile potrzebujesz, wyślij najlepszą wersję."
+        },
+        "videoUrl": "https://www.youtube.com/watch?v=mBTn8A5dy2s&list=PLaMzO3bdVRF4J6qOAeEOpOYiHkzajwwai&index=7"
+      },
+      {
+        "id": "6-1b",
+        "title": "Kalifornijski akcent - głoska O i 6 wersji T",
+        "duration": "12 min",
+        "hasVideo": true,
+        "videoTitle": "Wiktor tłumaczy: dlaczego O nigdy nie brzmi jak polskie O, i 6 wersji T w American English",
+        "intro": "Dwie rzeczy, które natychmiast zdradzają że ktoś nie jest native speakerem: polskie 'O' i twarde 'T' wszędzie. Naprawiamy to.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "🌴",
+            "title": "Dlaczego kalifornijski jako wzorzec",
+            "content": "Californian English (General American) to akcent słyszany w Hollywood, serialach i większości anglojęzycznych mediów. Jest czysty, zrozumiały i nie kojarzy się z konkretnym regionem.\n\nNie chodzi o perfekcyjne naśladowanie, chodzi o zrozumienie mechanizmów, które sprawiają, że tak brzmi."
+          },
+          {
+            "type": "list",
+            "title": "Głoska O, nigdy jak polskie 'O'",
+            "items": [
+              "Polskie 'O' jest zaokrąglone i zamknięte, w Californian English takie 'O' praktycznie nie istnieje",
+              "Wariant 1, bardziej w stronę 'A' (otwarte, tylne):\n'hot, lot, stop, got, coffee, doctor, on, off'\n→ 'hat, lat, stap, gat, cahfee, dacter', usta otwarte, język nisko",
+              "Wariant 2, bardziej w stronę 'OŁ' (dyftong):\n'go, no, show, know, home, phone, over, most'\n→ brzmi jak 'goł, noł, shoł, mołst', zaczyna się od krótkiego 'o' i przechodzi w 'ł'\n→ częsty błąd: 'most' czytane z polskim O zamiast 'mołst'",
+              "Test: powiedz 'go' z polskim 'O', brzmi sztywno. Teraz powiedz 'goł' płynnie, to jest American English.",
+              "Najczęstszy błąd: 'okay' wymawiane z polskim O → powinno być 'oŁkej' z dyftongiem"
+            ]
+          },
+          {
+            "type": "tip",
+            "icon": "🎯",
+            "title": "Jak zapamiętać, który wariant",
+            "content": "Prosta zasada (nie idealna, ale działa w 80% przypadków):\n\n• Jeśli 'O' jest przed spółgłoską i sylaba jest zamknięta → bardziej 'A'\nhot, stop, got, coffee, doctor\n\n• Jeśli 'O' jest na końcu sylaby lub przed cichą spółgłoską → dyftong 'OŁ'\ngo, no, home, phone, over, open\n\nNajlepsze ćwiczenie: shadowing, nie analizuj, słuchaj i naśladuj."
+          },
+          {
+            "type": "list",
+            "title": "6 wersji litery T w American English",
+            "items": [
+              "1. Zwykłe T (na początku akcentowanej sylaby)\n'top, time, take, tell', wyraźne, z aspiracją (małe 'h' po T)\n→ 'thop, thime', czujesz powiew powietrza",
+              "2. Flap T (T między samogłoskami)\n'water, better, butter, city, twenty, waiting'\n→ T staje się miękkim szybkim D: 'waDer, beDer, siDy'\n→ To najczęstszy typ T w codziennym mówieniu",
+              "3. Glottal stop, ucięte T (T przed spółgłoską lub na końcu)\n'button, mountain, cotton, important, what'\n→ T jest 'połykane', gardło się zamyka zamiast wymawiać T\n→ 'bu-ʔn, moun-ʔn', słyszysz przerwę, nie T",
+              "4. T ciche / prawie nieistniejące (w grupach spółgłoskowych)\n'exactly, mostly, firstly, softly'\n→ T jest pomijane lub ledwo słyszalne\n→ 'exac-ly, mos-ly' - T znika",
+              "5. N+T → 'N' (przed 'n' lub nieakcentowane)\n'internet, center, winter, mental, plenty'\n→ T jest tak słabe, że słyszysz prawie samo N\n→ 'inner-net, cen-ner, win-ner'",
+              "6. T na początku nieakcentowanej sylaby → prawie D\n'today, tomato, together, tonight'\n→ 'dəday, dəmato, dəgether', bardzo miękkie, prawie niesłyszalne"
+            ]
+          },
+          {
+            "type": "reallife",
+            "icon": "🎬",
+            "title": "Dlaczego to ważne dla słuchania",
+            "content": "Wiesz teraz dlaczego nie rozumiesz Amerykanów mówiących szybko?\n\nSłyszysz 'waDer' i szukasz słowa z D, nie ma takiego.\nSłyszysz 'bu-ʔn' i nie wiesz co to, to 'button'.\nSłyszysz 'inner-net' i myślisz, że to dwa słowa, to 'internet'.\n\nRozumienie 6 wersji T to klucz do rozumienia szybkiego American English, nawet, jeśli sam nie używasz wszystkich."
+          },
+          {
+            "type": "fun",
+            "icon": "🔍",
+            "title": "Ćwiczenie: jedno zdanie, 7 różnych T",
+            "content": "Które T w tych zdaniach wymawia się jak:\n\n'I got a bottle of water at the center of the city'\n\n• got → glottal stop (ucięte)\n• bottle → glottal stop\n• water → Flap T (waDer)\n• at → glottal stop przed kolejnym słowem\n• center → N+T daje prawie samo N (cenner)\n• city → Flap T (siDy)\n\nJedno zdanie - 6 liter T, żadne nie wymawia się tak samo."
+          }
+        ],
+        "task": {
+          "type": "audio",
+          "prompt": "T variations drill 🎙️\n\nNagraj te zdania świadomie stosując różne wersje T:\n\n1. 'I got a bottle of water' (glottal stop + Flap T)\n2. 'The city center in winter' (Flap T + prawie N)\n3. 'Take it to the top' (zwykłe T + glottal + zwykłe T)\n\nPotem nagraj jedno zdanie całkowicie naturalnie bez myślenia o T i posłuchaj czy brzmi inaczej niż na początku kursu."
+        },
+        "videoUrl": "https://www.youtube.com/watch?v=iP_-OHXpzvA&list=PLaMzO3bdVRF4J6qOAeEOpOYiHkzajwwai&index=6"
+      },
+      {
+        "id": "6-2",
+        "title": "Intonacja, jak nie brzmieć jak robot",
+        "duration": "8 min",
+        "hasVideo": true,
+        "videoTitle": "Wiktor tłumaczy: intonacja i rytm angielskiego, dlaczego to klucz do naturalnego brzmienia",
+        "intro": "Możesz mówić z idealną wymową każdego dźwięku - ale jeśli masz złą intonację, nadal brzmi źle. Intonacja to melodia języka.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "🎵",
+            "title": "Angielski jest językiem rytmicznym",
+            "content": "Angielski to tzw. stress-timed language, rytm wyznaczają sylaby akcentowane, nie liczba sylab. To znaczy, że nieakcentowane sylaby są 'połykane' lub skracane, żeby dopasować się do rytmu."
+          },
+          {
+            "type": "list",
+            "title": "Podstawowe zasady intonacji:",
+            "items": [
+              "Zdania twierdzące: intonacja opada na końcu ↘\n'I'm going to the store ↘'",
+              "Pytania z question word (what/where/why): opada ↘\n'Where are you going? ↘'",
+              "Pytania yes/no: rośnie na końcu ↗\n'Are you coming? ↗'",
+              "Listy: rośnie na każdym elemencie, opada na ostatnim\n'I need bread ↗, milk ↗, and eggs ↘'",
+              "Nacisk emocjonalny: podnosisz ton na ważnym słowie\n'I LOVE this restaurant' vs 'I love THIS restaurant'"
+            ]
+          },
+          {
+            "type": "tip",
+            "icon": "🎭",
+            "title": "Technika: mów jak aktor",
+            "content": "Przeczytaj zdanie najpierw monotonnie, potem z pełną intonacją jak aktor.\n\n'Oh really? That's interesting.', bez intonacji brzmi sarkazm.\nZ rosnącą intonacją na 'really' i opadającą na 'interesting', brzmi szczerze.\n\nAngielski jest dramatyczny językowo, nie bój się wyolbrzymiać intonacji."
+          },
+          {
+            "type": "reallife",
+            "icon": "📻",
+            "title": "Posłuchaj intonacji w praktyce",
+            "content": "Włącz dowolny podcast i przez 2 minuty nie skupiaj się na słowach, słuchaj tylko melodii głosu. Kiedy rośnie? Kiedy opada? Gdzie są pauzy?\n\nPotem spróbuj naśladować tę melodię mówiąc jakikolwiek tekst. Chodzi o rytm, nie treść."
+          }
+        ],
+        "task": {
+          "type": "audio",
+          "prompt": "Intonation practice 🎙️\n\nNagraj te zdania z właściwą intonacją, skupiaj się na melodii, nie na słowach:\n\n1. 'Really? That's amazing!' (zaskoczenie)\n2. 'I need bread, milk, eggs, and butter.' (lista)\n3. 'Are you sure about that?' (pytanie z wątpliwością)\n4. 'I absolutely love this place.' (entuzjazm)\n5. 'It was... okay, I guess.' (rozczarowanie)"
+        },
+        "videoUrl": "https://www.youtube.com/shorts/K3oIfndhnUg"
+      },
+      {
+        "id": "6-3",
+        "title": "Wymowa liczb, dat i cen, pułapki dla Polaków",
+        "duration": "6 min",
+        "hasVideo": false,
+        "intro": "Liczby, daty i ceny to miejsca gdzie Polacy często popełniają błędy, których łatwo uniknąć.",
+        "sections": [
+          {
+            "type": "list",
+            "title": "Liczby, typowe błędy:",
+            "items": [
+              "13 vs 30: 'thirteen' vs 'thirty', akcent w różnym miejscu!\n13: thirTEEN | 30: THIRty",
+              "Duże liczby: 1,000,000 czytasz 'one million' (NIE 'thousand thousand')",
+              "Ułamki dziesiętne: 3.5 = 'three point five' (NIE 'three comma five')",
+              "Telefon: każdą cyfrę osobno '07911 123456' → 'oh seven nine one one...'"
+            ]
+          },
+          {
+            "type": "list",
+            "title": "Daty - US vs UK:",
+            "items": [
+              "US: month/day/year → 'December 25th' / '12/25'",
+              "UK: day/month/year → '25th December' / '25/12'",
+              "Czytanie: '25th of December' lub 'December twenty-fifth'",
+              "Lata: 1995 = 'nineteen ninety-five' | 2005 = 'twenty-oh-five' (nie 'two thousand and five') | 2024 = 'twenty twenty-four'"
+            ]
+          },
+          {
+            "type": "list",
+            "title": "Ceny i waluty:",
+            "items": [
+              "$5.99 → 'five ninety-nine' lub 'five dollars and ninety-nine cents'",
+              "£20 → 'twenty pounds'",
+              "W rozmowie skracasz: '5 bucks' (dolary, American English)\n'a fiver' (£5) i 'a tenner' (£10) to British English - w USA nie funkcjonują",
+              "0.5 → 'half' lub 'point five' lub 'fifty cents'"
+            ]
+          },
+          {
+            "type": "fun",
+            "icon": "😄",
+            "title": "Klasyczna konfuzja dat",
+            "content": "US: miesiąc/dzień/rok → 06/05/2024 = 5 czerwca\nUK: dzień/miesiąc/rok → 05/06/2024 = 5 czerwca\n\nTa sama data zapisana jako '05/06' - Amerykanin myśli maj, Brytyjczyk czerwiec.\nDlatego w komunikacji międzynarodowej zawsze pisz miesiąc słowem:\n'June 5, 2024' (US) lub '5 June 2024' (UK)"
+          }
+        ],
+        "task": {
+          "type": "audio",
+          "prompt": "Numbers out loud 🎙️\n\nPrzeczytaj na głos:\n• Your phone number (each digit separately)\n• Your date of birth (in US format and UK format)\n• These prices: $14.99, £7.50, $1,299\n• These years: 1999, 2008, 2024\n• This number: 3,450,000"
+        }
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "emoji": "🚀",
+    "tag": "Moduł 7",
+    "title": "Fluency Sprint",
+    "subtitle": "Finał kursu – certyfikat ukończenia na koniec",
+    "intro": "Ostatni moduł: wyzwanie mówienia, porównanie Twojego postępu i certyfikat ukończenia kursu po ukończeniu wszystkich lekcji i zadań.",
+    "lessons": [
+      {
+        "id": "7-1",
+        "title": "7-Day Speaking Challenge",
+        "duration": "7 dni",
+        "hasVideo": true,
+        "videoTitle": "Wiktor tłumaczy: jak podejść do finalnego wyzwania, mentalne przygotowanie",
+        "intro": "Masz za sobą tygodnie nauki. Czas udowodnić sobie, że to działa.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "🏆",
+            "title": "Co to jest i po co",
+            "content": "Przez 7 dni mówisz po angielsku minimum 3 minuty dziennie na zadany temat, bez przygotowania, bez notatek, bez zatrzymywania. To symulacja prawdziwej rozmowy."
+          },
+          {
+            "type": "list",
+            "title": "7 tematów - 1 dziennie:",
+            "items": [
+              "Dzień 1: Describe your typical day - from morning to night",
+              "Dzień 2: A place you'd love to visit - and why",
+              "Dzień 3: What would you do if you won the lottery?",
+              "Dzień 4: A person who inspires you - and what you've learned from them",
+              "Dzień 5: Social media - good, bad, or both?",
+              "Dzień 6: A story from your childhood",
+              "Dzień 7: What did you learn from this course? How have you changed?"
+            ]
+          },
+          {
+            "type": "comparison",
+            "title": "Zasady challenge'u",
+            "left": {
+              "label": "✅ Robisz",
+              "items": [
+                "Nagrywasz się każdego dnia",
+                "Minimum 3 minuty bez przerwy",
+                "Używasz gap-fillerów",
+                "Opisujesz, jeśli nie znasz słowa"
+              ]
+            },
+            "right": {
+              "label": "❌ Nie robisz",
+              "items": [
+                "Nie zatrzymujesz nagrania",
+                "Nie zaczynasz od nowa",
+                "Nie piszesz skryptu wcześniej",
+                "Nie tłumaczysz z polskiego"
+              ]
+            }
+          },
+          {
+            "type": "quote",
+            "text": "Fluency is not the absence of mistakes. It's the confidence to speak despite them.",
+            "author": "- cel tego kursu"
+          }
+        ],
+        "task": {
+          "type": "multiday",
+          "days": [
+            {
+              "day": 1,
+              "prompt": "Describe your typical day\nZacznij od: 'So, a typical day for me starts...'"
+            },
+            {
+              "day": 2,
+              "prompt": "A place you'd love to visit - and why\nZacznij od: 'If I could go anywhere, I'd go to...'"
+            },
+            {
+              "day": 3,
+              "prompt": "What would you do if you won a lot of money?\nZacznij od: 'If I won a lot of money, the first thing I'd do is...'"
+            },
+            {
+              "day": 4,
+              "prompt": "A person who inspires you\nZacznij od: 'The person who inspires me most is...'"
+            },
+            {
+              "day": 5,
+              "prompt": "Social media - good, bad, or both?\nZacznij od: 'I think social media is...'"
+            },
+            {
+              "day": 6,
+              "prompt": "A story from your childhood\nZacznij od: 'So when I was a kid...'"
+            },
+            {
+              "day": 7,
+              "prompt": "What did you learn from this course? How have you changed?\nZacznij od: 'Before this course, I...'"
+            }
+          ]
+        },
+        "videoUrl": "https://www.youtube.com/shorts/9befUJuSMo0"
+      },
+      {
+        "id": "7-2",
+        "title": "Twoje nagranie, przed i po",
+        "duration": "refleksja",
+        "hasVideo": false,
+        "intro": "Wróć do swojego pierwszego nagrania z Modułu 1. Posłuchaj go. Potem nagraj to samo zdanie teraz.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "🔄",
+            "title": "Dlaczego to ważne",
+            "content": "Postęp w nauce języka jest trudny do zauważenia na bieżąco, dzieje się stopniowo. Ale porównanie nagrania sprzed 12 tygodni z nagraniem teraz to jeden z najsilniejszych motywatorów, który istnieje."
+          },
+          {
+            "type": "lessonlink",
+            "content": "Wróć do lekcji 1-3 i posłuchaj swojego pierwszego nagrania przed nagraniem nowego.",
+            "target": "1-3"
+          },
+          {
+            "type": "tip",
+            "icon": "💡",
+            "title": "Na co zwrócić uwagę słuchając",
+            "content": "Porównując nagrania zwróć uwagę na:\n• Tempo mówienia, szybciej? płynniej?\n• Pauzy, mniej długich cisz?\n• Gap-fillery, używasz ich naturalnie?\n• Pewność siebie, słyszysz ją w głosie?\n• Błędy, inne niż na początku?"
+          },
+          {
+            "type": "quote",
+            "text": "You are not the same person who started this course. Your English isn't either.",
+            "author": "- do Ciebie, po 12 tygodniach"
+          }
+        ],
+        "task": {
+          "type": "audio",
+          "prompt": "Finalne nagranie 🎙️\n\nNagraj to samo zadanie co w lekcji 1-3:\n'Describe your day, start from So, today I...'\n\nNagraj minimum 90 sekund, naturalnie, bez zatrzymywania.\n\nPotem napisz w polu poniżej:\n- Co słyszysz jako największą różnicę vs pierwsze nagranie?\n- Co Cię zaskoczyło?"
+        }
+      },
+      {
+        "id": "7-3",
+        "title": "Co dalej po kursie - jak nie stracić postępu",
+        "duration": "7 min",
+        "hasVideo": true,
+        "videoTitle": "Wiktor tłumaczy: plan na angielski po kursie - jak utrzymać postęp bez korepetytora",
+        "intro": "Skończyłeś kurs. To dopiero początek. Najczęstszy błąd? Przestać po ostatniej lekcji. Oto co robić żeby angielski dalej rósł.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "📈",
+            "title": "Język działa jak mięsień",
+            "content": "Bez regularnego używania - zanika. Nie musisz robić intensywnej nauki codziennie. Ale musisz mieć angielski w życiu w jakiejś formie, regularnie. 15 minut dziennie wystarczy."
+          },
+          {
+            "type": "list",
+            "title": "Konkretny plan na dalszy rozwój:",
+            "items": [
+              "🎧 Codziennie: podcast lub YouTube po angielsku - 15-20 minut podczas robienia czegoś innego",
+              "📺 Co tydzień: jeden odcinek serialu z angielskimi napisami - aktywnie, z zatrzymywaniem",
+              "🎙️ Co tydzień: nagraj się mówiąc przez 2-3 minuty na dowolny temat - sam lub z kimś",
+              "📖 Co tydzień: przeczytaj coś po angielsku - artykuł, newsletter, cokolwiek co Cię interesuje",
+              "💬 Co miesiąc: porozmawiaj po angielsku z kimś na żywo - znajomy, lekcja, cokolwiek gdzie musisz mówić w czasie rzeczywistym"
+            ]
+          },
+          {
+            "type": "reallife",
+            "icon": "📱",
+            "title": "Zmień język w telefonie i aplikacjach",
+            "content": "To jeden z najprostszych i najbardziej efektywnych kroków. Zmień język w telefonie na angielski. Zmień język w Instagramie, Twitterze, TikToku. Nagle angielski jest wszędzie - i uczysz się przez życie, nie przez naukę."
+          },
+          {
+            "type": "tip",
+            "icon": "🎯",
+            "title": "Polecane zasoby do dalszej nauki",
+            "content": "Podcasty: How I Built This, SmartLess, Stuff You Should Know\nYouTube: Kurzgesagt, Veritasium, Mark Rober - ciekawe tematy, jasna wymowa\nSeriale: Ted Lasso, Succession, The Bear (zaawansowane)\nRozmowy z ludźmi: znajdź kogoś kto uczy się polskiego i zamień się - Ty uczysz angielskiego, on/ona polskiego\nKsiążki: zacznij od czegoś co już czytałeś po polsku"
+          },
+          {
+            "type": "quote",
+            "text": "Fluency isn't a destination. It's a habit.",
+            "author": "- i właśnie ten nawyk zbudowałeś"
+          }
+        ],
+        "task": {
+          "type": "text",
+          "prompt": "Napisz swój osobisty plan na angielski po kursie:\n\n1. Co będziesz robić codziennie? (nawet 10 minut się liczy)\n2. Co będziesz robić co tydzień?\n3. Jedna konkretna rzecz, którą zmienisz dziś - np. język w telefonie, podcast podczas śniadania\n4. Kiedy chcesz porozmawiać z native speakerem po raz pierwszy?\n\nNapisz to po angielsku. I trzymaj się tego."
+        },
+        "videoUrl": "https://www.youtube.com/watch?v=D0LQ3zUkDg0&list=PLaMzO3bdVRF4J6qOAeEOpOYiHkzajwwai&index=3"
+      },
+      {
+        "id": "7-4",
+        "title": "Refleksja końcowa - gdzie byłeś, gdzie jesteś",
+        "duration": "refleksja",
+        "hasVideo": false,
+        "intro": "Ostatnia lekcja kursu. Wróć do pierwszej lekcji, zobacz postęp – i po ukończeniu modułu finałowego odbierz certyfikat ukończenia kursu.",
+        "sections": [
+          {
+            "type": "insight",
+            "icon": "🎓",
+            "title": "Certyfikat ukończenia kursu",
+            "content": "Po ukończeniu wszystkich lekcji i zadań w kursie otrzymujesz certyfikat ukończenia Unschool Your English. To potwierdzenie, że przeszedłeś cały program – od mindsetu po finałowe wyzwanie mówienia."
+          },
+          {
+            "type": "insight",
+            "icon": "🔄",
+            "title": "Dlaczego to ważne",
+            "content": "Postęp w nauce języka jest niewidoczny na bieżąco - dzieje się powoli, małymi krokami. Porównanie Ciebie sprzed 12 tygodni z Tobą teraz to jedyny sposób żeby naprawdę zobaczyć jak daleko zaszedłeś."
+          },
+          {
+            "type": "lessonlink",
+            "content": "Wróć do lekcji 1-0 i przeczytaj co napisałeś na początku kursu.",
+            "target": "1-0"
+          },
+          {
+            "type": "lessonlink",
+            "content": "Wróć do lekcji 1-3 i posłuchaj swojego pierwszego nagrania głosowego.",
+            "target": "1-3"
+          },
+          {
+            "type": "tip",
+            "icon": "💡",
+            "title": "Jak to zrobić",
+            "content": "Przeczytaj co napisałeś w lekcji 1-0, posłuchaj nagrania z lekcji 1-3, a potem odpowiedz na pytania tutaj. Porównaj - nie żeby oceniać, ale żeby zobaczyć zmianę."
+          },
+          {
+            "type": "quote",
+            "text": "You don't have to be great to start, but you have to start to be great.",
+            "author": "- i Ty już zacząłeś"
+          }
+        ],
+        "task": {
+          "type": "text",
+          "prompt": "Odpowiedz na te same pytania co na początku kursu - tym razem po angielsku:\n\n1. Why did you want to learn to speak English? Has anything changed?\n2. What was blocking you before? Is it still blocking you?\n3. What have you achieved in this course - specifically?\n4. What surprised you most?\n\nNie ma złych odpowiedzi. To jest dla Ciebie - żebyś zobaczył jak daleko zaszedłeś."
+        }
+      }
+    ]
+  }
+]

@@ -3,19 +3,47 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --webpack",
-    "dev:turbo": "next dev",
-    "dev:clean": "rm -rf .next && next dev --webpack",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev --webpack",
+    "dev:turbo": "cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "dev:clean": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev --webpack",
+    "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
+    "lint": "eslint",
+    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
+    "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
+    "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
+    "seed:course": "node scripts/seed-mockup-course.mjs",
+    "sync:mockup-videos": "node scripts/sync-mockup-videos.mjs",
+    "clear:media": "cross-env NODE_OPTIONS=--no-deprecation payload run scripts/clear-all-media.ts",
+    "reset:users": "node scripts/reset-users-keep-admin.mjs",
+    "stripe:listen": "stripe listen --forward-to localhost:3000/api/webhooks/stripe",
+    "stripe:listen:live": "stripe listen --live --forward-to localhost:3000/api/webhooks/stripe"
   },
   "dependencies": {
+    "@payloadcms/db-postgres": "3.85.0",
+    "@payloadcms/email-resend": "3.85.0",
+    "@payloadcms/next": "3.85.0",
+    "@payloadcms/richtext-lexical": "3.85.0",
+    "@payloadcms/ui": "3.85.0",
+    "@stripe/react-stripe-js": "^6.4.0",
+    "@stripe/stripe-js": "^9.6.0",
+    "cross-env": "^10.1.0",
     "framer-motion": "^12.38.0",
+    "graphql": "^16.14.0",
     "lucide-react": "^0.574.0",
     "next": "16.1.6",
+    "payload": "3.85.0",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "resend": "^6.12.3",
+    "sharp": "^0.34.5",
+    "stripe": "^22.1.1"
+  },
+  "pnpm": {
+    "overrides": {
+      "@payloadcms/ui": "3.85.0",
+      "payload": "3.85.0"
+    }
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

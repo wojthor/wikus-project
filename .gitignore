@@ -42,5 +42,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# lokalna dokumentacja projektu (raporty / opis repo – nie wersjonujemy)
-/docs/
+# Payload – pliki audio/wideo uploadowane lokalnie
+/media/
+
+certificates

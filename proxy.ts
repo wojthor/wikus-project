@@ -34,14 +34,9 @@ function unauthorizedResponse(realm: string): NextResponse {
   });
 }
 
-function isProtectedPath(pathname: string): boolean {
-  return pathname.startsWith("/unschool");
-}
-
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Nigdy nie dotykaj assetów Next.js (chunki, HMR, obrazy) – inaczej ChunkLoadError w dev
   if (
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api") ||
@@ -53,7 +48,7 @@ export function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  if (!isProtectedPath(pathname)) {
+  if (!pathname.startsWith("/unschool")) {
     return NextResponse.next();
   }
 
