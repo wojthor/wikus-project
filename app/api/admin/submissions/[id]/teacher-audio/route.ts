@@ -2,6 +2,7 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import { createLocalReq, getPayload, type PayloadRequest } from "payload";
 
+import { createAudioMediaDocument } from "@/src/lib/create-audio-media";
 import { isPlatformAdmin } from "@/src/lib/platform-admin";
 import { sqlLinkTeacherAudio } from "@/src/lib/submissions-sql-fallback";
 
@@ -91,18 +92,13 @@ export async function POST(request: Request, { params }: RouteParams) {
 
     const req = await createLocalReq({ user: auth.user ?? undefined }, payload);
 
-    const media = await payload.create({
-      collection: "media",
-      data: { alt: "Feedback głosowy (nauczyciel)" },
-      file: {
-        data: buffer,
-        mimetype: file.type || "audio/webm",
-        name,
-        size: buffer.length,
-      },
+    const media = await createAudioMediaDocument(payload, {
+      alt: "Feedback głosowy (nauczyciel)",
+      buffer,
+      name,
+      mimetype: file.type || "audio/webm",
       req,
       overrideAccess: true,
-      depth: 0,
     });
 
     const mediaId = toRelationId(media.id);

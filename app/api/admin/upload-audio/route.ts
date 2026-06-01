@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { getPayload } from "payload";
 
 import config from "@payload-config";
+import { createAudioMediaDocument } from "@/src/lib/create-audio-media";
 import { isPlatformAdmin } from "@/src/lib/platform-admin";
 
 /** Stabilne wgrywanie nagrań z panelu admin (omija błąd REST /api/media). */
@@ -37,15 +38,11 @@ export async function POST(request: Request) {
     `nagranie-${Date.now()}.webm`;
 
   try {
-    const doc = await payload.create({
-      collection: "media",
-      data: { alt },
-      file: {
-        data: buffer,
-        mimetype: file.type || "audio/webm",
-        name,
-        size: buffer.length,
-      },
+    const doc = await createAudioMediaDocument(payload, {
+      alt: String(alt),
+      buffer,
+      name,
+      mimetype: file.type || "audio/webm",
       user: auth.user,
       overrideAccess: false,
     });

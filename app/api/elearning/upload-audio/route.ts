@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { createLocalReq, getPayload } from "payload";
 
 import config from "@payload-config";
+import { createAudioMediaDocument } from "@/src/lib/create-audio-media";
 
 /** Wgrywanie nagrania ucznia (stabilniejsze niż POST /api/media przez REST Drizzle). */
 export async function POST(request: Request) {
@@ -35,18 +36,13 @@ export async function POST(request: Request) {
   const req = await createLocalReq({ user: auth.user }, payload);
 
   try {
-    const doc = await payload.create({
-      collection: "media",
-      data: { alt: "Nagranie głosowe (uczeń)" },
-      file: {
-        data: buffer,
-        mimetype: file.type || "audio/webm",
-        name: String(name),
-        size: buffer.length,
-      },
+    const doc = await createAudioMediaDocument(payload, {
+      alt: "Nagranie głosowe (uczeń)",
+      buffer,
+      name: String(name),
+      mimetype: file.type || "audio/webm",
       req,
       overrideAccess: false,
-      depth: 0,
     });
 
     return NextResponse.json({ doc });

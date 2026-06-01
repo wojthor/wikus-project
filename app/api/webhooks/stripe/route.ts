@@ -10,6 +10,7 @@ import {
   provisionStudentFromCheckout,
   provisionStudentFromPaymentIntent,
 } from "@/src/lib/stripe-checkout-provision";
+import { getStripeServer } from "@/src/lib/stripe-server";
 import { constructStripeEvent } from "@/src/lib/stripe-webhook-verify";
 
 export const runtime = "nodejs";
@@ -54,10 +55,21 @@ export async function POST(req: Request): Promise<NextResponse> {
 
   try {
     const payload = await getPayload({ config });
-    const result =
-      event.type === "payment_intent.succeeded"
-        ? await provisionStudentFromPaymentIntent(payload, event.data.object as Stripe.PaymentIntent)
-        : await provisionStudentFromCheckout(payload, event.data.object as Stripe.Checkout.Session);
+    let result: { created: boolean; reason?: string };
+
+    if (event.type === "payment_intent.succeeded") {
+      const thin = event.data.object as Stripe.PaymentIntent;
+      const stripe = getStripeServer();
+      const intent = await stripe.paymentIntents.retrieve(thin.id, {
+        expand: ["latest_charge"],
+      });
+      result = await provisionStudentFromPaymentIntent(payload, intent);
+    } else {
+      result = await provisionStudentFromCheckout(
+        payload,
+        event.data.object as Stripe.Checkout.Session,
+      );
+    }
 
     if (result.reason === "no_email") {
       const objectWithId = event.data.object as { id?: string };

@@ -1,7 +1,11 @@
+import config from "@payload-config";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { getPayload } from "payload";
 
 import { getPaymentOutcome } from "@/src/lib/payment-intent-status";
+import { provisionStudentFromPaymentIntent } from "@/src/lib/stripe-checkout-provision";
+import { getStripeServer } from "@/src/lib/stripe-server";
 
 export const dynamic = "force-dynamic";
 
@@ -36,6 +40,19 @@ export default async function PaymentSuccessPage({ searchParams }: PaymentSucces
 
   if (outcome === "missing" || outcome === "failed" || outcome === "incomplete") {
     redirect("/failed");
+  }
+
+  if (outcome === "succeeded" && paymentIntentId) {
+    try {
+      const stripe = getStripeServer();
+      const intent = await stripe.paymentIntents.retrieve(paymentIntentId, {
+        expand: ["latest_charge"],
+      });
+      const payload = await getPayload({ config });
+      await provisionStudentFromPaymentIntent(payload, intent);
+    } catch (err) {
+      console.error("[payment-success] Zapasowe utworzenie konta po płatności:", err);
+    }
   }
 
   if (outcome === "pending") {

@@ -1,11 +1,12 @@
 import type { CollectionConfig } from "payload";
 
 import { isPlatformAdmin } from "@/src/lib/platform-admin";
+import { getMediaStorageDir } from "@/src/lib/media-storage";
 
 export const Media: CollectionConfig = {
   slug: "media",
   upload: {
-    staticDir: "media",
+    staticDir: getMediaStorageDir(),
     mimeTypes: ["audio/*", "video/webm", "application/octet-stream"],
   },
   admin: {
@@ -24,6 +25,18 @@ export const Media: CollectionConfig = {
       name: "alt",
       type: "text",
       label: "Opis (alt)",
+    },
+    {
+      name: "blobUrl",
+      type: "text",
+      label: "URL (Vercel Blob)",
+      admin: { hidden: true },
+    },
+    {
+      name: "blobPathname",
+      type: "text",
+      label: "Ścieżka (Vercel Blob)",
+      admin: { hidden: true },
     },
   ],
 };

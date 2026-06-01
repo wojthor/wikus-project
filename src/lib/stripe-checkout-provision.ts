@@ -147,7 +147,7 @@ export async function provisionStudentFromPaymentIntent(
   const customerEmail = getPaymentIntentEmail(intent);
   const result = await provisionStudentByEmail(payload, customerEmail ?? "");
 
-  if (result.emailed !== false) {
+  if (customerEmail && result.reason !== "no_email") {
     await markPaymentIntentProvisioned(intent);
   }
 
