@@ -6,6 +6,9 @@ import config from "@payload-config";
 import { createAudioMediaDocument } from "@/src/lib/create-audio-media";
 
 /** Wgrywanie nagrania ucznia (stabilniejsze niż POST /api/media przez REST Drizzle). */
+export const runtime = "nodejs";
+export const maxDuration = 60;
+
 export async function POST(request: Request) {
   const payload = await getPayload({ config });
   const hdrs = await headers();

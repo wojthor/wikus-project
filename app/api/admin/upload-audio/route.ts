@@ -6,6 +6,9 @@ import config from "@payload-config";
 import { createAudioMediaDocument } from "@/src/lib/create-audio-media";
 import { isPlatformAdmin } from "@/src/lib/platform-admin";
 
+export const runtime = "nodejs";
+export const maxDuration = 60;
+
 /** Stabilne wgrywanie nagrań z panelu admin (omija błąd REST /api/media). */
 export async function POST(request: Request) {
   const payload = await getPayload({ config });

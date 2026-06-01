@@ -14,9 +14,12 @@ export async function uploadAudioToBlob(
     return null;
   }
 
-  const blob = await put(`audio/${Date.now()}-${filename}`, buffer, {
+  const safeName = filename.replace(/[^\w.-]+/g, "_").slice(0, 120);
+  const blob = await put(`audio/${Date.now()}-${safeName}`, buffer, {
     access: "private",
+    addRandomSuffix: true,
     contentType: filename.endsWith(".webm") ? "audio/webm" : "application/octet-stream",
+    token: process.env.BLOB_READ_WRITE_TOKEN,
   });
 
   return { url: blob.url, pathname: blob.pathname };

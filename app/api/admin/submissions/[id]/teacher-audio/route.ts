@@ -53,6 +53,9 @@ async function saveTeacherAudioOnSubmission(
   }
 }
 
+export const runtime = "nodejs";
+export const maxDuration = 60;
+
 /** Wgrywa feedback głosowy i od razu zapisuje go na zgłoszeniu (jeden krok). */
 export async function POST(request: Request, { params }: RouteParams) {
   const { id: submissionId } = await params;

@@ -8,6 +8,7 @@ export const Media: CollectionConfig = {
   upload: {
     staticDir: getMediaStorageDir(),
     mimeTypes: ["audio/*", "video/webm", "application/octet-stream"],
+    imageSizes: [],
   },
   admin: {
     hidden: true,
