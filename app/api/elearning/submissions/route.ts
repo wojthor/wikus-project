@@ -2,7 +2,7 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import { createLocalReq } from "payload";
 
-import { notifyTeacherOnNewSubmission } from "@/src/features/elearning/submission-email-hooks";
+import { scheduleTeacherNewSubmissionEmail } from "@/src/features/elearning/submission-email-hooks";
 import { getCachedPayload } from "@/src/lib/payload-cache";
 import {
   sqlCreateSubmission,
@@ -78,7 +78,15 @@ export async function POST(request: Request) {
   if (textContent) data.textContent = textContent;
   if (studentAudioId != null) data.studentAudio = studentAudioId;
 
-  const req = await createLocalReq({ user: auth.user }, payload);
+  const req = await createLocalReq(
+    { user: auth.user, context: { skipSubmissionEmails: true } },
+    payload,
+  );
+
+  const studentName = [auth.user.firstName, auth.user.lastName]
+    .filter((part) => typeof part === "string" && part.trim())
+    .join(" ")
+    .trim() || auth.user.email;
 
   try {
     const doc = await payload.create({
@@ -91,20 +99,12 @@ export async function POST(request: Request) {
 
     if (studentAudioId != null && resolveMediaId(doc.studentAudio) == null) {
       await ensureStudentAudioLinked(doc.id, studentAudioId);
+      doc.studentAudio = studentAudioId;
     }
 
-    const refreshed =
-      studentAudioId != null
-        ? await payload.findByID({
-            collection: "submissions",
-            id: doc.id,
-            depth: 0,
-            req,
-            overrideAccess: true,
-          })
-        : doc;
+    scheduleTeacherNewSubmissionEmail(doc, { studentName });
 
-    return NextResponse.json({ doc: refreshed });
+    return NextResponse.json({ doc });
   } catch (createErr) {
     console.error("[elearning/submissions] payload.create failed, SQL fallback", createErr);
 
@@ -129,11 +129,7 @@ export async function POST(request: Request) {
       overrideAccess: true,
     });
 
-    try {
-      await notifyTeacherOnNewSubmission(payload, doc);
-    } catch (emailErr) {
-      console.error("[elearning/submissions] email hook", emailErr);
-    }
+    scheduleTeacherNewSubmissionEmail(doc, { studentName });
 
     return NextResponse.json({ doc });
   }

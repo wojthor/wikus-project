@@ -210,61 +210,6 @@ export async function sqlCreateSubmission(params: {
   }
 }
 
-export type SubmissionEmailContext = {
-  studentName: string;
-  lessonTitle: string;
-};
-
-/** Jedno zapytanie SQL zamiast dwóch findByID przez Payload (oszczędza połączenia). */
-export async function sqlLoadSubmissionEmailContext(
-  studentId: string | number,
-  lessonId: string | number,
-): Promise<SubmissionEmailContext | null> {
-  const pool = await getPool();
-  if (!pool) return null;
-
-  try {
-    const userCols = await pool.query<{ column_name: string }>(
-      `SELECT column_name FROM information_schema.columns
-       WHERE table_schema = 'public' AND table_name = 'users'`,
-    );
-    const userColumnNames = userCols.rows.map((r) => r.column_name);
-    const pick = (matcher: (c: string) => boolean) =>
-      userColumnNames.find(matcher) ?? null;
-
-    const fullNameCol = pick((c) => c === "full_name");
-    const firstNameCol = pick((c) => c === "first_name");
-    const lastNameCol = pick((c) => c === "last_name");
-
-    const nameExpr =
-      fullNameCol != null
-        ? `NULLIF(TRIM(u."${fullNameCol}"), '')`
-        : `NULLIF(TRIM(CONCAT_WS(' ', ${
-            firstNameCol ? `u."${firstNameCol}"` : "''"
-          }, ${lastNameCol ? `u."${lastNameCol}"` : "''"})), '')`;
-
-    const result = await pool.query<{ student_name: string | null; lesson_title: string | null }>(
-      `SELECT ${nameExpr} AS student_name, l.title AS lesson_title
-       FROM users u
-       JOIN lessons l ON l.id = $2
-       WHERE u.id = $1
-       LIMIT 1`,
-      [studentId, lessonId],
-    );
-
-    const row = result.rows[0];
-    if (!row) return null;
-
-    return {
-      studentName: row.student_name?.trim() || "Uczeń",
-      lessonTitle: row.lesson_title?.trim() || `Lekcja #${lessonId}`,
-    };
-  } catch (err) {
-    console.error("[sqlLoadSubmissionEmailContext]", err);
-    return null;
-  }
-}
-
 export async function sqlLinkTeacherAudio(
   submissionId: string | number,
   mediaId: string | number | null,

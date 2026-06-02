@@ -2,12 +2,31 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import { createLocalReq, type PayloadRequest } from "payload";
 
+import { scheduleStudentFeedbackReadyEmail } from "@/src/features/elearning/submission-email-hooks";
 import { createAudioMediaDocument } from "@/src/lib/create-audio-media";
 import { getCachedPayload } from "@/src/lib/payload-cache";
 import { isPlatformAdmin } from "@/src/lib/platform-admin";
 import { sqlLinkTeacherAudio } from "@/src/lib/submissions-sql-fallback";
 
 type RouteParams = { params: Promise<{ id: string }> };
+
+function docForFeedbackEmail(
+  submissionId: string,
+  doc: unknown,
+  teacherAudio: string | number,
+) {
+  const slice = doc as {
+    student?: string | number | { id: string | number };
+    lesson?: string | number | { id: string | number };
+  };
+  return {
+    id: submissionId,
+    student: slice.student,
+    lesson: slice.lesson,
+    teacherAudio,
+    isReviewed: true,
+  };
+}
 
 function toRelationId(value: unknown): number | string | null {
   if (value == null || value === "") return null;
@@ -81,6 +100,9 @@ export async function POST(request: Request, { params }: RouteParams) {
     if (linkMediaId != null && !(formData.get("file") instanceof File)) {
       const req = await createLocalReq({ user: auth.user ?? undefined }, payload);
       const doc = await saveTeacherAudioOnSubmission(submissionId, linkMediaId, req);
+      scheduleStudentFeedbackReadyEmail(
+        docForFeedbackEmail(submissionId, doc, linkMediaId),
+      );
       return NextResponse.json({ ok: true, mediaId: linkMediaId, doc });
     }
 
@@ -109,6 +131,8 @@ export async function POST(request: Request, { params }: RouteParams) {
     }
 
     const doc = await saveTeacherAudioOnSubmission(submissionId, mediaId, req);
+
+    scheduleStudentFeedbackReadyEmail(docForFeedbackEmail(submissionId, doc, mediaId));
 
     return NextResponse.json({
       ok: true,

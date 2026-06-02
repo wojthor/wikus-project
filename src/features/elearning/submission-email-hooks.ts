@@ -1,10 +1,11 @@
 import type { Payload } from "payload";
 
+import { deferServerTask } from "@/src/lib/defer-server-task";
 import {
   sendFeedbackReadyToStudentEmail,
   sendNewSubmissionToTeacherEmail,
 } from "@/src/lib/email";
-import { sqlLoadSubmissionEmailContext } from "@/src/lib/submissions-sql-fallback";
+import { getPgPool } from "@/src/lib/pg-pool";
 
 type SubmissionDoc = {
   id: string | number;
@@ -17,6 +18,12 @@ type SubmissionDoc = {
   isReviewed?: boolean;
   teacherFeedback?: unknown;
   teacherAudio?: unknown;
+};
+
+export type SubmissionEmailContext = {
+  studentName?: string;
+  lessonTitle?: string;
+  studentEmail?: string;
 };
 
 function hasMeaningfulText(value: unknown): boolean {
@@ -60,91 +67,65 @@ function formatStudentName(student: unknown): string {
   return name || "Uczeń";
 }
 
-type LoadedContext = {
-  student: { id: string | number; email?: string; fullName?: string; firstName?: string; lastName?: string } | null;
-  lesson: { id: string | number; title?: string } | null;
-};
-
-async function loadContextFromRelations(payload: Payload, doc: SubmissionDoc): Promise<LoadedContext> {
-  const studentId = resolveRelationId(doc.student as string | number | { id: string | number } | null);
-  const lessonId = resolveRelationId(doc.lesson as string | number | { id: string | number } | null);
-
-  if (!studentId || !lessonId) {
-    return { student: null, lesson: null };
-  }
-
-  if (
-    typeof doc.student === "object" &&
-    doc.student !== null &&
-    typeof doc.lesson === "object" &&
-    doc.lesson !== null
-  ) {
-    return {
-      student: doc.student as LoadedContext["student"],
-      lesson: doc.lesson as LoadedContext["lesson"],
-    };
-  }
-
-  const [student, lesson] = await Promise.all([
-    payload.findByID({
-      collection: "users",
-      id: studentId,
-      depth: 0,
-      overrideAccess: true,
-    }) as Promise<LoadedContext["student"]>,
-    payload.findByID({
-      collection: "lessons",
-      id: lessonId,
-      depth: 0,
-      overrideAccess: true,
-    }) as Promise<LoadedContext["lesson"]>,
-  ]);
-
-  return { student, lesson };
+async function loadEmailRow(studentId: string, lessonId: string) {
+  const pool = await getPgPool();
+  const result = await pool.query<{
+    email: string | null;
+    student_name: string | null;
+    lesson_title: string | null;
+  }>(
+    `SELECT u.email,
+            COALESCE(NULLIF(TRIM(u.full_name), ''), NULLIF(TRIM(CONCAT_WS(' ', u.first_name, u.last_name)), '')) AS student_name,
+            l.title AS lesson_title
+     FROM users u
+     JOIN lessons l ON l.id = $2
+     WHERE u.id = $1
+     LIMIT 1`,
+    [studentId, lessonId],
+  );
+  return result.rows[0] ?? null;
 }
 
-export async function notifyTeacherOnNewSubmission(
-  payload: Payload,
+export async function sendTeacherNewSubmissionEmail(
   doc: SubmissionDoc,
+  context?: SubmissionEmailContext,
 ): Promise<void> {
   const studentId = resolveRelationId(doc.student as string | number | { id: string | number } | null);
   const lessonId = resolveRelationId(doc.lesson as string | number | { id: string | number } | null);
 
-  if (studentId && lessonId) {
-    const fromSql = await sqlLoadSubmissionEmailContext(studentId, lessonId);
-    if (fromSql) {
-      await sendNewSubmissionToTeacherEmail({
-        submissionId: doc.id,
-        studentName: fromSql.studentName,
-        lessonTitle: fromSql.lessonTitle,
-      });
-      return;
+  let studentName = context?.studentName?.trim();
+  let lessonTitle = context?.lessonTitle?.trim();
+
+  if ((!studentName || !lessonTitle) && studentId && lessonId) {
+    try {
+      const row = await loadEmailRow(studentId, lessonId);
+      if (!studentName && row?.student_name) studentName = row.student_name;
+      if (!lessonTitle && row?.lesson_title) lessonTitle = row.lesson_title;
+    } catch (err) {
+      console.error("[submission-email] load teacher mail context", err);
     }
   }
 
-  const { student, lesson } = await loadContextFromRelations(payload, doc);
-
-  if (!student || typeof student !== "object" || !lesson || typeof lesson !== "object") {
-    console.warn("[submission-email] Brak danych student/lesson do maila dla Wiktora.");
-    return;
+  if (typeof doc.student === "object" && doc.student !== null && !studentName) {
+    studentName = formatStudentName(doc.student);
   }
 
   await sendNewSubmissionToTeacherEmail({
     submissionId: doc.id,
-    studentName: formatStudentName(student),
-    lessonTitle: lesson.title?.trim() || `Lekcja #${resolveRelationId(lesson.id)}`,
+    studentName: studentName || (studentId ? `Uczeń #${studentId}` : "Uczeń"),
+    lessonTitle: lessonTitle || (lessonId ? `Lekcja #${lessonId}` : "Lekcja"),
   });
 }
 
-export async function notifyStudentOnFeedbackReviewed(
-  payload: Payload,
+export async function sendStudentFeedbackReadyEmail(
   doc: SubmissionDoc,
+  context?: SubmissionEmailContext,
 ): Promise<void> {
   const studentId = resolveRelationId(doc.student as string | number | { id: string | number } | null);
   const lessonId = resolveRelationId(doc.lesson as string | number | { id: string | number } | null);
 
-  let studentEmail: string | null = null;
-  let lessonTitle = "lekcja";
+  let studentEmail = context?.studentEmail?.trim().toLowerCase() ?? null;
+  let lessonTitle = context?.lessonTitle?.trim() ?? "lekcja";
 
   if (
     typeof doc.student === "object" &&
@@ -152,7 +133,7 @@ export async function notifyStudentOnFeedbackReviewed(
     "email" in doc.student &&
     typeof (doc.student as { email?: string }).email === "string"
   ) {
-    studentEmail = (doc.student as { email: string }).email;
+    studentEmail = (doc.student as { email: string }).email.trim().toLowerCase();
   }
 
   if (typeof doc.lesson === "object" && doc.lesson !== null && "title" in doc.lesson) {
@@ -161,50 +142,60 @@ export async function notifyStudentOnFeedbackReviewed(
   }
 
   if ((!studentEmail || lessonTitle === "lekcja") && studentId && lessonId) {
-    const pool = await import("@/src/lib/pg-pool").then((m) => m.getPgPool()).catch(() => null);
-    if (pool) {
-      try {
-        const result = await pool.query<{ email: string | null; lesson_title: string | null }>(
-          `SELECT u.email, l.title AS lesson_title
-           FROM users u
-           JOIN lessons l ON l.id = $2
-           WHERE u.id = $1
-           LIMIT 1`,
-          [studentId, lessonId],
-        );
-        const row = result.rows[0];
-        if (!studentEmail && row?.email?.trim()) {
-          studentEmail = row.email.trim();
-        }
-        if (lessonTitle === "lekcja" && row?.lesson_title?.trim()) {
-          lessonTitle = row.lesson_title.trim();
-        }
-      } catch (err) {
-        console.error("[submission-email] sql student context", err);
+    try {
+      const row = await loadEmailRow(studentId, lessonId);
+      if (!studentEmail && row?.email?.trim()) {
+        studentEmail = row.email.trim().toLowerCase();
       }
+      if (lessonTitle === "lekcja" && row?.lesson_title?.trim()) {
+        lessonTitle = row.lesson_title.trim();
+      }
+    } catch (err) {
+      console.error("[submission-email] load student mail context", err);
     }
   }
 
   if (!studentEmail) {
-    const { student, lesson } = await loadContextFromRelations(payload, doc);
-    if (!student || typeof student !== "object" || !student.email) {
-      console.warn("[submission-email] Brak e-maila ucznia do powiadomienia o feedbacku.");
-      return;
-    }
-    studentEmail = student.email.trim().toLowerCase();
-    if (lesson && typeof lesson === "object" && lesson.title?.trim()) {
-      lessonTitle = lesson.title.trim();
-    }
-  }
-
-  const to = studentEmail?.trim().toLowerCase();
-  if (!to) {
     console.warn("[submission-email] Brak e-maila ucznia do powiadomienia o feedbacku.");
     return;
   }
 
   await sendFeedbackReadyToStudentEmail({
-    to,
+    to: studentEmail,
     lessonTitle,
   });
+}
+
+/** Po utworzeniu zgłoszenia — nie blokuje zapisu w bazie. */
+export function scheduleTeacherNewSubmissionEmail(
+  doc: SubmissionDoc,
+  context?: SubmissionEmailContext,
+): void {
+  deferServerTask("teacher-new-submission-email", () => sendTeacherNewSubmissionEmail(doc, context));
+}
+
+/** Po dodaniu feedbacku — nie blokuje zapisu w panelu admin. */
+export function scheduleStudentFeedbackReadyEmail(
+  doc: SubmissionDoc,
+  context?: SubmissionEmailContext,
+): void {
+  deferServerTask("student-feedback-email", () => sendStudentFeedbackReadyEmail(doc, context));
+}
+
+/** @deprecated Użyj scheduleTeacherNewSubmissionEmail */
+export async function notifyTeacherOnNewSubmission(
+  _payload: Payload,
+  doc: SubmissionDoc,
+  context?: SubmissionEmailContext,
+): Promise<void> {
+  await sendTeacherNewSubmissionEmail(doc, context);
+}
+
+/** @deprecated Użyj scheduleStudentFeedbackReadyEmail */
+export async function notifyStudentOnFeedbackReviewed(
+  _payload: Payload,
+  doc: SubmissionDoc,
+  context?: SubmissionEmailContext,
+): Promise<void> {
+  await sendStudentFeedbackReadyEmail(doc, context);
 }

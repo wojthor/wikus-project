@@ -2,13 +2,8 @@ import type { CollectionConfig } from "payload";
 
 import { isPlatformAdmin } from "@/src/lib/platform-admin";
 import {
-  sqlGetSubmissionMediaId,
-  sqlLinkTeacherAudio,
-} from "@/src/lib/submissions-sql-fallback";
-import {
   feedbackWasAdded,
-  notifyStudentOnFeedbackReviewed,
-  notifyTeacherOnNewSubmission,
+  scheduleStudentFeedbackReadyEmail,
   submissionHasFeedback,
 } from "@/src/features/elearning/submission-email-hooks";
 
@@ -25,42 +20,23 @@ function hasRelationValue(value: unknown): boolean {
   return true;
 }
 
-function resolveRelationId(value: unknown): string | number | null {
-  if (value == null || value === "") return null;
-  if (typeof value === "object" && "id" in value) {
-    return resolveRelationId((value as { id: unknown }).id);
-  }
-  if (typeof value === "number") return value;
-  if (typeof value === "string") return value;
-  return null;
-}
-
 function isAutosaveRequest(req: { query?: Record<string, unknown> }): boolean {
   const autosave = req.query?.autosave;
   return autosave === true || autosave === "true";
 }
 
-async function syncTeacherAudioFromForm(
-  submissionId: string | number,
+function submissionHasFeedbackFromData(
   data: Record<string, unknown>,
-): Promise<void> {
-  const explicitRemoval = data.teacherAudio === null;
-  const nextAudioId = hasRelationValue(data.teacherAudio)
-    ? resolveRelationId(data.teacherAudio)
-    : null;
-
-  if (nextAudioId == null && !explicitRemoval) return;
-
-  const currentAudioId = await sqlGetSubmissionMediaId(submissionId, "teacher");
-  if (String(nextAudioId ?? "") === String(currentAudioId ?? "")) return;
-
-  await sqlLinkTeacherAudio(submissionId, nextAudioId, explicitRemoval);
-
-  if (nextAudioId != null) {
-    data.teacherAudio = nextAudioId;
-  } else if (explicitRemoval) {
-    data.teacherAudio = null;
+  originalDoc?: Record<string, unknown> | null,
+): boolean {
+  if (hasMeaningfulText(data.teacherFeedback) || hasRelationValue(data.teacherAudio)) {
+    return true;
   }
+  if (!originalDoc) return false;
+  return (
+    hasMeaningfulText(originalDoc.teacherFeedback) ||
+    hasRelationValue(originalDoc.teacherAudio)
+  );
 }
 
 export const Submissions: CollectionConfig = {
@@ -96,20 +72,8 @@ export const Submissions: CollectionConfig = {
       },
     ],
     beforeChange: [
-      async ({ data, operation, originalDoc, req }) => {
+      ({ data, operation, originalDoc, req }) => {
         if (!data) return data;
-
-        if (
-          operation === "update" &&
-          originalDoc?.id &&
-          isPlatformAdmin(req.user) &&
-          !isAutosaveRequest(req)
-        ) {
-          await syncTeacherAudioFromForm(
-            originalDoc.id,
-            data as Record<string, unknown>,
-          );
-        }
 
         // Autosave panelu nie wysyła pól z custom komponentów — nie kasuj istniejącego audio.
         if (operation === "update" && originalDoc) {
@@ -130,57 +94,43 @@ export const Submissions: CollectionConfig = {
         if (!isPlatformAdmin(req.user)) return data;
 
         if (!isAutosaveRequest(req)) {
-          let hasFeedback =
-            hasMeaningfulText(data.teacherFeedback) || hasRelationValue(data.teacherAudio);
-
-          if (
-            !hasFeedback &&
-            operation === "update" &&
-            originalDoc?.id
-          ) {
-            const sqlAudioId = await sqlGetSubmissionMediaId(originalDoc.id, "teacher");
-            if (sqlAudioId != null) {
-              hasFeedback = true;
-            }
-          }
-
-          data.isReviewed = hasFeedback;
+          data.isReviewed = submissionHasFeedbackFromData(
+            data as Record<string, unknown>,
+            originalDoc as Record<string, unknown> | null,
+          );
         }
 
         return data;
       },
     ],
     afterChange: [
-      async ({ doc, data, operation, previousDoc, req }) => {
+      ({ doc, data, operation, previousDoc, req }) => {
         if (!req.payload) return doc;
 
-        try {
-          if (operation === "create") {
-            await notifyTeacherOnNewSubmission(req.payload, doc);
+        const skipEmails = Boolean(
+          (req.context as { skipSubmissionEmails?: boolean } | undefined)?.skipSubmissionEmails,
+        );
+
+        if (operation === "create" && !skipEmails) {
+          // E-mail dla nauczyciela planuje route /api/elearning/submissions (ma kontekst ucznia).
+        }
+
+        if (
+          operation === "update" &&
+          previousDoc &&
+          !isAutosaveRequest(req) &&
+          !skipEmails
+        ) {
+          const mergedDoc = {
+            ...doc,
+            teacherFeedback: doc.teacherFeedback ?? data?.teacherFeedback,
+            teacherAudio: doc.teacherAudio ?? data?.teacherAudio,
+            isReviewed: doc.isReviewed ?? data?.isReviewed,
+          };
+
+          if (feedbackWasAdded(previousDoc, mergedDoc) && submissionHasFeedback(mergedDoc)) {
+            scheduleStudentFeedbackReadyEmail(mergedDoc);
           }
-
-          if (
-            operation === "update" &&
-            previousDoc &&
-            !isAutosaveRequest(req)
-          ) {
-            const sqlAudioId = doc.id
-              ? await sqlGetSubmissionMediaId(doc.id, "teacher")
-              : null;
-
-            const mergedDoc = {
-              ...doc,
-              teacherFeedback: doc.teacherFeedback ?? data?.teacherFeedback,
-              teacherAudio: sqlAudioId ?? doc.teacherAudio ?? data?.teacherAudio,
-              isReviewed: doc.isReviewed ?? data?.isReviewed,
-            };
-
-            if (feedbackWasAdded(previousDoc, mergedDoc) && submissionHasFeedback(mergedDoc)) {
-              await notifyStudentOnFeedbackReviewed(req.payload, mergedDoc);
-            }
-          }
-        } catch (err) {
-          console.error("[submissions afterChange email]", err);
         }
 
         return doc;

@@ -11,15 +11,29 @@ function isServerlessRuntime(): boolean {
   return Boolean(process.env.VERCEL) || process.env.NODE_ENV === "production";
 }
 
+function normalizeDatabaseUri(uri: string): string {
+  try {
+    const url = new URL(uri);
+    if (url.hostname.includes("pooler.supabase.com") && url.port === "6543") {
+      if (!url.searchParams.has("pgbouncer")) {
+        url.searchParams.set("pgbouncer", "true");
+      }
+    }
+    return url.toString();
+  } catch {
+    return uri;
+  }
+}
+
 function defaultPoolOptions(): pg.PoolConfig {
-  const connectionString = process.env.DATABASE_URI;
-  if (!connectionString) {
+  const raw = process.env.DATABASE_URI;
+  if (!raw) {
     throw new Error("Brak DATABASE_URI.");
   }
 
   return {
-    connectionString,
-    max: isServerlessRuntime() ? 2 : 10,
+    connectionString: normalizeDatabaseUri(raw),
+    max: isServerlessRuntime() ? 1 : 10,
     idleTimeoutMillis: 20_000,
     connectionTimeoutMillis: 20_000,
     allowExitOnIdle: true,

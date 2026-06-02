@@ -64,7 +64,7 @@ export default buildConfig({
     pg: pgModule,
     pool: {
       connectionString: databaseUri,
-      max: isServerlessRuntime ? 2 : 10,
+      max: isServerlessRuntime ? 1 : 10,
       idleTimeoutMillis: 20_000,
       connectionTimeoutMillis: 20_000,
       allowExitOnIdle: true,
