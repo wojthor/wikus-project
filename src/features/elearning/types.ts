@@ -1,4 +1,5 @@
 import type { ModuleAccentId } from "./theme";
+import type { LessonSection } from "./lesson-section-types";
 
 export type LessonTaskType = "text" | "audio" | "multiday";
 
@@ -16,6 +17,8 @@ export type ElearningLesson = {
   hasVideo: boolean;
   videoTitle: string | null;
   videoUrl: string | null;
+  intro: string | null;
+  sections: LessonSection[];
   content: Record<string, unknown> | null;
   task: {
     type: LessonTaskType;

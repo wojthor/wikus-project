@@ -5,6 +5,9 @@ import { getPayload } from "payload";
 import config from "@payload-config";
 import { readPrivateAudioBlob } from "@/src/lib/audio-blob-storage";
 import { resolveMediaFilePath } from "@/src/lib/media-storage";
+import { sqlGetMediaBlobMeta } from "@/src/lib/media-sql";
+
+export const runtime = "nodejs";
 
 type RouteParams = { params: Promise<{ id: string }> };
 
@@ -12,7 +15,35 @@ type MediaFile =
   | { kind: "stream"; stream: ReadableStream<Uint8Array>; mime: string; filename: string; size: number }
   | { kind: "buffer"; buffer: Buffer; mime: string; filename: string; size: number };
 
+function normalizePlaybackMime(mime: string | null | undefined): string {
+  if (!mime || mime === "video/webm") return "audio/webm";
+  return mime;
+}
+
 async function loadMediaFile(id: string): Promise<MediaFile | null> {
+  const sqlMeta = await sqlGetMediaBlobMeta(id).catch((err) => {
+    console.error("[media-playback] sqlGetMediaBlobMeta", err);
+    return null;
+  });
+
+  const blobPathname =
+    sqlMeta?.blobPathname?.trim() ||
+    (sqlMeta?.blobUrl?.includes(".private.blob.") ? sqlMeta.blobUrl.trim() : "");
+
+  if (blobPathname) {
+    const privateBlob = await readPrivateAudioBlob(blobPathname);
+    if (privateBlob) {
+      return {
+        kind: "stream",
+        stream: privateBlob.stream,
+        mime: normalizePlaybackMime(privateBlob.mime),
+        filename: sqlMeta?.filename ?? privateBlob.filename,
+        size: privateBlob.size,
+      };
+    }
+    console.error("[media-playback] Blob read failed for", blobPathname);
+  }
+
   const payload = await getPayload({ config });
   const doc = await payload.findByID({
     collection: "media",
@@ -20,21 +51,19 @@ async function loadMediaFile(id: string): Promise<MediaFile | null> {
     overrideAccess: true,
   });
 
-  const blobPathname =
+  const docPathname =
     (typeof doc?.blobPathname === "string" && doc.blobPathname.trim()) ||
     (typeof doc?.blobUrl === "string" && doc.blobUrl.includes(".private.blob.")
-      ? doc.blobUrl
+      ? doc.blobUrl.trim()
       : "");
 
-  if (blobPathname) {
-    const privateBlob = await readPrivateAudioBlob(blobPathname);
+  if (docPathname && docPathname !== blobPathname) {
+    const privateBlob = await readPrivateAudioBlob(docPathname);
     if (privateBlob) {
-      let mime = privateBlob.mime;
-      if (mime === "video/webm") mime = "audio/webm";
       return {
         kind: "stream",
         stream: privateBlob.stream,
-        mime,
+        mime: normalizePlaybackMime(privateBlob.mime),
         filename: typeof doc.filename === "string" ? doc.filename : privateBlob.filename,
         size: privateBlob.size,
       };
@@ -47,13 +76,17 @@ async function loadMediaFile(id: string): Promise<MediaFile | null> {
     if (remote.ok) {
       const buffer = Buffer.from(await remote.arrayBuffer());
       const filename = typeof doc.filename === "string" ? doc.filename : "nagranie.webm";
-      let mime = typeof doc.mimeType === "string" ? doc.mimeType : "audio/webm";
-      if (mime === "video/webm") mime = "audio/webm";
-      return { kind: "buffer", buffer, mime, filename, size: buffer.length };
+      return {
+        kind: "buffer",
+        buffer,
+        mime: normalizePlaybackMime(doc.mimeType as string | undefined),
+        filename,
+        size: buffer.length,
+      };
     }
   }
 
-  const filename = typeof doc?.filename === "string" ? doc.filename : null;
+  const filename = typeof doc?.filename === "string" ? doc.filename : sqlMeta?.filename;
   if (!filename) return null;
 
   const filePath = resolveMediaFilePath(filename);
@@ -61,10 +94,13 @@ async function loadMediaFile(id: string): Promise<MediaFile | null> {
   if (!stat?.isFile()) return null;
 
   const buffer = await fs.readFile(filePath);
-  let mime = typeof doc.mimeType === "string" ? doc.mimeType : "audio/webm";
-  if (mime === "video/webm") mime = "audio/webm";
-
-  return { kind: "buffer", buffer, mime, filename, size: stat.size };
+  return {
+    kind: "buffer",
+    buffer,
+    mime: normalizePlaybackMime(doc.mimeType as string | undefined),
+    filename,
+    size: stat.size,
+  };
 }
 
 function playbackHeaders(file: MediaFile, asDownload: boolean) {

@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Lock, Menu, X } from "lucide-react";
 import { MultidayChallenge } from "@/src/features/elearning/components/AudioRecorder";
-import { LexicalContent } from "@/src/features/elearning/components/LexicalContent";
+import { LessonContentView } from "@/src/features/elearning/components/LessonContentView";
 import { StudentSidebarContent } from "@/src/features/elearning/components/StudentSidebar";
 import { VideoEmbed } from "@/src/features/elearning/components/VideoEmbed";
 import { ModuleTag as Tag } from "@/src/features/elearning/components/ModuleTag";
@@ -547,7 +547,11 @@ export function StudentPanel({ modules, userId, isCourseAdmin }: StudentPanelPro
             <VideoEmbed videoUrl={lesson.videoUrl} videoTitle={lesson.videoTitle} />
           )}
 
-          <LexicalContent content={lesson.content} />
+          <LessonContentView
+            intro={lesson.intro}
+            sections={lesson.sections}
+            content={lesson.content}
+          />
 
           <div className="mt-9 rounded-2xl border border-[#b9c5fe] bg-white p-5 shadow-sm sm:p-6 md:p-7">
             <div className="mb-4 flex gap-3">

@@ -1,4 +1,4 @@
-/** Bezpośredni zapis rekordów media (obejście uploadu pliku Payload na serverless). */
+/** Bezpośredni zapis/odczyt media (Payload + Vercel Blob na serverless). */
 
 type PgPool = import("pg").Pool;
 
@@ -10,41 +10,58 @@ export type SqlMediaDoc = {
   blobPathname?: string;
 };
 
-async function getPool(): Promise<PgPool | null> {
+export type SqlMediaBlobMeta = {
+  filename: string | null;
+  mimeType: string | null;
+  blobUrl: string | null;
+  blobPathname: string | null;
+};
+
+async function getPool(): Promise<PgPool> {
   const uri = process.env.DATABASE_URI;
-  if (!uri) return null;
+  if (!uri) {
+    throw new Error("Brak DATABASE_URI — nie można zapisać nagrania w bazie.");
+  }
   const { Pool } = await import("pg");
   return new Pool({ connectionString: uri });
-}
-
-async function listMediaColumns(pool: PgPool): Promise<string[]> {
-  const result = await pool.query<{ column_name: string }>(
-    `SELECT column_name
-     FROM information_schema.columns
-     WHERE table_schema = 'public' AND table_name = 'media'`,
-  );
-  return result.rows.map((r) => r.column_name);
-}
-
-function pickColumn(columns: string[], candidates: string[]): string | null {
-  for (const name of candidates) {
-    if (columns.includes(name)) return name;
-  }
-  return null;
 }
 
 /** Dodaje kolumny Blob (produkcja: push wyłączony). */
 export async function ensureMediaBlobColumns(): Promise<void> {
   const pool = await getPool();
-  if (!pool) return;
-
   try {
     await pool.query(`
       ALTER TABLE media ADD COLUMN IF NOT EXISTS blob_url text;
       ALTER TABLE media ADD COLUMN IF NOT EXISTS blob_pathname text;
     `);
-  } catch (err) {
-    console.error("[ensureMediaBlobColumns]", err);
+  } finally {
+    await pool.end();
+  }
+}
+
+export async function sqlGetMediaBlobMeta(
+  mediaId: string | number,
+): Promise<SqlMediaBlobMeta | null> {
+  const pool = await getPool();
+  try {
+    const result = await pool.query<{
+      filename: string | null;
+      mime_type: string | null;
+      blob_url: string | null;
+      blob_pathname: string | null;
+    }>(
+      `SELECT filename, mime_type, blob_url, blob_pathname
+       FROM media WHERE id = $1 LIMIT 1`,
+      [mediaId],
+    );
+    const row = result.rows[0];
+    if (!row) return null;
+    return {
+      filename: row.filename,
+      mimeType: row.mime_type,
+      blobUrl: row.blob_url,
+      blobPathname: row.blob_pathname,
+    };
   } finally {
     await pool.end();
   }
@@ -57,60 +74,36 @@ export async function sqlCreateBlobMedia(params: {
   filesize: number;
   blobUrl: string;
   blobPathname: string;
-}): Promise<SqlMediaDoc | null> {
+}): Promise<SqlMediaDoc> {
+  await ensureMediaBlobColumns();
   const pool = await getPool();
-  if (!pool) return null;
 
   try {
-    await ensureMediaBlobColumns();
-    const columns = await listMediaColumns(pool);
-
-    const altCol = pickColumn(columns, ["alt"]);
-    const filenameCol = pickColumn(columns, ["filename"]);
-    const mimeCol = pickColumn(columns, ["mime_type", "mimetype"]);
-    const sizeCol = pickColumn(columns, ["filesize", "file_size"]);
-    const blobUrlCol = pickColumn(columns, ["blob_url"]);
-    const blobPathCol = pickColumn(columns, ["blob_pathname"]);
-    const updatedCol = pickColumn(columns, ["updated_at"]);
-    const createdCol = pickColumn(columns, ["created_at"]);
-
-    if (!filenameCol) {
-      console.error("[sqlCreateBlobMedia] Brak kolumny filename w tabeli media.");
-      return null;
-    }
-
-    const insertCols: string[] = [];
-    const placeholders: string[] = [];
-    const values: Array<string | number> = [];
-
-    const addValue = (col: string, value: string | number) => {
-      insertCols.push(`"${col}"`);
-      placeholders.push(`$${values.length + 1}`);
-      values.push(value);
-    };
-    const addNow = (col: string) => {
-      insertCols.push(`"${col}"`);
-      placeholders.push("NOW()");
-    };
-
-    addValue(filenameCol, params.filename);
-    if (altCol) addValue(altCol, params.alt);
-    if (mimeCol) addValue(mimeCol, params.mimeType);
-    if (sizeCol) addValue(sizeCol, params.filesize);
-    if (blobUrlCol) addValue(blobUrlCol, params.blobUrl);
-    if (blobPathCol) addValue(blobPathCol, params.blobPathname);
-    if (createdCol) addNow(createdCol);
-    if (updatedCol) addNow(updatedCol);
-
     const result = await pool.query<{ id: string | number }>(
-      `INSERT INTO media (${insertCols.join(", ")})
-       VALUES (${placeholders.join(", ")})
+      `INSERT INTO media (
+         filename, alt, mime_type, filesize, blob_url, blob_pathname, created_at, updated_at
+       ) VALUES ($1, $2, $3, $4, $5, $6, NOW(), NOW())
        RETURNING id`,
-      values,
+      [
+        params.filename,
+        params.alt,
+        params.mimeType,
+        params.filesize,
+        params.blobUrl,
+        params.blobPathname,
+      ],
     );
 
     const id = result.rows[0]?.id;
-    if (id == null) return null;
+    if (id == null) {
+      throw new Error("INSERT media nie zwrócił id.");
+    }
+
+    const playbackUrl = `/api/media-playback/${id}`;
+    await pool.query(`UPDATE media SET url = $1, updated_at = NOW() WHERE id = $2`, [
+      playbackUrl,
+      id,
+    ]);
 
     return {
       id,
@@ -120,8 +113,9 @@ export async function sqlCreateBlobMedia(params: {
       blobPathname: params.blobPathname,
     };
   } catch (err) {
-    console.error("[sqlCreateBlobMedia]", err);
-    return null;
+    const detail = err instanceof Error ? err.message : String(err);
+    console.error("[sqlCreateBlobMedia]", detail, err);
+    throw new Error(`Nie udało się zapisać nagrania w bazie: ${detail}`);
   } finally {
     await pool.end();
   }
