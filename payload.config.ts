@@ -11,7 +11,7 @@ import { Media } from "./src/collections/Media";
 import { Modules } from "./src/collections/Modules";
 import { Submissions } from "./src/collections/Submissions";
 import { Users } from "./src/collections/Users";
-import { createPgModuleWithSharedPool } from "./src/lib/pg-singleton";
+import { createPgModuleWithSharedPool, buildPgPoolConfig } from "./src/lib/pg-singleton";
 
 // Next.js ładuje .env.local dopiero w runtime — bez tego webpack może zbundlować pusty secret
 loadEnvConfig(process.cwd());
@@ -30,9 +30,6 @@ if (!databaseUri) {
     "Brak DATABASE_URI. Dodaj DATABASE_URI=postgresql://... do pliku .env.local.",
   );
 }
-
-const isServerlessRuntime =
-  Boolean(process.env.VERCEL) || process.env.NODE_ENV === "production";
 
 /** Na Vercel używaj Supabase „Transaction” pooler (port 6543), nie session (5432). */
 const pgModule = createPgModuleWithSharedPool();
@@ -62,13 +59,7 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pg: pgModule,
-    pool: {
-      connectionString: databaseUri,
-      max: isServerlessRuntime ? 1 : 10,
-      idleTimeoutMillis: 20_000,
-      connectionTimeoutMillis: 20_000,
-      allowExitOnIdle: true,
-    },
+    pool: buildPgPoolConfig(),
     push: process.env.NODE_ENV !== "production",
   }),
   sharp,
