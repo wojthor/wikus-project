@@ -1,5 +1,4 @@
-import config from "@payload-config";
-import { getPayload } from "payload";
+import { getCachedPayload } from "@/src/lib/payload-cache";
 
 import { getMockupLessonByLegacySlug } from "@/src/lib/mockup-lesson-lookup";
 import {
@@ -103,7 +102,7 @@ function mapLesson(doc: PayloadLesson): ElearningLesson {
 }
 
 export async function fetchElearningModules(): Promise<ElearningModule[]> {
-  const payload = await getPayload({ config });
+  const payload = await getCachedPayload();
 
   const [modulesResult, lessonsResult] = await Promise.all([
     payload.find({

@@ -1,8 +1,7 @@
-import config from "@payload-config";
 import { headers } from "next/headers";
-import { getPayload } from "payload";
 
 import { isPlatformAdmin } from "@/src/lib/platform-admin";
+import { getCachedPayload } from "@/src/lib/payload-cache";
 
 export type ElearningUser = {
   id: number | string;
@@ -27,7 +26,7 @@ function buildDisplayName(user: {
 }
 
 export async function getElearningUser(): Promise<ElearningUser | null> {
-  const payload = await getPayload({ config });
+  const payload = await getCachedPayload();
   const headerList = await headers();
   const { user } = await payload.auth({ headers: headerList });
 

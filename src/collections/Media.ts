@@ -3,10 +3,16 @@ import type { CollectionConfig } from "payload";
 import { isPlatformAdmin } from "@/src/lib/platform-admin";
 import { getMediaStorageDir } from "@/src/lib/media-storage";
 
+const useBlobOnServer =
+  Boolean(process.env.BLOB_READ_WRITE_TOKEN?.trim()) ||
+  Boolean(process.env.VERCEL);
+
 export const Media: CollectionConfig = {
   slug: "media",
   upload: {
-    staticDir: getMediaStorageDir(),
+    ...(useBlobOnServer
+      ? { disableLocalStorage: true }
+      : { staticDir: getMediaStorageDir() }),
     mimeTypes: ["audio/*", "video/webm", "application/octet-stream"],
     imageSizes: [],
   },

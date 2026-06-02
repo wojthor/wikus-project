@@ -22,7 +22,8 @@ Produkcja: `pnpm build` → `pnpm start`
 | Zmienna | Opis |
 |---------|------|
 | `PAYLOAD_SECRET` | Secret Payload CMS |
-| `DATABASE_URI` | PostgreSQL (connection string) |
+| `DATABASE_URI` | PostgreSQL — na Vercel **Supabase „Transaction” pooler (port 6543)**, nie session (5432) |
+| `BLOB_READ_WRITE_TOKEN` | Vercel Blob (nagrania głosowe na produkcji) |
 | `RESEND_API_KEY` | Wysyłka maili (Resend) |
 | `RESEND_FROM_EMAIL` | Adres nadawcy |
 | `TEACHER_EMAIL` | Email Wiktora (powiadomienia o zadaniach) |
