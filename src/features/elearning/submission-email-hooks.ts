@@ -4,6 +4,7 @@ import {
   sendFeedbackReadyToStudentEmail,
   sendNewSubmissionToTeacherEmail,
 } from "@/src/lib/email";
+import { sqlLoadSubmissionEmailContext } from "@/src/lib/submissions-sql-fallback";
 
 type SubmissionDoc = {
   id: string | number;
@@ -72,6 +73,18 @@ async function loadContextFromRelations(payload: Payload, doc: SubmissionDoc): P
     return { student: null, lesson: null };
   }
 
+  if (
+    typeof doc.student === "object" &&
+    doc.student !== null &&
+    typeof doc.lesson === "object" &&
+    doc.lesson !== null
+  ) {
+    return {
+      student: doc.student as LoadedContext["student"],
+      lesson: doc.lesson as LoadedContext["lesson"],
+    };
+  }
+
   const [student, lesson] = await Promise.all([
     payload.findByID({
       collection: "users",
@@ -94,6 +107,21 @@ export async function notifyTeacherOnNewSubmission(
   payload: Payload,
   doc: SubmissionDoc,
 ): Promise<void> {
+  const studentId = resolveRelationId(doc.student as string | number | { id: string | number } | null);
+  const lessonId = resolveRelationId(doc.lesson as string | number | { id: string | number } | null);
+
+  if (studentId && lessonId) {
+    const fromSql = await sqlLoadSubmissionEmailContext(studentId, lessonId);
+    if (fromSql) {
+      await sendNewSubmissionToTeacherEmail({
+        submissionId: doc.id,
+        studentName: fromSql.studentName,
+        lessonTitle: fromSql.lessonTitle,
+      });
+      return;
+    }
+  }
+
   const { student, lesson } = await loadContextFromRelations(payload, doc);
 
   if (!student || typeof student !== "object" || !lesson || typeof lesson !== "object") {
@@ -112,20 +140,71 @@ export async function notifyStudentOnFeedbackReviewed(
   payload: Payload,
   doc: SubmissionDoc,
 ): Promise<void> {
-  const { student, lesson } = await loadContextFromRelations(payload, doc);
+  const studentId = resolveRelationId(doc.student as string | number | { id: string | number } | null);
+  const lessonId = resolveRelationId(doc.lesson as string | number | { id: string | number } | null);
 
-  if (!student || typeof student !== "object" || !student.email) {
+  let studentEmail: string | null = null;
+  let lessonTitle = "lekcja";
+
+  if (
+    typeof doc.student === "object" &&
+    doc.student !== null &&
+    "email" in doc.student &&
+    typeof (doc.student as { email?: string }).email === "string"
+  ) {
+    studentEmail = (doc.student as { email: string }).email;
+  }
+
+  if (typeof doc.lesson === "object" && doc.lesson !== null && "title" in doc.lesson) {
+    const title = (doc.lesson as { title?: string }).title?.trim();
+    if (title) lessonTitle = title;
+  }
+
+  if ((!studentEmail || lessonTitle === "lekcja") && studentId && lessonId) {
+    const pool = await import("@/src/lib/pg-pool").then((m) => m.getPgPool()).catch(() => null);
+    if (pool) {
+      try {
+        const result = await pool.query<{ email: string | null; lesson_title: string | null }>(
+          `SELECT u.email, l.title AS lesson_title
+           FROM users u
+           JOIN lessons l ON l.id = $2
+           WHERE u.id = $1
+           LIMIT 1`,
+          [studentId, lessonId],
+        );
+        const row = result.rows[0];
+        if (!studentEmail && row?.email?.trim()) {
+          studentEmail = row.email.trim();
+        }
+        if (lessonTitle === "lekcja" && row?.lesson_title?.trim()) {
+          lessonTitle = row.lesson_title.trim();
+        }
+      } catch (err) {
+        console.error("[submission-email] sql student context", err);
+      }
+    }
+  }
+
+  if (!studentEmail) {
+    const { student, lesson } = await loadContextFromRelations(payload, doc);
+    if (!student || typeof student !== "object" || !student.email) {
+      console.warn("[submission-email] Brak e-maila ucznia do powiadomienia o feedbacku.");
+      return;
+    }
+    studentEmail = student.email.trim().toLowerCase();
+    if (lesson && typeof lesson === "object" && lesson.title?.trim()) {
+      lessonTitle = lesson.title.trim();
+    }
+  }
+
+  const to = studentEmail?.trim().toLowerCase();
+  if (!to) {
     console.warn("[submission-email] Brak e-maila ucznia do powiadomienia o feedbacku.");
     return;
   }
 
-  const lessonTitle =
-    lesson && typeof lesson === "object" && lesson.title?.trim()
-      ? lesson.title.trim()
-      : "lekcja";
-
   await sendFeedbackReadyToStudentEmail({
-    to: student.email.trim().toLowerCase(),
+    to,
     lessonTitle,
   });
 }

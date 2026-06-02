@@ -30,6 +30,9 @@ if (!databaseUri) {
   );
 }
 
+const isServerlessRuntime =
+  Boolean(process.env.VERCEL) || process.env.NODE_ENV === "production";
+
 const resendApiKey = process.env["RESEND_API_KEY"];
 if (!resendApiKey) {
   throw new Error("Brak RESEND_API_KEY. Dodaj RESEND_API_KEY=... do pliku .env.local.");
@@ -56,6 +59,10 @@ export default buildConfig({
   db: postgresAdapter({
     pool: {
       connectionString: databaseUri,
+      max: isServerlessRuntime ? 1 : 10,
+      idleTimeoutMillis: 10_000,
+      connectionTimeoutMillis: 10_000,
+      allowExitOnIdle: true,
     },
     push: process.env.NODE_ENV !== "production",
   }),

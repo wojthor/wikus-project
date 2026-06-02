@@ -1,16 +1,16 @@
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
-import { createLocalReq, getPayload } from "payload";
+import { createLocalReq } from "payload";
 
-import config from "@payload-config";
 import { createAudioMediaDocument } from "@/src/lib/create-audio-media";
+import { getCachedPayload } from "@/src/lib/payload-cache";
 
 /** Wgrywanie nagrania ucznia (stabilniejsze niż POST /api/media przez REST Drizzle). */
 export const runtime = "nodejs";
 export const maxDuration = 60;
 
 export async function POST(request: Request) {
-  const payload = await getPayload({ config });
+  const payload = await getCachedPayload();
   const hdrs = await headers();
   const auth = await payload.auth({ headers: hdrs });
 

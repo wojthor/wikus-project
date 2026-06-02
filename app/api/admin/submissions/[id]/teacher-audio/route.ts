@@ -1,12 +1,11 @@
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
-import { createLocalReq, getPayload, type PayloadRequest } from "payload";
+import { createLocalReq, type PayloadRequest } from "payload";
 
 import { createAudioMediaDocument } from "@/src/lib/create-audio-media";
+import { getCachedPayload } from "@/src/lib/payload-cache";
 import { isPlatformAdmin } from "@/src/lib/platform-admin";
 import { sqlLinkTeacherAudio } from "@/src/lib/submissions-sql-fallback";
-
-import config from "@payload-config";
 
 type RouteParams = { params: Promise<{ id: string }> };
 
@@ -59,7 +58,7 @@ export const maxDuration = 60;
 /** Wgrywa feedback głosowy i od razu zapisuje go na zgłoszeniu (jeden krok). */
 export async function POST(request: Request, { params }: RouteParams) {
   const { id: submissionId } = await params;
-  const payload = await getPayload({ config });
+  const payload = await getCachedPayload();
   const hdrs = await headers();
   const auth = await payload.auth({ headers: hdrs });
 

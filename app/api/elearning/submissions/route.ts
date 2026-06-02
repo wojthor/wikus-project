@@ -1,15 +1,14 @@
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
-import { createLocalReq, getPayload } from "payload";
+import { createLocalReq } from "payload";
 
 import { notifyTeacherOnNewSubmission } from "@/src/features/elearning/submission-email-hooks";
+import { getCachedPayload } from "@/src/lib/payload-cache";
 import {
   sqlCreateSubmission,
   sqlGetSubmissionMediaId,
   sqlLinkStudentAudio,
 } from "@/src/lib/submissions-sql-fallback";
-
-import config from "@payload-config";
 
 function toRelationId(value: unknown): number | string | null {
   if (value == null || value === "") return null;
@@ -42,7 +41,7 @@ async function ensureStudentAudioLinked(
 
 /** Tworzenie zgłoszenia z e-learningu (obejście błędu Drizzle na POST /api/submissions). */
 export async function POST(request: Request) {
-  const payload = await getPayload({ config });
+  const payload = await getCachedPayload();
   const hdrs = await headers();
   const auth = await payload.auth({ headers: hdrs });
 

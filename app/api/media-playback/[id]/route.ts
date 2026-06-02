@@ -1,9 +1,7 @@
 import fs from "fs/promises";
 import { NextResponse } from "next/server";
-import { getPayload } from "payload";
-
-import config from "@payload-config";
 import { readPrivateAudioBlob } from "@/src/lib/audio-blob-storage";
+import { getCachedPayload } from "@/src/lib/payload-cache";
 import { resolveMediaFilePath } from "@/src/lib/media-storage";
 import { sqlGetMediaBlobMeta } from "@/src/lib/media-sql";
 
@@ -44,7 +42,7 @@ async function loadMediaFile(id: string): Promise<MediaFile | null> {
     console.error("[media-playback] Blob read failed for", blobPathname);
   }
 
-  const payload = await getPayload({ config });
+  const payload = await getCachedPayload();
   const doc = await payload.findByID({
     collection: "media",
     id,
