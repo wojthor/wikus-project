@@ -62,7 +62,7 @@ const faqItemVariants = {
 const COMPARISON_ROWS = [
   ["Certyfikat = dowód że umie uczyć", "Filologia + własna droga przez mówienie"],
   ["Nauka z podręcznika", "Nauka przez prawdziwy content"],
-  ["Ćwiczenia z luki i testy", "Mówienie od pierwszego dnia"],
+  ["Ciągłe ćwiczenia z lukami do uzupełnienia", "Mówienie od pierwszego dnia"],
   ["Uczysz się bo musisz", "Uczysz się bo chcesz i widzisz sens"],
 ] as const;
 
@@ -165,11 +165,8 @@ function UnschoolLanding() {
               Unschool Your English
             </p>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-slate-900">
-              Rozumiesz.
-              <br />
-              Ale nadal
-              <br />
-              nie <em className="text-[#7347f4] not-italic font-extrabold">mówisz.</em>
+              Rozumiesz, ale nadal nie{" "}
+              <em className="text-[#7347f4] not-italic font-extrabold">mówisz?</em>
             </h1>
             <p className={sub}>
               Znasz słówka. Rozumiesz filmy. A mimo to przy rozmowie coś się zacina. Ten kurs
@@ -186,8 +183,8 @@ function UnschoolLanding() {
             </div>
             <div className="flex flex-wrap gap-6 sm:gap-10 pt-2">
               <div>
-                <div className="text-2xl sm:text-3xl font-extrabold text-[#7347f4]">34</div>
-                <div className="text-xs sm:text-sm text-slate-500 font-medium">lekcje wideo</div>
+                <div className="text-2xl sm:text-3xl font-extrabold text-[#7347f4]">35</div>
+                <div className="text-xs sm:text-sm text-slate-500 font-medium">lekcji wideo</div>
               </div>
               <div>
                 <div className="text-2xl sm:text-3xl font-extrabold text-[#7347f4]">7</div>
@@ -260,7 +257,7 @@ function UnschoolLanding() {
             {
               icon: "😶",
               title: "Wiesz co powiedzieć – po polsku",
-              text: "Masz myśl w głowie. Wiesz o czym chcesz mówić. Ale gdy przychodzi moment – cisza. Mózg się zawiesza. I nic.",
+              text: "Masz myśl w głowie. Wiesz, o czym chcesz mówić. Ale gdy przychodzi moment – cisza. Mózg się zawiesza. I nic.",
             },
             {
               icon: "📚",
@@ -290,7 +287,7 @@ function UnschoolLanding() {
       <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-slate-900 text-white">
         <div className="max-w-3xl mx-auto text-center">
           <div className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#b9c5fe] mb-4">
-            Prawda której nikt Ci nie powie
+            Prawda, której nikt Ci nie powie
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight mb-6">
             Szkoła nie uczyła Cię mówić.
@@ -299,7 +296,7 @@ function UnschoolLanding() {
           </h2>
           <p className="text-sm sm:text-base text-white/65 leading-relaxed mb-4">
             System edukacji jest zoptymalizowany pod testy i oceny – nie pod komunikację. Nauczyciel
-            może sprawdzić czy wiesz jak zbudować zdanie w Past Perfect. Nie może sprawdzić czy
+            może sprawdzić, czy wiesz jak zbudować zdanie w Past Perfect. Nie może sprawdzić, czy
             potrafisz się dogadać na lotnisku.
           </p>
           <p className="text-sm sm:text-base text-white/65 leading-relaxed mb-10">
@@ -311,7 +308,8 @@ function UnschoolLanding() {
               <div className="text-xl mb-2">❌</div>
               <div className="font-bold text-sm mb-2">Co robiła szkoła</div>
               <p className="text-sm text-white/50 leading-relaxed">
-                Ćwiczenia z luki. Gramatyka dla gramatyki. Testy. Oceny. Zero prawdziwego mówienia.
+                Ciągłe ćwiczenia z lukami do uzupełnienia. Gramatyka dla gramatyki. Testy. Oceny.
+                Zero prawdziwego mówienia.
               </p>
             </div>
             <div className="rounded-2xl bg-[#7347f4]/20 border border-[#7347f4]/30 p-5 sm:p-6">
@@ -339,14 +337,14 @@ function UnschoolLanding() {
           <br />
           <br />
           Ten kurs działa inaczej. Mówisz od pierwszej lekcji, dostajesz feedback na każde zadanie i
-          uczysz się przez to co i tak robisz na co dzień.
+          uczysz się przez to, co i tak robisz na co dzień.
         </p>
         <div className="grid sm:grid-cols-2 gap-4">
           {[
             {
               icon: "🎬",
               title: "Wideo lekcje",
-              text: "Każdy temat tłumaczę na żywo – bez czytania z kartki, bez nudnego lektora. Mówię do Ciebie tak jak na normalnej lekcji.",
+              text: "Większość lekcji ma film, gdzie tłumaczę temat, tak jak na normalnej lekcji. Każda lekcja ma też pełny materiał pisemny z przykładami – do czytania, wracania i powtarzania.",
             },
             {
               icon: "🎙️",
@@ -361,12 +359,12 @@ function UnschoolLanding() {
             {
               icon: "💬",
               title: "Personalny feedback",
-              text: "Odsłuchuję każde nagranie i czytam każdą odpowiedź. Komentuję co poszło dobrze i co poprawić. Nie dostajesz automatycznych odpowiedzi.",
+              text: "Odsłuchuję każde nagranie i czytam każdą odpowiedź. Komentuję, co poszło dobrze i co poprawić. Nie dostajesz automatycznych odpowiedzi.",
             },
             {
               icon: "♾️",
               title: "Dostęp bezterminowy",
-              text: "Kupujesz raz, masz na zawsze. Możesz wracać do lekcji kiedy chcesz. Spokojne tempo – 2–3 lekcje tygodniowo – bez presji.",
+              text: "Kupujesz raz, masz na zawsze. Możesz wracać do lekcji, kiedy chcesz. Spokojne tempo – 2–3 lekcje tygodniowo – bez presji.",
             },
             {
               icon: "📱",
@@ -397,7 +395,7 @@ function UnschoolLanding() {
         <h2 className={`${h2} mt-4 mb-4`}>
           7 modułów,
           <br />
-          34 lekcje.
+          35 lekcji.
         </h2>
         <p className={`${sub} mb-8 sm:mb-10`}>
           Zaczynamy od głowy – bo to tam jest problem. Potem speaking, listening, wymowa i gramatyka
@@ -411,9 +409,10 @@ function UnschoolLanding() {
               sub: "Zacznij z właściwym nastawieniem",
               lessons: [
                 "Czemu ten kurs jest inny niż inne",
+                "Błędy są Twoim przyjacielem",
                 "Szkoła Cię nie przygotowała – i to nie Twoja wina",
-                "Dlaczego Duolingo nie wystarczy",
-                "Jak ułożyć naukę – system który działa",
+                "Dlaczego aplikacje do nauki nie wystarczą",
+                "Jak ułożyć naukę – system, który działa",
                 "Think in English – przestań tłumaczyć w głowie",
               ],
             },
@@ -427,6 +426,7 @@ function UnschoolLanding() {
                 "Podręcznikowe zwroty, których NIKT nie używa",
                 'Contractions – dlaczego "I am" brzmi dziwnie',
                 "Gonna, wanna, kinda – naturalny angielski",
+                "Fałszywi przyjaciele - słowa, które brzmią znajomo ale nie znaczą tego co myślisz",
               ],
             },
             {
@@ -440,6 +440,7 @@ function UnschoolLanding() {
                 "Wyrażanie opinii bez bycia kategorycznym",
                 "Small talk – sztuka mówienia o niczym",
                 "Question tags – isn't it? right?",
+                "Jak zadawać pytania naturalnie — błędy których nie znasz",
               ],
             },
             {
@@ -540,15 +541,16 @@ function UnschoolLanding() {
           Mówisz. Dostajesz feedback.
         </h2>
         <p className={`${sub} mb-8 sm:mb-10`}>
-          Zero skomplikowanych systemów. Każda lekcja to wideo, materiał i zadanie do wykonania –
-          głosowe albo tekstowe. Wysyłasz, ja sprawdzam, daję feedback. I tak 34 razy.
+          Zero skomplikowanych systemów. Każda lekcja ma materiał i zadanie do wykonania – głosowe
+          albo tekstowe. Większość ma też wideo. Wysyłasz, ja sprawdzam, daję feedback. I tak 35
+          razy.
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
             {
               num: "01",
-              title: "Oglądasz wideo",
-              text: "Krótkie, konkretne nagranie gdzie tłumaczę temat – tak jak na normalnej lekcji.",
+              title: "Przerabiasz lekcję",
+              text: "Materiał pisemny z przykładami i insightami. W większości lekcji masz też wideo, gdzie tłumaczę temat ludzkim językiem.",
             },
             {
               num: "02",
@@ -584,7 +586,7 @@ function UnschoolLanding() {
           transition={{ duration: 0.45 }}
         >
           <div className={`${panel} flex flex-col`}>
-            <p className={sectionEyebrow}>Czemu warto mnie posłuchać</p>
+            <p className={sectionEyebrow}>Czemu warto mnie słuchać?</p>
             <h2 className={`${h2} mt-3 mb-4`}>
               Mam filologię.
               <br />I wiem, że to za mało.
@@ -599,23 +601,25 @@ function UnschoolLanding() {
                 {
                   icon: "✈️",
                   title: "Sam nauczyłem się przez życie, nie przez szkołę",
-                  text: "Wyjazdy za granicę, Erasmus, oglądanie rzeczy po angielsku – nie lekcje. Blokada przy mówieniu? Miałem ją. Wiem jak to naprawić.",
+                  text: "Wyjazdy za granicę, Erasmus, oglądanie rzeczy po angielsku, a nie lekcje. Blokada przy mówieniu? Miałem ją. Wiem, jak to naprawić. Większość uczniów ma ją tak samo.",
                 },
                 {
                   icon: "👁️",
-                  title: "Od liceum obserwowałem co działa, a co nie",
-                  text: "Chodziłem do korepetytorów i wyłapywałem co ma sens, a co jest tylko marnowaniem czasu. Filologia dała mi narzędzia – i potwierdziła moje podejrzenia.",
+                  title: "Od liceum obserwowałem, co działa, a co nie",
+                  text: "Chodziłem do korepetytorów i wyłapywałem co ma sens, a co jest tylko marnowaniem czasu. Filologia dała mi narzędzia i potwierdziła moje podejrzenia.",
                 },
                 {
                   icon: "🎯",
                   title: "Uczę od 2022 roku i nikt nie odszedł",
-                  text: "Pracowałem z dziesiątkami uczniów na różnych poziomach. Maturę pisałem w 2022 – pamiętam jak to jest być po drugiej stronie.",
+                  text: "Pracowałem z dziesiątkami uczniów na różnych poziomach. Maturę pisałem w 2022. Więc pamiętam, jak to jest być po drugiej stronie.",
                 },
               ].map((fact) => (
                 <div key={fact.title} className={`${card} flex flex-1 gap-3 py-3 min-h-[4.5rem]`}>
                   <span className="text-xl shrink-0">{fact.icon}</span>
                   <div className="min-w-0">
-                    <div className="font-bold text-[#7347f4] text-sm sm:text-base mb-1">{fact.title}</div>
+                    <div className="font-bold text-[#7347f4] text-sm sm:text-base mb-1">
+                      {fact.title}
+                    </div>
                     <p className="text-sm text-slate-600 leading-snug">{fact.text}</p>
                   </div>
                 </div>
@@ -631,7 +635,7 @@ function UnschoolLanding() {
               Inna metoda.
             </h2>
             <p className={`${sub} mb-4 lg:mb-5`}>
-              Porównanie tego, co dostajesz na typowych korkach – i co daje ten kurs.
+              Co daje ten kurs, a co znajdziesz gdzieś indziej?
             </p>
 
             <div className="flex-1 flex flex-col min-h-0">
@@ -670,10 +674,12 @@ function UnschoolLanding() {
 
               <div className="mt-3 shrink-0 rounded-xl border border-[#7347f4]/15 bg-[#cfd8ff]/30 px-3 sm:px-4 py-3 shadow-[0_2px_8px_rgba(115,71,244,0.05)]">
                 <p className="text-xs sm:text-sm text-slate-700 italic leading-snug">
-                  &quot;Większość korepetytorów uczy tak samo jak szkoła – tylko drożej. Dlatego efekty
-                  są takie same.&quot;
+                  &quot;Większość korepetytorów uczy tak samo jak szkoła – tylko drożej. Dlatego
+                  efekty są takie same.&quot;
                 </p>
-                <p className="text-xs sm:text-sm font-bold text-[#7347f4] mt-1.5">– Wiktor Szyszkowski</p>
+                <p className="text-xs sm:text-sm font-bold text-[#7347f4] mt-1.5">
+                  – Wiktor Szyszkowski
+                </p>
               </div>
             </div>
           </div>
@@ -681,14 +687,14 @@ function UnschoolLanding() {
       </Section>
 
       <Section id="opinie">
-        <div className={tag}>Dowód że to działa</div>
+        <div className={tag}>Dowód, że to działa</div>
         <h2 className={`${h2} mt-4 mb-4`}>
           Uczniowie mówią
           <br />
           sami za siebie.
         </h2>
         <p className={`${sub} mb-8 sm:mb-10`}>
-          Nie sprzedaję Ci snu. Sprzedaję Ci metodę, która działa – i mam na to dowody.
+          Nie sprzedaję Ci obietnic. Sprzedaję Ci metodę, która działa i mam na to dowody.
         </p>
         <div className="grid sm:grid-cols-2 gap-4">
           {[
@@ -737,7 +743,7 @@ function UnschoolLanding() {
               Zostajesz przy starym systemie
             </h3>
             <p className={`${sub} !max-w-none mb-5`}>
-              Możesz dalej uczyć się metodami które nie działają. Albo możesz spróbować czegoś
+              Możesz dalej uczyć się metodami, które nie działają. Albo możesz spróbować czegoś
               innego.
             </p>
             <ul className="space-y-2.5 text-sm text-slate-500">
@@ -788,17 +794,15 @@ function UnschoolLanding() {
               <div className="text-4xl sm:text-5xl font-extrabold text-[#7347f4] tracking-tight">
                 {UNSCHOOL_COURSE_OFFER.priceDisplay}
               </div>
-              <p className="text-xs text-slate-500 mt-2">
-                {UNSCHOOL_COURSE_OFFER.priceNote}
-              </p>
+              <p className="text-xs text-slate-500 mt-2">{UNSCHOOL_COURSE_OFFER.priceNote}</p>
             </div>
             <CheckoutButton
               className="w-full"
               buttonClassName={`${btnPrimary} w-full text-base sm:text-lg disabled:opacity-50 disabled:hover:translate-y-0`}
             />
             <p className="text-xs text-slate-500 mt-4 text-center leading-relaxed">
-              Bezpieczna płatność kartą lub Przelewy24. Po opłaceniu konto na platformie tworzy się
-              automatycznie.
+              Bezpieczna płatność przez Stripe (karta,BLIK lub Przelewy24). Po opłaceniu konto na
+              platformie tworzy się automatycznie.
             </p>
           </div>
         </div>
@@ -823,7 +827,7 @@ function UnschoolLanding() {
           {[
             {
               q: "Dla kogo jest ten kurs?",
-              a: "Dla dorosłych na poziomie B1–B2, którzy rozumieją angielski ale mają problem z mówieniem. Znasz słówka, rozumiesz filmy – ale przy rozmowie coś się zacina. To jest dokładnie ta sytuacja, na którą ten kurs odpowiada.",
+              a: "Dla dorosłych  i młodzieży na poziomie B1–B2, którzy rozumieją angielski ale mają problem z mówieniem. Znasz słówka, rozumiesz filmy – ale przy rozmowie coś się zacina. To jest dokładnie ta sytuacja, na którą ten kurs odpowiada.",
             },
             {
               q: "Jak wygląda dostęp do kursu?",
@@ -831,11 +835,11 @@ function UnschoolLanding() {
             },
             {
               q: "Jak długo mam dostęp?",
-              a: "Dostęp jest bezterminowy. Kupujesz raz i masz na zawsze. Możesz wracać do lekcji kiedy chcesz, we własnym tempie.",
+              a: "Dostęp jest bezterminowy. Kupujesz raz i masz na zawsze. Możesz wracać do lekcji, kiedy chcesz, we własnym tempie.",
             },
             {
               q: "Jak działa personalny feedback?",
-              a: "Po każdej lekcji wysyłasz zadanie – nagranie głosowe lub odpowiedź tekstową. Odsłuchuję każde nagranie i czytam każdą odpowiedź osobiście. Komentuję co poszło dobrze i co konkretnie poprawić. To nie są automatyczne odpowiedzi.",
+              a: "Po każdej lekcji wysyłasz zadanie – nagranie głosowe lub odpowiedź tekstową. Odsłuchuję każde nagranie i czytam każdą odpowiedź osobiście. Komentuję, co poszło dobrze i co konkretnie poprawić. To nie są automatyczne odpowiedzi.",
             },
             {
               q: "Ile czasu dziennie muszę poświęcać?",
@@ -843,11 +847,11 @@ function UnschoolLanding() {
             },
             {
               q: "Czy kurs zastępuje indywidualne lekcje?",
-              a: "To są dwa różne produkty. Kurs daje Ci strukturę, materiał i feedback na zadania. Indywidualne lekcje 1:1 to bezpośrednia rozmowa i praca nad konkretnymi problemami. Jeśli chcesz oboje – napisz do mnie, możemy to połączyć.",
+              a: "To są dwa różne produkty i oba mają sens. Kurs daje Ci strukturę, narzędzia i feedback na zadania, bez ustalania godzin i w swoim tempie. W dłuższej perspektywie wychodzi też znacznie taniej niż regularne lekcje 1:1. Jeśli po kursie chcesz pracować dalej nad konkretnymi problemami – zapraszam na lekcje indywidualne. Możemy to połączyć.",
             },
             {
               q: "Jak kupić kurs?",
-              a: 'Kliknij przycisk „Chcę ten kurs” – przejdziesz na bezpieczną bramkę płatności Stripe (karta lub Przelewy24). Po opłaceniu konto na platformie tworzy się automatycznie, a hasło dostaniesz e-mailem w ciągu kilku minut.',
+              a: "Kliknij przycisk „Chcę ten kurs” – przejdziesz na bezpieczną bramkę płatności Stripe (karta,BLIK lub Przelewy24). Po opłaceniu konto na platformie tworzy się automatycznie, a hasło dostaniesz e-mailem w ciągu kilku minut.",
             },
           ].map((item) => (
             <motion.details

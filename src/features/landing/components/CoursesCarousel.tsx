@@ -166,7 +166,7 @@ function CourseOfferTile({
 
         {isUnschool && (
           <ul className="mb-3 flex flex-wrap gap-1.5">
-            {["7 modułów", "34 lekcje", "Feedback 1:1"].map((chip) => (
+            {["7 modułów", "35 lekcji", "Feedback 1:1"].map((chip) => (
               <li
                 key={chip}
                 className="rounded-full border border-[#b9c5fe] bg-white/90 px-2.5 py-0.5 text-[10px] font-semibold text-[#3e57d6]"

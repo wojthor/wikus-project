@@ -89,7 +89,7 @@ function resolveLessonVideoFields(
   };
 }
 
-/** Importuje 7 modułów i 34 lekcje z `src/data/course-mockup/course.json` do Payload. */
+/** Importuje 7 modułów i 35 lekcji z `src/data/course-mockup/course.json` do Payload. */
 export async function seedMockupCourse(
   payload: Payload,
   options: SeedMockupCourseOptions = {},

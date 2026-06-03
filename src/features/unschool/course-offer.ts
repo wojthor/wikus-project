@@ -1,8 +1,8 @@
 /** Lista „Co dostajesz?” — ten sam tekst co kafelek na /unschool */
 export const UNSCHOOL_PRICING_FEATURES = [
-  "34 lekcje wideo + pełne materiały pisemne",
-  "Zadania głosowe – nagrywasz się w platformie",
-  "Zadania tekstowe po każdej lekcji",
+  "35 lekcji z materiałami wideo i prawdziwymi przykładami",
+  "Zadania głosowe lub tekstowe po każdej lekcji",
+
   "Personalny feedback ode mnie na każde zadanie",
   "Certyfikat ukończenia kursu po finale",
   "Dostęp bezterminowy – bez presji czasowej",
@@ -21,7 +21,7 @@ export const UNSCHOOL_COURSE_OFFER = {
   heroLead:
     "Znasz słówka. Rozumiesz filmy. A mimo to przy rozmowie coś się zacina. Ten kurs naprawia dokładnie to – bez podręcznika, bez teorii na zapas, z feedbackiem ode mnie na każde zadanie.",
   stats: [
-    { value: "34", label: "lekcje wideo" },
+    { value: "35", label: "lekcji wideo" },
     { value: "7", label: "modułów" },
     { value: "~3", label: "miesiące nauki" },
   ] as const,

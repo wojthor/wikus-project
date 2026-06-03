@@ -1,6 +1,6 @@
 # Mockup kursu Unschool (źródło treści)
 
-Plik **`course.json`** — pełna treść kursu offline: **7 modułów**, **34 lekcje** (tekst, sekcje, zadania, flagi wideo).
+Plik **`course.json`** — pełna treść kursu offline: **7 modułów**, **35 lekcji** (tekst, sekcje, zadania, flagi wideo).
 
 ## Import do Payload / Supabase
 
