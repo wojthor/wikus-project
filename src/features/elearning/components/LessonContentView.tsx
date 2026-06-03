@@ -6,22 +6,26 @@ import {
   normalizeLessonSections,
   type LessonSection,
 } from "@/src/features/elearning/lesson-section-types";
-import type { LessonRef } from "@/src/features/elearning/lesson-navigation";
+import {
+  resolveLessonLinkRef,
+  type LessonNavigationIndex,
+  type LessonRef,
+} from "@/src/features/elearning/lesson-navigation";
 
 type LessonContentViewProps = {
   intro?: string | null;
   sections?: unknown;
   content: Record<string, unknown> | null;
-  onNavigateLesson?: (legacySlug: string) => void;
-  lessonRefsBySlug?: Map<string, LessonRef>;
+  onNavigateToLesson?: (ref: LessonRef) => void;
+  lessonNavIndex?: LessonNavigationIndex;
 };
 
 export function LessonContentView({
   intro,
   sections: sectionsRaw,
   content,
-  onNavigateLesson,
-  lessonRefsBySlug,
+  onNavigateToLesson,
+  lessonNavIndex,
 }: LessonContentViewProps) {
   const sections = normalizeLessonSections(sectionsRaw);
 
@@ -37,10 +41,10 @@ export function LessonContentView({
           <LessonSectionBlock
             key={`${section.type}-${index}`}
             section={section}
-            onNavigateLesson={onNavigateLesson}
+            onNavigateToLesson={onNavigateToLesson}
             lessonLinkTarget={
-              section.type === "lessonlink" && section.target
-                ? lessonRefsBySlug?.get(section.target.trim())
+              section.type === "lessonlink" && lessonNavIndex
+                ? (resolveLessonLinkRef(section, lessonNavIndex) ?? undefined)
                 : undefined
             }
           />

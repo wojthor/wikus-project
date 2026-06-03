@@ -1,3 +1,4 @@
+import { LessonLinkTile } from "@/src/features/elearning/components/LessonLinkTile";
 import type { LessonSection } from "@/src/features/elearning/lesson-section-types";
 import type { LessonRef } from "@/src/features/elearning/lesson-navigation";
 
@@ -31,13 +32,13 @@ const CALLOUT_STYLES = {
 
 type LessonSectionBlockProps = {
   section: LessonSection;
-  onNavigateLesson?: (legacySlug: string) => void;
+  onNavigateToLesson?: (ref: LessonRef) => void;
   lessonLinkTarget?: LessonRef;
 };
 
 export function LessonSectionBlock({
   section,
-  onNavigateLesson,
+  onNavigateToLesson,
   lessonLinkTarget,
 }: LessonSectionBlockProps) {
   const type = section.type;
@@ -175,39 +176,16 @@ export function LessonSectionBlock({
     );
   }
 
-  if (type === "lessonlink") {
-    const canNavigate =
-      Boolean(onNavigateLesson && section.target?.trim() && lessonLinkTarget);
-    const tileClass =
-      "my-4 w-full rounded-xl border border-[#BFDBFE] bg-[#EFF6FF] px-[18px] py-3.5 text-left transition-transform";
-    const interactiveClass = canNavigate
-      ? "cursor-pointer hover:scale-[1.02] active:scale-[0.99]"
-      : "";
-
-    const tileBody = (
-      <>
-        <div className="mb-1 text-[11px] font-bold tracking-[0.1em] text-[#1D4ED8] uppercase">
-          📎 Odwołanie do lekcji
-        </div>
-        {section.content ? (
-          <div className="text-sm leading-snug text-[#1E3A5F]">{section.content}</div>
-        ) : null}
-      </>
+  if (type === "lessonlink" && section.content) {
+    const canNavigate = Boolean(onNavigateToLesson && lessonLinkTarget);
+    return (
+      <LessonLinkTile
+        content={section.content}
+        canNavigate={canNavigate}
+        onNavigate={onNavigateToLesson}
+        targetRef={lessonLinkTarget}
+      />
     );
-
-    if (canNavigate) {
-      return (
-        <button
-          type="button"
-          onClick={() => onNavigateLesson!(section.target!.trim())}
-          className={`${tileClass} ${interactiveClass} border-0`}
-        >
-          {tileBody}
-        </button>
-      );
-    }
-
-    return <div className={tileClass}>{tileBody}</div>;
   }
 
   return null;

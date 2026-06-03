@@ -1,5 +1,6 @@
 import type { CollectionConfig } from "payload";
 
+import { dedupeLessonLinkSections } from "@/src/features/elearning/lesson-section-types";
 import { hasLexicalBody, lexicalToLessonContent } from "@/src/lib/lexical-to-sections";
 
 export const Lessons: CollectionConfig = {
@@ -131,7 +132,7 @@ export const Lessons: CollectionConfig = {
         return {
           ...data,
           lessonIntro: parsed.intro,
-          contentSections: parsed.sections,
+          contentSections: dedupeLessonLinkSections(parsed.sections),
         };
       },
     ],

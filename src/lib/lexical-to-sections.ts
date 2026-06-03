@@ -59,20 +59,108 @@ function listItems(node: LexicalNode): string[] {
     .filter(Boolean);
 }
 
-function parseLessonLinkParagraph(text: string): LessonSection | null {
-  const match = text.match(/^📎\s*(.+?)\s*\(lekcja\s+([^)]+)\)\s*$/);
-  if (!match) return null;
+/** Slug docelowy z treści odwołania (gdy brak jawnego target). */
+export function inferLessonLinkTarget(content: string): string | undefined {
+  const slugInText = content.match(/lekcj[ięa]?\s+([0-9]+-[0-9]+)/i);
+  if (slugInText) return slugInText[1];
+
+  if (/czemu ten kurs jest inny/i.test(content)) return "1-0";
+
+  return undefined;
+}
+
+/** Akapit będący odwołaniem — tylko linie „Wróć do lekcji…” / 📎, nie wzmianki w środku zdania. */
+export function isLessonReferenceText(text: string): boolean {
+  const trimmed = text.trim();
+  if (!trimmed) return false;
+  if (trimmed.startsWith("📎")) return true;
+  return /^wróć\s+do\s+lekcj/i.test(trimmed) || /^wracaj\s+do\s+lekcj/i.test(trimmed);
+}
+
+/** Każde odwołanie → osobny lessonlink, nie część innego bloku. */
+export function parseLessonLinkFromParagraph(text: string): LessonSection | null {
+  const trimmed = text.trim();
+  if (!isLessonReferenceText(trimmed)) return null;
+
+  const lekcjaMatch = trimmed.match(/\(lekcja\s+([0-9]+-[0-9]+)\)/i);
+  let content = trimmed.replace(/^📎\s*/, "").trim();
+  let target: string | undefined;
+
+  if (lekcjaMatch) {
+    target = lekcjaMatch[1];
+    content = content.replace(/\s*\(lekcja\s+[0-9]+-[0-9]+\)\s*$/i, "").trim();
+  } else {
+    target = inferLessonLinkTarget(content);
+  }
+
   return {
     type: "lessonlink",
-    content: match[1].trim(),
-    target: match[2].trim(),
+    content,
+    ...(target ? { target } : {}),
   };
 }
 
+export function stripEmbeddedLessonLinkLines(content: string): string {
+  return content
+    .split(/\n\n+/)
+    .filter((chunk) => !isLessonReferenceText(chunk))
+    .join("\n\n")
+    .trim();
+}
+
+/** Wyciąga „Wróć do lekcji…” z bloków tekstowych / kolorowych sekcji. */
+export function expandLessonLinksInSections(sections: LessonSection[]): LessonSection[] {
+  const out: LessonSection[] = [];
+
+  for (const section of sections) {
+    if (section.type === "lessonlink") {
+      out.push(section);
+      continue;
+    }
+
+    if (section.type === "text" && section.content) {
+      const link = parseLessonLinkFromParagraph(section.content);
+      if (link) {
+        out.push(link);
+        continue;
+      }
+    }
+
+    if (!section.content || typeof section.content !== "string") {
+      out.push(section);
+      continue;
+    }
+
+    const chunks = section.content.split(/\n\n+/);
+    const hasEmbeddedLink = chunks.some((chunk) => isLessonReferenceText(chunk));
+
+    if (!hasEmbeddedLink) {
+      const link = parseLessonLinkFromParagraph(section.content);
+      if (link) {
+        out.push(link);
+        continue;
+      }
+      out.push(section);
+      continue;
+    }
+
+    const body: string[] = [];
+    for (const chunk of chunks) {
+      const link = parseLessonLinkFromParagraph(chunk);
+      if (link) out.push(link);
+      else if (chunk.trim()) body.push(chunk);
+    }
+
+    if (body.length) {
+      out.push({ ...section, content: body.join("\n\n") });
+    }
+  }
+
+  return normalizeLessonSections(out);
+}
+
 function parseQuote(node: LexicalNode): LessonSection {
-  const parts = (node.children ?? [])
-    .map(paragraphText)
-    .filter(Boolean);
+  const parts = (node.children ?? []).map(paragraphText).filter(Boolean);
   const text = parts[0] ?? "";
   const author = parts[1];
   return {
@@ -85,11 +173,12 @@ function parseQuote(node: LexicalNode): LessonSection {
 function parseH3Block(
   children: LexicalNode[],
   start: number,
-): { section: LessonSection; nextIndex: number } {
+): { sections: LessonSection[]; nextIndex: number } {
   const heading = children[start];
   const label = collectText(heading).trim();
   let i = start + 1;
   const body: string[] = [];
+  const trailing: LessonSection[] = [];
 
   while (i < children.length) {
     const node = children[i];
@@ -98,9 +187,11 @@ function parseH3Block(
     if (node.type === "list") break;
     if (node.type === "paragraph") {
       const text = paragraphText(node);
-      const link = parseLessonLinkParagraph(text);
+      const link = parseLessonLinkFromParagraph(text);
       if (link) {
-        return { section: link, nextIndex: i + 1 };
+        trailing.push(link);
+        i++;
+        continue;
       }
       if (text) body.push(text);
     }
@@ -108,15 +199,19 @@ function parseH3Block(
   }
 
   const { icon, title } = splitIconTitle(label);
-  return {
-    section: {
+  const sections: LessonSection[] = [];
+
+  if (title || body.length) {
+    sections.push({
       type: typeFromIcon(icon),
       ...(icon ? { icon } : {}),
       title,
       content: body.join("\n\n"),
-    },
-    nextIndex: i,
-  };
+    });
+  }
+
+  sections.push(...trailing);
+  return { sections, nextIndex: i };
 }
 
 function parseComparison(
@@ -175,9 +270,15 @@ export function lexicalToLessonContent(
 
     if (node.type === "paragraph") {
       const text = paragraphText(node);
-      const link = parseLessonLinkParagraph(text);
+      const link = parseLessonLinkFromParagraph(text);
       if (link) {
-        sections.push(link);
+        const duplicate = sections.some(
+          (s) =>
+            s.type === "lessonlink" &&
+            s.content?.trim() === link.content?.trim() &&
+            (s.target?.trim() || "") === (link.target?.trim() || ""),
+        );
+        if (!duplicate) sections.push(link);
         i++;
         continue;
       }
@@ -186,6 +287,11 @@ export function lexicalToLessonContent(
         i++;
         continue;
       }
+      if (text) {
+        sections.push({ type: "text", content: text });
+      }
+      i++;
+      continue;
     }
 
     if (node.type === "heading" && node.tag === "h3") {
@@ -205,7 +311,7 @@ export function lexicalToLessonContent(
       }
 
       const block = parseH3Block(children, i);
-      sections.push(block.section);
+      sections.push(...block.sections);
       i = block.nextIndex;
       continue;
     }

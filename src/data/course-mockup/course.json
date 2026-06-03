@@ -1843,20 +1843,20 @@
             "content": "Postęp w nauce języka jest niewidoczny na bieżąco - dzieje się powoli, małymi krokami. Porównanie Ciebie sprzed 12 tygodni z Tobą teraz to jedyny sposób żeby naprawdę zobaczyć jak daleko zaszedłeś."
           },
           {
+            "type": "tip",
+            "icon": "💡",
+            "title": "Jak to zrobić",
+            "content": "Przeczytaj co napisałeś w lekcji 1-0, posłuchaj nagrania z lekcji 1-3, a potem odpowiedz na pytania tutaj. Porównaj - nie żeby oceniać, ale żeby zobaczyć zmianę."
+          },
+          {
             "type": "lessonlink",
-            "content": "Wróć do lekcji 1-0 i przeczytaj co napisałeś na początku kursu.",
+            "content": "Wróć do lekcji 'Czemu ten kurs jest inny niż inne?' i przeczytaj, co napisałeś na początku kursu.",
             "target": "1-0"
           },
           {
             "type": "lessonlink",
             "content": "Wróć do lekcji 1-3 i posłuchaj swojego pierwszego nagrania głosowego.",
             "target": "1-3"
-          },
-          {
-            "type": "tip",
-            "icon": "💡",
-            "title": "Jak to zrobić",
-            "content": "Przeczytaj co napisałeś w lekcji 1-0, posłuchaj nagrania z lekcji 1-3, a potem odpowiedz na pytania tutaj. Porównaj - nie żeby oceniać, ale żeby zobaczyć zmianę."
           },
           {
             "type": "quote",
