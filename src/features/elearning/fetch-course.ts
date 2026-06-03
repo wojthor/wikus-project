@@ -1,10 +1,6 @@
 import { getCachedPayload } from "@/src/lib/payload-cache";
 
-import { getMockupLessonByLegacySlug } from "@/src/lib/mockup-lesson-lookup";
-import {
-  normalizeLessonSections,
-  type LessonSection,
-} from "@/src/features/elearning/lesson-section-types";
+import { resolveLessonContentFromPayload } from "@/src/features/elearning/resolve-lesson-content";
 
 import type { ElearningLesson, ElearningModule, LessonTaskType } from "./types";
 import { type ModuleAccentId } from "./theme";
@@ -41,6 +37,8 @@ type PayloadLesson = {
   taskPrompt: string;
   multidayDays?: { day: number; prompt: string }[] | null;
   legacySlug?: string | null;
+  lessonIntro?: string | null;
+  contentSections?: unknown;
 };
 
 function resolveModuleId(module: PayloadLesson["module"]): string | number {
@@ -75,19 +73,11 @@ function mapLesson(doc: PayloadLesson): ElearningLesson {
   const videoUrl = doc.videoUrl?.trim() || null;
   const videoTitle = videoUrl ? doc.videoTitle?.trim() || null : null;
 
-  let intro: string | null = null;
-  let sections: LessonSection[] = [];
-
-  if (doc.legacySlug?.trim()) {
-    const mock = getMockupLessonByLegacySlug(doc.legacySlug.trim());
-    if (mock) {
-      intro = mock.intro?.trim() ?? null;
-      sections = normalizeLessonSections(mock.sections);
-    }
-  }
+  const { intro, sections } = resolveLessonContentFromPayload(doc);
 
   return {
     id: doc.id,
+    legacySlug: doc.legacySlug?.trim() || null,
     order: doc.order,
     title: doc.title,
     duration: doc.duration?.trim() || null,

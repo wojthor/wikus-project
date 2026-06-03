@@ -28,6 +28,7 @@ export function CheckoutWrapper() {
   const options = useMemo(
     () => ({
       clientSecret,
+      locale: "pl" as const,
       appearance: {
         theme: "stripe" as const,
         variables: {

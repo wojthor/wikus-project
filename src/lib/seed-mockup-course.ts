@@ -203,6 +203,8 @@ export async function seedMockupCourse(
         duration: lesson.duration ?? null,
         videoTitle,
         videoUrl,
+        lessonIntro: lesson.intro?.trim() || null,
+        contentSections: lesson.sections ?? [],
         content,
         taskType,
         taskPrompt,

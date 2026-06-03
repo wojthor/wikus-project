@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type Stripe from "stripe";
 
 import { UNSCHOOL_COURSE_OFFER } from "@/src/features/unschool/course-offer";
+import { STRIPE_PAYMENT_METHOD_TYPES } from "@/src/lib/stripe-payment-methods";
 import { getRequestBaseUrl } from "@/src/lib/site-url";
 import { getStripeServer } from "@/src/lib/stripe-server";
 
@@ -30,8 +31,9 @@ type CheckoutErrorResponse = {
   error: string;
 };
 
-/** card = karty + Apple Pay / Google Pay; blik i p24 = popularne metody w PL */
-const PAYMENT_METHOD_TYPES = ["card", "blik", "p24"] as const satisfies readonly CheckoutPaymentMethodType[];
+/** card = karty + Apple Pay / Google Pay; blik i p24 = popularne metody w PL (bez Klarny) */
+const PAYMENT_METHOD_TYPES =
+  STRIPE_PAYMENT_METHOD_TYPES satisfies readonly CheckoutPaymentMethodType[];
 
 function buildProductData(): CheckoutProductData {
   return {

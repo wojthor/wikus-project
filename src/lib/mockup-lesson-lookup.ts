@@ -7,7 +7,7 @@ type MockupLessonRef = {
   sections?: LessonSection[];
 };
 
-/** Fallback sekcji z course.json (gdy w DB brak contentSections). */
+/** Fallback sekcji z course.json (gdy w DB brak treści z CMS). */
 export function getMockupLessonByLegacySlug(legacySlug: string): MockupLessonRef | null {
   for (const mod of mockupCourse as { lessons: { id: string; intro?: string; sections?: LessonSection[] }[] }[]) {
     const lesson = mod.lessons.find((l) => l.id === legacySlug);

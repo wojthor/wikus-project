@@ -11,6 +11,8 @@ export type MultidayDay = {
 export type ElearningLesson = {
   /** ID dokumentu lekcji w Payload (Postgres) - nie slug typu "1-1" */
   id: number | string;
+  /** Id z course.json (np. "1-3") — odwołania lessonlink w treści */
+  legacySlug?: string | null;
   order: number;
   title: string;
   duration: string | null;

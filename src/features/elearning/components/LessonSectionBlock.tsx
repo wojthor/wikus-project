@@ -1,4 +1,5 @@
 import type { LessonSection } from "@/src/features/elearning/lesson-section-types";
+import type { LessonRef } from "@/src/features/elearning/lesson-navigation";
 
 const CALLOUT_STYLES = {
   insight: {
@@ -31,9 +32,14 @@ const CALLOUT_STYLES = {
 type LessonSectionBlockProps = {
   section: LessonSection;
   onNavigateLesson?: (legacySlug: string) => void;
+  lessonLinkTarget?: LessonRef;
 };
 
-export function LessonSectionBlock({ section, onNavigateLesson }: LessonSectionBlockProps) {
+export function LessonSectionBlock({
+  section,
+  onNavigateLesson,
+  lessonLinkTarget,
+}: LessonSectionBlockProps) {
   const type = section.type;
 
   if (
@@ -170,27 +176,38 @@ export function LessonSectionBlock({ section, onNavigateLesson }: LessonSectionB
   }
 
   if (type === "lessonlink") {
-    return (
-      <div className="my-4 flex flex-col items-stretch justify-between gap-3 rounded-xl border border-[#BFDBFE] bg-[#EFF6FF] px-[18px] py-3.5 sm:flex-row sm:items-center">
-        <div>
-          <div className="mb-1 text-[11px] font-bold tracking-[0.1em] text-[#1D4ED8] uppercase">
-            📎 Odwołanie do lekcji
-          </div>
-          {section.content ? (
-            <div className="text-sm leading-snug text-[#1E3A5F]">{section.content}</div>
-          ) : null}
+    const canNavigate =
+      Boolean(onNavigateLesson && section.target?.trim() && lessonLinkTarget);
+    const tileClass =
+      "my-4 w-full rounded-xl border border-[#BFDBFE] bg-[#EFF6FF] px-[18px] py-3.5 text-left transition-transform";
+    const interactiveClass = canNavigate
+      ? "cursor-pointer hover:scale-[1.02] active:scale-[0.99]"
+      : "";
+
+    const tileBody = (
+      <>
+        <div className="mb-1 text-[11px] font-bold tracking-[0.1em] text-[#1D4ED8] uppercase">
+          📎 Odwołanie do lekcji
         </div>
-        {onNavigateLesson && section.target ? (
-          <button
-            type="button"
-            onClick={() => onNavigateLesson(section.target!)}
-            className="shrink-0 cursor-pointer rounded-lg border-0 bg-[#1D4ED8] px-4 py-2 text-xs font-bold whitespace-nowrap text-white"
-          >
-            Przejdź →
-          </button>
+        {section.content ? (
+          <div className="text-sm leading-snug text-[#1E3A5F]">{section.content}</div>
         ) : null}
-      </div>
+      </>
     );
+
+    if (canNavigate) {
+      return (
+        <button
+          type="button"
+          onClick={() => onNavigateLesson!(section.target!.trim())}
+          className={`${tileClass} ${interactiveClass} border-0`}
+        >
+          {tileBody}
+        </button>
+      );
+    }
+
+    return <div className={tileClass}>{tileBody}</div>;
   }
 
   return null;

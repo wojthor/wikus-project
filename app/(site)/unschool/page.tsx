@@ -12,6 +12,7 @@ import {
   UNSCHOOL_COURSE_OFFER,
   UNSCHOOL_PRICING_FEATURES,
 } from "@/src/features/unschool/course-offer";
+import { STRIPE_PAYMENT_METHODS_LABEL } from "@/src/lib/stripe-payment-methods";
 
 const kursFooter = {
   ...content.footer,
@@ -801,7 +802,7 @@ function UnschoolLanding() {
               buttonClassName={`${btnPrimary} w-full text-base sm:text-lg disabled:opacity-50 disabled:hover:translate-y-0`}
             />
             <p className="text-xs text-slate-500 mt-4 text-center leading-relaxed">
-              Bezpieczna płatność przez Stripe (karta,BLIK lub Przelewy24). Po opłaceniu konto na
+              Bezpieczna płatność przez Stripe ({STRIPE_PAYMENT_METHODS_LABEL}). Po opłaceniu konto na
               platformie tworzy się automatycznie.
             </p>
           </div>
@@ -851,7 +852,7 @@ function UnschoolLanding() {
             },
             {
               q: "Jak kupić kurs?",
-              a: "Kliknij przycisk „Chcę ten kurs” – przejdziesz na bezpieczną bramkę płatności Stripe (karta,BLIK lub Przelewy24). Po opłaceniu konto na platformie tworzy się automatycznie, a hasło dostaniesz e-mailem w ciągu kilku minut.",
+              a: `Kliknij przycisk „Chcę ten kurs” – przejdziesz na bezpieczną bramkę płatności Stripe (${STRIPE_PAYMENT_METHODS_LABEL}). Po opłaceniu konto na platformie tworzy się automatycznie, a hasło dostaniesz e-mailem w ciągu kilku minut.`,
             },
           ].map((item) => (
             <motion.details

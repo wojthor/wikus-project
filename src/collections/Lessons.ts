@@ -1,5 +1,7 @@
 import type { CollectionConfig } from "payload";
 
+import { hasLexicalBody, lexicalToLessonContent } from "@/src/lib/lexical-to-sections";
+
 export const Lessons: CollectionConfig = {
   slug: "lessons",
   admin: {
@@ -50,11 +52,31 @@ export const Lessons: CollectionConfig = {
       },
     },
     {
+      name: "lessonIntro",
+      type: "textarea",
+      label: "Wstęp lekcji (e-learning)",
+      admin: {
+        description:
+          "Tekst nad kolorowymi blokami. Uzupełnia się automatycznie przy zapisie z pola „Treść lekcji” poniżej.",
+      },
+    },
+    {
+      name: "contentSections",
+      type: "json",
+      label: "Kolorowe sekcje (e-learning)",
+      admin: {
+        description:
+          "Kopia techniczna sekcji (sync przy zapisie). Na platformie liczy się pole „Treść lekcji” poniżej.",
+        readOnly: true,
+      },
+    },
+    {
       name: "content",
       type: "richText",
       label: "Treść lekcji",
       admin: {
-        description: "Główna treść lekcji wyświetlana uczniowi.",
+        description:
+          "Edytuj tutaj — po zapisie treść trafia na platformę e-learning (kolorowe bloki). Tytuł modułu/lekcji edytujesz w osobnych polach.",
       },
     },
     {
@@ -94,4 +116,24 @@ export const Lessons: CollectionConfig = {
       },
     },
   ],
+  hooks: {
+    beforeChange: [
+      ({ data, originalDoc }) => {
+        if (!data || typeof data !== "object") return data;
+
+        const content = (data.content ?? originalDoc?.content) as
+          | Record<string, unknown>
+          | undefined;
+
+        if (!hasLexicalBody(content)) return data;
+
+        const parsed = lexicalToLessonContent(content);
+        return {
+          ...data,
+          lessonIntro: parsed.intro,
+          contentSections: parsed.sections,
+        };
+      },
+    ],
+  },
 };

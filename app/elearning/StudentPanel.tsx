@@ -36,6 +36,7 @@ import {
   updateSubmission,
   type PayloadSubmission,
 } from "@/src/features/elearning/submissions-api";
+import { buildLegacySlugLessonMap } from "@/src/features/elearning/lesson-navigation";
 import type { ElearningModule } from "@/src/features/elearning/types";
 import { MODULE_ACCENTS } from "@/src/features/elearning/theme";
 
@@ -104,6 +105,22 @@ export function StudentPanel({ modules, userId, isCourseAdmin }: StudentPanelPro
 
   const showUnlockOnSuccess =
     submitSuccess === "sent" && pendingNextLesson != null;
+
+  const lessonRefsBySlug = useMemo(() => buildLegacySlugLessonMap(modules), [modules]);
+
+  const navigateToReferencedLesson = useCallback(
+    (legacySlug: string) => {
+      const ref = lessonRefsBySlug.get(legacySlug.trim());
+      if (!ref) return;
+      setActiveMod(ref.modIndex);
+      setActiveLesson(ref.lessonIndex);
+      setSidebarOpen(false);
+      setSubmitError(null);
+      setSubmitSuccess(null);
+      setPendingNextLesson(null);
+    },
+    [lessonRefsBySlug],
+  );
 
   const { done, total, pct } = useMemo(() => {
     const all = modules.flatMap((m) => m.lessons);
@@ -551,6 +568,8 @@ export function StudentPanel({ modules, userId, isCourseAdmin }: StudentPanelPro
             intro={lesson.intro}
             sections={lesson.sections}
             content={lesson.content}
+            onNavigateLesson={navigateToReferencedLesson}
+            lessonRefsBySlug={lessonRefsBySlug}
           />
 
           <div className="mt-9 rounded-2xl border border-[#b9c5fe] bg-white p-5 shadow-sm sm:p-6 md:p-7">

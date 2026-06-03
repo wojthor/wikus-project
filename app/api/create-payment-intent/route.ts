@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { UNSCHOOL_COURSE_OFFER } from "@/src/features/unschool/course-offer";
+import { STRIPE_PAYMENT_METHOD_TYPES } from "@/src/lib/stripe-payment-methods";
 import { getStripeServer } from "@/src/lib/stripe-server";
 
 export const dynamic = "force-dynamic";
@@ -40,8 +41,7 @@ export async function POST(
     const paymentIntent = await stripe.paymentIntents.create({
       amount: UNSCHOOL_COURSE_OFFER.priceAmountCents,
       currency: "pln",
-      // Stripe pokazuje tylko metody włączone w Dashboard (karta, BLIK, P24 itd.)
-      automatic_payment_methods: { enabled: true },
+      payment_method_types: [...STRIPE_PAYMENT_METHOD_TYPES],
       ...(email ? { receipt_email: email } : {}),
       description: UNSCHOOL_COURSE_OFFER.stripeProductName,
       metadata: {

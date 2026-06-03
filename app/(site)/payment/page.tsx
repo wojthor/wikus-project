@@ -5,6 +5,7 @@ import {
   UNSCHOOL_COURSE_OFFER,
   UNSCHOOL_PRICING_FEATURES,
 } from "@/src/features/unschool/course-offer";
+import { STRIPE_PAYMENT_METHODS_LABEL } from "@/src/lib/stripe-payment-methods";
 
 export const metadata = {
   title: "Płatność — Unschool Your English",
@@ -67,7 +68,7 @@ export default function PaymentPage() {
 
           <div className="mt-6 flex items-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2.5 text-xs font-medium text-emerald-800">
             <ShieldCheck className="h-4 w-4 shrink-0" />
-            Bezpieczna płatność przez Stripe (karta,BLIK lub Przelewy24). Po opłaceniu konto na
+            Bezpieczna płatność przez Stripe ({STRIPE_PAYMENT_METHODS_LABEL}). Po opłaceniu konto na
             platformie tworzy się automatycznie.
           </div>
         </section>
