@@ -116,10 +116,6 @@ export const offerDetails = {
   gumroadPurchaseLabel: "Kup przez",
   gumroadLogoAlt: "Gumroad",
 
-  courseComingSoonBadge: "Już wkrótce",
-  unschoolBadge: "🔥 Promocja · kurs online",
-  unschoolCtaLabel: "Szukajcie, a znajdziecie",
-
   tutoring: {
     headline: "Indywidualne zajęcia 1:1",
     description:
@@ -224,7 +220,7 @@ export const offerDetails = {
       priceCompare: "697 zł",
       priceNote: "jednorazowo · dostęp bezterminowy",
       featured: true,
-      cta: { type: "comingSoon", label: "Szukajcie, a znajdziecie" },
+      cta: { type: "internal", href: "/unschool", label: "Przejdź na stronę kursu" },
       format:
         "✔️ Co dostajesz:\n35 lekcji z materiałami wideo i prawdziwymi przykładami\nzadania głosowe lub tekstowe po każdej lekcji\npersonalny feedback na każde zadanie\ncertyfikat ukończenia kursu po finale\ndostęp bezterminowy – uczysz się we własnym tempie",
       duration:

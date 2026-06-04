@@ -1,4 +1,7 @@
-import type { StripePaymentElementOptions } from "@stripe/stripe-js";
+import type {
+  StripeExpressCheckoutElementOptions,
+  StripePaymentElementOptions,
+} from "@stripe/stripe-js";
 
 /**
  * Jawna lista — Payment Intent i Checkout Session (bez Klarny).
@@ -17,6 +20,29 @@ export const STRIPE_PAYMENT_METHODS_LABEL =
  * Lista metod (accordion + radio) — wszystkie pozycje widoczne,
  * nic nie jest rozwinięte na starcie; użytkownik wybiera jedną.
  */
+/**
+ * Przyciski Apple Pay / Google Pay nad formularzem (Payment Element ukrywa portfele, żeby nie dublować).
+ * `always` — m.in. Apple Pay w Chrome na macOS (ograniczenie Stripe/Apple).
+ */
+export const STRIPE_EXPRESS_CHECKOUT_OPTIONS: StripeExpressCheckoutElementOptions = {
+  paymentMethods: {
+    applePay: "always",
+    googlePay: "always",
+    link: "never",
+    amazonPay: "never",
+    paypal: "never",
+    klarna: "never",
+  },
+  buttonType: {
+    applePay: "buy",
+    googlePay: "buy",
+  },
+  layout: {
+    maxColumns: 2,
+    maxRows: 1,
+  },
+};
+
 export const STRIPE_PAYMENT_ELEMENT_OPTIONS: StripePaymentElementOptions = {
   layout: {
     type: "accordion",
@@ -26,7 +52,7 @@ export const STRIPE_PAYMENT_ELEMENT_OPTIONS: StripePaymentElementOptions = {
   },
   paymentMethodOrder: ["card", "blik"],
   wallets: {
-    applePay: "auto",
-    googlePay: "auto",
+    applePay: "never",
+    googlePay: "never",
   },
 };

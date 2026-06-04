@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Lock } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { offerDetails } from "@/data/content";
 
 type OfferDetailsType = typeof offerDetails;
@@ -31,32 +31,9 @@ function isUnschoolCourse(course: Course) {
 function courseTypeLabel(course: Course) {
   if (course.cta.type === "gumroad") return "Materiały online";
   if (course.cta.type === "email") return "Zajęcia grupowe";
-  if (course.cta.type === "comingSoon") return "Już wkrótce";
+  if (course.cta.type === "internal") return "Kurs online";
   return "Kurs online";
 }
-
-function ComingSoonTeaser({ badge, quote }: { badge: string; quote: string }) {
-  return (
-    <div
-      role="status"
-      aria-live="polite"
-      className="w-full rounded-xl border border-[#ffa515]/50 bg-[#ffbd53] px-4 py-3.5 select-none sm:px-5"
-    >
-      <div className="flex flex-col gap-1.5">
-        <span className="flex items-center justify-center gap-1.5 text-[#4a2d9e]">
-          <Lock className="h-3.5 w-3.5 shrink-0" strokeWidth={2.5} aria-hidden />
-          <span className="text-[10px] font-bold uppercase tracking-[0.14em]">{badge}</span>
-        </span>
-
-        <p className="w-full text-center text-lg font-bold leading-snug tracking-tight text-white sm:text-[1.35rem]">
-          {quote}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-
 
 function CourseCtaBlock({
   course,
@@ -78,12 +55,16 @@ function CourseCtaBlock({
     );
   }
 
-  if (cta.type === "comingSoon") {
+  if (cta.type === "internal") {
     return (
-      <ComingSoonTeaser badge={offerDetails.courseComingSoonBadge} quote={cta.label} />
+      <a
+        href={cta.href}
+        className="inline-flex w-full items-center justify-center rounded-xl border border-[#ffa515]/50 bg-[#ffbd53] px-4 py-3.5 text-sm font-bold text-[#4a2d9e] shadow-sm transition hover:bg-[#ffc76d] hover:brightness-[1.02]"
+      >
+        {cta.label}
+      </a>
     );
   }
-
 
   return (
     <a

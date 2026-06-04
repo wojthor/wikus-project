@@ -1,9 +1,18 @@
 "use client";
 
-import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import {
+  ExpressCheckoutElement,
+  PaymentElement,
+  useElements,
+  useStripe,
+} from "@stripe/react-stripe-js";
+import type { StripeExpressCheckoutElementConfirmEvent } from "@stripe/stripe-js";
 import { useMemo, useState } from "react";
 
-import { STRIPE_PAYMENT_ELEMENT_OPTIONS } from "@/src/lib/stripe-payment-methods";
+import {
+  STRIPE_EXPRESS_CHECKOUT_OPTIONS,
+  STRIPE_PAYMENT_ELEMENT_OPTIONS,
+} from "@/src/lib/stripe-payment-methods";
 
 type PaymentFormProps = {
   amountLabel: string;
@@ -20,6 +29,7 @@ export function PaymentForm({ amountLabel, email, clientSecret }: PaymentFormPro
   const elements = useElements();
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [expressWalletsVisible, setExpressWalletsVisible] = useState(true);
 
   const paymentElementOptions = useMemo(
     () => ({
@@ -38,6 +48,106 @@ export function PaymentForm({ amountLabel, email, clientSecret }: PaymentFormPro
     [email],
   );
 
+  const persistEmailOnIntent = async (normalizedEmail: string): Promise<string | null> => {
+    const paymentIntentId = getPaymentIntentIdFromClientSecret(clientSecret);
+    if (!paymentIntentId) {
+      return "Nie udało się przygotować płatności. Odśwież stronę i spróbuj ponownie.";
+    }
+
+    const updateIntentRes = await fetch("/api/payment-intent/set-email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        paymentIntentId,
+        email: normalizedEmail,
+      }),
+    });
+
+    if (!updateIntentRes.ok) {
+      const updateError = (await updateIntentRes.json().catch(() => ({}))) as { error?: string };
+      return updateError.error ?? "Nie udało się zapisać adresu e-mail do płatności.";
+    }
+
+    return null;
+  };
+
+  const finalizePayment = async (
+    normalizedEmail: string,
+    options?: { skipElementSubmit?: boolean },
+  ): Promise<string | null> => {
+    if (!stripe || !elements) {
+      return "Formularz płatności jeszcze się ładuje. Spróbuj ponownie za chwilę.";
+    }
+
+    const emailError = await persistEmailOnIntent(normalizedEmail);
+    if (emailError) {
+      return emailError;
+    }
+
+    if (!options?.skipElementSubmit) {
+      const { error: submitError } = await elements.submit();
+      if (submitError) {
+        return submitError.message ?? "Uzupełnij dane płatności.";
+      }
+    }
+
+    const paymentIntentId = getPaymentIntentIdFromClientSecret(clientSecret);
+    const { error: confirmError, paymentIntent } = await stripe.confirmPayment({
+      elements,
+      confirmParams: {
+        return_url: `${window.location.origin}/success`,
+        payment_method_data: {
+          billing_details: {
+            email: normalizedEmail,
+          },
+        },
+      },
+      redirect: "if_required",
+    });
+
+    if (confirmError) {
+      return confirmError.message ?? "Nie udało się dokończyć płatności.";
+    }
+
+    if (!paymentIntent) {
+      return null;
+    }
+
+    if (paymentIntent.status === "succeeded" || paymentIntent.status === "processing") {
+      window.location.assign(
+        `${window.location.origin}/success?payment_intent=${encodeURIComponent(paymentIntentId)}`,
+      );
+      return null;
+    }
+
+    if (paymentIntent.status === "requires_action") {
+      return "Potwierdź płatność w aplikacji banku. Bez potwierdzenia transakcja nie przejdzie.";
+    }
+
+    return "Płatność nie została zakończona. Spróbuj ponownie.";
+  };
+
+  const handleExpressConfirm = async (event: StripeExpressCheckoutElementConfirmEvent) => {
+    setError(null);
+    const walletEmail = event.billingDetails?.email?.trim() ?? "";
+    const normalizedEmail = email.trim() || walletEmail;
+
+    if (!normalizedEmail) {
+      const message = "Podaj adres e-mail powyżej przed płatnością portfelem.";
+      setError(message);
+      event.paymentFailed({ reason: "invalid_payment_data", message });
+      return;
+    }
+
+    setSubmitting(true);
+    const paymentError = await finalizePayment(normalizedEmail, { skipElementSubmit: true });
+    if (paymentError) {
+      setError(paymentError);
+      event.paymentFailed({ reason: "fail", message: paymentError });
+      setSubmitting(false);
+    }
+  };
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setError(null);
@@ -53,76 +163,15 @@ export function PaymentForm({ amountLabel, email, clientSecret }: PaymentFormPro
       return;
     }
 
-    const paymentIntentId = getPaymentIntentIdFromClientSecret(clientSecret);
-    if (!paymentIntentId) {
-      setError("Nie udało się przygotować płatności. Odśwież stronę i spróbuj ponownie.");
-      return;
-    }
-
     setSubmitting(true);
 
     try {
-      const updateIntentRes = await fetch("/api/payment-intent/set-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          paymentIntentId,
-          email: normalizedEmail,
-        }),
-      });
-
-      if (!updateIntentRes.ok) {
-        const updateError = (await updateIntentRes.json().catch(() => ({}))) as { error?: string };
-        setError(updateError.error ?? "Nie udało się zapisać adresu e-mail do płatności.");
+      const paymentError = await finalizePayment(normalizedEmail);
+      if (paymentError) {
+        setError(paymentError);
         setSubmitting(false);
         return;
       }
-
-      const { error: submitError } = await elements.submit();
-      if (submitError) {
-        setError(submitError.message ?? "Uzupełnij dane płatności.");
-        setSubmitting(false);
-        return;
-      }
-
-      const { error: confirmError, paymentIntent } = await stripe.confirmPayment({
-        elements,
-        confirmParams: {
-          return_url: `${window.location.origin}/success`,
-          payment_method_data: {
-            billing_details: {
-              email: normalizedEmail,
-            },
-          },
-        },
-        redirect: "if_required",
-      });
-
-      if (confirmError) {
-        setError(confirmError.message ?? "Nie udało się dokończyć płatności.");
-        setSubmitting(false);
-        return;
-      }
-
-      if (!paymentIntent) {
-        return;
-      }
-
-      if (paymentIntent.status === "succeeded" || paymentIntent.status === "processing") {
-        window.location.assign(
-          `${window.location.origin}/success?payment_intent=${encodeURIComponent(paymentIntentId)}`,
-        );
-        return;
-      }
-
-      if (paymentIntent.status === "requires_action") {
-        setError("Potwierdź płatność w aplikacji banku. Bez potwierdzenia transakcja nie przejdzie.");
-        setSubmitting(false);
-        return;
-      }
-
-      setError("Płatność nie została zakończona. Spróbuj ponownie.");
-      setSubmitting(false);
     } catch {
       setError("Wystąpił błąd podczas płatności. Spróbuj ponownie.");
       setSubmitting(false);
@@ -131,6 +180,41 @@ export function PaymentForm({ amountLabel, email, clientSecret }: PaymentFormPro
 
   return (
     <form onSubmit={(event) => void handleSubmit(event)} className="space-y-4">
+      <div className="min-h-[52px] rounded-2xl border border-[#b9c5fe] bg-[#f8faff] p-3">
+        <ExpressCheckoutElement
+          options={STRIPE_EXPRESS_CHECKOUT_OPTIONS}
+          onAvailablePaymentMethodsChange={(event) => {
+            const methods = event.paymentMethods;
+            setExpressWalletsVisible(
+              Boolean(methods?.applePay?.available || methods?.googlePay?.available),
+            );
+          }}
+          onReady={(event) => {
+            const methods = event.availablePaymentMethods;
+            if (methods) {
+              setExpressWalletsVisible(
+                Boolean(methods.applePay || methods.googlePay),
+              );
+            }
+          }}
+          onClick={(event) => {
+            if (!email.trim()) {
+              setError("Podaj adres e-mail powyżej przed płatnością portfelem.");
+              event.reject();
+              return;
+            }
+            event.resolve();
+          }}
+          onConfirm={(event) => void handleExpressConfirm(event)}
+        />
+      </div>
+
+      {expressWalletsVisible && (
+        <p className="text-center text-xs text-slate-500">
+          Apple Pay działa w Safari na urządzeniach Apple; Google Pay — w Chrome i na Androidzie.
+        </p>
+      )}
+
       <div className="stripe-payment-list rounded-2xl border border-[#b9c5fe] bg-[#f8faff] p-4">
         <PaymentElement options={paymentElementOptions} />
       </div>
