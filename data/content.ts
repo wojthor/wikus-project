@@ -216,7 +216,7 @@ export const offerDetails = {
       tagline: "Od rozumienia do swobodnej rozmowy – bez podręcznika na zapas.",
       shortDescription:
         "Rozumiesz filmy i teksty, ale przy rozmowie coś się zacina? 35 lekcji, mówienie od pierwszego dnia i mój feedback na każde zadanie – bez podręcznika i bez teorii na zapas.",
-      price: "2 zł",
+      price: "597 zł",
       priceCompare: "697 zł",
       priceNote: "jednorazowo · dostęp bezterminowy",
       featured: true,
