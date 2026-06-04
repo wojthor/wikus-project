@@ -1,7 +1,9 @@
 import type { CollectionConfig } from "payload";
 
-import { dedupeLessonLinkSections } from "@/src/features/elearning/lesson-section-types";
-import { hasLexicalBody, lexicalToLessonContent } from "@/src/lib/lexical-to-sections";
+import {
+  lessonLinksRowsFromLexical,
+  syncLessonFromLexical,
+} from "@/src/lib/lesson-link-admin";
 
 export const Lessons: CollectionConfig = {
   slug: "lessons",
@@ -67,9 +69,40 @@ export const Lessons: CollectionConfig = {
       label: "Kolorowe sekcje (e-learning)",
       admin: {
         description:
-          "Kopia techniczna sekcji (sync przy zapisie). Na platformie liczy się pole „Treść lekcji” poniżej.",
+          "Kopia techniczna po zapisie (podgląd). Na e-learningu liczy się wyłącznie „Treść lekcji” + „Odwołania do lekcji” powyżej.",
         readOnly: true,
       },
+    },
+    {
+      name: "lessonLinks",
+      type: "array",
+      label: "Odwołania do lekcji — dokąd prowadzą",
+      admin: {
+        description:
+          "Wybierz docelową lekcję dla każdego akapitu 📎 z „Treści lekcji” (ta sama kolejność). Po zapisie liczba wierszy = liczba 📎 w treści — stare wiersze znikają.",
+        initCollapsed: false,
+      },
+      fields: [
+        {
+          name: "label",
+          type: "textarea",
+          label: "Tekst kafelka (podgląd)",
+          admin: {
+            readOnly: true,
+            description:
+              "Podgląd z „Treści lekcji” po zapisie. Tekst kafelka edytuj tylko w akapicie 📎 poniżej.",
+          },
+        },
+        {
+          name: "targetLesson",
+          type: "relationship",
+          relationTo: "lessons",
+          label: "Docelowa lekcja",
+          admin: {
+            description: "Dokąd ma prowadzić klik — wybierz z listy (wymagane, żeby link działał).",
+          },
+        },
+      ],
     },
     {
       name: "content",
@@ -77,7 +110,7 @@ export const Lessons: CollectionConfig = {
       label: "Treść lekcji",
       admin: {
         description:
-          "Edytuj tutaj — po zapisie treść trafia na platformę e-learning (kolorowe bloki). Tytuł modułu/lekcji edytujesz w osobnych polach.",
+          "Kolorowe bloki jak zwykle. Odwołanie = osobny akapit zaczynający się od 📎 (reszta to treść kafelka). Dokąd prowadzi — tylko w polu „Odwołania do lekcji” powyżej.",
       },
     },
     {
@@ -118,21 +151,42 @@ export const Lessons: CollectionConfig = {
     },
   ],
   hooks: {
-    beforeChange: [
-      ({ data, originalDoc }) => {
+    beforeValidate: [
+      async ({ data, originalDoc, req }) => {
         if (!data || typeof data !== "object") return data;
 
         const content = (data.content ?? originalDoc?.content) as
           | Record<string, unknown>
           | undefined;
 
-        if (!hasLexicalBody(content)) return data;
+        const lessonLinks = lessonLinksRowsFromLexical(
+          content,
+          data.lessonLinks as import("@/src/lib/lesson-link-admin").LessonLinkAdminRow[] | undefined,
+        );
 
-        const parsed = lexicalToLessonContent(content);
+        return { ...data, lessonLinks };
+      },
+    ],
+    beforeChange: [
+      async ({ data, originalDoc, req }) => {
+        if (!data || typeof data !== "object") return data;
+
+        const content = (data.content ?? originalDoc?.content) as
+          | Record<string, unknown>
+          | undefined;
+
+        const lessonLinks = (data.lessonLinks ?? originalDoc?.lessonLinks) as
+          | import("@/src/lib/lesson-link-admin").LessonLinkAdminRow[]
+          | undefined;
+
+        const synced = await syncLessonFromLexical(req.payload, content, lessonLinks);
+        if (!synced) return data;
+
         return {
           ...data,
-          lessonIntro: parsed.intro,
-          contentSections: dedupeLessonLinkSections(parsed.sections),
+          lessonIntro: synced.lessonIntro,
+          contentSections: synced.contentSections,
+          lessonLinks: synced.lessonLinks,
         };
       },
     ],

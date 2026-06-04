@@ -39,6 +39,14 @@ type PayloadLesson = {
   legacySlug?: string | null;
   lessonIntro?: string | null;
   contentSections?: unknown;
+  lessonLinks?: {
+    label?: string | null;
+    targetLesson?:
+      | number
+      | string
+      | { id?: number | string; legacySlug?: string | null }
+      | null;
+  }[] | null;
 };
 
 function resolveModuleId(module: PayloadLesson["module"]): string | number {
@@ -106,7 +114,7 @@ export async function fetchElearningModules(): Promise<ElearningModule[]> {
       collection: "lessons",
       sort: "order",
       limit: 500,
-      depth: 0,
+      depth: 1,
       pagination: false,
     }),
   ]);

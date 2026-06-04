@@ -59,45 +59,29 @@ function listItems(node: LexicalNode): string[] {
     .filter(Boolean);
 }
 
-/** Slug docelowy z treści odwołania (gdy brak jawnego target). */
-export function inferLessonLinkTarget(content: string): string | undefined {
-  const slugInText = content.match(/lekcj[ięa]?\s+([0-9]+-[0-9]+)/i);
-  if (slugInText) return slugInText[1];
-
-  if (/czemu ten kurs jest inny/i.test(content)) return "1-0";
-
-  return undefined;
-}
-
-/** Akapit będący odwołaniem — tylko linie „Wróć do lekcji…” / 📎, nie wzmianki w środku zdania. */
+/** Tylko osobny akapit zaczynający się od 📎 = odwołanie (nie „lekcji 1-0” w zwykłym tekście). */
 export function isLessonReferenceText(text: string): boolean {
-  const trimmed = text.trim();
-  if (!trimmed) return false;
-  if (trimmed.startsWith("📎")) return true;
-  return /^wróć\s+do\s+lekcj/i.test(trimmed) || /^wracaj\s+do\s+lekcj/i.test(trimmed);
+  return text.trim().startsWith("📎");
 }
 
-/** Każde odwołanie → osobny lessonlink, nie część innego bloku. */
+/** 📎 + treść kafelka. Cel lekcji ustawiasz w adminie (pole lessonLinks), nie w tekście. */
 export function parseLessonLinkFromParagraph(text: string): LessonSection | null {
   const trimmed = text.trim();
-  if (!isLessonReferenceText(trimmed)) return null;
+  if (!trimmed.startsWith("📎")) return null;
 
   const lekcjaMatch = trimmed.match(/\(lekcja\s+([0-9]+-[0-9]+)\)/i);
   let content = trimmed.replace(/^📎\s*/, "").trim();
-  let target: string | undefined;
 
   if (lekcjaMatch) {
-    target = lekcjaMatch[1];
     content = content.replace(/\s*\(lekcja\s+[0-9]+-[0-9]+\)\s*$/i, "").trim();
-  } else {
-    target = inferLessonLinkTarget(content);
+    return {
+      type: "lessonlink",
+      content,
+      target: lekcjaMatch[1],
+    };
   }
 
-  return {
-    type: "lessonlink",
-    content,
-    ...(target ? { target } : {}),
-  };
+  return { type: "lessonlink", content };
 }
 
 export function stripEmbeddedLessonLinkLines(content: string): string {
@@ -108,7 +92,7 @@ export function stripEmbeddedLessonLinkLines(content: string): string {
     .trim();
 }
 
-/** Wyciąga „Wróć do lekcji…” z bloków tekstowych / kolorowych sekcji. */
+/** Wyciąga akapity 📎 osadzone w treści kolorowego bloku (osobne linie). */
 export function expandLessonLinksInSections(sections: LessonSection[]): LessonSection[] {
   const out: LessonSection[] = [];
 
@@ -118,28 +102,13 @@ export function expandLessonLinksInSections(sections: LessonSection[]): LessonSe
       continue;
     }
 
-    if (section.type === "text" && section.content) {
-      const link = parseLessonLinkFromParagraph(section.content);
-      if (link) {
-        out.push(link);
-        continue;
-      }
-    }
-
     if (!section.content || typeof section.content !== "string") {
       out.push(section);
       continue;
     }
 
     const chunks = section.content.split(/\n\n+/);
-    const hasEmbeddedLink = chunks.some((chunk) => isLessonReferenceText(chunk));
-
-    if (!hasEmbeddedLink) {
-      const link = parseLessonLinkFromParagraph(section.content);
-      if (link) {
-        out.push(link);
-        continue;
-      }
+    if (!chunks.some((chunk) => chunk.trim().startsWith("📎"))) {
       out.push(section);
       continue;
     }

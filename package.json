@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev --webpack",
     "dev:turbo": "cross-env NODE_OPTIONS=--no-deprecation next dev",
-    "dev:clean": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev --webpack",
+    "clean:next": "node scripts/clean-next.mjs",
+    "dev:clean": "node scripts/kill-dev-ports.mjs && node scripts/clean-next.mjs && cross-env NODE_OPTIONS=--no-deprecation next dev --webpack",
     "build": "cross-env NODE_OPTIONS=--no-deprecation next build --webpack",
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
     "lint": "eslint",

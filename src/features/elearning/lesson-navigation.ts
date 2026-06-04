@@ -1,4 +1,3 @@
-import { inferLessonLinkTarget } from "@/src/lib/lexical-to-sections";
 import type { LessonSection } from "@/src/features/elearning/lesson-section-types";
 import type { ElearningModule } from "./types";
 
@@ -55,50 +54,12 @@ export function findLessonByLegacySlug(
   return buildLessonNavigationIndex(modules).bySlug.get(legacySlug.trim()) ?? null;
 }
 
-/**
- * Znajduje lekcję dla kafelka lessonlink: pole target, slug w tekście (1-3)
- * lub tytuł w cudzysłowie / w treści odwołania.
- */
+/** Docelowa lekcja tylko z pola lessonLinks w adminie (slug w section.target). */
 export function resolveLessonLinkRef(
   section: Pick<LessonSection, "content" | "target">,
   index: LessonNavigationIndex,
 ): LessonRef | null {
-  const target = section.target?.trim() ?? inferLessonLinkTarget(section.content ?? "");
-  if (target) {
-    const byTarget = index.bySlug.get(target);
-    if (byTarget) return byTarget;
-  }
-
-  const content = section.content?.trim() ?? "";
-  if (!content) return null;
-
-  const slugInText = content.match(/lekcj[ięa]?\s+([0-9]+-[0-9]+)/i);
-  if (slugInText) {
-    const bySlug = index.bySlug.get(slugInText[1]);
-    if (bySlug) return bySlug;
-  }
-
-  const quotedTitle =
-    content.match(/lekcj[ięa]?\s+['"„]([^'""”]+)['"”]/i) ??
-    content.match(/lekcj[ięa]?\s+['']([^'']+)['']/i);
-  if (quotedTitle) {
-    const byTitle = index.byTitle.get(normalizeTitle(quotedTitle[1]));
-    if (byTitle) return byTitle;
-  }
-
-  // „Wróć do lekcji Błędy są Twoim przyjacielem i posłuchaj…”
-  const afterLekcji = content.match(/lekcj[ięa]?\s+(.+?)(?:\s+i\s+|\s+oraz\s+|$)/i);
-  if (afterLekcji) {
-    const fragment = afterLekcji[1].replace(/^['"„]|['"”]$/g, "").trim();
-    const byTitle = index.byTitle.get(normalizeTitle(fragment));
-    if (byTitle) return byTitle;
-  }
-
-  for (const ref of index.all) {
-    if (content.toLowerCase().includes(ref.title.toLowerCase())) {
-      return ref;
-    }
-  }
-
-  return null;
+  const target = section.target?.trim();
+  if (!target) return null;
+  return index.bySlug.get(target) ?? null;
 }

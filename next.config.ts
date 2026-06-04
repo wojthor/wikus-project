@@ -9,6 +9,12 @@ const dirname = path.dirname(__filename);
 const nextConfig: NextConfig = {
   // Payload admin (DndKit + useId) — mniej fałszywych błędów hydratacji w dev
   reactStrictMode: false,
+  transpilePackages: [
+    "payload",
+    "@payloadcms/ui",
+    "@payloadcms/next",
+    "@payloadcms/richtext-lexical",
+  ],
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com", pathname: "/**" },
@@ -48,4 +54,5 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withPayload(nextConfig, { devBundleServerPackages: false });
+// true = poprawne ładowanie importMap (Lexical client) w dev; false powoduje błąd .call w /admin
+export default withPayload(nextConfig, { devBundleServerPackages: true });
