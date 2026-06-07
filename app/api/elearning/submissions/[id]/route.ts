@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { createLocalReq, getPayload } from "payload";
 
 import { hasTeacherFeedback } from "@/src/features/elearning/lesson-status";
+import { mergeChallengeEntries } from "@/src/features/elearning/multiday-submission";
 import type { PayloadSubmission } from "@/src/features/elearning/submissions-api";
 import { sqlGetSubmissionMediaId, sqlUpdateStudentAnswer } from "@/src/lib/submissions-sql-fallback";
 
@@ -29,7 +30,22 @@ function resolveStudentId(value: unknown): string | number | null {
   return null;
 }
 
-/** Uczeń uzupełnia własne zgłoszenie (tekst / głos) przed feedbackiem nauczyciela. */
+function parseChallengeAudios(value: unknown): Array<{ day: number; audio: number | string }> {
+  if (!Array.isArray(value)) return [];
+
+  const parsed: Array<{ day: number; audio: number | string }> = [];
+  for (const entry of value) {
+    if (!entry || typeof entry !== "object") continue;
+    const day = (entry as { day?: unknown }).day;
+    const audio = toRelationId((entry as { audio?: unknown }).audio);
+    if (typeof day !== "number" || !Number.isFinite(day) || audio == null) continue;
+    parsed.push({ day, audio });
+  }
+
+  return parsed;
+}
+
+/** Uczeń uzupełnia własne zgłoszenie (tekst / głos / challenge) przed feedbackiem nauczyciela. */
 export async function PATCH(request: Request, { params }: RouteParams) {
   const { id: submissionId } = await params;
   const payload = await getPayload({ config });
@@ -49,8 +65,9 @@ export async function PATCH(request: Request, { params }: RouteParams) {
 
   const textContent = typeof body.textContent === "string" ? body.textContent.trim() : null;
   const studentAudioId = toRelationId(body.studentAudio);
+  const newChallengeAudios = parseChallengeAudios(body.studentChallengeAudios);
 
-  if (!textContent && studentAudioId == null) {
+  if (!textContent && studentAudioId == null && newChallengeAudios.length === 0) {
     return NextResponse.json({ message: "Brak danych do zapisania." }, { status: 400 });
   }
 
@@ -59,7 +76,7 @@ export async function PATCH(request: Request, { params }: RouteParams) {
     doc = await payload.findByID({
       collection: "submissions",
       id: submissionId,
-      depth: 0,
+      depth: 2,
       user: auth.user,
       overrideAccess: false,
     });
@@ -77,6 +94,27 @@ export async function PATCH(request: Request, { params }: RouteParams) {
       { message: "Nie można edytować odpowiedzi po otrzymaniu feedbacku." },
       { status: 409 },
     );
+  }
+
+  const req = await createLocalReq({ user: auth.user }, payload);
+
+  if (newChallengeAudios.length > 0) {
+    const merged = mergeChallengeEntries(doc.studentChallengeAudios, newChallengeAudios);
+
+    try {
+      const updated = await payload.update({
+        collection: "submissions",
+        id: submissionId,
+        data: { studentChallengeAudios: merged },
+        req,
+        overrideAccess: true,
+        depth: 2,
+      });
+      return NextResponse.json({ doc: updated });
+    } catch (err) {
+      console.error("[elearning/submissions PATCH] challenge update failed", err);
+      return NextResponse.json({ message: "Nie udało się zapisać nagrań challenge." }, { status: 500 });
+    }
   }
 
   const hasText = typeof doc.textContent === "string" && doc.textContent.trim().length > 0;
@@ -102,13 +140,11 @@ export async function PATCH(request: Request, { params }: RouteParams) {
     return NextResponse.json({ message: "Nie udało się zapisać uzupełnienia." }, { status: 500 });
   }
 
-  const req = await createLocalReq({ user: auth.user }, payload);
-
   try {
     const updated = await payload.findByID({
       collection: "submissions",
       id: submissionId,
-      depth: 1,
+      depth: 2,
       req,
       overrideAccess: true,
     });

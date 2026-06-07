@@ -24,6 +24,13 @@ import {
   isModuleUnlocked,
 } from "@/src/features/elearning/lesson-progression";
 import { recordingFilename } from "@/src/features/elearning/browser-audio-recording";
+import type { DayRecording } from "@/src/features/elearning/multiday-submission";
+import {
+  canSubmitMultidayChallenge,
+  collectNewChallengeUploads,
+  countMissingChallengeDays,
+  hydrateChallengeRecordingsFromSubmission,
+} from "@/src/features/elearning/multiday-submission";
 import { resolveMediaId, resolveMediaPlaybackUrl, uploadMediaFile } from "@/src/features/elearning/media-api";
 import {
   createSubmission,
@@ -55,7 +62,7 @@ export function StudentPanel({ modules, userId, isCourseAdmin }: StudentPanelPro
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [voiceBlobs, setVoiceBlobs] = useState<Record<string, Blob>>({});
   const [voicePreviews, setVoicePreviews] = useState<Record<string, string>>({});
-  const [recordings, setRecordings] = useState<Record<string, string | string[]>>({});
+  const [challengeRecordings, setChallengeRecordings] = useState<Record<string, DayRecording[]>>({});
   const [submissionsByLesson, setSubmissionsByLesson] = useState<
     Record<string, PayloadSubmission>
   >({});
@@ -178,6 +185,7 @@ export function StudentPanel({ modules, userId, isCourseAdmin }: StudentPanelPro
     setLoadError(null);
     setSubmitError(null);
     setCurrentSubmission(null);
+    setChallengeRecordings({});
 
     fetchSubmissionForLesson(userId, lessonDbId)
       .then((doc) => {
@@ -191,6 +199,7 @@ export function StudentPanel({ modules, userId, isCourseAdmin }: StudentPanelPro
           if (audioUrl) {
             setVoicePreviews((p) => ({ ...p, [answerKey]: audioUrl }));
           }
+          setChallengeRecordings(hydrateChallengeRecordingsFromSubmission(doc, answerKey));
         }
         if (doc) {
           setSubmissionsByLesson((prev) => ({ ...prev, [answerKey]: doc }));
@@ -222,11 +231,91 @@ export function StudentPanel({ modules, userId, isCourseAdmin }: StudentPanelPro
     setPendingNextLesson(null);
   };
 
+  const uploadChallengeRecordings = async (days: { day: number }[]) => {
+    const pending = collectNewChallengeUploads(challengeRecordings, answerKey, days);
+    const uploaded: Array<{ day: number; audio: number | string }> = [];
+
+    for (const item of pending) {
+      const media = await uploadMediaFile(
+        item.blob,
+        recordingFilename(item.blob.type, `challenge-dzien-${item.day}`),
+      );
+      uploaded.push({ day: item.day, audio: media.id });
+    }
+
+    return uploaded;
+  };
+
   const handleSubmit = async () => {
     if (!lesson || submitting) return;
 
     if (lesson.task.type === "multiday") {
-      setSubmitError("Wysyłanie 7-dniowego challenge przez API będzie dostępne wkrótce.");
+      const days = lesson.task.days ?? [];
+      const canSupplement = hasSubmission && !hasTeacherFeedback(currentSubmission);
+      const missingDays = countMissingChallengeDays(days, challengeRecordings, answerKey);
+
+      if (!hasSubmission) {
+        if (!canSubmitMultidayChallenge(days, challengeRecordings, answerKey)) {
+          setSubmitError(
+            missingDays === 1
+              ? "Nagraj głosówkę dla ostatniego brakującego dnia challenge'u."
+              : `Nagraj głosówki dla wszystkich dni challenge'u (brakuje: ${missingDays}).`,
+          );
+          return;
+        }
+      } else if (!canSupplement) {
+        return;
+      } else {
+        const pending = collectNewChallengeUploads(challengeRecordings, answerKey, days);
+        if (pending.length === 0) {
+          setSubmitError("Dodaj nowe nagrania, które chcesz wysłać.");
+          return;
+        }
+      }
+
+      setSubmitting(true);
+      setSubmitError(null);
+      setSubmitSuccess(null);
+
+      try {
+        const uploaded = await uploadChallengeRecordings(days);
+
+        if (hasSubmission && currentSubmission) {
+          const doc = await updateSubmission(currentSubmission.id, {
+            studentChallengeAudios: uploaded,
+          });
+          const refreshed = await fetchSubmissionForLesson(userId, lesson.id);
+          const finalDoc = refreshed ?? doc;
+          setCurrentSubmission(finalDoc);
+          setSubmissionsByLesson((prev) => ({ ...prev, [answerKey]: finalDoc }));
+          setChallengeRecordings(hydrateChallengeRecordingsFromSubmission(finalDoc, answerKey));
+          setSubmitSuccess("supplemented");
+          return;
+        }
+
+        const payloadLessonId = toPayloadRelationId(lesson.id);
+        const student = toPayloadStudentId(userId);
+        const doc = await createSubmission({
+          lesson: payloadLessonId,
+          student,
+          studentChallengeAudios: uploaded,
+        });
+
+        const refreshed = await fetchSubmissionForLesson(userId, lesson.id);
+        const finalDoc = refreshed ?? doc;
+        setCurrentSubmission(finalDoc);
+        setSubmissionsByLesson((prev) => ({ ...prev, [answerKey]: finalDoc }));
+        setChallengeRecordings(hydrateChallengeRecordingsFromSubmission(finalDoc, answerKey));
+        const next = getNextLessonRef(modules, safeModIndex, safeLessonIndex);
+        setPendingNextLesson(
+          next ? { modIndex: next.modIndex, lessonIndex: next.lessonIndex } : null,
+        );
+        setSubmitSuccess("sent");
+      } catch (err: unknown) {
+        setSubmitError(err instanceof Error ? err.message : "Nie udało się wysłać challenge'u.");
+      } finally {
+        setSubmitting(false);
+      }
       return;
     }
 
@@ -365,7 +454,22 @@ export function StudentPanel({ modules, userId, isCourseAdmin }: StudentPanelPro
     !loadingSubmission &&
     canSupplementAnswer(currentSubmission, answers[answerKey] ?? "", voiceBlobs[answerKey]);
 
-  const showSubmitButton = canSubmitNew || canSubmitSupplement;
+  const multidayDays = lesson?.task.type === "multiday" ? (lesson.task.days ?? []) : [];
+
+  const canSubmitMultidayNew =
+    lesson?.task.type === "multiday" &&
+    !hasSubmission &&
+    !loadingSubmission &&
+    canSubmitMultidayChallenge(multidayDays, challengeRecordings, answerKey);
+
+  const canSubmitMultidaySupplement =
+    lesson?.task.type === "multiday" &&
+    canSupplement &&
+    !loadingSubmission &&
+    collectNewChallengeUploads(challengeRecordings, answerKey, multidayDays).length > 0;
+
+  const showSubmitButton =
+    canSubmitNew || canSubmitSupplement || canSubmitMultidayNew || canSubmitMultidaySupplement;
 
   const navBtn =
     "rounded-xl border px-3 py-2.5 text-xs font-semibold transition disabled:cursor-not-allowed disabled:opacity-40 sm:px-5 sm:text-sm";
@@ -619,8 +723,9 @@ export function StudentPanel({ modules, userId, isCourseAdmin }: StudentPanelPro
                   lessonKey={answerKey}
                   days={lesson.task.days}
                   accent={accent}
-                  recordings={recordings}
-                  setRecordings={setRecordings}
+                  recordings={challengeRecordings}
+                  setRecordings={setChallengeRecordings}
+                  disabled={loadingSubmission || submitting || (hasSubmission && !canSupplement)}
                 />
                 {showTeacherFeedback && (
                   <TeacherFeedbackBlock

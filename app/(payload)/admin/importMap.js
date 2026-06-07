@@ -24,6 +24,7 @@ import { UnderlineFeatureClient as UnderlineFeatureClient_e70f5e05f09f93e00b997e
 import { BoldFeatureClient as BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { ItalicFeatureClient as ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { AdminSubmissionAudioListenField as AdminSubmissionAudioListenField_bf0d57182046721e44591a314ce2c60f } from '@/app/components/AdminSubmissionAudioListen'
+import { AdminSubmissionChallengeAudioListenField as AdminSubmissionChallengeAudioListenField_a8c4e2f19b3d6a7c5e1f0d9b8a7c6e5d } from '@/app/components/AdminSubmissionChallengeAudioListen'
 import { AdminTeacherFeedbackHeaderField as AdminTeacherFeedbackHeaderField_2325048b2667a01b015795a6c829977b } from '@/app/components/AdminTeacherFeedbackHeader'
 import { AdminAudioRecorderField as AdminAudioRecorderField_4488cc126106d7651cac66c97185b3eb } from '@/app/components/AdminAudioRecorder'
 import { AdminFlushTeacherAudioOnSaveField as AdminFlushTeacherAudioOnSaveField_4139a617dd7270da97d107f5faeb7e5c } from '@/app/components/AdminFlushTeacherAudioOnSave'
@@ -57,6 +58,7 @@ export const importMap = {
   "@payloadcms/richtext-lexical/client#BoldFeatureClient": BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#ItalicFeatureClient": ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@/app/components/AdminSubmissionAudioListen#AdminSubmissionAudioListenField": AdminSubmissionAudioListenField_bf0d57182046721e44591a314ce2c60f,
+  "@/app/components/AdminSubmissionChallengeAudioListen#AdminSubmissionChallengeAudioListenField": AdminSubmissionChallengeAudioListenField_a8c4e2f19b3d6a7c5e1f0d9b8a7c6e5d,
   "@/app/components/AdminTeacherFeedbackHeader#AdminTeacherFeedbackHeaderField": AdminTeacherFeedbackHeaderField_2325048b2667a01b015795a6c829977b,
   "@/app/components/AdminAudioRecorder#AdminAudioRecorderField": AdminAudioRecorderField_4488cc126106d7651cac66c97185b3eb,
   "@/app/components/AdminFlushTeacherAudioOnSave#AdminFlushTeacherAudioOnSaveField": AdminFlushTeacherAudioOnSaveField_4139a617dd7270da97d107f5faeb7e5c,

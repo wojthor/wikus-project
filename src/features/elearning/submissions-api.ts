@@ -1,5 +1,6 @@
 import type { MediaRelation, PayloadMedia } from "./media-api";
 import { resolveMediaId, resolveMediaPlaybackUrl, resolveMediaUrl } from "./media-api";
+import type { ChallengeAudioEntry } from "./multiday-submission";
 
 export type PayloadSubmission = {
   id: string | number;
@@ -7,11 +8,17 @@ export type PayloadSubmission = {
   lesson: string | number | { id: string | number };
   textContent?: string | null;
   studentAudio?: MediaRelation;
+  studentChallengeAudios?: ChallengeAudioEntry[] | null;
   teacherFeedback?: Record<string, unknown> | null;
   teacherAudio?: MediaRelation;
   isReviewed?: boolean;
   createdAt?: string;
   updatedAt?: string;
+};
+
+export type ChallengeAudioPayload = {
+  day: number;
+  audio: number | string;
 };
 
 export { resolveMediaId, resolveMediaPlaybackUrl, resolveMediaUrl };
@@ -70,7 +77,7 @@ function buildWhereParams(filters: Record<string, string | number>): string {
     params.set(`where[${field}][equals]`, String(value));
   }
   params.set("limit", "1");
-  params.set("depth", "1");
+  params.set("depth", "2");
   return params.toString();
 }
 
@@ -129,11 +136,13 @@ export type CreateSubmissionBody = {
   student: number | string;
   textContent?: string;
   studentAudio?: number | string;
+  studentChallengeAudios?: ChallengeAudioPayload[];
 };
 
 export type UpdateSubmissionBody = {
   textContent?: string;
   studentAudio?: number | string;
+  studentChallengeAudios?: ChallengeAudioPayload[];
 };
 
 export async function updateSubmission(
@@ -143,6 +152,9 @@ export async function updateSubmission(
   const payload: Record<string, unknown> = {};
   if (body.textContent?.trim()) payload.textContent = body.textContent.trim();
   if (body.studentAudio != null) payload.studentAudio = body.studentAudio;
+  if (body.studentChallengeAudios?.length) {
+    payload.studentChallengeAudios = body.studentChallengeAudios;
+  }
 
   const res = await fetch(`/api/elearning/submissions/${id}`, {
     method: "PATCH",
@@ -178,6 +190,9 @@ export async function createSubmission(
   if (body.studentAudio != null) {
     payload.studentAudio = body.studentAudio;
   }
+  if (body.studentChallengeAudios?.length) {
+    payload.studentChallengeAudios = body.studentChallengeAudios;
+  }
 
   const res = await fetch("/api/elearning/submissions", {
     method: "POST",
@@ -190,6 +205,7 @@ export async function createSubmission(
       lesson: payload.lesson,
       textContent: payload.textContent,
       studentAudio: payload.studentAudio,
+      studentChallengeAudios: payload.studentChallengeAudios,
     }),
   });
 

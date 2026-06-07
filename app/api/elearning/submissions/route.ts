@@ -20,6 +20,21 @@ function toRelationId(value: unknown): number | string | null {
   return null;
 }
 
+function parseChallengeAudios(value: unknown): Array<{ day: number; audio: number | string }> {
+  if (!Array.isArray(value)) return [];
+
+  const parsed: Array<{ day: number; audio: number | string }> = [];
+  for (const entry of value) {
+    if (!entry || typeof entry !== "object") continue;
+    const day = (entry as { day?: unknown }).day;
+    const audio = toRelationId((entry as { audio?: unknown }).audio);
+    if (typeof day !== "number" || !Number.isFinite(day) || audio == null) continue;
+    parsed.push({ day, audio });
+  }
+
+  return parsed;
+}
+
 function resolveMediaId(value: unknown): string | number | null {
   if (value == null || value === "") return null;
   if (typeof value === "number") return value;
@@ -59,12 +74,13 @@ export async function POST(request: Request) {
   const lessonId = toRelationId(body.lesson);
   const textContent = typeof body.textContent === "string" ? body.textContent.trim() : "";
   const studentAudioId = toRelationId(body.studentAudio);
+  const studentChallengeAudios = parseChallengeAudios(body.studentChallengeAudios);
 
   if (lessonId == null) {
     return NextResponse.json({ message: "Brak lekcji (lesson)." }, { status: 400 });
   }
 
-  if (!textContent && studentAudioId == null) {
+  if (!textContent && studentAudioId == null && studentChallengeAudios.length === 0) {
     return NextResponse.json(
       { message: "Dodaj odpowiedź tekstową, nagraj głosówkę albo oba." },
       { status: 400 },
@@ -77,6 +93,7 @@ export async function POST(request: Request) {
   };
   if (textContent) data.textContent = textContent;
   if (studentAudioId != null) data.studentAudio = studentAudioId;
+  if (studentChallengeAudios.length) data.studentChallengeAudios = studentChallengeAudios;
 
   const req = await createLocalReq(
     { user: auth.user, context: { skipSubmissionEmails: true } },

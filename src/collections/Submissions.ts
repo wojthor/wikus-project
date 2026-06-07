@@ -20,6 +20,16 @@ function hasRelationValue(value: unknown): boolean {
   return true;
 }
 
+function hasChallengeAudios(value: unknown): boolean {
+  if (!Array.isArray(value) || value.length === 0) return false;
+  return value.some(
+    (entry) =>
+      entry &&
+      typeof entry === "object" &&
+      hasRelationValue((entry as { audio?: unknown }).audio),
+  );
+}
+
 function isAutosaveRequest(req: { query?: Record<string, unknown> }): boolean {
   const autosave = req.query?.autosave;
   return autosave === true || autosave === "true";
@@ -63,8 +73,9 @@ export const Submissions: CollectionConfig = {
         const hasText =
           typeof data.textContent === "string" && data.textContent.trim().length > 0;
         const hasAudio = hasRelationValue(data.studentAudio);
+        const hasChallenge = hasChallengeAudios(data.studentChallengeAudios);
 
-        if (!hasText && !hasAudio) {
+        if (!hasText && !hasAudio && !hasChallenge) {
           throw new Error("Dodaj odpowiedź tekstową, nagraj głosówkę albo oba.");
         }
 
@@ -79,6 +90,12 @@ export const Submissions: CollectionConfig = {
         if (operation === "update" && originalDoc) {
           if (!hasRelationValue(data.studentAudio) && hasRelationValue(originalDoc.studentAudio)) {
             data.studentAudio = originalDoc.studentAudio;
+          }
+          if (
+            !hasChallengeAudios(data.studentChallengeAudios) &&
+            hasChallengeAudios(originalDoc.studentChallengeAudios)
+          ) {
+            data.studentChallengeAudios = originalDoc.studentChallengeAudios;
           }
           if (!hasRelationValue(data.teacherAudio) && hasRelationValue(originalDoc.teacherAudio)) {
             data.teacherAudio = originalDoc.teacherAudio;
@@ -179,6 +196,42 @@ export const Submissions: CollectionConfig = {
       label: "Odpowiedź głosowa (uczeń)",
       required: false,
       admin: { hidden: true },
+    },
+    {
+      name: "listenStudentChallengeAudio",
+      type: "ui",
+      admin: {
+        components: {
+          Field:
+            "@/app/components/AdminSubmissionChallengeAudioListen#AdminSubmissionChallengeAudioListenField",
+        },
+      },
+    },
+    {
+      name: "studentChallengeAudios",
+      type: "array",
+      label: "Nagrania 7-dniowego challenge (uczeń)",
+      admin: {
+        hidden: true,
+        readOnly: true,
+      },
+      fields: [
+        {
+          name: "day",
+          type: "number",
+          required: true,
+          label: "Dzień",
+          min: 1,
+          max: 7,
+        },
+        {
+          name: "audio",
+          type: "upload",
+          relationTo: "media",
+          required: true,
+          label: "Nagranie",
+        },
+      ],
     },
     {
       name: "teacherFeedbackHeader",

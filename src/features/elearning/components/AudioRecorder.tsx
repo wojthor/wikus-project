@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "@/app/(site)/elearning/elearning.module.css";
 import { MODULE_ACCENTS, type ModuleAccentId } from "../theme";
+import type { DayRecording } from "../multiday-submission";
+import { challengeDayKey } from "../multiday-submission";
 import {
   beginRecording,
   finalizeRecording,
@@ -140,7 +142,15 @@ export function AudioRecorder({
   );
 }
 
-function SingleRecorder({ onSave, label }: { onSave: (url: string) => void; label: string }) {
+function SingleRecorder({
+  onSave,
+  label,
+  disabled = false,
+}: {
+  onSave: (blob: Blob, url: string) => void;
+  label: string;
+  disabled?: boolean;
+}) {
   const [recording, setRecording] = useState(false);
   const [seconds, setSeconds] = useState(0);
   const [error, setError] = useState<string | null>(null);
@@ -148,6 +158,7 @@ function SingleRecorder({ onSave, label }: { onSave: (url: string) => void; labe
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const start = async () => {
+    if (disabled) return;
     setError(null);
     try {
       const stream = await openMicrophoneStream();
@@ -169,7 +180,7 @@ function SingleRecorder({ onSave, label }: { onSave: (url: string) => void; labe
       stopRecordingTracks(session);
       sessionRef.current = null;
       if (blob.size > 0) {
-        onSave(URL.createObjectURL(blob));
+        onSave(blob, URL.createObjectURL(blob));
       }
       setSeconds(0);
     };
@@ -191,7 +202,8 @@ function SingleRecorder({ onSave, label }: { onSave: (url: string) => void; labe
         <button
           type="button"
           onClick={() => void start()}
-          className={`${btnBase} border border-[#b9c5fe] bg-white text-slate-800`}
+          disabled={disabled}
+          className={`${btnBase} border border-[#b9c5fe] bg-white text-slate-800 disabled:cursor-not-allowed disabled:opacity-50`}
         >
           <span>🎙️</span>
           <span>{label}</span>
@@ -217,22 +229,24 @@ export function MultidayChallenge({
   accent,
   recordings,
   setRecordings,
+  disabled = false,
 }: {
   lessonKey: string;
   days: { day: number; prompt: string }[];
   accent: ModuleAccentId;
-  recordings: Record<string, string | string[]>;
-  setRecordings: React.Dispatch<React.SetStateAction<Record<string, string | string[]>>>;
+  recordings: Record<string, DayRecording[]>;
+  setRecordings: React.Dispatch<React.SetStateAction<Record<string, DayRecording[]>>>;
+  disabled?: boolean;
 }) {
   const a = MODULE_ACCENTS[accent];
-  const getDayRecs = (day: number): string[] => {
-    const v = recordings[`${lessonKey}-day${day}`];
-    return Array.isArray(v) ? v : v ? [v] : [];
+  const getDayRecs = (day: number): DayRecording[] => {
+    return recordings[challengeDayKey(lessonKey, day)] ?? [];
   };
-  const addRec = (day: number, url: string) => {
+  const addRec = (day: number, blob: Blob, url: string) => {
+    const key = challengeDayKey(lessonKey, day);
     setRecordings((p) => ({
       ...p,
-      [`${lessonKey}-day${day}`]: [...(p[`${lessonKey}-day${day}`] || []), url],
+      [key]: [...(p[key] ?? []), { url, blob, mediaId: null }],
     }));
   };
 
@@ -265,19 +279,21 @@ export function MultidayChallenge({
             </p>
             {recs.length > 0 && (
               <div className="mb-3 flex flex-col gap-2">
-                {recs.map((url, i) => (
+                {recs.map((rec, i) => (
                   <div key={i} className="rounded-lg bg-white p-2.5 sm:p-3">
                     <p className="mb-1 text-[10px] font-semibold text-slate-500">
                       Nagranie {i + 1}
+                      {rec.mediaId ? " · wysłane" : " · do wysłania"}
                     </p>
-                    <audio controls src={url} className="h-8 w-full accent-[#7347f4]" playsInline />
+                    <audio controls src={rec.url} className="h-8 w-full accent-[#7347f4]" playsInline />
                   </div>
                 ))}
               </div>
             )}
             <SingleRecorder
-              onSave={(url) => addRec(d.day, url)}
+              onSave={(blob, url) => addRec(d.day, blob, url)}
               label={done ? "Dodaj kolejne nagranie" : `Nagraj dzień ${d.day}`}
+              disabled={disabled}
             />
           </div>
         );
