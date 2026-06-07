@@ -154,16 +154,24 @@ export const AdminWelcomeEmailPanelField: CheckboxFieldClientComponent = ({ chec
         )}
       </div>
 
-      {!wasSent && (
-        <p style={{ marginTop: "0.75rem" }}>
-          <button
-            type="button"
-            className="btn btn--style-primary btn--size-medium"
-            disabled={sending}
-            onClick={() => void handleSend()}
-          >
-            {sending ? "Wysyłanie…" : "Wyślij mail z ustawieniem hasła"}
-          </button>
+      <p style={{ marginTop: "0.75rem" }}>
+        <button
+          type="button"
+          className="btn btn--style-primary btn--size-medium"
+          disabled={sending}
+          onClick={() => void handleSend()}
+        >
+          {sending
+            ? "Wysyłanie…"
+            : wasSent
+              ? "Wyślij ponownie (nowy link, 48 h)"
+              : "Wyślij mail z ustawieniem hasła"}
+        </button>
+      </p>
+      {wasSent && (
+        <p className="field-description" style={{ marginTop: "0.35rem" }}>
+          Link w poprzednim mailu wygasa po 48 h — użyj ponownej wysyłki, jeśli kursant go nie zdążył
+          użyć.
         </p>
       )}
 
