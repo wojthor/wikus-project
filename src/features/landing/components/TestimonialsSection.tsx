@@ -34,13 +34,10 @@ export function TestimonialsSection({ data }: TestimonialsSectionProps) {
             className="bg-white/80 border border-[#e2e7ff] rounded-xl p-4 sm:p-4 shadow-none flex flex-col justify-between"
           >
             <div>
-              <div className="font-semibold text-sm sm:text-base text-slate-900">
+              <div className="font-semibold text-sm sm:text-base text-slate-900 mb-1">
                 {review.author}
               </div>
-              <div className="text-[#ffa515] text-[11px] sm:text-xs font-semibold mb-1">
-                {review.result}
-              </div>
-              <div className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+              <div className="whitespace-pre-line text-xs sm:text-sm text-slate-700 leading-relaxed">
                 {review.quote}
               </div>
             </div>

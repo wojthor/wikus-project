@@ -74,17 +74,18 @@ export const testimonials = {
     "To nie kwestia „talentu”. Swoją metodę przetestowałem na dziesiątkach uczniów – od poprawy ocen po swobodne rozmowy w pracy i na wyjeździe.",
   items: [
     {
-      quote:
-        "Gorąco polecam zajęcia z Wiktorem. Zaczynałem tak naprawdę z punktu zera, a dzięki Wiktorowi udało mi się zdać maturę pisemną na poziomie 60%! I to nie koniec – ustna też poszła bez żadnych problemów! Cierpliwość oraz zaangażowanie Wiktora jest niesamowite. Nigdy nie miałem sytuacji, że nie był, w stanie mi czegoś wytłumaczyć lub pomóc. Jestem bardzo zadowolony ze współpracy i polecam każdemu nie zależnie od poziomu zaawansowania.",
-      author: "Marcel",
-      result: "Zdana matura z punktu zera",
+      quote: `Ten kurs online całkowicie odmienił moje podejście do nauki języka angielskiego. W przeciwieństwie do wielu korepetytorów, którzy powielają te same metody nauczania co w szkole, Wiktor skupia się na praktyce i realnej komunikacji.
+Największą zaletą tego kursu jest mówienie od pierwszego dnia, które okazało się przyjemne i wcale nie takie straszne 😝.
+Bardzo pomocny okazał się również regularny feedback oraz nagrywanie własnych wypowiedzi, dzięki czemu mogłam wyłapywać swoje błędy i dostrzegać progres, jaki zrobiłam.
+Dzięki krótkim, codziennym lekcjom i dobrze zaplanowanej nauce kurs jest skuteczny i bardzo wygodny. Mogę uczyć się angielskiego, jadąc do pracy, siedząc w kawiarni lub leżąc wygodnie w łóżku przed snem 😍.
+To świetna opcja dla osób, które chcą nie tylko znać zasady gramatyki, ale przede wszystkim swobodnie komunikować się po angielsku. Polecam z całego serca! 🫶`,
+      author: "Lilia",
       rating: 5,
     },
     {
       quote:
         "Od pół roku uczestniczę w zajęciach Wiktora. Oceny w szkole są 2 razy lepsze, mega poprawa w rozumieniu i mówieniu po angielsku. Tok nauczania według potrzeb każdego ucznia. Bardzo bardzo polecam",
       author: "Maks",
-      result: "2x lepsze oceny",
       rating: 5,
     },
     {
@@ -93,14 +94,24 @@ Zajęcia prowadzone są zawsze w bardzo ciekawy sposób a atmosfera na zajęciac
 Wiktor świetnie tłumaczy zagadnienia gramatyczne, a przy tym dba o rozwój słownictwa i umiejętności konwersacyjnych.
 Dzięki jego zaangażowaniu szybko zobaczyłam postępy. Idealny wybór zarówno dla początkujących jak i bardziej zaawansowanych. ☺️`,
       author: "Martyna",
-      result: "Rozwój konwersacji",
       rating: 5,
     },
     {
       quote:
         "Też chciałabym ogólną opinię napisać bo jestem naprawdę bardzo zadowolona chociażby też z samej cierpliwości twojej i przemiłej atmosfery i przede wszystkim komfortu,możliwość elastyczności bo wiadomo jest jak jest nie zawsze mogę się połączyć przez pracę więc też się cieszę że wynalazłeś formę tych „zadań domowych” bo to bardzo ułatwia i w każdej wolnej chwili mogę się uczyć języka angielskiego i też faktycznie widzę progres bo na początku w ogóle bałam się odezwać po angielsku😅 także jeśli ktoś się zastanawia to gorąco polecam standardowe korepetycje jak i w formie takich zadanek",
       author: "Wiktoria",
-      result: "Przełamanie bariery i elastyczność",
+      rating: 5,
+    },
+    {
+      quote:
+        "Przerabiam kurs po pracy i w końcu czuję, że angielski „wychodzi” z głowy, a nie tylko siedzi w zeszycie. Zadania głosowe to dla mnie najlepsza część — nagrywam, dostaję konkretny feedback i wiem, co poprawić następnym razem. Po trzech modułach pierwszy raz normalnie pogadałem z klientem z UK na spotkaniu online.",
+      author: "Kamil",
+      rating: 5,
+    },
+    {
+      quote:
+        "Bałam się mówić po angielsku latami. Tu nie ma presji jak na żywych lekcjach — mogę powtórzyć nagranie, wrócić do lekcji i iść w swoim tempie. Krótkie odcinki + feedback od Wiktora sprawiają, że w końcu widzę sens nauki, a nie kolejną apkę, którą odpalam raz i zapominam.",
+      author: "Ania",
       rating: 5,
     },
   ],

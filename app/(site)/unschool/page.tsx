@@ -8,6 +8,7 @@ import { useState, type ReactNode } from "react";
 import { CheckoutButton } from "@/app/components/CheckoutButton";
 import { content, type FooterData } from "@/data/content";
 import { Footer } from "@/src/features/landing";
+import { UnschoolTestimonialsSection } from "@/src/features/unschool/components/UnschoolTestimonialsSection";
 import {
   UNSCHOOL_COURSE_OFFER,
   UNSCHOOL_PRICING_FEATURES,
@@ -697,37 +698,7 @@ function UnschoolLanding() {
         <p className={`${sub} mb-8 sm:mb-10`}>
           Nie sprzedaję Ci obietnic. Sprzedaję Ci metodę, która działa i mam na to dowody.
         </p>
-        <div className="grid sm:grid-cols-2 gap-4">
-          {[
-            {
-              text: "Gorąco polecam zajęcia z Wiktorem. Zaczynałem tak naprawdę z punktu zera, a dzięki Wiktorowi udało mi się zdać maturę pisemną na poziomie 60%! Cierpliwość oraz zaangażowanie jest niesamowite. Nigdy nie miałem sytuacji, że nie był w stanie mi czegoś wytłumaczyć lub pomóc.",
-              author: "Marcel",
-              meta: "Zdana matura z punktu zera",
-            },
-            {
-              text: "Od pół roku uczestniczę w zajęciach Wiktora. Oceny w szkole są 2 razy lepsze, mega poprawa w rozumieniu i mówieniu po angielsku. Tok nauczania według potrzeb każdego ucznia. Bardzo polecam.",
-              author: "Maks",
-              meta: "2x lepsze oceny",
-            },
-            {
-              text: "Serdecznie polecam! Zajęcia prowadzone są zawsze w bardzo ciekawy sposób, a atmosfera jest luźna i motywująca. Dzięki zaangażowaniu Wiktora szybko zobaczyłam postępy. Idealny wybór zarówno dla początkujących jak i bardziej zaawansowanych.",
-              author: "Martyna",
-              meta: "Rozwój konwersacji",
-            },
-            {
-              text: "Bardzo zadowolona chociażby z cierpliwości i przemiłej atmosfery. Na początku w ogóle bałam się odezwać po angielsku – teraz faktycznie widzę progres. Jeśli ktoś się zastanawia – gorąco polecam.",
-              author: "Wiktoria",
-              meta: "Przełamanie bariery językowej",
-            },
-          ].map((review) => (
-            <div key={review.author} className={panel}>
-              <div className="text-[#ffbd53] text-sm mb-3 tracking-wider">★★★★★</div>
-              <p className="text-sm text-slate-700 leading-relaxed mb-4">{review.text}</p>
-              <div className="font-bold text-[#7347f4]">{review.author}</div>
-              <div className="text-xs text-slate-500 mt-1">{review.meta}</div>
-            </div>
-          ))}
-        </div>
+        <UnschoolTestimonialsSection />
       </Section>
 
       <Section id="cennik">
