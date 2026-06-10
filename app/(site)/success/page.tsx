@@ -3,6 +3,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getPayload } from "payload";
 
+import { MetaPurchaseTracker } from "@/app/components/MetaPurchaseTracker";
 import { getPaymentOutcome } from "@/src/lib/payment-intent-status";
 import { provisionStudentFromPaymentIntent } from "@/src/lib/stripe-checkout-provision";
 import { getStripeServer } from "@/src/lib/stripe-server";
@@ -93,6 +94,9 @@ export default async function PaymentSuccessPage({ searchParams }: PaymentSucces
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#f8faff] px-4 py-12 font-sans text-slate-900 selection:bg-[#cfd8ff]">
+      {outcome === "succeeded" && paymentIntentId ? (
+        <MetaPurchaseTracker paymentIntentId={paymentIntentId} />
+      ) : null}
       <div className="w-full max-w-lg rounded-3xl border border-[#b9c5fe] bg-white p-6 text-center shadow-sm sm:p-8">
         <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[#cfd8ff] text-2xl">
           🎉

@@ -101,7 +101,7 @@ export default function SiteLayout({
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '4318931438424156');
+            fbq('init', '${process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "4318931438424156"}');
             fbq('track', 'PageView');
           `}
         </Script>
@@ -111,7 +111,7 @@ export default function SiteLayout({
             height="1"
             width="1"
             style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=4318931438424156&ev=PageView&noscript=1"
+            src={`https://www.facebook.com/tr?id=${process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "4318931438424156"}&ev=PageView&noscript=1`}
             alt=""
           />
         </noscript>

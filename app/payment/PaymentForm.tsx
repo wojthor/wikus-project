@@ -7,7 +7,7 @@ import {
   useStripe,
 } from "@stripe/react-stripe-js";
 import type { StripeExpressCheckoutElementConfirmEvent } from "@stripe/stripe-js";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import {
   STRIPE_EXPRESS_CHECKOUT_OPTIONS,
@@ -30,6 +30,15 @@ export function PaymentForm({ amountLabel, email, clientSecret }: PaymentFormPro
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [expressWalletsVisible, setExpressWalletsVisible] = useState(true);
+  const initiateCheckoutTracked = useRef(false);
+
+  useEffect(() => {
+    if (!stripe || !elements || initiateCheckoutTracked.current) return;
+    initiateCheckoutTracked.current = true;
+    if (typeof window !== "undefined" && window.fbq) {
+      window.fbq("track", "InitiateCheckout");
+    }
+  }, [stripe, elements]);
 
   const paymentElementOptions = useMemo(
     () => ({
@@ -113,15 +122,15 @@ export function PaymentForm({ amountLabel, email, clientSecret }: PaymentFormPro
       return null;
     }
 
-    if (paymentIntent.status === "succeeded" || paymentIntent.status === "processing") {
+    if (
+      paymentIntent.status === "succeeded" ||
+      paymentIntent.status === "processing" ||
+      paymentIntent.status === "requires_action"
+    ) {
       window.location.assign(
         `${window.location.origin}/success?payment_intent=${encodeURIComponent(paymentIntentId)}`,
       );
       return null;
-    }
-
-    if (paymentIntent.status === "requires_action") {
-      return "Potwierdź płatność w aplikacji banku. Bez potwierdzenia transakcja nie przejdzie.";
     }
 
     return "Płatność nie została zakończona. Spróbuj ponownie.";

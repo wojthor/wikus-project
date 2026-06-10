@@ -17,7 +17,7 @@ export function isPaidCheckoutSession(session: Stripe.Checkout.Session): boolean
   return session.payment_status === "paid";
 }
 
-function getPaymentIntentEmail(intent: Stripe.PaymentIntent): string | null {
+export function getPaymentIntentEmail(intent: Stripe.PaymentIntent): string | null {
   const receiptEmail = intent.receipt_email?.trim().toLowerCase();
   if (receiptEmail) return receiptEmail;
 
