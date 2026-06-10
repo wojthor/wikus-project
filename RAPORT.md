@@ -28,6 +28,7 @@
 18. [Deploy i checklist produkcyjny](#18-deploy-i-checklist-produkcyjny)
 19. [Historia commitów (skrót)](#19-historia-commitów-skrót)
 20. [Co dalej (backlog)](#20-co-dalej-backlog)
+21. [Meta Pixel i Conversions API (CAPI)](#21-meta-pixel-i-conversions-api-capi)
 
 ---
 
@@ -529,7 +530,7 @@ provisionStudentFromPaymentIntent      │
 
 | Event | Akcja |
 |-------|-------|
-| `payment_intent.succeeded` | Provision użytkownika + mail |
+| `payment_intent.succeeded` | Provision użytkownika + mail + **wysyłka CAPI** (patrz [§21](#21-meta-pixel-i-conversions-api-capi)) |
 | `checkout.session.completed` | Provision (alternatywna ścieżka) |
 | `checkout.session.async_payment_succeeded` | Provision (płatności opóźnione) |
 
@@ -888,6 +889,9 @@ timeout exceeded when trying to connect
 | `UNSCHOOL_USER` / `UNSCHOOL_PASSWORD` | opcjonalne | Basic Auth `/unschool` |
 | `DEV_SEED_KEY` | opcjonalne | Seed/API dev na prod |
 | `BREVO_API_KEY` / `BREVO_LIST_ID` | opcjonalne | Newsletter |
+| `NEXT_PUBLIC_META_PIXEL_ID` | ✅ prod | Numeryczne ID Pixela Meta (widoczne publicznie) |
+| `META_CAPI_TOKEN` | ✅ prod | Token dostępu do Meta Graph API (server-only, secret) |
+| `META_TEST_EVENT_CODE` | opcjonalne | Kod testu CAPI (`TEST12345`) — tylko dev/staging |
 
 ### 16.2 Przykład DATABASE_URI (produkcja)
 
@@ -938,9 +942,13 @@ git push main → Vercel build (pnpm build) → deploy → env z panelu Vercel
 - [ ] `DATABASE_URI` = Transaction pooler **6543**
 - [ ] `BLOB_READ_WRITE_TOKEN` ustawiony
 - [ ] Stripe webhook → 200 OK w logach
+- [ ] Stripe webhook URL = `https://www.wiktorszyszkowski.pl/api/webhooks/stripe` (z `www`)
 - [ ] Resend — domena verified
 - [ ] `NEXT_PUBLIC_SITE_URL` poprawny (www vs non-www)
+- [ ] `NEXT_PUBLIC_META_PIXEL_ID` ustawiony na Vercel
+- [ ] `META_CAPI_TOKEN` ustawiony na Vercel (server-only)
 - [ ] Test E2E: płatność → mail → hasło → login → lekcja → głosówka → admin feedback
+- [ ] Meta Events Manager: `Purchase` widoczny z obu źródeł (Browser + Server), zdeduplikowany do `×1`
 - [ ] Logi Vercel — brak timeout Postgres
 
 ### 18.3 Po deployu Wiktor edytuje w Payload
@@ -964,6 +972,9 @@ git push main → Vercel build (pnpm build) → deploy → env z panelu Vercel
 | `bde3082` | Kolorowe bloki lekcji |
 | `72d9375` → `e3167ea` | Naprawa Postgres pool (login, upload, admin) |
 | `33946d6` | Deferred maile, lżejsze hooki |
+| *(czerwiec 2026)* | Meta Pixel + CAPI: `InitiateCheckout`, `Purchase` (Pixel + serwer), deduplikacja |
+| *(czerwiec 2026)* | 7-day challenge: `studentChallengeAudios`, admin odsłuch głosówek |
+| *(czerwiec 2026)* | Opinie video (Natalia) — `UnschoolTestimonialsSection` layout |
 
 ---
 
@@ -994,6 +1005,9 @@ git push main → Vercel build (pnpm build) → deploy → env z panelu Vercel
 | PATCH | `/api/elearning/submissions/[id]` | sesja ucznia |
 | POST | `/api/elearning/upload-audio` | sesja ucznia |
 | POST | `/api/admin/submissions/[id]/teacher-audio` | admin |
+| POST | `/api/admin/submissions/[id]/audio` | admin |
+| GET | `/api/admin/submissions/[id]/challenge-audio` | admin |
+| POST | `/api/admin/upload-audio` | admin |
 | GET | `/api/media-playback/[id]` | public (id znane) |
 | * | `/api/users/login` | Payload REST |
 | * | `/admin/*` | Payload admin |
@@ -1007,12 +1021,16 @@ Users ─────┬──── Submissions ──── Lessons ───�
            │           │
            │           ├── textContent (uczeń)
            │           ├── studentAudio → Media
+           │           ├── studentChallengeAudios[] → { day, audio → Media }
            │           ├── teacherFeedback (Lexical)
            │           └── teacherAudio → Media
            │
            └── auth sessions (users_sessions)
 
 Media ─── blob_url, blob_pathname (Vercel Blob prod)
+
+Stripe PaymentIntent ──► webhook ──► provision + CAPI (Meta Graph API)
+                               └──► /success ──► MetaPurchaseTracker (Pixel)
 ```
 
 ---
@@ -1023,18 +1041,339 @@ Scenariusz używany przy testach produkcyjnych czerwiec 2026:
 
 1. [ ] Wejście na `/unschool` (Basic Auth)
 2. [ ] Klik „Kup kurs” → `/payment`
-3. [ ] Płatność testowa Stripe (2 zł)
-4. [ ] Redirect `/success` — komunikat sukcesu
-5. [ ] Mail powitalny z linkiem `/ustaw-haslo`
-6. [ ] Ustawienie hasła
-7. [ ] Logowanie `/elearning` — **szybko (<3 s)**
-8. [ ] Otwarcie lekcji 1 — kolorowe bloki, wideo
-9. [ ] Wysłanie zadania tekstowego + głosówki
-10. [ ] Mail do Wiktora o nowym zadaniu
-11. [ ] Admin → submission → odsłuch audio
-12. [ ] Feedback głosowy + tekstowy → zapis **bez** „Something went wrong”
-13. [ ] Uczeń widzi feedback; mail do ucznia
-14. [ ] Odblokowanie lekcji 2
+3. [ ] Pixel Helper: zdarzenie `InitiateCheckout` po załadowaniu Stripe Elements
+4. [ ] Płatność testowa Stripe
+5. [ ] Redirect `/success` — komunikat sukcesu
+6. [ ] Pixel Helper: zdarzenie `Purchase` na `/success`
+7. [ ] Meta Events Manager: `Purchase ×1 [Browser + Server]` (deduplikacja CAPI)
+8. [ ] Mail powitalny z linkiem `/ustaw-haslo`
+9. [ ] Ustawienie hasła
+10. [ ] Logowanie `/elearning` — **szybko (<3 s)**
+11. [ ] Otwarcie lekcji 1 — kolorowe bloki, wideo
+12. [ ] Wysłanie zadania tekstowego + głosówki
+13. [ ] Mail do Wiktora o nowym zadaniu
+14. [ ] Admin → submission → odsłuch audio
+15. [ ] Admin → submission → odsłuch 7 głosówek challenge (jeśli lekcja multi-day)
+16. [ ] Feedback głosowy + tekstowy → zapis **bez** „Something went wrong”
+17. [ ] Uczeń widzi feedback; mail do ucznia
+18. [ ] Odblokowanie lekcji 2
+
+---
+
+---
+
+## 21. Meta Pixel i Conversions API (CAPI)
+
+### 21.1 Cel operacji
+
+Celem było wdrożenie **dwutorowego śledzenia konwersji sprzedażowych** dla platformy e-commerce wiktorszyszkowski.pl, bazującego na dwóch wzajemnie uzupełniających się kanałach:
+
+| Kanał | Technologia | Gdzie działa | Co śledzi |
+|-------|-------------|--------------|-----------|
+| **Client-side Pixel** | Meta Pixel (JavaScript) | Przeglądarka kupującego | `InitiateCheckout`, `Purchase` |
+| **Server-side CAPI** | Meta Conversions API | Serwer Vercel (webhook Stripe) | `Purchase` (deduplikowany) |
+
+**Motywacja biznesowa:**
+- Reklamy Meta (Facebook/Instagram) wymagają sygnałów konwersji, aby algorytm optymalizował kampanie do realnych zakupów.
+- Sam Pixel (client-side) jest coraz mniej wiarygodny — blokery reklam, iOS 14+, Safari ITP powodują, że nawet 30–50% konwersji może nie dotrzeć do Meta.
+- CAPI działa niezależnie od przeglądarki — wysyłka z serwera po potwierdzeniu płatności przez Stripe gwarantuje, że każdy zakup zostaje zaraportowany.
+- **Deduplikacja** (`event_id = paymentIntentId`) zapobiega podwójnemu liczeniu, gdy oba kanały zgłoszą ten sam zakup.
+
+### 21.2 Architektura — przepływ zdarzeń
+
+```
+[Użytkownik]
+     │
+     ├─ Ładuje /payment (Stripe Elements gotowe)
+     │        └─ Pixel: InitiateCheckout ──────────────────────► Meta Events Manager
+     │
+     ├─ Klika „Zapłać" → Stripe potwierdza płatność
+     │        │
+     │        ├─ [Przeglądarka] redirect → /success
+     │        │        └─ Pixel: Purchase(value=597, eventID=pi_…) ─► Meta Events Manager
+     │        │
+     │        └─ [Serwer] POST /api/webhooks/stripe
+     │                 └─ payment_intent.succeeded
+     │                          │
+     │                          ├─ provisionStudentFromPaymentIntent()
+     │                          └─ CAPI: Purchase(value=597, eventID=pi_…) ─► Meta Graph API
+     │                                   (deduplikacja po event_id = pi_…)
+```
+
+**Kluczowy fakt:** oba zdarzenia `Purchase` mają **ten sam** `event_id = paymentIntentId` (np. `pi_3RYFxx...`). Meta porównuje `event_id` i scalała oba sygnały w **jedno** zdarzenie zakupu — nie duplukuje go.
+
+### 21.3 Wdrożone pliki i komponenty
+
+#### `app/(site)/layout.tsx` — inicjalizacja Pixela
+
+Meta Pixel inicjowany jest globalnie w layout strony za pomocą `<Script strategy="afterInteractive">`. ID Pixela pochodzi ze zmiennej środowiskowej `NEXT_PUBLIC_META_PIXEL_ID`:
+
+```tsx
+fbq('init', '${process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "FALLBACK_ID"}');
+fbq('track', 'PageView');
+```
+
+Każde wejście na dowolną podstronę witryny automatycznie generuje zdarzenie `PageView` — standard oczekiwany przez algorytm Meta Ads.
+
+---
+
+#### `app/payment/PaymentForm.tsx` — śledzenie `InitiateCheckout`
+
+```tsx
+const initiateCheckoutTracked = useRef(false);
+
+useEffect(() => {
+  if (!stripe || !elements || initiateCheckoutTracked.current) return;
+  initiateCheckoutTracked.current = true;
+  if (typeof window !== "undefined" && window.fbq) {
+    window.fbq("track", "InitiateCheckout");
+  }
+}, [stripe, elements]);
+```
+
+**Założenia:**
+- Zdarzenie odpala się dokładnie **raz** per sesję — flaga `useRef` chroni przed wielokrotnym uruchomieniem.
+- Warunek `stripe && elements` gwarantuje, że formularz płatniczy faktycznie się załadował (nie rejestruje pustych odsłon `/payment`).
+- Brak `value`/`currency` w `InitiateCheckout` — zdarzenie sygnalizuje intencję zakupu, nie sam zakup.
+
+---
+
+#### `app/components/MetaPurchaseTracker.tsx` — śledzenie `Purchase` (client-side)
+
+Komponent `"use client"` renderowany na stronie `/success` po potwierdzeniu płatności:
+
+```tsx
+useEffect(() => {
+  const storageKey = `meta-purchase-${paymentIntentId}`;
+  if (sessionStorage.getItem(storageKey)) return;   // idempotencja przy odświeżeniu
+
+  if (window.fbq) {
+    window.fbq(
+      "track",
+      "Purchase",
+      { currency: "PLN", value: 597.00 },
+      { eventID: paymentIntentId },   // ← klucz deduplikacji
+    );
+    sessionStorage.setItem(storageKey, "1");
+  }
+}, [paymentIntentId]);
+```
+
+**Założenia i zabezpieczenia:**
+- `eventID` = `paymentIntentId` — identyczny jak po stronie serwera, co umożliwia deduplikację.
+- `sessionStorage` zabezpiecza przed podwójnym zdarzeniem gdy użytkownik odświeży `/success`.
+- `useRef(false)` dodatkowo blokuje podwójne uruchomienie w StrictMode (React dev).
+- Wartość `value: 597.00` i `currency: "PLN"` ustalona statycznie — spójna z CAPI (obie pobierają z `UNSCHOOL_COURSE_OFFER.priceAmountCents / 100`).
+
+Komponent jest dodawany do strony sukcesu warunkowo:
+
+```tsx
+// app/(site)/success/page.tsx
+{outcome === "succeeded" && paymentIntentId ? (
+  <MetaPurchaseTracker paymentIntentId={paymentIntentId} />
+) : null}
+```
+
+Nie odpala się dla statusów `processing` (BLIK w toku) ani `failed`.
+
+---
+
+#### `src/lib/meta-conversions-api.ts` — serwer CAPI
+
+Nowy plik z logiką wysyłki serwer → Meta Graph API:
+
+```typescript
+export async function sendMetaPurchaseConversion(
+  paymentIntent: Stripe.PaymentIntent,
+  email: string | null,
+): Promise<void> {
+  const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID?.trim();
+  const accessToken = process.env.META_CAPI_TOKEN?.trim();
+
+  if (!pixelId || !accessToken) {
+    console.warn("[meta-capi] Brak zmiennych — pomijam CAPI.");
+    return;
+  }
+
+  const userData: Record<string, string> = {};
+  if (email) {
+    userData.em = hashEmail(email);   // SHA-256, trim + lowercase
+  }
+
+  const payload = {
+    data: [{
+      event_name: "Purchase",
+      event_time: Math.floor(Date.now() / 1000),
+      action_source: "website",
+      event_id: paymentIntent.id,           // deduplikacja
+      user_data: userData,
+      custom_data: {
+        currency: "PLN",
+        value: UNSCHOOL_COURSE_OFFER.priceAmountCents / 100,
+      },
+      ...(testEventCode ? { test_event_code: testEventCode } : {}),
+    }],
+  };
+
+  await fetch(
+    `https://graph.facebook.com/v19.0/${pixelId}/events?access_token=${accessToken}`,
+    { method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload) }
+  );
+}
+```
+
+**Kluczowe założenia:**
+- Funkcja jest **graceful** — jeśli brak zmiennych środowiskowych, tylko loguje ostrzeżenie, nie rzuca wyjątku.
+- Cały call owrapped jest w `try/catch` w miejscu wywołania (webhook).
+- Email hashowany jest funkcją `hashEmail()` wg specyfikacji Meta: `trim → toLowerCase → SHA-256` — nigdy nie wysyłamy email plaintext.
+- `META_TEST_EVENT_CODE` (opcjonalna env) pozwala testować CAPI w Test Events Meta bez wysyłania realnych sygnałów do kampanii.
+
+---
+
+#### `app/api/webhooks/stripe/route.ts` — integracja CAPI w webhooku
+
+```typescript
+if (event.type === "payment_intent.succeeded") {
+  // ...
+  result = await provisionStudentFromPaymentIntent(payload, intent);
+
+  try {
+    await sendMetaPurchaseConversion(intent, getPaymentIntentEmail(intent));
+  } catch (err) {
+    console.error("[meta-capi] Błąd wysyłki:", err);
+    // nie rzucamy dalej — provision już się powiódł
+  }
+}
+```
+
+**Krytyczny szczegół — `await` zamiast `void`:**
+
+Pierwotnie CAPI był wywoływany przez `void sendMetaPurchaseConversion(...)`, co oznaczało "fire and forget". Na Vercel serverless funkcja może zakończyć się (i zostać "zamrożona") zanim asynchroniczny `fetch` do Graph API zdążył się wykonać. Po zmianie na `await` Vercel czeka na zakończenie CAPI przed wysłaniem `200 OK` do Stripe — dzięki temu każdy webhook kończy się pewną wysyłką.
+
+---
+
+#### `global.d.ts` — deklaracja TypeScript dla `window.fbq`
+
+```typescript
+declare global {
+  interface Window {
+    fbq?: (
+      action: string,
+      eventName: string,
+      params?: Record<string, unknown>,
+      options?: { eventID?: string },
+    ) => void;
+  }
+}
+```
+
+Bez tej deklaracji TypeScript zgłaszałby błąd `Property 'fbq' does not exist on type 'Window'`.
+
+### 21.4 Zmienne środowiskowe (Meta)
+
+| Zmienna | Zakres | Opis | Gdzie ustawić |
+|---------|--------|------|---------------|
+| `NEXT_PUBLIC_META_PIXEL_ID` | public (frontend + server) | Numeryczne ID Pixela (np. `4318931438424156`) | Vercel → Environment Variables |
+| `META_CAPI_TOKEN` | server-only (secret) | Token dostępu do Meta Graph API (długi ciąg znaków z Meta Business Manager) | Vercel → Environment Variables |
+| `META_TEST_EVENT_CODE` | server-only (opcjonalna) | Kod testu (`TEST12345`) — aktywuje Test Events w Meta Events Manager | `.env.local` (dev) / Vercel (tymczasowo dla testów) |
+
+**Jak wygenerować `META_CAPI_TOKEN`:**
+1. [Meta Business Manager](https://business.facebook.com) → Events Manager → Pixel → Ustawienia → Conversions API → Wygeneruj token dostępu
+2. Token ma format `EAAR2xZBRrxj...` (ok. 200 znaków)
+3. Wkleić do Vercel Dashboard → Settings → Environment Variables → `META_CAPI_TOKEN`
+
+### 21.5 Deduplikacja — jak działa
+
+Meta dedupcja opiera się na polu `event_id`. Gdy w oknie ~48 h dotrą dwa zdarzenia `Purchase` z **tym samym** `event_id`:
+- jedno z `action_source: "website"` (Pixel, browser)
+- jedno z `action_source: "website"` (CAPI, server)
+
+…Meta scala je w **jedno zdarzenie** i nie liczy podwójnie. W Events Manager widać wtedy:
+
+```
+Purchase  ×1   [Browser + Server]
+```
+
+Jeśli deduplikacja **nie działa** (złe `event_id`, niezgodne pixelId), widzimy `×2`:
+
+```
+Purchase  ×2   [Browser]  [Server]
+```
+
+### 21.6 Zdarzenia śledzenia — mapa
+
+| Zdarzenie | Kiedy | Kanał | Wartość |
+|-----------|-------|-------|---------|
+| `PageView` | Każde wejście na stronę | Pixel (auto) | — |
+| `InitiateCheckout` | Stripe Elements załadowane na `/payment` | Pixel | — |
+| `Purchase` | Sukces płatności (`/success`) | Pixel (`MetaPurchaseTracker`) | 597 PLN |
+| `Purchase` | `payment_intent.succeeded` webhook | CAPI (`sendMetaPurchaseConversion`) | 597 PLN |
+
+### 21.7 Testowanie i weryfikacja
+
+#### Test lokalny (dev)
+
+1. Ustawić w `.env.local`:
+   ```
+   NEXT_PUBLIC_META_PIXEL_ID=<twój_pixel_id>
+   META_CAPI_TOKEN=<twój_token>
+   META_TEST_EVENT_CODE=TEST12345
+   ```
+2. Uruchomić `pnpm dev` + `pnpm stripe:listen` (CLI Stripe)
+3. Zainstalować [Meta Pixel Helper](https://chromewebstore.google.com/detail/meta-pixel-helper/fdgfkebogiimcoedlicjlajpkdmockpc) w Chrome
+4. Wejść na `/payment` → sprawdzić w Pixel Helper: `InitiateCheckout`
+5. Zapłacić kartą testową Stripe → sprawdzić na `/success`: `Purchase`
+6. W [Meta Events Manager](https://business.facebook.com) → Test Events: powinno pojawić się `Purchase` z source `Server` (z `TEST12345`)
+
+#### Test produkcyjny
+
+1. Usunąć `META_TEST_EVENT_CODE` z Vercel (lub pozostawić pusty)
+2. Zrobić realny zakup lub użyć Stripe test mode na produkcji
+3. W Events Manager → Aktywność → sprawdzić zdarzenia `Purchase` z ostatniej godziny
+4. Oba źródła (`Browser` i `Server`) powinny scalić się w jedno `×1`
+
+#### Sygnały błędu
+
+| Objaw | Przyczyna | Rozwiązanie |
+|-------|-----------|-------------|
+| Tylko `×1 Browser`, brak Server | CAPI nie dolatuje | Sprawdzić logi Vercel webhook → `[meta-capi]` |
+| `×2 Purchase` | Złe `event_id` lub brak deduplikacji | Sprawdzić czy `paymentIntentId` jest przekazywane do Pixela i CAPI |
+| Webhook 307 Redirect | Stripe wysyła na URL bez `www` | Ustawić `https://www.wiktorszyszkowski.pl/api/webhooks/stripe` |
+| `Brak zmiennych` w logach | Env nie ustawione na Vercel | Dodać `NEXT_PUBLIC_META_PIXEL_ID` + `META_CAPI_TOKEN` i zrobić redeploy |
+
+### 21.8 Napotykane problemy i ich rozwiązania
+
+#### Problem 1: CAPI nie docierał do Meta (`void` call)
+
+**Symptom:** Logi Vercel webhook pokazywały sukces provision, ale Meta Events Manager nie odnotowywał zdarzeń Server.
+
+**Przyczyna:** `void sendMetaPurchaseConversion(...)` — fire-and-forget. Vercel zakończył funkcję przed wykonaniem `fetch` do Graph API.
+
+**Rozwiązanie:** Zmiana na `await sendMetaPurchaseConversion(...)` — Vercel czeka na zakończenie całego wywołania przed odesłaniem `200 OK`.
+
+#### Problem 2: Webhook Stripe zwracał 307 Redirect
+
+**Symptom:** W logach Stripe Dashboard: `307 ERR - Temporary Redirect` dla webhooka.
+
+**Przyczyna:** Webhook skonfigurowany na `wiktorszyszkowski.pl` (bez `www`), Vercel przekierowywał na `www.wiktorszyszkowski.pl`. Stripe **nie podąża** za przekierowaniami.
+
+**Rozwiązanie:** Zmiana URL webhooka w Stripe Dashboard na `https://www.wiktorszyszkowski.pl/api/webhooks/stripe`.
+
+#### Problem 3: Brak CAPI na produkcji mimo `await`
+
+**Symptom:** Logi Vercel pokazywały wywołanie `graph.facebook.com`, ale Meta Events Manager nie pokazywał zdarzeń Server.
+
+**Przyczyna:** Brak zmiennych `META_CAPI_TOKEN` i `NEXT_PUBLIC_META_PIXEL_ID` w ustawieniach Vercel.
+
+**Rozwiązanie:** Dodanie obu zmiennych do Vercel → Settings → Environment Variables → Redeploy.
+
+### 21.9 Bezpieczeństwo i prywatność
+
+- **Email nie jest wysyłany jawnie** — przed wysłaniem do CAPI jest hashowany SHA-256 (standard Meta, nieodwracalny).
+- `META_CAPI_TOKEN` jest zmienną **server-only** (bez prefixu `NEXT_PUBLIC_`) — token nigdy nie trafia do bundle'a przeglądarki.
+- `NEXT_PUBLIC_META_PIXEL_ID` jest publiczne — to normalne, ID Pixela widoczne jest w source HTML każdej strony korzystającej z Meta Pixel.
+- Implementacja zgodna z wymogami RODO przy założeniu, że strona posiada aktualną politykę prywatności i baner cookie z opcją odrzucenia śledzenia.
 
 ---
 
