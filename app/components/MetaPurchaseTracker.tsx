@@ -2,13 +2,14 @@
 
 import { useEffect, useRef } from "react";
 
-import { META_PURCHASE_CURRENCY, META_PURCHASE_VALUE } from "@/src/lib/meta-conversions-api";
+import { META_PURCHASE_CURRENCY } from "@/src/lib/meta-conversions-api";
 
 type MetaPurchaseTrackerProps = {
   paymentIntentId: string;
+  value: number;
 };
 
-export function MetaPurchaseTracker({ paymentIntentId }: MetaPurchaseTrackerProps) {
+export function MetaPurchaseTracker({ paymentIntentId, value }: MetaPurchaseTrackerProps) {
   const trackedRef = useRef(false);
 
   useEffect(() => {
@@ -23,12 +24,12 @@ export function MetaPurchaseTracker({ paymentIntentId }: MetaPurchaseTrackerProp
       window.fbq(
         "track",
         "Purchase",
-        { currency: META_PURCHASE_CURRENCY, value: META_PURCHASE_VALUE },
+        { currency: META_PURCHASE_CURRENCY, value },
         { eventID: paymentIntentId },
       );
       sessionStorage.setItem(storageKey, "1");
     }
-  }, [paymentIntentId]);
+  }, [paymentIntentId, value]);
 
   return null;
 }

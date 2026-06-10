@@ -43,12 +43,14 @@ export default async function PaymentSuccessPage({ searchParams }: PaymentSucces
     redirect("/failed");
   }
 
+  let paidAmountZloty: number | null = null;
   if (outcome === "succeeded" && paymentIntentId) {
     try {
       const stripe = getStripeServer();
       const intent = await stripe.paymentIntents.retrieve(paymentIntentId, {
         expand: ["latest_charge"],
       });
+      paidAmountZloty = intent.amount / 100;
       const payload = await getPayload({ config });
       await provisionStudentFromPaymentIntent(payload, intent);
     } catch (err) {
@@ -94,8 +96,8 @@ export default async function PaymentSuccessPage({ searchParams }: PaymentSucces
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#f8faff] px-4 py-12 font-sans text-slate-900 selection:bg-[#cfd8ff]">
-      {outcome === "succeeded" && paymentIntentId ? (
-        <MetaPurchaseTracker paymentIntentId={paymentIntentId} />
+      {outcome === "succeeded" && paymentIntentId && paidAmountZloty ? (
+        <MetaPurchaseTracker paymentIntentId={paymentIntentId} value={paidAmountZloty} />
       ) : null}
       <div className="w-full max-w-lg rounded-3xl border border-[#b9c5fe] bg-white p-6 text-center shadow-sm sm:p-8">
         <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[#cfd8ff] text-2xl">

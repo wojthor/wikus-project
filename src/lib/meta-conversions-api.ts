@@ -2,10 +2,7 @@ import { createHash } from "crypto";
 
 import type Stripe from "stripe";
 
-import { UNSCHOOL_COURSE_OFFER } from "@/src/features/unschool/course-offer";
-
 export const META_PURCHASE_CURRENCY = "PLN";
-export const META_PURCHASE_VALUE = UNSCHOOL_COURSE_OFFER.priceAmountCents / 100;
 
 function hashEmail(email: string): string {
   const normalized = email.trim().toLowerCase().replace(/\s+/g, "");
@@ -40,7 +37,7 @@ export async function sendMetaPurchaseConversion(
         user_data: userData,
         custom_data: {
           currency: META_PURCHASE_CURRENCY,
-          value: META_PURCHASE_VALUE,
+          value: paymentIntent.amount / 100,
         },
       },
     ],
