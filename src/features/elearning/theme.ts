@@ -81,3 +81,34 @@ export const MODULE_ACCENTS: Record<
     tag: "bg-[#fff7ed] text-[#c2410c] border-[#ffa515]/40",
   },
 };
+
+export const SECTION_BOX: Record<
+  string,
+  { box: string; title: string; body: string }
+> = {
+  insight: {
+    box: "border-[#b9c5fe] bg-[#f0f4ff]",
+    title: "text-[#3e57d6]",
+    body: "text-slate-700",
+  },
+  tip: {
+    box: "border-green-200 bg-green-50",
+    title: "text-green-800",
+    body: "text-green-900/80",
+  },
+  reallife: {
+    box: "border-teal-200 bg-teal-50",
+    title: "text-teal-800",
+    body: "text-teal-900/80",
+  },
+  warning: {
+    box: "border-rose-200 bg-rose-50",
+    title: "text-rose-800",
+    body: "text-rose-900/80",
+  },
+  fun: {
+    box: "border-[#ffa515]/40 bg-[#fff7ed]",
+    title: "text-[#c2410c]",
+    body: "text-orange-900/80",
+  },
+};
