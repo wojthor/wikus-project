@@ -66,7 +66,7 @@ export async function POST(req: Request): Promise<NextResponse> {
         expand: ["latest_charge"],
       });
       result = await provisionStudentFromPaymentIntent(payload, intent);
-      void sendMetaPurchaseConversion(intent, getPaymentIntentEmail(intent));
+      await sendMetaPurchaseConversion(intent, getPaymentIntentEmail(intent));
     } else {
       result = await provisionStudentFromCheckout(
         payload,
