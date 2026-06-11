@@ -34,4 +34,10 @@ To świetna opcja dla osób, które chcą nie tylko znać zasady gramatyki, ale 
     author: "Natalia",
     video: { src: "/opinia%20-%20natalia.mp4", poster: null },
   },
+  {
+    kind: "video",
+    id: "marcel",
+    author: "Marcel",
+    video: { src: "/opinia-marcel.mp4", poster: null },
+  },
 ];
