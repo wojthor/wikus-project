@@ -286,6 +286,19 @@ function UnschoolLanding() {
         </div>
       </Section>
 
+      <Section id="opinie">
+        <div className={tag}>Dowód, że to działa</div>
+        <h2 className={`${h2} mt-4 mb-4`}>
+          Uczniowie mówią
+          <br />
+          sami za siebie.
+        </h2>
+        <p className={`${sub} mb-8 sm:mb-10`}>
+          Nie sprzedaję Ci obietnic. Sprzedaję Ci metodę, która działa i mam na to dowody.
+        </p>
+        <UnschoolTestimonialsSection />
+      </Section>
+
       <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-slate-900 text-white">
         <div className="max-w-3xl mx-auto text-center">
           <div className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#b9c5fe] mb-4">
@@ -686,19 +699,6 @@ function UnschoolLanding() {
             </div>
           </div>
         </motion.div>
-      </Section>
-
-      <Section id="opinie">
-        <div className={tag}>Dowód, że to działa</div>
-        <h2 className={`${h2} mt-4 mb-4`}>
-          Uczniowie mówią
-          <br />
-          sami za siebie.
-        </h2>
-        <p className={`${sub} mb-8 sm:mb-10`}>
-          Nie sprzedaję Ci obietnic. Sprzedaję Ci metodę, która działa i mam na to dowody.
-        </p>
-        <UnschoolTestimonialsSection />
       </Section>
 
       <Section id="cennik">
