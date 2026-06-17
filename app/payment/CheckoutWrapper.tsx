@@ -5,23 +5,22 @@ import { loadStripe } from "@stripe/stripe-js";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { PaymentForm } from "@/app/payment/PaymentForm";
+import type { DiscountInfo } from "@/app/payment/PaymentPageClient";
 import { UNSCHOOL_COURSE_OFFER } from "@/src/features/unschool/course-offer";
 import type { ValidateCouponResponse } from "@/app/api/validate-coupon/route";
 
 type CreatePaymentIntentSuccess = { clientSecret: string };
 type CreatePaymentIntentError = { error: string };
 
-type DiscountInfo = {
-  code: string;
-  label: string;
-  finalAmountCents: number;
-  finalAmountDisplay: string;
-};
-
 const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 const stripePromise = publishableKey ? loadStripe(publishableKey) : null;
 
-export function CheckoutWrapper() {
+type CheckoutWrapperProps = {
+  discount: DiscountInfo | null;
+  onDiscountChange: (d: DiscountInfo | null) => void;
+};
+
+export function CheckoutWrapper({ discount, onDiscountChange }: CheckoutWrapperProps) {
   const [email, setEmail] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [loadingIntent, setLoadingIntent] = useState(true);
@@ -31,7 +30,6 @@ export function CheckoutWrapper() {
   const [couponInput, setCouponInput] = useState("");
   const [couponLoading, setCouponLoading] = useState(false);
   const [couponError, setCouponError] = useState<string | null>(null);
-  const [discount, setDiscount] = useState<DiscountInfo | null>(null);
 
   const options = useMemo(
     () => ({
@@ -92,7 +90,7 @@ export function CheckoutWrapper() {
         setCouponError(data.error);
         return;
       }
-      setDiscount({
+      onDiscountChange({
         code,
         label: data.discountLabel,
         finalAmountCents: data.finalAmountCents,
@@ -108,7 +106,7 @@ export function CheckoutWrapper() {
   };
 
   const removeCoupon = async () => {
-    setDiscount(null);
+    onDiscountChange(null);
     setCouponInput("");
     setCouponError(null);
     hasPreparedIntentRef.current = false;
@@ -180,16 +178,24 @@ export function CheckoutWrapper() {
       </div>
 
       {discount ? (
-        <div className="flex items-center justify-between rounded-xl border border-emerald-200 bg-emerald-50 px-3.5 py-2.5">
-          <div className="text-sm">
-            <span className="font-bold text-emerald-700">{discount.code}</span>
-            <span className="ml-2 text-emerald-600">{discount.label}</span>
-            <span className="ml-2 text-slate-500">→ {discount.finalAmountDisplay}</span>
+        <div className="flex items-center justify-between rounded-xl border border-emerald-200 bg-emerald-50 px-3.5 py-3">
+          <div className="flex items-center gap-2.5">
+            <span className="text-base">🎉</span>
+            <div>
+              <p className="text-xs font-bold text-emerald-800">
+                Kod <span className="font-mono">{discount.code}</span> zastosowany
+              </p>
+              <p className="text-[11px] text-emerald-600 mt-0.5">
+                Rabat {discount.label} · Do zapłaty:{" "}
+                <span className="font-bold text-emerald-700">{discount.finalAmountDisplay}</span>
+              </p>
+            </div>
           </div>
           <button
             type="button"
             onClick={() => void removeCoupon()}
-            className="ml-3 text-xs text-slate-400 hover:text-slate-600 transition"
+            className="ml-3 shrink-0 text-xs text-slate-400 hover:text-slate-600 transition"
+            title="Usuń kod"
           >
             ✕
           </button>
