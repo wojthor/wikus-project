@@ -49,27 +49,30 @@ export async function POST(
       return NextResponse.json({ valid: false, error: "Nieprawidłowy lub nieaktywny kod rabatowy." });
     }
 
-    // Step 2: retrieve full promo with coupon expanded
+    // Step 2: retrieve full promo (newer Stripe API stores coupon under promo.promotion.coupon)
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const promo = await (stripe.promotionCodes.retrieve as any)(promoId, { expand: ["coupon"] });
-    console.log("[validate-coupon] full promo keys:", Object.keys(promo ?? {}));
-    console.log("[validate-coupon] full promo:", JSON.stringify(promo));
+    const promo = await (stripe.promotionCodes.retrieve as any)(promoId);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const rawCoupon = (promo as any)?.coupon;
+    const promoData = promo as any;
 
-    let percentOff: number | null = null;
-    let amountOff: number | null = null;
+    // Support both old structure (promo.coupon) and new structure (promo.promotion.coupon)
+    const couponId: string | undefined =
+      typeof promoData?.promotion?.coupon === "string"
+        ? promoData.promotion.coupon
+        : typeof promoData?.coupon === "string"
+          ? promoData.coupon
+          : undefined;
 
-    if (typeof rawCoupon === "string") {
-      const full = await stripe.coupons.retrieve(rawCoupon);
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      percentOff = (full as any).percent_off ?? null;
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      amountOff = (full as any).amount_off ?? null;
-    } else if (rawCoupon && typeof rawCoupon === "object") {
-      percentOff = rawCoupon.percent_off ?? null;
-      amountOff = rawCoupon.amount_off ?? null;
+    if (!couponId) {
+      return NextResponse.json({ valid: false, error: "Nie udało się odczytać kuponu." });
     }
+
+    const couponObj = await stripe.coupons.retrieve(couponId);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const coupon = couponObj as any;
+
+    let percentOff: number | null = coupon.percent_off ?? null;
+    let amountOff: number | null = coupon.amount_off ?? null;
 
     const baseAmount = Number(
       process.env.STRIPE_AMOUNT_CENTS ?? String(UNSCHOOL_COURSE_OFFER.priceAmountCents),
