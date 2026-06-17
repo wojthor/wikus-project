@@ -89,7 +89,7 @@ export async function POST(
       finalAmountCents = Math.max(50, baseAmount - amountOff);
       discountLabel = `-${(amountOff / 100).toFixed(0)} zł`;
     } else {
-      console.error("[validate-coupon] neither percentOff nor amountOff found, rawCoupon:", JSON.stringify(rawCoupon));
+      console.error("[validate-coupon] neither percentOff nor amountOff found, couponId:", couponId);
       return NextResponse.json({ valid: false, error: "Nieobsługiwany typ kuponu." });
     }
 
