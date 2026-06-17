@@ -47,11 +47,17 @@ export async function POST(
       return NextResponse.json({ valid: false, error: "Nieprawidłowy lub nieaktywny kod rabatowy." });
     }
 
+    // coupon may be a string ID (not expanded) or a full object depending on Stripe SDK version
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const coupon = (promo as any).coupon as {
-      percent_off: number | null;
-      amount_off: number | null;
-    } | null;
+    const couponOrId = (promo as any).coupon as string | { percent_off: number | null; amount_off: number | null } | null;
+
+    let coupon: { percent_off: number | null; amount_off: number | null } | null = null;
+    if (typeof couponOrId === "string") {
+      coupon = await stripe.coupons.retrieve(couponOrId) as unknown as { percent_off: number | null; amount_off: number | null };
+    } else {
+      coupon = couponOrId;
+    }
+
     const baseAmount = Number(
       process.env.STRIPE_AMOUNT_CENTS ?? String(UNSCHOOL_COURSE_OFFER.priceAmountCents),
     );
