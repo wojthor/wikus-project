@@ -52,6 +52,8 @@ export async function POST(
     // Step 2: retrieve full promo with coupon expanded
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const promo = await (stripe.promotionCodes.retrieve as any)(promoId, { expand: ["coupon"] });
+    console.log("[validate-coupon] full promo keys:", Object.keys(promo ?? {}));
+    console.log("[validate-coupon] full promo:", JSON.stringify(promo));
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const rawCoupon = (promo as any)?.coupon;
 
