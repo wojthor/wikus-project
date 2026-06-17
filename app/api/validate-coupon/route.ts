@@ -47,13 +47,21 @@ export async function POST(
       return NextResponse.json({ valid: false, error: "Nieprawidłowy lub nieaktywny kod rabatowy." });
     }
 
-    const coupon = promo.coupon;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const coupon = (promo as any).coupon as {
+      percent_off: number | null;
+      amount_off: number | null;
+    } | null;
     const baseAmount = Number(
       process.env.STRIPE_AMOUNT_CENTS ?? String(UNSCHOOL_COURSE_OFFER.priceAmountCents),
     );
 
     let finalAmountCents: number;
     let discountLabel: string;
+
+    if (!coupon) {
+      return NextResponse.json({ valid: false, error: "Nieobsługiwany typ kuponu." });
+    }
 
     if (coupon.percent_off != null) {
       const discount = Math.round((baseAmount * coupon.percent_off) / 100);
