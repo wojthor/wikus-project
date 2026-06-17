@@ -9,6 +9,7 @@ export const dynamic = "force-dynamic";
 type CreatePaymentIntentBody = {
   email?: string;
   finalAmountCents?: number;
+  couponCode?: string;
 };
 
 type CreatePaymentIntentSuccess = {
@@ -37,6 +38,8 @@ export async function POST(
     return NextResponse.json({ error: "Podaj poprawny adres e-mail." }, { status: 400 });
   }
 
+  const couponCode = body.couponCode?.trim() || undefined;
+
   const baseAmountCents = Number(
     process.env.STRIPE_AMOUNT_CENTS ?? String(UNSCHOOL_COURSE_OFFER.priceAmountCents),
   );
@@ -56,6 +59,7 @@ export async function POST(
       metadata: {
         product: "unschool-course",
         customerEmail: email || "not-provided-yet",
+        ...(couponCode ? { couponCode } : {}),
       },
     });
 

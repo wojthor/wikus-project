@@ -47,7 +47,7 @@ export function CheckoutWrapper({ discount, onDiscountChange }: CheckoutWrapperP
         },
       },
     }),
-    [clientSecret],
+    [clientSecret]
   );
 
   const preparePaymentIntent = async (force = false, finalAmountCents?: number) => {
@@ -59,7 +59,11 @@ export function CheckoutWrapper({ discount, onDiscountChange }: CheckoutWrapperP
       const response = await fetch("/api/create-payment-intent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(finalAmountCents ? { finalAmountCents } : {}),
+        body: JSON.stringify(
+          finalAmountCents
+            ? { finalAmountCents, couponCode: discount?.code }
+            : {},
+        ),
       });
       const data = (await response.json()) as CreatePaymentIntentSuccess | CreatePaymentIntentError;
       if (!response.ok || !("clientSecret" in data)) {
@@ -155,9 +159,7 @@ export function CheckoutWrapper({ discount, onDiscountChange }: CheckoutWrapperP
     );
   }
 
-  const amountLabel = discount
-    ? discount.finalAmountDisplay
-    : UNSCHOOL_COURSE_OFFER.priceDisplay;
+  const amountLabel = discount ? discount.finalAmountDisplay : UNSCHOOL_COURSE_OFFER.priceDisplay;
 
   return (
     <div className="space-y-4">
@@ -183,7 +185,7 @@ export function CheckoutWrapper({ discount, onDiscountChange }: CheckoutWrapperP
             <span className="text-base">🎉</span>
             <div>
               <p className="text-xs font-bold text-emerald-800">
-                Kod <span className="font-mono">{discount.code}</span> zastosowany
+                Kod <span className="font-mono">{discount.code}</span>
               </p>
               <p className="text-[11px] text-emerald-600 mt-0.5">
                 Rabat {discount.label} · Do zapłaty:{" "}
@@ -210,8 +212,16 @@ export function CheckoutWrapper({ discount, onDiscountChange }: CheckoutWrapperP
               id="coupon"
               type="text"
               value={couponInput}
-              onChange={(e) => { setCouponInput(e.target.value); setCouponError(null); }}
-              onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); void applyCoupon(); } }}
+              onChange={(e) => {
+                setCouponInput(e.target.value);
+                setCouponError(null);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  void applyCoupon();
+                }
+              }}
               placeholder="np. SUMMER20"
               className="box-border flex-1 rounded-xl border border-[#b9c5fe] bg-white px-3.5 py-3 text-sm text-slate-800 outline-none transition focus:border-[#7347f4] focus:ring-2 focus:ring-[#cfd8ff] uppercase placeholder:normal-case"
             />
@@ -224,18 +234,12 @@ export function CheckoutWrapper({ discount, onDiscountChange }: CheckoutWrapperP
               {couponLoading ? "…" : "Zastosuj"}
             </button>
           </div>
-          {couponError && (
-            <p className="mt-1.5 text-xs text-red-600">{couponError}</p>
-          )}
+          {couponError && <p className="mt-1.5 text-xs text-red-600">{couponError}</p>}
         </div>
       )}
 
       <Elements stripe={stripePromise} options={options}>
-        <PaymentForm
-          amountLabel={amountLabel}
-          email={email}
-          clientSecret={clientSecret}
-        />
+        <PaymentForm amountLabel={amountLabel} email={email} clientSecret={clientSecret} />
       </Elements>
 
       {error && (
