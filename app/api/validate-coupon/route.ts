@@ -40,28 +40,25 @@ export async function POST(
 
   try {
     const stripe = getStripeServer();
-    const promos = await stripe.promotionCodes.list({
-      code,
-      active: true,
-      limit: 1,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      expand: ["data.coupon"] as any,
-    });
-    const promo = promos.data[0];
 
-    if (!promo) {
+    // Step 1: find the promotion code ID by human-readable code
+    const promos = await stripe.promotionCodes.list({ code, active: true, limit: 1 });
+    const promoId = promos.data[0]?.id;
+
+    if (!promoId) {
       return NextResponse.json({ valid: false, error: "Nieprawidłowy lub nieaktywny kod rabatowy." });
     }
 
+    // Step 2: retrieve full promo with coupon expanded
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const rawCoupon = (promo as any).coupon;
-    console.log("[validate-coupon] rawCoupon type:", typeof rawCoupon, "value:", JSON.stringify(rawCoupon));
+    const promo = await (stripe.promotionCodes.retrieve as any)(promoId, { expand: ["coupon"] });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const rawCoupon = (promo as any)?.coupon;
 
     let percentOff: number | null = null;
     let amountOff: number | null = null;
 
     if (typeof rawCoupon === "string") {
-      // Still an ID despite expand — retrieve explicitly
       const full = await stripe.coupons.retrieve(rawCoupon);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       percentOff = (full as any).percent_off ?? null;
@@ -71,8 +68,6 @@ export async function POST(
       percentOff = rawCoupon.percent_off ?? null;
       amountOff = rawCoupon.amount_off ?? null;
     }
-
-    console.log("[validate-coupon] percentOff:", percentOff, "amountOff:", amountOff);
 
     const baseAmount = Number(
       process.env.STRIPE_AMOUNT_CENTS ?? String(UNSCHOOL_COURSE_OFFER.priceAmountCents),
