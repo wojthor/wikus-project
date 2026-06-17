@@ -8,6 +8,7 @@ export const dynamic = "force-dynamic";
 
 type CreatePaymentIntentBody = {
   email?: string;
+  finalAmountCents?: number;
 };
 
 type CreatePaymentIntentSuccess = {
@@ -36,10 +37,18 @@ export async function POST(
     return NextResponse.json({ error: "Podaj poprawny adres e-mail." }, { status: 400 });
   }
 
+  const baseAmountCents = Number(
+    process.env.STRIPE_AMOUNT_CENTS ?? String(UNSCHOOL_COURSE_OFFER.priceAmountCents),
+  );
+  const amountCents =
+    typeof body.finalAmountCents === "number" && body.finalAmountCents > 0 && body.finalAmountCents <= baseAmountCents
+      ? body.finalAmountCents
+      : baseAmountCents;
+
   try {
     const stripe = getStripeServer();
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: UNSCHOOL_COURSE_OFFER.priceAmountCents,
+      amount: amountCents,
       currency: "pln",
       payment_method_types: [...STRIPE_PAYMENT_METHOD_TYPES],
       ...(email ? { receipt_email: email } : {}),

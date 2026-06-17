@@ -6,13 +6,16 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 import { PaymentForm } from "@/app/payment/PaymentForm";
 import { UNSCHOOL_COURSE_OFFER } from "@/src/features/unschool/course-offer";
+import type { ValidateCouponResponse } from "@/app/api/validate-coupon/route";
 
-type CreatePaymentIntentSuccess = {
-  clientSecret: string;
-};
+type CreatePaymentIntentSuccess = { clientSecret: string };
+type CreatePaymentIntentError = { error: string };
 
-type CreatePaymentIntentError = {
-  error: string;
+type DiscountInfo = {
+  code: string;
+  label: string;
+  finalAmountCents: number;
+  finalAmountDisplay: string;
 };
 
 const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
@@ -24,6 +27,11 @@ export function CheckoutWrapper() {
   const [loadingIntent, setLoadingIntent] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const hasPreparedIntentRef = useRef(false);
+
+  const [couponInput, setCouponInput] = useState("");
+  const [couponLoading, setCouponLoading] = useState(false);
+  const [couponError, setCouponError] = useState<string | null>(null);
+  const [discount, setDiscount] = useState<DiscountInfo | null>(null);
 
   const options = useMemo(
     () => ({
@@ -44,29 +52,22 @@ export function CheckoutWrapper() {
     [clientSecret],
   );
 
-  const preparePaymentIntent = async (force = false) => {
-    if (!force && hasPreparedIntentRef.current) {
-      return;
-    }
+  const preparePaymentIntent = async (force = false, finalAmountCents?: number) => {
+    if (!force && hasPreparedIntentRef.current) return;
     hasPreparedIntentRef.current = true;
     setError(null);
-
     setLoadingIntent(true);
     try {
       const response = await fetch("/api/create-payment-intent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({}),
+        body: JSON.stringify(finalAmountCents ? { finalAmountCents } : {}),
       });
-
       const data = (await response.json()) as CreatePaymentIntentSuccess | CreatePaymentIntentError;
       if (!response.ok || !("clientSecret" in data)) {
-        const message =
-          "error" in data ? data.error : "Nie udało się przygotować formularza płatności.";
-        setError(message);
+        setError("error" in data ? data.error : "Nie udało się przygotować formularza płatności.");
         return;
       }
-
       setClientSecret(data.clientSecret);
     } catch {
       setError("Wystąpił błąd połączenia. Spróbuj ponownie.");
@@ -75,9 +76,49 @@ export function CheckoutWrapper() {
     }
   };
 
+  const applyCoupon = async () => {
+    const code = couponInput.trim();
+    if (!code) return;
+    setCouponLoading(true);
+    setCouponError(null);
+    try {
+      const res = await fetch("/api/validate-coupon", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code }),
+      });
+      const data = (await res.json()) as ValidateCouponResponse;
+      if (!data.valid) {
+        setCouponError(data.error);
+        return;
+      }
+      setDiscount({
+        code,
+        label: data.discountLabel,
+        finalAmountCents: data.finalAmountCents,
+        finalAmountDisplay: data.finalAmountDisplay,
+      });
+      hasPreparedIntentRef.current = false;
+      await preparePaymentIntent(true, data.finalAmountCents);
+    } catch {
+      setCouponError("Błąd weryfikacji kodu. Spróbuj ponownie.");
+    } finally {
+      setCouponLoading(false);
+    }
+  };
+
+  const removeCoupon = async () => {
+    setDiscount(null);
+    setCouponInput("");
+    setCouponError(null);
+    hasPreparedIntentRef.current = false;
+    await preparePaymentIntent(true);
+  };
+
   useEffect(() => {
     if (!stripePromise) return;
     void preparePaymentIntent();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!publishableKey || !stripePromise) {
@@ -116,6 +157,10 @@ export function CheckoutWrapper() {
     );
   }
 
+  const amountLabel = discount
+    ? discount.finalAmountDisplay
+    : UNSCHOOL_COURSE_OFFER.priceDisplay;
+
   return (
     <div className="space-y-4">
       <div>
@@ -134,9 +179,54 @@ export function CheckoutWrapper() {
         />
       </div>
 
+      {discount ? (
+        <div className="flex items-center justify-between rounded-xl border border-emerald-200 bg-emerald-50 px-3.5 py-2.5">
+          <div className="text-sm">
+            <span className="font-bold text-emerald-700">{discount.code}</span>
+            <span className="ml-2 text-emerald-600">{discount.label}</span>
+            <span className="ml-2 text-slate-500">→ {discount.finalAmountDisplay}</span>
+          </div>
+          <button
+            type="button"
+            onClick={() => void removeCoupon()}
+            className="ml-3 text-xs text-slate-400 hover:text-slate-600 transition"
+          >
+            ✕
+          </button>
+        </div>
+      ) : (
+        <div>
+          <label htmlFor="coupon" className="mb-1.5 block text-sm font-semibold text-slate-700">
+            Kod rabatowy
+          </label>
+          <div className="flex gap-2">
+            <input
+              id="coupon"
+              type="text"
+              value={couponInput}
+              onChange={(e) => { setCouponInput(e.target.value); setCouponError(null); }}
+              onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); void applyCoupon(); } }}
+              placeholder="np. SUMMER20"
+              className="box-border flex-1 rounded-xl border border-[#b9c5fe] bg-white px-3.5 py-3 text-sm text-slate-800 outline-none transition focus:border-[#7347f4] focus:ring-2 focus:ring-[#cfd8ff] uppercase placeholder:normal-case"
+            />
+            <button
+              type="button"
+              disabled={couponLoading || !couponInput.trim()}
+              onClick={() => void applyCoupon()}
+              className="rounded-xl bg-[#7347f4] px-4 py-3 text-sm font-bold text-white transition hover:brightness-95 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {couponLoading ? "…" : "Zastosuj"}
+            </button>
+          </div>
+          {couponError && (
+            <p className="mt-1.5 text-xs text-red-600">{couponError}</p>
+          )}
+        </div>
+      )}
+
       <Elements stripe={stripePromise} options={options}>
         <PaymentForm
-          amountLabel={UNSCHOOL_COURSE_OFFER.priceDisplay}
+          amountLabel={amountLabel}
           email={email}
           clientSecret={clientSecret}
         />

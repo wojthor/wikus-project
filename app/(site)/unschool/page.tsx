@@ -199,21 +199,18 @@ function UnschoolLanding() {
             </div>
           </div>
 
-          <div className="relative rounded-3xl border-2 border-[#7347f4] bg-gradient-to-br from-[#cfd8ff]/80 via-white to-[#f8faff] p-6 sm:p-8 shadow-[0_20px_50px_rgba(115,71,244,0.12)] ring-1 ring-[#7347f4]/20">
-            <span className="absolute -top-3 right-6 rounded-full bg-[#ffbd53] border border-[#ffa515] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm">
+          <div className="relative rounded-3xl border-2 border-[#7347f4] bg-gradient-to-br from-[#cfd8ff]/80 via-white to-[#f8faff] p-6 shadow-[0_20px_50px_rgba(115,71,244,0.12)] ring-1 ring-[#7347f4]/20">
+            <span className="absolute -top-3 right-5 rounded-full bg-[#ffbd53] border border-[#ffa515] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm">
               {UNSCHOOL_COURSE_OFFER.promotionBadge}
             </span>
             <div className={tag}>{UNSCHOOL_COURSE_OFFER.tileEyebrow}</div>
-            <h2 className="mt-3 text-2xl sm:text-3xl font-extrabold text-[#7347f4] leading-tight">
+            <h2 className="mt-2 text-2xl font-extrabold text-[#7347f4] leading-tight">
               {UNSCHOOL_COURSE_OFFER.tileTitle}
             </h2>
-            <p className="mt-1 text-sm sm:text-base font-semibold text-[#3e57d6]">
-              {UNSCHOOL_COURSE_OFFER.tagline}
-            </p>
-            <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+            <p className="mt-1 text-sm text-slate-600 leading-relaxed">
               {UNSCHOOL_COURSE_OFFER.tileSubtitle}
             </p>
-            <ul className="mt-5 space-y-2.5 text-left">
+            <ul className="mt-4 space-y-2.5 text-left">
               {UNSCHOOL_PRICING_FEATURES.map((feature) => (
                 <li key={feature} className="flex gap-2.5 items-start text-sm text-slate-700">
                   <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#7347f4] text-[10px] font-bold text-white">
@@ -223,21 +220,28 @@ function UnschoolLanding() {
                 </li>
               ))}
             </ul>
-            <div className="mt-6 rounded-2xl border border-[#b9c5fe] bg-white/90 px-4 py-4 text-center">
-              <div className="text-sm text-slate-400 line-through">
+            <div className="mt-4 rounded-xl border border-[#b9c5fe] bg-white/90 px-4 py-3 text-center">
+              <div className="text-xs text-slate-400 line-through">
                 {UNSCHOOL_COURSE_OFFER.priceCompareDisplay}
               </div>
-              <div className="mt-1 flex flex-wrap items-center justify-center gap-2">
-                <span className="text-3xl sm:text-4xl font-extrabold text-[#7347f4] tracking-tight">
-                  {UNSCHOOL_COURSE_OFFER.priceDisplay}
-                </span>
-              </div>
-              <p className="mt-2 text-xs text-slate-500 font-medium">
+              <span className="text-3xl font-extrabold text-[#7347f4] tracking-tight">
+                {UNSCHOOL_COURSE_OFFER.priceDisplay}
+              </span>
+              <p className="mt-1 text-[11px] text-slate-500 font-medium">
                 {UNSCHOOL_COURSE_OFFER.priceNote}
               </p>
             </div>
+            <div className="mt-3 flex items-start gap-2 rounded-xl border border-[#b9c5fe] bg-[#f8faff] px-3 py-3">
+              <span className="text-sm leading-none mt-0.5">🔒</span>
+              <div>
+                <p className="text-xs font-bold text-[#7347f4]">Gwarancja satysfakcji – 30 dni</p>
+                <p className="text-[11px] text-slate-500 leading-relaxed mt-0.5">
+                  Nie chcę żebyś kupował w ciemno. Dlatego jeśli przerobiłeś pierwsze 2 moduły, wysłałeś zadania i nadal czujesz że to nie dla Ciebie – piszesz do mnie i zwracam całą kwotę. Zero ryzyka z Twojej strony.
+                </p>
+              </div>
+            </div>
             <CheckoutButton
-              className="mt-5 w-full"
+              className="mt-4 w-full"
               buttonClassName={`${btnPrimary} w-full text-base disabled:opacity-50 disabled:hover:translate-y-0`}
             />
           </div>
@@ -768,8 +772,17 @@ function UnschoolLanding() {
               </div>
               <p className="text-xs text-slate-500 mt-2">{UNSCHOOL_COURSE_OFFER.priceNote}</p>
             </div>
+            <div className="mt-3 flex items-start gap-2 rounded-xl border border-[#b9c5fe] bg-[#f8faff] px-3 py-3">
+              <span className="text-base leading-none mt-0.5">🔒</span>
+              <div>
+                <p className="text-xs font-bold text-[#7347f4]">Gwarancja satysfakcji – 30 dni</p>
+                <p className="text-[11px] text-slate-500 leading-relaxed mt-0.5">
+                  Nie chcę żebyś kupował w ciemno. Dlatego jeśli przerobiłeś pierwsze 2 moduły, wysłałeś zadania i nadal czujesz że to nie dla Ciebie – piszesz do mnie i zwracam całą kwotę. Zero ryzyka z Twojej strony.
+                </p>
+              </div>
+            </div>
             <CheckoutButton
-              className="w-full"
+              className="w-full mt-4"
               buttonClassName={`${btnPrimary} w-full text-base sm:text-lg disabled:opacity-50 disabled:hover:translate-y-0`}
             />
             <p className="text-xs text-slate-500 mt-4 text-center leading-relaxed">

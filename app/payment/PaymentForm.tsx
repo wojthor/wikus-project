@@ -241,6 +241,7 @@ export function PaymentForm({ amountLabel, email, clientSecret }: PaymentFormPro
           {error}
         </p>
       )}
+
     </form>
   );
 }
