@@ -197,6 +197,13 @@ function UnschoolLanding() {
                 <div className="text-xs sm:text-sm text-slate-500 font-medium">miesiące nauki</div>
               </div>
             </div>
+            <div className="mt-4 rounded-2xl border border-[#b9c5fe] bg-[#f8faff] px-4 py-3 text-sm text-slate-600 leading-relaxed">
+              35 lekcji u przeciętnego korepetytora?{" "}
+              <span className="font-bold text-slate-500">Licz 3&nbsp;500&nbsp;zł.</span>
+              <br />
+              35 lekcji tutaj?{" "}
+              <span className="font-extrabold text-[#7347f4]">597&nbsp;zł.</span>
+            </div>
           </div>
 
           <div className="relative rounded-3xl border-2 border-[#7347f4] bg-gradient-to-br from-[#cfd8ff]/80 via-white to-[#f8faff] p-6 shadow-[0_20px_50px_rgba(115,71,244,0.12)] ring-1 ring-[#7347f4]/20">
