@@ -25,13 +25,13 @@ function TeacherAudioPlayer({ src }: { src: string }) {
       >
         Twoja przeglądarka nie obsługuje odtwarzacza audio.
       </audio>
-      <p className="mt-2 text-[11px] text-slate-400">
+      <p className="mt-2 text-center text-[11px] text-slate-400">
         {duration != null
           ? `Czas nagrania: ${formatDuration(duration)}`
           : "Naciśnij ▶, żeby załadować i odsłuchać feedback"}
         {" · "}
         Czasem trzeba kliknąć dwa razy lub chwilę poczekać.{" "}
-        Jeśli dalej nie działa — napisz do Wiktora.
+        Jeśli dalej nie działa - daj znać.
       </p>
     </div>
   );
