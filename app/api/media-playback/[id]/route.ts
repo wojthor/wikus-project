@@ -154,7 +154,12 @@ export async function GET(request: Request, { params }: RouteParams) {
   const totalSize = buffer.length;
   const range = parseRangeHeader(rangeHeader, totalSize);
 
-  if (range) {
+  // iOS Safari sends a Range: bytes=0-1 probe to discover file size, then immediately
+  // starts "playing" those 2 bytes (silence) before requesting the real content.
+  // Responding with the full file on probe requests eliminates the silent first play.
+  const isProbe = range && range.start === 0 && range.end === 1;
+
+  if (range && !isProbe) {
     const { start, end } = range;
     const chunkSize = end - start + 1;
     const sliced = buffer.subarray(start, end + 1);

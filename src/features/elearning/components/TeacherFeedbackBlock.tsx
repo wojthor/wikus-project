@@ -36,7 +36,7 @@ export function TeacherFeedbackBlock({ content, audioUrl }: TeacherFeedbackBlock
           controls
           src={audioUrl}
           className="w-full accent-[#7347f4]"
-          preload="metadata"
+          preload="none"
         >
           Twoja przeglądarka nie obsługuje odtwarzacza audio.
         </audio>
