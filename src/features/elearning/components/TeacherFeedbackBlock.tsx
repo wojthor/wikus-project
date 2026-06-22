@@ -1,8 +1,40 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 
 import { lexicalToPlainText, LexicalContent } from "./LexicalContent";
+
+function formatDuration(seconds: number): string {
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+  return `${m}:${String(s).padStart(2, "0")}`;
+}
+
+function TeacherAudioPlayer({ src }: { src: string }) {
+  const [duration, setDuration] = useState<number | null>(null);
+
+  return (
+    <div className="rounded-xl border border-[#7347f4]/15 bg-white/60 p-3">
+      <audio
+        controls
+        src={src}
+        className="w-full accent-[#7347f4]"
+        preload="none"
+        onLoadedMetadata={(e) => setDuration(e.currentTarget.duration)}
+      >
+        Twoja przeglądarka nie obsługuje odtwarzacza audio.
+      </audio>
+      <p className="mt-2 text-[11px] text-slate-400">
+        {duration != null
+          ? `Czas nagrania: ${formatDuration(duration)}`
+          : "Naciśnij ▶, żeby załadować i odsłuchać feedback"}
+        {" · "}
+        <span>Jeśli nie działa — napisz do Wiktora</span>
+      </p>
+    </div>
+  );
+}
 
 type TeacherFeedbackBlockProps = {
   content?: Record<string, unknown> | null;
@@ -31,16 +63,7 @@ export function TeacherFeedbackBlock({ content, audioUrl }: TeacherFeedbackBlock
         </div>
       </header>
 
-      {hasAudio && audioUrl && (
-        <audio
-          controls
-          src={audioUrl}
-          className="w-full accent-[#7347f4]"
-          preload="none"
-        >
-          Twoja przeglądarka nie obsługuje odtwarzacza audio.
-        </audio>
-      )}
+      {hasAudio && audioUrl && <TeacherAudioPlayer src={audioUrl} />}
 
       {hasAudio && hasText && <div className="my-4 h-px bg-[#7347f4]/12" aria-hidden="true" />}
 
