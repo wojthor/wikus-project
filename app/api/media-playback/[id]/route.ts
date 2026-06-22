@@ -1,6 +1,6 @@
 import fs from "fs/promises";
 import { NextResponse } from "next/server";
-import { readPrivateAudioBlob } from "@/src/lib/audio-blob-storage";
+import { fetchPrivateAudioBlobWithRange, readPrivateAudioBlob } from "@/src/lib/audio-blob-storage";
 import { getCachedPayload } from "@/src/lib/payload-cache";
 import { resolveMediaFilePath } from "@/src/lib/media-storage";
 import { sqlGetMediaBlobMeta } from "@/src/lib/media-sql";
@@ -128,15 +128,49 @@ function baseHeaders(file: MediaFile, asDownload: boolean) {
 
 export async function GET(request: Request, { params }: RouteParams) {
   const { id } = await params;
+  const { searchParams } = new URL(request.url);
+  const asDownload = searchParams.get("download") === "1";
+  const rangeHeader = request.headers.get("range");
+
+  // Try efficient path: forward Range header directly to Vercel Blob CDN
+  // This avoids buffering the entire file for every request
+  const sqlMeta = await sqlGetMediaBlobMeta(id).catch(() => null);
+  const blobPathname =
+    sqlMeta?.blobPathname?.trim() ||
+    (sqlMeta?.blobUrl?.includes(".private.blob.") ? sqlMeta.blobUrl.trim() : "");
+
+  if (blobPathname) {
+    const blobResult = await fetchPrivateAudioBlobWithRange(blobPathname, rangeHeader);
+    if (blobResult) {
+      const { response, mime, filename, size } = blobResult;
+      const disposition = asDownload ? "attachment" : "inline";
+      const headers: Record<string, string> = {
+        "Content-Type": normalizePlaybackMime(mime),
+        "Content-Disposition": `${disposition}; filename="${encodeURIComponent(filename)}"`,
+        "Cache-Control": "private, no-cache",
+        "Accept-Ranges": "bytes",
+        "X-Content-Type-Options": "nosniff",
+      };
+
+      // Forward range response headers from Blob CDN
+      const contentRange = response.headers.get("content-range");
+      const contentLength = response.headers.get("content-length") ?? String(size);
+      if (contentRange) headers["Content-Range"] = contentRange;
+      headers["Content-Length"] = contentLength;
+
+      return new NextResponse(response.body, {
+        status: response.status === 206 ? 206 : 200,
+        headers,
+      });
+    }
+  }
+
+  // Fallback: load file via legacy path and buffer for range support
   const file = await loadMediaFile(id);
   if (!file) {
     return NextResponse.json({ message: "Nie znaleziono pliku audio." }, { status: 404 });
   }
 
-  const asDownload = new URL(request.url).searchParams.get("download") === "1";
-  const rangeHeader = request.headers.get("range");
-
-  // For stream files — buffer them so we can handle range requests (required for iOS Safari)
   const buffer =
     file.kind === "buffer"
       ? file.buffer

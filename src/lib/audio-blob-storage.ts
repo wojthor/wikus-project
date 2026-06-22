@@ -46,3 +46,40 @@ export async function readPrivateAudioBlob(pathnameOrUrl: string) {
     filename: pathnameOrUrl.split("/").pop() ?? "nagranie.webm",
   };
 }
+
+/**
+ * Odczyt nagrania z private Blob z obsługą Range requests.
+ * Zamiast buforować cały plik, przekazuje Range header bezpośrednio do Vercel Blob CDN.
+ */
+export async function fetchPrivateAudioBlobWithRange(
+  pathnameOrUrl: string,
+  rangeHeader: string | null,
+): Promise<{
+  response: Response;
+  mime: string;
+  filename: string;
+  size: number;
+} | null> {
+  const token = process.env.BLOB_READ_WRITE_TOKEN?.trim();
+  if (!token) return null;
+
+  // Najpierw pobierz metadane żeby dostać URL i rozmiar
+  const meta = await get(pathnameOrUrl, { access: "private" });
+  if (!meta || meta.statusCode !== 200) return null;
+
+  // Teraz fetch bezpośrednio z Range header — Vercel Blob CDN to obsługuje
+  const headers: Record<string, string> = {
+    Authorization: `Bearer ${token}`,
+  };
+  if (rangeHeader) headers["Range"] = rangeHeader;
+
+  // Użyj URL z metadanych (prywatny URL z tokenem)
+  const blobFetch = await fetch(meta.url, { headers });
+
+  return {
+    response: blobFetch,
+    mime: meta.blob.contentType || "audio/webm",
+    filename: pathnameOrUrl.split("/").pop() ?? "nagranie.webm",
+    size: meta.blob.size,
+  };
+}

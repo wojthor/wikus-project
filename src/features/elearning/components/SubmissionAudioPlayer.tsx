@@ -16,7 +16,7 @@ export function SubmissionAudioPlayer({
       <p className="mb-2 text-[10px] font-bold uppercase tracking-wider text-slate-500">
         {label}
       </p>
-      <audio controls src={src} className="w-full accent-[#7347f4]" preload="metadata">
+      <audio controls src={src} className="w-full accent-[#7347f4]" preload="none">
         Twoja przeglądarka nie obsługuje odtwarzacza audio.
       </audio>
     </div>
