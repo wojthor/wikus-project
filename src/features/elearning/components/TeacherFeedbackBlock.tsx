@@ -30,7 +30,8 @@ function TeacherAudioPlayer({ src }: { src: string }) {
           ? `Czas nagrania: ${formatDuration(duration)}`
           : "Naciśnij ▶, żeby załadować i odsłuchać feedback"}
         {" · "}
-        <span>Jeśli nie działa — napisz do Wiktora</span>
+        Czasem trzeba kliknąć dwa razy lub chwilę poczekać.{" "}
+        Jeśli dalej nie działa — napisz do Wiktora.
       </p>
     </div>
   );
