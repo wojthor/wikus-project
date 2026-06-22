@@ -101,14 +101,28 @@ async function loadMediaFile(id: string): Promise<MediaFile | null> {
   };
 }
 
-function playbackHeaders(file: MediaFile, asDownload: boolean) {
+function parseRangeHeader(
+  rangeHeader: string | null,
+  totalSize: number,
+): { start: number; end: number } | null {
+  if (!rangeHeader) return null;
+  const match = /bytes=(\d*)-(\d*)/.exec(rangeHeader);
+  if (!match) return null;
+  const start = match[1] ? parseInt(match[1], 10) : 0;
+  const end = match[2] ? parseInt(match[2], 10) : totalSize - 1;
+  const safeStart = Math.max(0, Math.min(start, totalSize - 1));
+  const safeEnd = Math.max(safeStart, Math.min(end, totalSize - 1));
+  return { start: safeStart, end: safeEnd };
+}
+
+function baseHeaders(file: MediaFile, asDownload: boolean) {
   const disposition = asDownload ? "attachment" : "inline";
   return {
     "Content-Type": file.mime,
-    "Content-Length": String(file.size),
     "Content-Disposition": `${disposition}; filename="${encodeURIComponent(file.filename)}"`,
     "Cache-Control": "private, no-cache",
     "X-Content-Type-Options": "nosniff",
+    "Accept-Ranges": "bytes",
   };
 }
 
@@ -120,17 +134,46 @@ export async function GET(request: Request, { params }: RouteParams) {
   }
 
   const asDownload = new URL(request.url).searchParams.get("download") === "1";
+  const rangeHeader = request.headers.get("range");
 
-  if (file.kind === "stream") {
-    return new NextResponse(file.stream, {
-      status: 200,
-      headers: playbackHeaders(file, asDownload),
+  // For stream files — buffer them so we can handle range requests (required for iOS Safari)
+  const buffer =
+    file.kind === "buffer"
+      ? file.buffer
+      : await (async () => {
+          const reader = file.stream.getReader();
+          const chunks: Uint8Array[] = [];
+          for (;;) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            if (value) chunks.push(value);
+          }
+          return Buffer.concat(chunks);
+        })();
+
+  const totalSize = buffer.length;
+  const range = parseRangeHeader(rangeHeader, totalSize);
+
+  if (range) {
+    const { start, end } = range;
+    const chunkSize = end - start + 1;
+    const sliced = buffer.subarray(start, end + 1);
+    return new NextResponse(new Uint8Array(sliced), {
+      status: 206,
+      headers: {
+        ...baseHeaders(file, asDownload),
+        "Content-Length": String(chunkSize),
+        "Content-Range": `bytes ${start}-${end}/${totalSize}`,
+      },
     });
   }
 
-  return new NextResponse(new Uint8Array(file.buffer), {
+  return new NextResponse(new Uint8Array(buffer), {
     status: 200,
-    headers: playbackHeaders(file, asDownload),
+    headers: {
+      ...baseHeaders(file, asDownload),
+      "Content-Length": String(totalSize),
+    },
   });
 }
 
