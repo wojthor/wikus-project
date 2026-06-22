@@ -1,19 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
 
 import { lexicalToPlainText, LexicalContent } from "./LexicalContent";
 
-function formatDuration(seconds: number): string {
-  const m = Math.floor(seconds / 60);
-  const s = Math.floor(seconds % 60);
-  return `${m}:${String(s).padStart(2, "0")}`;
-}
-
 function TeacherAudioPlayer({ src }: { src: string }) {
-  const [duration, setDuration] = useState<number | null>(null);
-
   return (
     <div className="rounded-xl border border-[#7347f4]/15 bg-white/60 p-3">
       <audio
@@ -21,15 +12,11 @@ function TeacherAudioPlayer({ src }: { src: string }) {
         src={src}
         className="w-full accent-[#7347f4]"
         preload="none"
-        onLoadedMetadata={(e) => setDuration(e.currentTarget.duration)}
       >
         Twoja przeglądarka nie obsługuje odtwarzacza audio.
       </audio>
       <p className="mt-2 text-center text-[11px] text-slate-400">
-        {duration != null
-          ? `Czas nagrania: ${formatDuration(duration)}`
-          : "Naciśnij ▶, żeby załadować i odsłuchać feedback"}
-        {" · "}
+        Naciśnij ▶, żeby załadować i odsłuchać feedback.{" "}
         Czasem trzeba kliknąć dwa razy lub chwilę poczekać.{" "}
         Jeśli dalej nie działa - daj znać.
       </p>
