@@ -435,13 +435,13 @@ function UnschoolLanding() {
                     <span className="w-2 h-2 rounded-full bg-[#ff5f57]" />
                     <span className="w-2 h-2 rounded-full bg-[#febc2e]" />
                     <span className="w-2 h-2 rounded-full bg-[#28c840]" />
-                    <span className="ml-1.5 text-[10px] text-slate-400 font-medium">Panel ucznia · Lekcja 1-1</span>
+                    <span className="ml-1.5 text-[10px] text-slate-400 font-medium">Feedback tekstowy · przykład</span>
                   </div>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src="/feedback2.jpeg" alt="Panel ucznia z zadaniem i feedbackiem" className="w-full h-auto block" />
                 </div>
                 <p className="text-[11px] text-slate-400 mt-2 font-medium text-center">
-                  Widok ucznia w platformie
+                  Feedback tekstowy
                 </p>
               </div>
               <div className="min-w-0">
@@ -456,7 +456,7 @@ function UnschoolLanding() {
                   <img src="/feedback2.jpeg" alt="Przykładowy feedback głosowy" className="w-full h-auto block" />
                 </div>
                 <p className="text-[11px] text-slate-400 mt-2 font-medium text-center">
-                  Przykładowy feedback głosowy
+                  Feedback głosowy
                 </p>
               </div>
             </div>
