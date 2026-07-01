@@ -947,7 +947,7 @@ function UspMentoringSection() {
         </div>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight mb-6">
           Każde zadanie sprawdzam ja.{" "}
-          <em className="text-[#7347f4] not-italic">Osobiście.</em>
+          <em className="text-[#ffbd53] not-italic">Osobiście.</em>
         </h2>
         <p className="text-sm sm:text-base text-white/65 leading-relaxed mb-8">
           Nie bot. Nie automatyczna ocena. Nagrywasz się lub piszesz odpowiedź. A ja – korepetytor
@@ -957,7 +957,9 @@ function UspMentoringSection() {
         <div className="max-w-xl mx-auto">
           <div className="rounded-2xl bg-[#7347f4]/20 border border-[#7347f4]/30 px-6 py-5 text-center">
             <p className="text-base sm:text-lg font-bold text-white leading-snug">
-              597&nbsp;zł ÷ 35 zadań z feedbackiem to ~17&nbsp;zł za sprawdzone zadanie przez doświadczonego filologa
+              597&nbsp;zł ÷ 35 zadań z feedbackiem to{" "}
+              <span className="text-[#ffbd53]">~17&nbsp;zł</span>{" "}
+              za sprawdzone zadanie przez doświadczonego filologa
             </p>
           </div>
           <p className="text-xs sm:text-sm text-white/50 mt-3 text-center">
