@@ -412,10 +412,9 @@ function UnschoolLanding() {
             </div>
           ))}
 
-          {/* Personalny feedback — pełna szerokość z prawdziwymi mediami */}
-          <div className={`${card} sm:col-span-2 flex flex-col lg:flex-row gap-6 lg:gap-8 items-center`}>
-            {/* Lewa kolumna: opis */}
-            <div className="flex gap-4 lg:w-72 xl:w-80 shrink-0 self-start">
+          {/* Personalny feedback — pełna szerokość z mockupem */}
+          <div className={`${card} sm:col-span-2 flex flex-col gap-4`}>
+            <div className="flex gap-4">
               <div className="text-2xl shrink-0">💬</div>
               <div>
                 <div className="font-bold text-[#7347f4] mb-1 text-sm sm:text-base">
@@ -429,22 +428,23 @@ function UnschoolLanding() {
               </div>
             </div>
 
-            {/* Prawa kolumna: screenshot telefonu */}
-            <div className="flex-1 flex items-center justify-center min-w-0">
-              <div className="w-52 sm:w-56 shrink-0">
-                <div className="relative rounded-[2rem] border-[6px] border-slate-800 shadow-[0_24px_56px_rgba(0,0,0,0.28)] overflow-hidden bg-slate-800">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-14 h-5 bg-slate-800 rounded-b-2xl z-10" />
-                  <Image
-                    src="/feedback2.jpeg"
-                    alt="Panel ucznia z feedbackiem od Wiktora"
-                    width={390}
-                    height={844}
-                    className="w-full block"
-                  />
-                </div>
-                <p className="text-center text-[11px] text-slate-400 mt-3 font-medium">
-                  Tak wygląda feedback w platformie
-                </p>
+            {/* Wide browser-style mockup z przyciętym screenshotem */}
+            <div className="rounded-xl overflow-hidden border border-[#dfe6ff] shadow-[0_8px_24px_rgba(115,71,244,0.08)]">
+              <div className="flex items-center gap-1.5 bg-slate-100 px-3 py-2 border-b border-[#dfe6ff]">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
+                <span className="ml-2 text-[10px] text-slate-400 font-medium">
+                  wiktorszyszkowski.pl · Panel ucznia · Lekcja 3-2
+                </span>
+              </div>
+              <div className="relative h-52 sm:h-64 overflow-hidden">
+                <Image
+                  src="/feedback2.jpeg"
+                  alt="Panel ucznia z feedbackiem od Wiktora"
+                  fill
+                  className="object-cover object-[center_60%]"
+                />
               </div>
             </div>
           </div>
