@@ -960,28 +960,15 @@ function UspMentoringSection() {
           z 4-letnim doświadczeniem i filolog angielski – Ci na nie odpowiadam. Także nie jest to
           zwykły kurs, a mentoring 1:1.
         </p>
-        <div className="grid sm:grid-cols-2 gap-4 text-left max-w-2xl mx-auto">
-          <div className="rounded-2xl bg-white/10 p-5 sm:p-6">
-            <div className="text-xl mb-2">📊</div>
-            <div className="font-bold text-sm mb-2">Kalkulacja</div>
-            <p className="text-sm text-white/70 leading-relaxed">
-              597&nbsp;zł ÷ 35 zadań z feedbackiem
-              <br />
-              <span className="font-bold text-white">= ~17&nbsp;zł za sprawdzone zadanie</span>
-              <br />
-              przez doświadczonego filologa
+        <div className="max-w-xl mx-auto">
+          <div className="rounded-2xl bg-[#7347f4]/20 border border-[#7347f4]/30 px-6 py-5 text-center">
+            <p className="text-base sm:text-lg font-bold text-white leading-snug">
+              597&nbsp;zł ÷ 35 zadań z feedbackiem to ~17&nbsp;zł za sprawdzone zadanie przez doświadczonego filologa
             </p>
           </div>
-          <div className="rounded-2xl bg-[#7347f4]/20 border border-[#7347f4]/30 p-5 sm:p-6">
-            <div className="text-xl mb-2">💸</div>
-            <div className="font-bold text-sm mb-2">Dla porównania</div>
-            <p className="text-sm text-white/70 leading-relaxed">
-              Godzina korepetycji 1:1 kosztuje{" "}
-              <span className="font-bold text-white">80–150 zł.</span>
-              <br />
-              Za 597 zł masz 35 lekcji z feedbackiem – nie 4–7 godzin u korepetytora.
-            </p>
-          </div>
+          <p className="text-xs sm:text-sm text-white/50 mt-3 text-center">
+            Dla porównania – godzina korepetycji 1:1 kosztuje 80–150 zł.
+          </p>
         </div>
       </div>
     </section>
