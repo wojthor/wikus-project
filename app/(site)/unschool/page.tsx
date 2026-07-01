@@ -429,13 +429,11 @@ function UnschoolLanding() {
               </div>
             </div>
 
-            {/* Prawa kolumna: screenshot telefonu + placeholder na film */}
-            <div className="flex-1 flex flex-col sm:flex-row gap-5 items-start justify-center min-w-0">
-
-              {/* Screenshot platformy w ramce telefonu */}
-              <div className="shrink-0 mx-auto sm:mx-0" style={{ width: "160px" }}>
-                <div className="relative rounded-[1.75rem] border-[5px] border-slate-800 shadow-[0_16px_40px_rgba(0,0,0,0.22)] overflow-hidden bg-slate-800">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-4 bg-slate-800 rounded-b-xl z-10" />
+            {/* Prawa kolumna: screenshot telefonu */}
+            <div className="flex-1 flex items-center justify-center min-w-0">
+              <div className="w-52 sm:w-56 shrink-0">
+                <div className="relative rounded-[2rem] border-[6px] border-slate-800 shadow-[0_24px_56px_rgba(0,0,0,0.28)] overflow-hidden bg-slate-800">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-14 h-5 bg-slate-800 rounded-b-2xl z-10" />
                   <Image
                     src="/feedback2.jpeg"
                     alt="Panel ucznia z feedbackiem od Wiktora"
@@ -444,32 +442,10 @@ function UnschoolLanding() {
                     className="w-full block"
                   />
                 </div>
-                <p className="text-center text-[10px] text-slate-400 mt-2 font-medium">
-                  Widok ucznia
+                <p className="text-center text-[11px] text-slate-400 mt-3 font-medium">
+                  Tak wygląda feedback w platformie
                 </p>
               </div>
-
-              {/* Placeholder na film */}
-              <div className="flex-1 min-w-0 w-full">
-                <div className="rounded-2xl overflow-hidden border border-[#dfe6ff] bg-[#f1f4ff]">
-                  <div className="flex items-center gap-1.5 bg-slate-100 px-3 py-2 border-b border-[#dfe6ff]">
-                    <span className="w-2 h-2 rounded-full bg-[#ff5f57]" />
-                    <span className="w-2 h-2 rounded-full bg-[#febc2e]" />
-                    <span className="w-2 h-2 rounded-full bg-[#28c840]" />
-                    <span className="ml-1.5 text-[10px] text-slate-400 font-medium">
-                      Feedback głosowy · przykład
-                    </span>
-                  </div>
-                  <div className="aspect-video flex flex-col items-center justify-center gap-2 text-slate-400">
-                    <span className="text-3xl">🎬</span>
-                    <p className="text-xs font-medium text-slate-500">Film — wkrótce</p>
-                  </div>
-                </div>
-                <p className="text-center text-[10px] text-slate-400 mt-2 font-medium">
-                  Jak wygląda feedback głosowy
-                </p>
-              </div>
-
             </div>
           </div>
         </div>
