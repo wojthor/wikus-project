@@ -428,24 +428,47 @@ function UnschoolLanding() {
               </div>
             </div>
 
-            {/* Wide browser-style mockup z przyciętym screenshotem */}
-            <div className="rounded-xl overflow-hidden border border-[#dfe6ff] shadow-[0_8px_24px_rgba(115,71,244,0.08)]">
-              <div className="flex items-center gap-1.5 bg-slate-100 px-3 py-2 border-b border-[#dfe6ff]">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
-                <span className="ml-2 text-[10px] text-slate-400 font-medium">
-                  wiktorszyszkowski.pl · Panel ucznia · Lekcja 3-2
-                </span>
+            {/* Screenshot + miejsce na filmik */}
+            <div className="flex flex-col sm:flex-row gap-3 items-stretch">
+
+              {/* Screenshot w ramce telefonu */}
+              <div className="flex flex-col items-center sm:w-44 shrink-0">
+                <div className="relative rounded-[1.75rem] border-[5px] border-slate-800 shadow-[0_16px_40px_rgba(0,0,0,0.22)] overflow-hidden w-full">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-4 bg-slate-800 rounded-b-xl z-10" />
+                  <Image
+                    src="/feedback2.jpeg"
+                    alt="Panel ucznia z feedbackiem od Wiktora"
+                    width={390}
+                    height={844}
+                    className="w-full block"
+                  />
+                </div>
+                <p className="text-[10px] text-slate-400 mt-2 font-medium text-center">
+                  Widok ucznia
+                </p>
               </div>
-              <div className="relative h-52 sm:h-64 overflow-hidden">
-                <Image
-                  src="/feedback2.jpeg"
-                  alt="Panel ucznia z feedbackiem od Wiktora"
-                  fill
-                  className="object-cover object-[center_60%]"
-                />
+
+              {/* Miejsce na filmik */}
+              <div className="flex-1 flex flex-col min-w-0">
+                <div className="flex-1 rounded-xl overflow-hidden border border-[#dfe6ff] shadow-[0_4px_16px_rgba(115,71,244,0.07)] bg-[#f8faff]">
+                  <div className="flex items-center gap-1.5 bg-slate-100 px-3 py-2 border-b border-[#dfe6ff]">
+                    <span className="w-2 h-2 rounded-full bg-[#ff5f57]" />
+                    <span className="w-2 h-2 rounded-full bg-[#febc2e]" />
+                    <span className="w-2 h-2 rounded-full bg-[#28c840]" />
+                    <span className="ml-1.5 text-[10px] text-slate-400 font-medium">
+                      Feedback głosowy · przykład
+                    </span>
+                  </div>
+                  <div className="aspect-video flex flex-col items-center justify-center gap-2">
+                    <span className="text-3xl opacity-30">▶</span>
+                    <p className="text-xs text-slate-400 font-medium">Film — wkrótce</p>
+                  </div>
+                </div>
+                <p className="text-[10px] text-slate-400 mt-2 font-medium text-center">
+                  Przykładowy feedback głosowy
+                </p>
               </div>
+
             </div>
           </div>
         </div>
