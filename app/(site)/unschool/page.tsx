@@ -431,11 +431,10 @@ function UnschoolLanding() {
             {/* Screenshot + miejsce na filmik — styl jak kafelki opinii */}
             <div className="grid grid-cols-2 gap-4">
 
-              {/* Screenshot w ramce telefonu */}
+              {/* Screenshot jako flat card */}
               <div className="flex flex-col items-center">
                 <div className="h-[28rem] w-full flex items-start justify-center">
-                  <div className="relative mx-auto h-full w-auto overflow-hidden rounded-[1.85rem] border-[3px] border-slate-900/90 bg-slate-950 shadow-[0_16px_32px_rgba(15,23,42,0.2)] ring-1 ring-white/10 aspect-[9/16] sm:rounded-[2rem]">
-                    <div className="pointer-events-none absolute left-1/2 top-2.5 z-10 h-1.5 w-12 -translate-x-1/2 rounded-full bg-slate-800/90" />
+                  <div className="relative h-full w-auto aspect-[9/16] overflow-hidden rounded-2xl shadow-[0_16px_40px_rgba(0,0,0,0.18)] border border-slate-200">
                     <Image
                       src="/feedback2.jpeg"
                       alt="Panel ucznia z feedbackiem od Wiktora"
