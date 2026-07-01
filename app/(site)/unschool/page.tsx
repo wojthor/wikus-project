@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
@@ -411,9 +412,10 @@ function UnschoolLanding() {
             </div>
           ))}
 
-          {/* Personalny feedback — pełna szerokość z mockupem platformy */}
-          <div className={`${card} sm:col-span-2 flex flex-col lg:flex-row gap-6`}>
-            <div className="flex gap-4 lg:w-80 shrink-0">
+          {/* Personalny feedback — pełna szerokość z prawdziwymi mediami */}
+          <div className={`${card} sm:col-span-2 flex flex-col lg:flex-row gap-6 lg:gap-8 items-center`}>
+            {/* Lewa kolumna: opis */}
+            <div className="flex gap-4 lg:w-72 xl:w-80 shrink-0 self-start">
               <div className="text-2xl shrink-0">💬</div>
               <div>
                 <div className="font-bold text-[#7347f4] mb-1 text-sm sm:text-base">
@@ -427,48 +429,52 @@ function UnschoolLanding() {
               </div>
             </div>
 
-            {/* Mockup platformy */}
-            <div className="flex-1 rounded-xl overflow-hidden border border-[#dfe6ff] shadow-[0_8px_24px_rgba(115,71,244,0.08)] bg-white text-xs sm:text-sm">
-              {/* Pasek przeglądarki */}
-              <div className="flex items-center gap-2 bg-slate-100 px-3 py-2 border-b border-[#dfe6ff]">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
-                <span className="ml-2 text-[10px] text-slate-400 font-medium">
-                  Panel ucznia · Lekcja 3-2
-                </span>
+            {/* Prawa kolumna: screenshot telefonu + film */}
+            <div className="flex-1 flex flex-col sm:flex-row gap-4 items-center justify-center min-w-0">
+
+              {/* Screenshot platformy w ramce telefonu */}
+              <div className="shrink-0 w-48 sm:w-44 md:w-48">
+                <div className="relative rounded-[2.25rem] border-[6px] border-slate-800 shadow-[0_20px_50px_rgba(0,0,0,0.25)] overflow-hidden bg-slate-800">
+                  {/* Notch */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-5 bg-slate-800 rounded-b-2xl z-10" />
+                  <Image
+                    src="/feedback2.jpeg"
+                    alt="Panel ucznia z feedbackiem od Wiktora"
+                    width={390}
+                    height={844}
+                    className="w-full block"
+                  />
+                </div>
+                <p className="text-center text-[10px] text-slate-400 mt-2 font-medium">
+                  Widok ucznia na telefonie
+                </p>
               </div>
 
-              <div className="p-4 space-y-3">
-                {/* Blok nagrania studenta */}
-                <div className="rounded-xl border border-[#dfe6ff] bg-[#f8faff] p-3">
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-2">
-                    🎙️ Twoje nagranie
-                  </p>
-                  <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-full bg-[#7347f4] flex items-center justify-center shrink-0">
-                      <span className="text-white text-[10px]">▶</span>
-                    </div>
-                    <div className="flex-1 h-1.5 rounded-full bg-[#dfe6ff] overflow-hidden">
-                      <div className="w-1/3 h-full bg-[#7347f4] rounded-full" />
-                    </div>
-                    <span className="text-[10px] text-slate-400 shrink-0">1:24</span>
+              {/* Film — nagranie nauczyciela */}
+              <div className="flex-1 min-w-0 max-w-sm sm:max-w-none w-full">
+                <div className="rounded-2xl overflow-hidden border border-[#dfe6ff] shadow-[0_8px_24px_rgba(115,71,244,0.10)] bg-slate-900">
+                  <div className="flex items-center gap-1.5 bg-slate-800 px-3 py-2">
+                    <span className="w-2 h-2 rounded-full bg-[#ff5f57]" />
+                    <span className="w-2 h-2 rounded-full bg-[#febc2e]" />
+                    <span className="w-2 h-2 rounded-full bg-[#28c840]" />
+                    <span className="ml-1.5 text-[10px] text-slate-400 font-medium">
+                      Feedback od Wiktora · Lekcja 3-2
+                    </span>
                   </div>
+                  <video
+                    src="/feedback.mp4"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="w-full block"
+                  />
                 </div>
-
-                {/* Blok feedbacku Wiktora */}
-                <div className="rounded-xl border border-[#7347f4]/20 bg-gradient-to-b from-[#f6f2ff] to-white p-3">
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-[#5a32c9] mb-2">
-                    ✅ Feedback od Wiktora
-                  </p>
-                  <p className="text-[11px] text-slate-700 leading-relaxed">
-                    Super, użyłeś &apos;well&apos; i &apos;I mean&apos; naturalnie! Jedna rzecz —
-                    przy &apos;actually&apos; uważaj, bo to nie znaczy &apos;aktualnie&apos;.
-                    Posłuchaj jeszcze raz fragmentu 0:42 i spróbuj to poprawić w kolejnym
-                    zadaniu&nbsp;👍
-                  </p>
-                </div>
+                <p className="text-center text-[10px] text-slate-400 mt-2 font-medium">
+                  Tak wygląda feedback głosowy
+                </p>
               </div>
+
             </div>
           </div>
         </div>
