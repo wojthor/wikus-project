@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
@@ -430,7 +429,7 @@ function UnschoolLanding() {
 
             {/* Dwa screenshoty obok siebie (docelowo prawy = filmik) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
+              <div className="min-w-0">
                 <div className="overflow-hidden rounded-xl border border-[#dfe6ff] shadow-[0_8px_28px_rgba(115,71,244,0.10)]">
                   <div className="flex items-center gap-1.5 bg-slate-100 px-3 py-2 border-b border-[#dfe6ff]">
                     <span className="w-2 h-2 rounded-full bg-[#ff5f57]" />
@@ -438,20 +437,14 @@ function UnschoolLanding() {
                     <span className="w-2 h-2 rounded-full bg-[#28c840]" />
                     <span className="ml-1.5 text-[10px] text-slate-400 font-medium">Panel ucznia · Lekcja 1-1</span>
                   </div>
-                  <Image
-                    src="/feedback2.jpeg"
-                    alt="Panel ucznia z zadaniem i feedbackiem"
-                    width={0}
-                    height={0}
-                    sizes="(max-width: 640px) 100vw, 50vw"
-                    style={{ width: "100%", height: "auto" }}
-                  />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/feedback2.jpeg" alt="Panel ucznia z zadaniem i feedbackiem" className="w-full h-auto block" />
                 </div>
                 <p className="text-[11px] text-slate-400 mt-2 font-medium text-center">
                   Widok ucznia w platformie
                 </p>
               </div>
-              <div>
+              <div className="min-w-0">
                 <div className="overflow-hidden rounded-xl border border-[#dfe6ff] shadow-[0_8px_28px_rgba(115,71,244,0.10)]">
                   <div className="flex items-center gap-1.5 bg-slate-100 px-3 py-2 border-b border-[#dfe6ff]">
                     <span className="w-2 h-2 rounded-full bg-[#ff5f57]" />
@@ -459,14 +452,8 @@ function UnschoolLanding() {
                     <span className="w-2 h-2 rounded-full bg-[#28c840]" />
                     <span className="ml-1.5 text-[10px] text-slate-400 font-medium">Feedback głosowy · przykład</span>
                   </div>
-                  <Image
-                    src="/feedback2.jpeg"
-                    alt="Przykładowy feedback głosowy"
-                    width={0}
-                    height={0}
-                    sizes="(max-width: 640px) 100vw, 50vw"
-                    style={{ width: "100%", height: "auto" }}
-                  />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/feedback2.jpeg" alt="Przykładowy feedback głosowy" className="w-full h-auto block" />
                 </div>
                 <p className="text-[11px] text-slate-400 mt-2 font-medium text-center">
                   Przykładowy feedback głosowy
