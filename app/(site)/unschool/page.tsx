@@ -429,14 +429,13 @@ function UnschoolLanding() {
               </div>
             </div>
 
-            {/* Prawa kolumna: screenshot telefonu + film */}
-            <div className="flex-1 flex flex-col sm:flex-row gap-4 items-center justify-center min-w-0">
+            {/* Prawa kolumna: screenshot telefonu + placeholder na film */}
+            <div className="flex-1 flex flex-col sm:flex-row gap-5 items-start justify-center min-w-0">
 
               {/* Screenshot platformy w ramce telefonu */}
-              <div className="shrink-0 w-48 sm:w-44 md:w-48">
-                <div className="relative rounded-[2.25rem] border-[6px] border-slate-800 shadow-[0_20px_50px_rgba(0,0,0,0.25)] overflow-hidden bg-slate-800">
-                  {/* Notch */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-5 bg-slate-800 rounded-b-2xl z-10" />
+              <div className="shrink-0 mx-auto sm:mx-0" style={{ width: "160px" }}>
+                <div className="relative rounded-[1.75rem] border-[5px] border-slate-800 shadow-[0_16px_40px_rgba(0,0,0,0.22)] overflow-hidden bg-slate-800">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-4 bg-slate-800 rounded-b-xl z-10" />
                   <Image
                     src="/feedback2.jpeg"
                     alt="Panel ucznia z feedbackiem od Wiktora"
@@ -446,32 +445,28 @@ function UnschoolLanding() {
                   />
                 </div>
                 <p className="text-center text-[10px] text-slate-400 mt-2 font-medium">
-                  Widok ucznia na telefonie
+                  Widok ucznia
                 </p>
               </div>
 
-              {/* Film — nagranie nauczyciela */}
-              <div className="flex-1 min-w-0 max-w-sm sm:max-w-none w-full">
-                <div className="rounded-2xl overflow-hidden border border-[#dfe6ff] shadow-[0_8px_24px_rgba(115,71,244,0.10)] bg-slate-900">
-                  <div className="flex items-center gap-1.5 bg-slate-800 px-3 py-2">
+              {/* Placeholder na film */}
+              <div className="flex-1 min-w-0 w-full">
+                <div className="rounded-2xl overflow-hidden border border-[#dfe6ff] bg-[#f1f4ff]">
+                  <div className="flex items-center gap-1.5 bg-slate-100 px-3 py-2 border-b border-[#dfe6ff]">
                     <span className="w-2 h-2 rounded-full bg-[#ff5f57]" />
                     <span className="w-2 h-2 rounded-full bg-[#febc2e]" />
                     <span className="w-2 h-2 rounded-full bg-[#28c840]" />
                     <span className="ml-1.5 text-[10px] text-slate-400 font-medium">
-                      Feedback od Wiktora · Lekcja 3-2
+                      Feedback głosowy · przykład
                     </span>
                   </div>
-                  <video
-                    src="/feedback.mp4"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="w-full block"
-                  />
+                  <div className="aspect-video flex flex-col items-center justify-center gap-2 text-slate-400">
+                    <span className="text-3xl">🎬</span>
+                    <p className="text-xs font-medium text-slate-500">Film — wkrótce</p>
+                  </div>
                 </div>
                 <p className="text-center text-[10px] text-slate-400 mt-2 font-medium">
-                  Tak wygląda feedback głosowy
+                  Jak wygląda feedback głosowy
                 </p>
               </div>
 
@@ -957,34 +952,43 @@ function UnschoolLanding() {
 
 function UspMentoringSection() {
   return (
-    <section className="py-14 sm:py-20 px-4 sm:px-6 bg-slate-900 text-white">
-      <div className="max-w-4xl mx-auto text-center">
-        <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#b9c5fe] mb-4">
+    <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-slate-900 text-white">
+      <div className="max-w-3xl mx-auto text-center">
+        <div className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#b9c5fe] mb-4">
           To nie jest kolejny kurs, gdzie przeklikujesz sobie lekcje
-        </p>
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight mb-5">
+        </div>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight mb-6">
           Każde zadanie sprawdzam ja.{" "}
-          <em className="text-[#ffbd53] not-italic">Osobiście.</em>
+          <em className="text-[#7347f4] not-italic">Osobiście.</em>
         </h2>
-        <p className="text-sm sm:text-base text-white/65 leading-relaxed max-w-2xl mx-auto mb-8">
+        <p className="text-sm sm:text-base text-white/65 leading-relaxed mb-8">
           Nie bot. Nie automatyczna ocena. Nagrywasz się lub piszesz odpowiedź. A ja – korepetytor
           z 4-letnim doświadczeniem i filolog angielski – Ci na nie odpowiadam. Także nie jest to
           zwykły kurs, a mentoring 1:1.
         </p>
-        <div className="max-w-xl mx-auto rounded-2xl border border-[#7347f4]/40 bg-[#7347f4]/15 px-6 py-5 mb-4">
-          <p className="text-base sm:text-lg font-extrabold text-white leading-snug">
-            597&nbsp;zł ÷ 35 zadań z feedbackiem
-            <br />
-            <span className="text-[#ffbd53]">= ~17&nbsp;zł za sprawdzone zadanie</span>
-            <br />
-            <span className="text-white/70 font-normal text-sm">
+        <div className="grid sm:grid-cols-2 gap-4 text-left max-w-2xl mx-auto">
+          <div className="rounded-2xl bg-white/10 p-5 sm:p-6">
+            <div className="text-xl mb-2">📊</div>
+            <div className="font-bold text-sm mb-2">Kalkulacja</div>
+            <p className="text-sm text-white/70 leading-relaxed">
+              597&nbsp;zł ÷ 35 zadań z feedbackiem
+              <br />
+              <span className="font-bold text-white">= ~17&nbsp;zł za sprawdzone zadanie</span>
+              <br />
               przez doświadczonego filologa
-            </span>
-          </p>
+            </p>
+          </div>
+          <div className="rounded-2xl bg-[#7347f4]/20 border border-[#7347f4]/30 p-5 sm:p-6">
+            <div className="text-xl mb-2">💸</div>
+            <div className="font-bold text-sm mb-2">Dla porównania</div>
+            <p className="text-sm text-white/70 leading-relaxed">
+              Godzina korepetycji 1:1 kosztuje{" "}
+              <span className="font-bold text-white">80–150 zł.</span>
+              <br />
+              Za 597 zł masz 35 lekcji z feedbackiem – nie 4–7 godzin u korepetytora.
+            </p>
+          </div>
         </div>
-        <p className="text-xs sm:text-sm text-white/45">
-          Dla porównania – godzina korepetycji 1:1 kosztuje 80–150 zł.
-        </p>
       </div>
     </section>
   );
