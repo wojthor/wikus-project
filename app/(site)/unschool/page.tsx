@@ -441,9 +441,10 @@ function UnschoolLanding() {
                   <Image
                     src="/feedback2.jpeg"
                     alt="Panel ucznia z zadaniem i feedbackiem"
-                    width={720}
-                    height={600}
-                    className="w-full h-auto block"
+                    width={0}
+                    height={0}
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                    style={{ width: "100%", height: "auto" }}
                   />
                 </div>
                 <p className="text-[11px] text-slate-400 mt-2 font-medium text-center">
@@ -461,9 +462,10 @@ function UnschoolLanding() {
                   <Image
                     src="/feedback2.jpeg"
                     alt="Przykładowy feedback głosowy"
-                    width={720}
-                    height={600}
-                    className="w-full h-auto block"
+                    width={0}
+                    height={0}
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                    style={{ width: "100%", height: "auto" }}
                   />
                 </div>
                 <p className="text-[11px] text-slate-400 mt-2 font-medium text-center">
