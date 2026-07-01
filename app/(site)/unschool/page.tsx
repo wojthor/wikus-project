@@ -428,43 +428,39 @@ function UnschoolLanding() {
               </div>
             </div>
 
-            {/* Screenshot + miejsce na filmik */}
-            <div className="flex flex-col sm:flex-row gap-3 items-stretch">
+            {/* Screenshot + miejsce na filmik — styl jak kafelki opinii */}
+            <div className="grid grid-cols-2 gap-4">
 
               {/* Screenshot w ramce telefonu */}
-              <div className="flex flex-col items-center sm:w-44 shrink-0">
-                <div className="relative rounded-[1.75rem] border-[5px] border-slate-800 shadow-[0_16px_40px_rgba(0,0,0,0.22)] overflow-hidden w-full">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-4 bg-slate-800 rounded-b-xl z-10" />
-                  <Image
-                    src="/feedback2.jpeg"
-                    alt="Panel ucznia z feedbackiem od Wiktora"
-                    width={390}
-                    height={844}
-                    className="w-full block"
-                  />
+              <div className="flex flex-col items-center">
+                <div className="h-[28rem] w-full flex items-start justify-center">
+                  <div className="relative mx-auto h-full w-auto overflow-hidden rounded-[1.85rem] border-[3px] border-slate-900/90 bg-slate-950 shadow-[0_16px_32px_rgba(15,23,42,0.2)] ring-1 ring-white/10 aspect-[9/16] sm:rounded-[2rem]">
+                    <div className="pointer-events-none absolute left-1/2 top-2.5 z-10 h-1.5 w-12 -translate-x-1/2 rounded-full bg-slate-800/90" />
+                    <Image
+                      src="/feedback2.jpeg"
+                      alt="Panel ucznia z feedbackiem od Wiktora"
+                      fill
+                      className="object-cover object-top"
+                    />
+                  </div>
                 </div>
-                <p className="text-[10px] text-slate-400 mt-2 font-medium text-center">
-                  Widok ucznia
+                <p className="text-[11px] text-slate-400 mt-3 font-medium text-center">
+                  Widok ucznia w platformie
                 </p>
               </div>
 
               {/* Miejsce na filmik */}
-              <div className="flex-1 flex flex-col min-w-0">
-                <div className="flex-1 rounded-xl overflow-hidden border border-[#dfe6ff] shadow-[0_4px_16px_rgba(115,71,244,0.07)] bg-[#f8faff]">
-                  <div className="flex items-center gap-1.5 bg-slate-100 px-3 py-2 border-b border-[#dfe6ff]">
-                    <span className="w-2 h-2 rounded-full bg-[#ff5f57]" />
-                    <span className="w-2 h-2 rounded-full bg-[#febc2e]" />
-                    <span className="w-2 h-2 rounded-full bg-[#28c840]" />
-                    <span className="ml-1.5 text-[10px] text-slate-400 font-medium">
-                      Feedback głosowy · przykład
-                    </span>
-                  </div>
-                  <div className="aspect-video flex flex-col items-center justify-center gap-2">
-                    <span className="text-3xl opacity-30">▶</span>
-                    <p className="text-xs text-slate-400 font-medium">Film — wkrótce</p>
+              <div className="flex flex-col items-center">
+                <div className="h-[28rem] w-full flex items-start justify-center">
+                  <div className="relative mx-auto h-full w-auto overflow-hidden rounded-[1.85rem] border-[3px] border-slate-900/90 bg-slate-950 shadow-[0_16px_32px_rgba(15,23,42,0.2)] ring-1 ring-white/10 aspect-[9/16] sm:rounded-[2rem] flex items-center justify-center">
+                    <div className="pointer-events-none absolute left-1/2 top-2.5 z-10 h-1.5 w-12 -translate-x-1/2 rounded-full bg-slate-800/90" />
+                    <div className="flex flex-col items-center gap-2 text-slate-500">
+                      <span className="text-4xl opacity-40">▶</span>
+                      <p className="text-xs font-medium opacity-60">Film — wkrótce</p>
+                    </div>
                   </div>
                 </div>
-                <p className="text-[10px] text-slate-400 mt-2 font-medium text-center">
+                <p className="text-[11px] text-slate-400 mt-3 font-medium text-center">
                   Przykładowy feedback głosowy
                 </p>
               </div>
