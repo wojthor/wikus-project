@@ -255,6 +255,8 @@ function UnschoolLanding() {
         </div>
       </main>
 
+      <UspMentoringSection />
+
       <Section id="dla-kogo" className="bg-white/50">
         <div className={tag}>Brzmi znajomo?</div>
         <h2 className={`${h2} mt-4 mb-4`}>
@@ -340,7 +342,7 @@ function UnschoolLanding() {
             </div>
             <div className="rounded-2xl bg-[#7347f4]/20 border border-[#7347f4]/30 p-5 sm:p-6">
               <div className="text-xl mb-2">✅</div>
-              <div className="font-bold text-sm mb-2">Co robi ten kurs</div>
+              <div className="font-bold text-sm mb-2">Co robi mentoring 1:1</div>
               <p className="text-sm text-white/70 leading-relaxed">
                 Mówisz od pierwszej lekcji. Uczysz się przez prawdziwy content. Dostajesz feedback
                 od człowieka.
@@ -383,11 +385,6 @@ function UnschoolLanding() {
               text: "Opisujesz, tłumaczysz, piszesz po angielsku. Realne sytuacje, nie podręcznikowe ćwiczenia.",
             },
             {
-              icon: "💬",
-              title: "Personalny feedback",
-              text: "Odsłuchuję każde nagranie i czytam każdą odpowiedź. Komentuję, co poszło dobrze i co poprawić. Nie dostajesz automatycznych odpowiedzi.",
-            },
-            {
               icon: "♾️",
               title: "Dostęp bezterminowy",
               text: "Kupujesz raz, masz na zawsze. Możesz wracać do lekcji, kiedy chcesz. Spokojne tempo – 2–3 lekcje tygodniowo – bez presji.",
@@ -413,6 +410,67 @@ function UnschoolLanding() {
               </div>
             </div>
           ))}
+
+          {/* Personalny feedback — pełna szerokość z mockupem platformy */}
+          <div className={`${card} sm:col-span-2 flex flex-col lg:flex-row gap-6`}>
+            <div className="flex gap-4 lg:w-80 shrink-0">
+              <div className="text-2xl shrink-0">💬</div>
+              <div>
+                <div className="font-bold text-[#7347f4] mb-1 text-sm sm:text-base">
+                  Personalny feedback
+                </div>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Odsłuchuję każde nagranie i czytam każdą odpowiedź. Komentuję co poszło dobrze
+                  i co poprawić. Nie dostajesz automatycznych odpowiedzi, dostajesz feedback od
+                  gościa, który wie, czemu szkolna nauka nie działa.
+                </p>
+              </div>
+            </div>
+
+            {/* Mockup platformy */}
+            <div className="flex-1 rounded-xl overflow-hidden border border-[#dfe6ff] shadow-[0_8px_24px_rgba(115,71,244,0.08)] bg-white text-xs sm:text-sm">
+              {/* Pasek przeglądarki */}
+              <div className="flex items-center gap-2 bg-slate-100 px-3 py-2 border-b border-[#dfe6ff]">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
+                <span className="ml-2 text-[10px] text-slate-400 font-medium">
+                  Panel ucznia · Lekcja 3-2
+                </span>
+              </div>
+
+              <div className="p-4 space-y-3">
+                {/* Blok nagrania studenta */}
+                <div className="rounded-xl border border-[#dfe6ff] bg-[#f8faff] p-3">
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-2">
+                    🎙️ Twoje nagranie
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <div className="w-7 h-7 rounded-full bg-[#7347f4] flex items-center justify-center shrink-0">
+                      <span className="text-white text-[10px]">▶</span>
+                    </div>
+                    <div className="flex-1 h-1.5 rounded-full bg-[#dfe6ff] overflow-hidden">
+                      <div className="w-1/3 h-full bg-[#7347f4] rounded-full" />
+                    </div>
+                    <span className="text-[10px] text-slate-400 shrink-0">1:24</span>
+                  </div>
+                </div>
+
+                {/* Blok feedbacku Wiktora */}
+                <div className="rounded-xl border border-[#7347f4]/20 bg-gradient-to-b from-[#f6f2ff] to-white p-3">
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-[#5a32c9] mb-2">
+                    ✅ Feedback od Wiktora
+                  </p>
+                  <p className="text-[11px] text-slate-700 leading-relaxed">
+                    Super, użyłeś &apos;well&apos; i &apos;I mean&apos; naturalnie! Jedna rzecz —
+                    przy &apos;actually&apos; uważaj, bo to nie znaczy &apos;aktualnie&apos;.
+                    Posłuchaj jeszcze raz fragmentu 0:42 i spróbuj to poprawić w kolejnym
+                    zadaniu&nbsp;👍
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </Section>
 
@@ -614,13 +672,13 @@ function UnschoolLanding() {
           <div className={`${panel} flex flex-col`}>
             <p className={sectionEyebrow}>Czemu warto mnie słuchać?</p>
             <h2 className={`${h2} mt-3 mb-4`}>
-              Mam filologię.
-              <br />I wiem, że to za mało.
+              Skończyłem filologię.
+              <br />I właśnie dlatego uczę inaczej.
             </h2>
             <p className={`${sub} mb-4 lg:mb-5`}>
-              Skończyłem filologię angielską. Mam papiery. I właśnie dlatego wiem, że same papiery
-              nie robią z nikogo dobrego nauczyciela – bo widziałem z bliska jak uczą ci z
-              certyfikatami.
+              Mam wykształcenie językowe i na własne oczy zobaczyłem, jak bardzo akademickie metody
+              są oderwane od tego, jak ludzie naprawdę zaczynają mówić. Dlatego nie uczę Cię teorii
+              o języku – uczę Cię go używać.
             </p>
             <div className="flex-1 flex flex-col gap-3 min-h-0">
               {[
@@ -636,8 +694,8 @@ function UnschoolLanding() {
                 },
                 {
                   icon: "🎯",
-                  title: "Uczę od 2022 roku i nikt nie odszedł",
-                  text: "Pracowałem z dziesiątkami uczniów na różnych poziomach. Maturę pisałem w 2022. Więc pamiętam, jak to jest być po drugiej stronie.",
+                  title: "Uczę zawodowo od 4 lat",
+                  text: "Pracowałem z dziesiątkami uczniów na różnych poziomach – od kompletnych początkujących po osoby przygotowujące się do rozmów rekrutacyjnych po angielsku.",
                 },
               ].map((fact) => (
                 <div key={fact.title} className={`${card} flex flex-1 gap-3 py-3 min-h-[4.5rem]`}>
@@ -888,5 +946,40 @@ function UnschoolLanding() {
 
       <Footer data={kursFooter as unknown as FooterData} />
     </div>
+  );
+}
+
+function UspMentoringSection() {
+  return (
+    <section className="py-14 sm:py-20 px-4 sm:px-6 bg-slate-900 text-white">
+      <div className="max-w-4xl mx-auto text-center">
+        <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#b9c5fe] mb-4">
+          To nie jest kolejny kurs, gdzie przeklikujesz sobie lekcje
+        </p>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight mb-5">
+          Każde zadanie sprawdzam ja.{" "}
+          <em className="text-[#ffbd53] not-italic">Osobiście.</em>
+        </h2>
+        <p className="text-sm sm:text-base text-white/65 leading-relaxed max-w-2xl mx-auto mb-8">
+          Nie bot. Nie automatyczna ocena. Nagrywasz się lub piszesz odpowiedź. A ja – korepetytor
+          z 4-letnim doświadczeniem i filolog angielski – Ci na nie odpowiadam. Także nie jest to
+          zwykły kurs, a mentoring 1:1.
+        </p>
+        <div className="max-w-xl mx-auto rounded-2xl border border-[#7347f4]/40 bg-[#7347f4]/15 px-6 py-5 mb-4">
+          <p className="text-base sm:text-lg font-extrabold text-white leading-snug">
+            597&nbsp;zł ÷ 35 zadań z feedbackiem
+            <br />
+            <span className="text-[#ffbd53]">= ~17&nbsp;zł za sprawdzone zadanie</span>
+            <br />
+            <span className="text-white/70 font-normal text-sm">
+              przez doświadczonego filologa
+            </span>
+          </p>
+        </div>
+        <p className="text-xs sm:text-sm text-white/45">
+          Dla porównania – godzina korepetycji 1:1 kosztuje 80–150 zł.
+        </p>
+      </div>
+    </section>
   );
 }
