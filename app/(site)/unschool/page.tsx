@@ -428,42 +428,36 @@ function UnschoolLanding() {
               </div>
             </div>
 
-            {/* Screenshot + miejsce na filmik — styl jak kafelki opinii */}
-            <div className="grid grid-cols-2 gap-4">
-
-              {/* Screenshot jako flat card */}
-              <div className="flex flex-col items-center">
-                <div className="h-[28rem] w-full flex items-start justify-center">
-                  <div className="relative h-full w-auto aspect-[9/16] overflow-hidden rounded-2xl shadow-[0_16px_40px_rgba(0,0,0,0.18)] border border-slate-200">
-                    <Image
-                      src="/feedback2.jpeg"
-                      alt="Panel ucznia z feedbackiem od Wiktora"
-                      fill
-                      className="object-cover object-top"
-                    />
-                  </div>
+            {/* Dwa screenshoty obok siebie (docelowo prawy = filmik) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <div className="overflow-hidden rounded-2xl border border-slate-200 shadow-[0_8px_28px_rgba(0,0,0,0.12)]">
+                  <Image
+                    src="/feedback2.jpeg"
+                    alt="Panel ucznia z zadaniem i feedbackiem"
+                    width={720}
+                    height={600}
+                    className="w-full h-auto block"
+                  />
                 </div>
-                <p className="text-[11px] text-slate-400 mt-3 font-medium text-center">
+                <p className="text-[11px] text-slate-400 mt-2 font-medium text-center">
                   Widok ucznia w platformie
                 </p>
               </div>
-
-              {/* Miejsce na filmik */}
-              <div className="flex flex-col items-center">
-                <div className="h-[28rem] w-full flex items-start justify-center">
-                  <div className="relative mx-auto h-full w-auto overflow-hidden rounded-[1.85rem] border-[3px] border-slate-900/90 bg-slate-950 shadow-[0_16px_32px_rgba(15,23,42,0.2)] ring-1 ring-white/10 aspect-[9/16] sm:rounded-[2rem] flex items-center justify-center">
-                    <div className="pointer-events-none absolute left-1/2 top-2.5 z-10 h-1.5 w-12 -translate-x-1/2 rounded-full bg-slate-800/90" />
-                    <div className="flex flex-col items-center gap-2 text-slate-500">
-                      <span className="text-4xl opacity-40">▶</span>
-                      <p className="text-xs font-medium opacity-60">Film — wkrótce</p>
-                    </div>
-                  </div>
+              <div>
+                <div className="overflow-hidden rounded-2xl border border-slate-200 shadow-[0_8px_28px_rgba(0,0,0,0.12)]">
+                  <Image
+                    src="/feedback2.jpeg"
+                    alt="Przykładowy feedback głosowy"
+                    width={720}
+                    height={600}
+                    className="w-full h-auto block"
+                  />
                 </div>
-                <p className="text-[11px] text-slate-400 mt-3 font-medium text-center">
+                <p className="text-[11px] text-slate-400 mt-2 font-medium text-center">
                   Przykładowy feedback głosowy
                 </p>
               </div>
-
             </div>
           </div>
         </div>
