@@ -452,26 +452,13 @@ function UnschoolLanding() {
                 </p>
               </div>
               <div className="min-w-0">
-                <div className="overflow-hidden rounded-xl border border-[#dfe6ff] shadow-[0_8px_28px_rgba(115,71,244,0.10)]">
-                  <div className="flex items-center gap-1.5 bg-slate-100 px-3 py-2 border-b border-[#dfe6ff]">
-                    <span className="w-2 h-2 rounded-full bg-[#ff5f57]" />
-                    <span className="w-2 h-2 rounded-full bg-[#febc2e]" />
-                    <span className="w-2 h-2 rounded-full bg-[#28c840]" />
-                    <span className="ml-1.5 text-[10px] text-slate-400 font-medium">
-                      Feedback głosowy{" "}
-                    </span>
-                  </div>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <div className="relative aspect-video bg-slate-100">
-                    <video
-                      src="/feedback-new.mp4"
-                      controls
-                      playsInline
-                      preload="metadata"
-                      className="absolute inset-0 h-full w-full object-cover"
-                    />
-                  </div>
-                </div>
+                <video
+                  src="/feedback-new.mp4"
+                  controls
+                  playsInline
+                  preload="metadata"
+                  className="w-full h-auto block rounded-xl shadow-[0_8px_28px_rgba(115,71,244,0.10)]"
+                />
                 <p className="text-[11px] text-slate-400 mt-2 font-medium text-center">
                   Feedback głosowy
                 </p>
