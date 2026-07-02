@@ -466,7 +466,9 @@ function UnschoolLanding() {
                     src="/feedback-new.mp4"
                     controls
                     playsInline
-                    className="w-full h-auto block"
+                    preload="metadata"
+                    className="w-full h-auto block bg-slate-100"
+                    style={{ minHeight: "120px" }}
                   />
                 </div>
                 <p className="text-[11px] text-slate-400 mt-2 font-medium text-center">
