@@ -462,14 +462,15 @@ function UnschoolLanding() {
                     </span>
                   </div>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <video
-                    src="/feedback-new.mp4"
-                    controls
-                    playsInline
-                    preload="metadata"
-                    className="w-full h-auto block bg-slate-100"
-                    style={{ minHeight: "120px" }}
-                  />
+                  <div className="relative aspect-video bg-slate-100">
+                    <video
+                      src="/feedback-new.mp4"
+                      controls
+                      playsInline
+                      preload="metadata"
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                  </div>
                 </div>
                 <p className="text-[11px] text-slate-400 mt-2 font-medium text-center">
                   Feedback głosowy
