@@ -453,12 +453,13 @@ function UnschoolLanding() {
               </div>
               <div className="min-w-0">
                 <video
-                  src="/feedback-new.mp4"
                   controls
                   playsInline
                   preload="metadata"
                   className="w-full h-auto block rounded-xl shadow-[0_8px_28px_rgba(115,71,244,0.10)]"
-                />
+                >
+                  <source src="/feedback-new.mp4" type="video/mp4" />
+                </video>
                 <p className="text-[11px] text-slate-400 mt-2 font-medium text-center">
                   Feedback głosowy
                 </p>
