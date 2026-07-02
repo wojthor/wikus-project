@@ -442,7 +442,7 @@ function UnschoolLanding() {
                   </div>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="/feedback2-new.png"
+                    src="/FEEDBACK3.jpg"
                     alt="Panel ucznia z zadaniem i feedbackiem"
                     className="w-full h-auto block"
                   />
