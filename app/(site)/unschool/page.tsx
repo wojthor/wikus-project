@@ -428,42 +428,53 @@ function UnschoolLanding() {
               </div>
             </div>
 
-            {/* Dwa screenshoty obok siebie (docelowo prawy = filmik) */}
+            {/* Screenshot + filmik w równych kafelkach */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+              {/* Screenshot */}
               <div className="min-w-0">
                 <div className="overflow-hidden rounded-xl border border-[#dfe6ff] shadow-[0_8px_28px_rgba(115,71,244,0.10)]">
                   <div className="flex items-center gap-1.5 bg-slate-100 px-3 py-2 border-b border-[#dfe6ff]">
                     <span className="w-2 h-2 rounded-full bg-[#ff5f57]" />
                     <span className="w-2 h-2 rounded-full bg-[#febc2e]" />
                     <span className="w-2 h-2 rounded-full bg-[#28c840]" />
-                    <span className="ml-1.5 text-[10px] text-slate-400 font-medium">
-                      Feedback tekstowy{" "}
-                    </span>
+                    <span className="ml-1.5 text-[10px] text-slate-400 font-medium">Feedback tekstowy · przykład</span>
                   </div>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/feedback2-new.png"
-                    alt="Panel ucznia z zadaniem i feedbackiem"
-                    className="w-full h-auto block"
-                  />
+                  <div className="relative overflow-hidden" style={{ aspectRatio: "712/752" }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/feedback2-new.png"
+                      alt="Panel ucznia z zadaniem i feedbackiem"
+                      className="absolute inset-0 w-full h-full object-cover object-top"
+                    />
+                  </div>
                 </div>
-                <p className="text-[11px] text-slate-400 mt-2 font-medium text-center">
-                  Feedback tekstowy
-                </p>
+                <p className="text-[11px] text-slate-400 mt-2 font-medium text-center">Feedback tekstowy</p>
               </div>
+
+              {/* Filmik */}
               <div className="min-w-0">
-                <video
-                  controls
-                  playsInline
-                  preload="metadata"
-                  className="w-full h-auto block rounded-xl shadow-[0_8px_28px_rgba(115,71,244,0.10)]"
-                >
-                  <source src="/feedback-new.mp4" type="video/mp4" />
-                </video>
-                <p className="text-[11px] text-slate-400 mt-2 font-medium text-center">
-                  Feedback głosowy
-                </p>
+                <div className="overflow-hidden rounded-xl border border-[#dfe6ff] shadow-[0_8px_28px_rgba(115,71,244,0.10)]">
+                  <div className="flex items-center gap-1.5 bg-slate-100 px-3 py-2 border-b border-[#dfe6ff]">
+                    <span className="w-2 h-2 rounded-full bg-[#ff5f57]" />
+                    <span className="w-2 h-2 rounded-full bg-[#febc2e]" />
+                    <span className="w-2 h-2 rounded-full bg-[#28c840]" />
+                    <span className="ml-1.5 text-[10px] text-slate-400 font-medium">Feedback głosowy · przykład</span>
+                  </div>
+                  <div className="relative" style={{ aspectRatio: "712/752" }}>
+                    <video
+                      controls
+                      playsInline
+                      preload="metadata"
+                      className="absolute inset-0 w-full h-full object-cover"
+                    >
+                      <source src="/feedback-new.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                </div>
+                <p className="text-[11px] text-slate-400 mt-2 font-medium text-center">Feedback głosowy</p>
               </div>
+
             </div>
           </div>
         </div>
