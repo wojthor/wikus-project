@@ -463,7 +463,7 @@ function UnschoolLanding() {
                   </div>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <video
-                    src="/feedback-new.mov"
+                    src="/feedback-new.mp4"
                     controls
                     playsInline
                     className="w-full h-auto block"
