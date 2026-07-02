@@ -440,14 +440,12 @@ function UnschoolLanding() {
                     <span className="w-2 h-2 rounded-full bg-[#28c840]" />
                     <span className="ml-1.5 text-[10px] text-slate-400 font-medium">Feedback tekstowy · przykład</span>
                   </div>
-                  <div className="relative overflow-hidden" style={{ aspectRatio: "712/752" }}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src="/feedback2-new.png"
-                      alt="Panel ucznia z zadaniem i feedbackiem"
-                      className="absolute inset-0 w-full h-full object-cover object-top"
-                    />
-                  </div>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/feedback2-new.png"
+                    alt="Panel ucznia z zadaniem i feedbackiem"
+                    className="w-full h-auto block"
+                  />
                 </div>
                 <p className="text-[11px] text-slate-400 mt-2 font-medium text-center">Feedback tekstowy</p>
               </div>
