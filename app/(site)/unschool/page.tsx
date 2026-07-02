@@ -201,8 +201,7 @@ function UnschoolLanding() {
               35 lekcji u przeciętnego korepetytora?{" "}
               <span className="font-bold text-slate-500">Licz 3&nbsp;500&nbsp;zł.</span>
               <br />
-              35 lekcji tutaj?{" "}
-              <span className="font-extrabold text-[#7347f4]">597&nbsp;zł.</span>
+              35 lekcji tutaj? <span className="font-extrabold text-[#7347f4]">597&nbsp;zł.</span>
             </div>
           </div>
 
@@ -243,7 +242,9 @@ function UnschoolLanding() {
               <div>
                 <p className="text-xs font-bold text-[#7347f4]">Gwarancja satysfakcji – 30 dni</p>
                 <p className="text-[11px] text-slate-500 leading-relaxed mt-0.5">
-                  Nie chcę żebyś kupował w ciemno. Dlatego jeśli przerobiłeś pierwsze 2 moduły, wysłałeś zadania i nadal czujesz że to nie dla Ciebie – piszesz do mnie i zwracam całą kwotę. Zero ryzyka z Twojej strony.
+                  Nie chcę żebyś kupował w ciemno. Dlatego jeśli przerobiłeś pierwsze 2 moduły,
+                  wysłałeś zadania i nadal czujesz że to nie dla Ciebie – piszesz do mnie i zwracam
+                  całą kwotę. Zero ryzyka z Twojej strony.
                 </p>
               </div>
             </div>
@@ -420,8 +421,8 @@ function UnschoolLanding() {
                   Personalny feedback
                 </div>
                 <p className="text-sm text-slate-600 leading-relaxed">
-                  Odsłuchuję każde nagranie i czytam każdą odpowiedź. Komentuję co poszło dobrze
-                  i co poprawić. Nie dostajesz automatycznych odpowiedzi, dostajesz feedback od
+                  Odsłuchuję każde nagranie i czytam każdą odpowiedź. Komentuję co poszło dobrze i
+                  co poprawić. Nie dostajesz automatycznych odpowiedzi, dostajesz feedback od
                   gościa, który wie, czemu szkolna nauka nie działa.
                 </p>
               </div>
@@ -435,10 +436,16 @@ function UnschoolLanding() {
                     <span className="w-2 h-2 rounded-full bg-[#ff5f57]" />
                     <span className="w-2 h-2 rounded-full bg-[#febc2e]" />
                     <span className="w-2 h-2 rounded-full bg-[#28c840]" />
-                    <span className="ml-1.5 text-[10px] text-slate-400 font-medium">Feedback tekstowy · przykład</span>
+                    <span className="ml-1.5 text-[10px] text-slate-400 font-medium">
+                      Feedback tekstowy{" "}
+                    </span>
                   </div>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/feedback2.jpeg" alt="Panel ucznia z zadaniem i feedbackiem" className="w-full h-auto block" />
+                  <img
+                    src="/feedback2-new.png"
+                    alt="Panel ucznia z zadaniem i feedbackiem"
+                    className="w-full h-auto block"
+                  />
                 </div>
                 <p className="text-[11px] text-slate-400 mt-2 font-medium text-center">
                   Feedback tekstowy
@@ -450,10 +457,19 @@ function UnschoolLanding() {
                     <span className="w-2 h-2 rounded-full bg-[#ff5f57]" />
                     <span className="w-2 h-2 rounded-full bg-[#febc2e]" />
                     <span className="w-2 h-2 rounded-full bg-[#28c840]" />
-                    <span className="ml-1.5 text-[10px] text-slate-400 font-medium">Feedback głosowy · przykład</span>
+                    <span className="ml-1.5 text-[10px] text-slate-400 font-medium">
+                      Feedback głosowy{" "}
+                    </span>
                   </div>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/feedback2.jpeg" alt="Przykładowy feedback głosowy" className="w-full h-auto block" />
+                  <video
+                    src="/feedback-new.mov"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="w-full h-auto block"
+                  />
                 </div>
                 <p className="text-[11px] text-slate-400 mt-2 font-medium text-center">
                   Feedback głosowy
@@ -832,7 +848,9 @@ function UnschoolLanding() {
               <div>
                 <p className="text-xs font-bold text-[#7347f4]">Gwarancja satysfakcji – 30 dni</p>
                 <p className="text-[11px] text-slate-500 leading-relaxed mt-0.5">
-                  Nie chcę żebyś kupował w ciemno. Dlatego jeśli przerobiłeś pierwsze 2 moduły, wysłałeś zadania i nadal czujesz że to nie dla Ciebie – piszesz do mnie i zwracam całą kwotę. Zero ryzyka z Twojej strony.
+                  Nie chcę żebyś kupował w ciemno. Dlatego jeśli przerobiłeś pierwsze 2 moduły,
+                  wysłałeś zadania i nadal czujesz że to nie dla Ciebie – piszesz do mnie i zwracam
+                  całą kwotę. Zero ryzyka z Twojej strony.
                 </p>
               </div>
             </div>
@@ -841,8 +859,8 @@ function UnschoolLanding() {
               buttonClassName={`${btnPrimary} w-full text-base sm:text-lg disabled:opacity-50 disabled:hover:translate-y-0`}
             />
             <p className="text-xs text-slate-500 mt-4 text-center leading-relaxed">
-              Bezpieczna płatność przez Stripe ({STRIPE_PAYMENT_METHODS_LABEL}). Po opłaceniu konto na
-              platformie tworzy się automatycznie.
+              Bezpieczna płatność przez Stripe ({STRIPE_PAYMENT_METHODS_LABEL}). Po opłaceniu konto
+              na platformie tworzy się automatycznie.
             </p>
           </div>
         </div>
@@ -947,20 +965,19 @@ function UspMentoringSection() {
           To nie jest kolejny kurs, gdzie przeklikujesz sobie lekcje
         </div>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight mb-6">
-          Każde zadanie sprawdzam ja.{" "}
-          <em className="text-[#ffbd53] not-italic">Osobiście.</em>
+          Każde zadanie sprawdzam ja. <em className="text-[#ffbd53] not-italic">Osobiście.</em>
         </h2>
         <p className="text-sm sm:text-base text-white/65 leading-relaxed mb-8">
-          Nie bot. Nie automatyczna ocena. Nagrywasz się lub piszesz odpowiedź. A ja – korepetytor
-          z 4-letnim doświadczeniem i filolog angielski – Ci na nie odpowiadam. Także nie jest to
+          Nie bot. Nie automatyczna ocena. Nagrywasz się lub piszesz odpowiedź. A ja – korepetytor z
+          4-letnim doświadczeniem i filolog angielski – Ci na nie odpowiadam. Także nie jest to
           zwykły kurs, a mentoring 1:1.
         </p>
         <div className="max-w-xl mx-auto">
           <div className="rounded-2xl bg-[#7347f4]/20 border border-[#7347f4]/30 px-6 py-5 text-center">
             <p className="text-base sm:text-lg font-bold text-white leading-snug">
               597&nbsp;zł ÷ 35 zadań z feedbackiem to{" "}
-              <span className="text-[#ffbd53]">~17&nbsp;zł</span>{" "}
-              za sprawdzone zadanie przez doświadczonego filologa
+              <span className="text-[#ffbd53]">~17&nbsp;zł</span> za sprawdzone zadanie przez
+              doświadczonego filologa
             </p>
           </div>
           <p className="text-xs sm:text-sm text-white/50 mt-3 text-center">
